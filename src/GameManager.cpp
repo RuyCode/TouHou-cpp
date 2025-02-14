@@ -9,7 +9,7 @@ GameManager::GameManager()
 }
 
 void GameManager::Run() {
-    window.create(sf::VideoMode({windowWidth, windowHeight}), "");
+    window.create(sf::VideoMode({windowWidth, windowHeight}), "Touhou c++");
     window.setFramerateLimit(fps);
 
     float accumulator = 0.f;
