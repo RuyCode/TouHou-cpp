@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
+
 set(project "TouhouCPP")   
-project(${project} LANGUAGES CXX)
+project(${project} LANGUAGES C CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -14,18 +17,29 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
+add_library(glad STATIC src/glad.c)
+target_include_directories(glad PUBLIC include)
+
 set(${project}_SOURCES 
-    src/GameManager.cpp
-    src/mainLoop.cpp
-    src/SceneManager.cpp
-    src/MainScene.cpp
+    src/main.cpp
+    src/core/GameManager.cpp
+    src/core/SceneManager.cpp
+    src/scenes/MainScene.cpp
+    src/graphics/Shader.cpp
+    src/graphics/VertexArrayObject.cpp
+    src/graphics/VertexBufferObject.cpp
+    src/graphics/ElementBufferObject.cpp
 )   
 
 set(${project}_HEADERS
-    src/GameManager.h
-    src/Scene.h
-    src/SceneManager.h
-    src/MainScene.h
+    src/core/GameManager.h
+    src/core/SceneManager.h
+    src/scenes/MainScene.h
+    src/scenes/Scene.h
+    src/graphics/Shader.h
+    src/graphics/VertexArrayObject.h
+    src/graphics/VertexBufferObject.h
+    src/graphics/ElementBufferObject.h
 )
 
 set(${project}_SOURCE_LIST
@@ -36,4 +50,6 @@ set(${project}_SOURCE_LIST
 add_executable(${project} ${${project}_SOURCE_LIST})
 
 target_compile_features(${project} PRIVATE cxx_std_17)
-target_link_libraries(${project} PRIVATE SFML::Graphics)
+target_include_directories(${project} PRIVATE src)
+target_link_libraries(${project} PRIVATE SFML::Graphics )
+target_link_libraries(${project} PRIVATE glad)

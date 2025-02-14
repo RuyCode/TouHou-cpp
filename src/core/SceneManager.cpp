@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
-#include "Scene.h"
-#include "SceneManager.h"
+#include "scenes/Scene.h"
+#include "core/SceneManager.h"
 
 SceneManager::SceneManager(const std::unordered_map<std::string, std::shared_ptr<Scene>>& sceneCache, const std::string& defaultSceneName) : sceneCache(sceneCache), currentScene(nullptr) {
     auto defaultSceneEntry = sceneCache.find(defaultSceneName);

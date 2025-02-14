@@ -1,9 +1,9 @@
-#include <SFML/Graphics.hpp>
-
-#include "Scene.h"
+#include "scenes/Scene.h"
 
 #ifndef MAIN_SCENE_H
 #define MAIN_SCENE_H
+
+#include <SFML/Graphics.hpp>
 
 class MainScene : public Scene {
 public:

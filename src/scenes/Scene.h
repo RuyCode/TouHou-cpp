@@ -1,7 +1,7 @@
-#include <SFML/Graphics.hpp>
-
 #ifndef SCENE_H
 #define SCENE_H
+
+#include <SFML/Graphics.hpp>
 
 class Scene {
 public:

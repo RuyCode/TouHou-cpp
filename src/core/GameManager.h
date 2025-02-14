@@ -1,9 +1,9 @@
-#include <SFML/Graphics.hpp>
-
-#include "SceneManager.h"
+#include "core/SceneManager.h"
 
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
+
+#include <SFML/Graphics.hpp>
 
 class GameManager {
 private:
@@ -12,7 +12,7 @@ private:
 
     sf::Clock clock;
     const uint8_t fps = 60u;
-    const float fixedDeltaTime = 1. / static_cast<float>(fps);
+    const float fixedDeltaTime = 1.f / static_cast<float>(fps);
 
     const uint16_t windowWidth = 640u;
     const uint16_t windowHeight = 480u;
@@ -31,4 +31,4 @@ public:
     void Run();
 };
 
-#endif // GAME_MANAGER_Hs
+#endif // GAME_MANAGER_H

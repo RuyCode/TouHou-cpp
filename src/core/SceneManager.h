@@ -1,10 +1,10 @@
-#include <SFML/Graphics.hpp>
-#include <unordered_map>
-
-#include "Scene.h"
+#include "scenes/Scene.h"
 
 #ifndef SCENE_MANAGER_H
 #define SCENE_MANAGER_H
+
+#include <SFML/Graphics.hpp>
+#include <unordered_map>
 
 class SceneManager {
 private:

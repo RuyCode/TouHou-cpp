@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "MainScene.h"
+#include "scenes/MainScene.h"
 
 void MainScene::FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) {
 
