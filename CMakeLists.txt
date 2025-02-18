@@ -29,6 +29,7 @@ set(${project}_SOURCES
     src/graphics/VertexArrayObject.cpp
     src/graphics/VertexBufferObject.cpp
     src/graphics/ElementBufferObject.cpp
+    src/graphics/Texture2D.cpp
 )   
 
 set(${project}_HEADERS
@@ -40,6 +41,7 @@ set(${project}_HEADERS
     src/graphics/VertexArrayObject.h
     src/graphics/VertexBufferObject.h
     src/graphics/ElementBufferObject.h
+    src/graphics/Texture2D.h
 )
 
 set(${project}_SOURCE_LIST

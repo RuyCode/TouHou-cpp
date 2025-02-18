@@ -10,6 +10,7 @@ private:
     sf::RenderWindow window;
     const char* windowName = "Touhou c++";
 
+    sf::Clock deltaTimeClock;
     sf::Clock clock;
     const uint8_t fps = 60u;
     const float fixedDeltaTime = 1.f / static_cast<float>(fps);

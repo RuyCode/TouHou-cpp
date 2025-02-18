@@ -8,6 +8,52 @@
 
 #include <iostream>
 
+namespace {
+    enum class ObjectType {
+        VERTEX_SHADER, 
+        FRAGMENT_SHADER,
+        SHADER_PROGRAM
+    };
+
+    void CompileErrors(uint objectID, ObjectType type) {
+        int success;
+        char infoLog[1024];
+
+        switch (type){
+            case ObjectType::VERTEX_SHADER: {
+                glGetShaderiv(objectID, GL_COMPILE_STATUS, &success);
+
+                if (!success) {
+                    glGetShaderInfoLog(objectID, 1024, NULL, infoLog);
+                    throw std::runtime_error("Error: vertex shader compilation failed");
+                }
+
+                break;
+            }
+
+            case ObjectType::FRAGMENT_SHADER: {
+                glGetShaderiv(objectID, GL_COMPILE_STATUS, &success);
+
+                if (!success) {
+                    glGetShaderInfoLog(objectID, 1024, NULL, infoLog);
+                    throw std::runtime_error("Error: fragment shader compilation failed");
+                }
+
+                break;
+            }
+
+            case ObjectType::SHADER_PROGRAM: {
+                glGetProgramiv(objectID, GL_LINK_STATUS, &success);
+
+                if (!success) {
+                    glGetProgramInfoLog(objectID, 1024, NULL, infoLog);
+                    throw std::runtime_error("Error: failed to link shaders");
+                }
+            }
+        }
+    }
+}
+
 std::string getFileContents(const char* filePath) {
     std::ifstream file(filePath, std::ios::binary);
 
@@ -39,9 +85,13 @@ Shader::Shader(const char* vertexShaderFilePath, const char* fragmentShaderFileP
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
     glCompileShader(vertexShader);
 
+    CompileErrors(vertexShader, ObjectType::VERTEX_SHADER);
+
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
+
+    CompileErrors(fragmentShader, ObjectType::FRAGMENT_SHADER);
 
     ID = glCreateProgram();
     
@@ -49,6 +99,8 @@ Shader::Shader(const char* vertexShaderFilePath, const char* fragmentShaderFileP
     glAttachShader(ID, fragmentShader);
 
     glLinkProgram(ID);
+
+    CompileErrors(ID, ObjectType::SHADER_PROGRAM);
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
@@ -60,4 +112,16 @@ void Shader::Activate() {
 
 void Shader::Delete() {
     glDeleteProgram(ID);
+}
+
+void Shader::SetBool(const std::string &name, bool value) const {
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), static_cast<int>(value));
+}
+
+void Shader::SetInt(const std::string &name, int value) const {
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+void Shader::SetFloat(const std::string &name, float value) const {
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
