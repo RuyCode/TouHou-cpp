@@ -7,11 +7,11 @@
 
 class MainScene : public Scene {
 public:
-    void FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) override;
+    void fixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) override;
 
-    void Update(sf::RenderWindow& window, float deltaTime) override;
+    void update(sf::RenderWindow& window, float deltaTime) override;
 
-    void Draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window) override;
 };
 
 #endif // MAIN_SCENE_H

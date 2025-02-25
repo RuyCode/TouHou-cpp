@@ -1,4 +1,5 @@
 #include "core/SceneManager.h"
+#include "glGraphics/Camera.h"
 
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
@@ -18,16 +19,20 @@ private:
     const uint16_t windowWidth = 640u;
     const uint16_t windowHeight = 480u;
 
+    Camera* mainCamera;
+
     SceneManager sceneManager;
 
-    void FixedUpdate(float fixedDeltaTime);
+    void fixedUpdate(float fixedDeltaTime);
 
-    void Update(float deltaTime);
+    void update(float deltaTime);
 
-    void Draw();
+    void draw();
 
 public:
     GameManager();
+
+    void BindCamera(Camera* camera);
 
     void Run();
 };

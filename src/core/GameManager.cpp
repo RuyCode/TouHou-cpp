@@ -1,10 +1,9 @@
 #include "core/GameManager.h"
 #include "scenes/MainScene.h"
-#include "graphics/Texture2D.h"
-#include "graphics/Shader.h"
-#include "graphics/VertexBufferObject.h"
-#include "graphics/ElementBufferObject.h"
-#include "graphics/VertexArrayObject.h"
+#include "glGraphics/Camera.h"
+#include "glGraphics/Texture2D.h"
+#include "glGraphics/Shader.h"
+#include "glGraphics/Model.h"
 
 #include <glad/glad.h>
 #include <SFML/Graphics.hpp>
@@ -12,11 +11,14 @@
 #include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
+#include <glm/gtc/type_ptr.hpp> 
 
 GameManager::GameManager()
     : sceneManager({{"MainScene", std::make_shared<MainScene>()}}, "MainScene")  {
+}
+
+void GameManager::BindCamera(Camera* camera) {
+    mainCamera = camera;
 }
 
 void GameManager::Run() {
@@ -35,93 +37,44 @@ void GameManager::Run() {
 
     const float aspectRatio = 448.f / 384.f;
 
-    GLfloat vertices[] = {
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-        0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
-        -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
-        0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
-        -0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
-        -0.5f, 0.5f, -0.5f, 0.0f, 1.0f
-    };
-
-    glm::vec3 cubePositions[] = {
-        glm::vec3( 0.0f, 0.0f, 0.0f),
-        glm::vec3( 2.0f, 5.0f, -15.0f),
-        glm::vec3(-1.5f, -2.2f, -2.5f),
-        glm::vec3(-3.8f, -2.0f, -12.3f),
-        glm::vec3( 2.4f, -0.4f, -3.5f),
-        glm::vec3(-1.7f, 3.0f, -7.5f),
-        glm::vec3( 1.3f, -2.0f, -2.5f),
-        glm::vec3( 1.5f, 2.0f, -2.5f),
-        glm::vec3( 1.5f, 0.2f, -1.5f),
-        glm::vec3(-1.3f, 1.0f, -1.5f)
-    };
-
     glClearColor(.07f, .13f, .17f, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     Shader shaderProgram("src/assets/shaders/default.vert", "src/assets/shaders/default.frag");
 
-    VertexArrayObject VAO;
-    VAO.Bind();
-
-    VertexBufferObject VBO(vertices, sizeof(vertices));
-
-    VAO.LinkAttrib(VBO, 0, 3, GL_FLOAT, 5 * sizeof(float), reinterpret_cast<void*>(0));
-    VAO.LinkAttrib(VBO, 1, 2, GL_FLOAT, 5 * sizeof(float), reinterpret_cast<void*>(3 * sizeof(float)));
-
-    VAO.Unbind();
-    VBO.Unbind();
-
-    Texture2D texture0("src/assets/textures/pixel-art-character-niko-one-shot-game-s2pacfuyat98l4v3.jpg");
-    Texture2D texture1("src/assets/textures/7561297a-6cb7-46a1-9b7f-6401274c4f02.jpg");
-
-    GLuint tex0uniID = glGetUniformLocation(shaderProgram.ID, "tex0");
-    GLuint tex1uniID = glGetUniformLocation(shaderProgram.ID, "tex1");
-    
     GLuint modelLoc = glGetUniformLocation(shaderProgram.ID, "model");
     GLuint viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
     GLuint projectionLoc = glGetUniformLocation(shaderProgram.ID, "projection");
 
+    Model scene("src/assets/scenes/EOSD_s4.gltf");
+
     shaderProgram.Activate();
-    glUniform1i(tex0uniID, 0);
-    glUniform1i(tex0uniID, 1);
+    
+    glm::vec3 lightPos(0.f, .75f, 1.5f);
+    shaderProgram.SetVec3("lightPos", lightPos);
+
+    glm::vec3 lightColor(1.f, 1.f, 1.f);
+    shaderProgram.SetVec3("lightColor", lightColor);
+
+    glm::vec3 cameraPos(0.0, -2.2901699542999268f,  -2.358180046081543f);
+    cameraPos = glm::vec3(cameraPos.x, -cameraPos.z, cameraPos.y);
+    glm::vec3 cameraTarget = cameraPos + glm::vec3(0.0, -0.6427876949310303f, 0.7660444974899292f);
+
+    Camera camera = Camera(cameraPos, glm::vec3(0.f, 0.f, 0.f));
+    camera.LookAt(cameraTarget);
+
+    camera.Aspect = 1.f / aspectRatio;
+    BindCamera(&camera);
      
     /*------------------------------------------*/
 
     float accumulator = 0.f;
 
     while (window.isOpen()) {
+        if (mainCamera == nullptr) {
+            throw std::runtime_error("Error: camera object is empty");
+        }
+
         float deltaTime = deltaTimeClock.restart().asSeconds();
         accumulator += deltaTime;
 
@@ -132,16 +85,73 @@ void GameManager::Run() {
             }
         }
 
-        Update(deltaTime);
+        // CAMERA MOVEMENT FOR DEBUGGING PURPOSE ////////////////////////////
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::W)) {
+            mainCamera->SetPosition(mainCamera->GetPosition() + mainCamera->GetDirection() * deltaTime * 10.f);
+        } 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::S)) {
+            mainCamera->SetPosition(mainCamera->GetPosition() - mainCamera->GetDirection() * deltaTime * 10.f);
+        } 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::A)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::cross(worldUp, mainCamera->GetDirection());
+            mainCamera->SetPosition(mainCamera->GetPosition() + cameraRight * deltaTime * 10.f);
+        } 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::cross(worldUp, mainCamera->GetDirection());
+            mainCamera->SetPosition(mainCamera->GetPosition() - cameraRight * deltaTime * 10.f);
+        } 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Space)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::cross(worldUp, mainCamera->GetDirection());
+            glm::vec3 cameraUp = glm::cross(cameraRight, mainCamera->GetDirection());
+            mainCamera->SetPosition(mainCamera->GetPosition() - cameraUp * deltaTime * 10.f);
+        } 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::LControl)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::cross(worldUp, mainCamera->GetDirection());
+            glm::vec3 cameraUp = glm::cross(cameraRight, mainCamera->GetDirection());
+            mainCamera->SetPosition(mainCamera->GetPosition() + cameraUp * deltaTime * 10.f);
+        } 
+
+        auto rotateCamera = [](float angle, const glm::vec3& axis, Camera*& cam) {
+            glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+            cam->SetDirection(glm::normalize(glm::vec3(rotationMatrix * glm::vec4(cam->GetDirection(), 1.0f))));
+        };
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            rotateCamera(40.f * deltaTime, worldUp, mainCamera);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            rotateCamera(-40.f * deltaTime, worldUp, mainCamera);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::normalize(glm::cross(worldUp, mainCamera->GetDirection()));
+            rotateCamera(-40.f * deltaTime, cameraRight, mainCamera); 
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Down)) {
+            glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
+            glm::vec3 cameraRight = glm::normalize(glm::cross(worldUp, mainCamera->GetDirection()));
+            rotateCamera(40.f * deltaTime, cameraRight, mainCamera);
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        update(deltaTime);
 
         while (accumulator >= fixedDeltaTime) {
-            FixedUpdate(fixedDeltaTime);
+            fixedUpdate(fixedDeltaTime);
             accumulator -= fixedDeltaTime;
         }
 
         window.clear(sf::Color::Black);
 
-        Draw();
+        draw();
 
         /*---------------OpenGL Test----------------*/
 
@@ -156,29 +166,19 @@ void GameManager::Run() {
 
         shaderProgram.Activate();
 
-        texture0.BindToUnit(0);
-        texture1.BindToUnit(1);
+        shaderProgram.SetVec3("viewPos", mainCamera->GetPosition());
 
-        VAO.Bind();
+        glm::mat4 model = glm::mat4(1.f);   
 
-        for(uint i = 0; i < 10; i++){
-            glm::mat4 model = glm::mat4(1.f);   
-            model = glm::translate(model, cubePositions[i]);
-            model = glm::rotate(model, glm::radians(-55.f) * clock.getElapsedTime().asSeconds(), glm::vec3(.5f, 1.f, 0.f));
+        glm::mat4 view = mainCamera->GetViewMatrix();
 
-            glm::mat4 view = glm::mat4(1.f);
-            view = glm::translate(view, glm::vec3(0.f, 0.f, -3.f));
+        glm::mat4 projection = mainCamera->GetPerspectiveMatrix();
 
-            glm::mat4 projection = glm::mat4(1.f);
-            projection = glm::perspective(glm::radians(45.f), 1.f / aspectRatio, .1f, 100.f);
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-            glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-            glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-            glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
-
+        scene.Draw(shaderProgram);
 
         glViewport(0, 0, windowWidth, windowHeight);
         glDisable(GL_SCISSOR_TEST);
@@ -191,21 +191,19 @@ void GameManager::Run() {
 
     /*---------------OpenGL Test----------------*/
 
-    VAO.Delete();
-    VBO.Delete();
     shaderProgram.Delete();
 
     /*------------------------------------------*/
 }
 
-void GameManager::FixedUpdate(float fixedDeltaTime) {
-    sceneManager.GetCurrentScene()->FixedUpdate(window, fixedDeltaTime);
+void GameManager::fixedUpdate(float fixedDeltaTime) {
+    sceneManager.GetCurrentScene()->fixedUpdate(window, fixedDeltaTime);
 }
 
-void GameManager::Update(float deltaTime) {
-    sceneManager.GetCurrentScene()->Update(window, deltaTime);
+void GameManager::update(float deltaTime) {
+    sceneManager.GetCurrentScene()->update(window, deltaTime);
 }
 
-void GameManager::Draw() {
-    sceneManager.GetCurrentScene()->Draw(window);
+void GameManager::draw() {
+    sceneManager.GetCurrentScene()->draw(window);
 }

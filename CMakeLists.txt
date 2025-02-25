@@ -14,8 +14,15 @@ FetchContent_Declare(SFML
     GIT_TAG 3.0.0
     GIT_SHALLOW ON
     EXCLUDE_FROM_ALL
-    SYSTEM)
+    SYSTEM
+)
 FetchContent_MakeAvailable(SFML)
+
+FetchContent_Declare(assimp
+    GIT_REPOSITORY https://github.com/assimp/assimp.git
+    GIT_TAG master
+)
+FetchContent_MakeAvailable(assimp)
 
 add_library(glad STATIC src/glad.c)
 target_include_directories(glad PUBLIC include)
@@ -25,11 +32,14 @@ set(${project}_SOURCES
     src/core/GameManager.cpp
     src/core/SceneManager.cpp
     src/scenes/MainScene.cpp
-    src/graphics/Shader.cpp
-    src/graphics/VertexArrayObject.cpp
-    src/graphics/VertexBufferObject.cpp
-    src/graphics/ElementBufferObject.cpp
-    src/graphics/Texture2D.cpp
+    src/glGraphics/Shader.cpp
+    src/glGraphics/VertexArrayObject.cpp
+    src/glGraphics/VertexBufferObject.cpp
+    src/glGraphics/ElementBufferObject.cpp
+    src/glGraphics/Texture2D.cpp
+    src/glGraphics/Camera.cpp
+    src/glGraphics/Model.cpp
+    src/glGraphics/Mesh.cpp
 )   
 
 set(${project}_HEADERS
@@ -37,11 +47,14 @@ set(${project}_HEADERS
     src/core/SceneManager.h
     src/scenes/MainScene.h
     src/scenes/Scene.h
-    src/graphics/Shader.h
-    src/graphics/VertexArrayObject.h
-    src/graphics/VertexBufferObject.h
-    src/graphics/ElementBufferObject.h
-    src/graphics/Texture2D.h
+    src/glGraphics/Shader.h
+    src/glGraphics/VertexArrayObject.h
+    src/glGraphics/VertexBufferObject.h
+    src/glGraphics/ElementBufferObject.h
+    src/glGraphics/Texture2D.h
+    src/glGraphics/Camera.h
+    src/glGraphics/Model.h
+    src/glGraphics/Mesh.h
 )
 
 set(${project}_SOURCE_LIST
@@ -55,3 +68,4 @@ target_compile_features(${project} PRIVATE cxx_std_17)
 target_include_directories(${project} PRIVATE src)
 target_link_libraries(${project} PRIVATE SFML::Graphics )
 target_link_libraries(${project} PRIVATE glad)
+target_link_libraries(${project} PUBLIC assimp)
