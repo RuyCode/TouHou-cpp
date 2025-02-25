@@ -1,0 +1,77 @@
+#include "scenewidget.h"
+
+SceneWidget::SceneWidget(QWidget* parent) : QOpenGLWidget(parent) {
+    // enable OpenGL support
+    QSurfaceFormat format;
+    format.setRenderableType(QSurfaceFormat::OpenGL);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+    format.setVersion(3, 3);
+    setFormat(format);
+}
+
+SceneWidget::~SceneWidget() {
+    vertexBuffer.destroy();
+    delete shaderProgram;
+}
+
+void SceneWidget::mouseReleaseEvent(QMouseEvent* event) {
+    qDebug() << mapFromGlobal(QCursor::pos());
+}
+
+void SceneWidget::initializeGL() {
+    initializeOpenGLFunctions();
+
+    // set bg color
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+
+    // create shader program
+    shaderProgram = new QOpenGLShaderProgram(this);
+    shaderProgram->addShaderFromSourceCode(QOpenGLShader::Vertex,
+                                           "#version 330 core\n"
+                                           "layout(location = 0) in vec3 position;\n"
+                                           "void main()\n"
+                                           "{\n"
+                                           "    gl_Position = vec4(position, 1.0);\n"
+                                           "}\n");
+    shaderProgram->addShaderFromSourceCode(QOpenGLShader::Fragment,
+                                           "#version 330 core\n"
+                                           "out vec4 fragColor;\n"
+                                           "void main()\n"
+                                           "{\n"
+                                           "    fragColor = vec4(1.0, 0.5, 0.2, 1.0);\n"
+                                           "}\n");
+    shaderProgram->link();
+
+    // vertexes of the triangle
+    GLfloat vertices[] = {
+        -0.5f, -0.5f, 0.0f,  // left
+        0.5f,  -0.5f, 0.0f,  // right
+        0.0f,  0.5f,  0.0f   // top
+    };
+
+    // create and set up vertex buffer
+    vertexBuffer.create();
+    vertexBuffer.bind();
+    vertexBuffer.allocate(vertices, sizeof(vertices));
+}
+void SceneWidget::resizeGL(int w, int h) {
+    // rendering area
+    glViewport(0, 0, w, h);
+}
+
+void SceneWidget::paintGL() {
+    // clear color and depth buffer
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    shaderProgram->bind();
+    vertexBuffer.bind();
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // draw the triangle
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    // disable shader program
+    shaderProgram->release();
+}
