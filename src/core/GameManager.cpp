@@ -21,6 +21,18 @@ void GameManager::BindCamera(Camera* camera) {
     mainCamera = camera;
 }
 
+/*---------------OpenGL Test----------------*/
+
+#include <iostream>
+
+void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* usedParam) {
+    std::cerr << "OpenGL Debug Message (" << id <<  "): " << message << std::endl;
+}
+
+/*------------------------------------------*/
+
+
+
 void GameManager::Run() {
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -35,6 +47,10 @@ void GameManager::Run() {
 
     gladLoadGL();
 
+    glEnable(GL_DEBUG_OUTPUT);
+    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    glDebugMessageCallback(glDebugOutput, nullptr);
+
     const float aspectRatio = 448.f / 384.f;
 
     glClearColor(.07f, .13f, .17f, 1.f);
@@ -46,7 +62,7 @@ void GameManager::Run() {
     GLuint viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
     GLuint projectionLoc = glGetUniformLocation(shaderProgram.ID, "projection");
 
-    Model scene("src/assets/scenes/EOSD_s4.gltf");
+    Model scene("src/assets/scenes/EOSD_s4.glb");
 
     shaderProgram.Activate();
     
@@ -158,15 +174,22 @@ void GameManager::Run() {
         glViewport(32, 16, 384, 448);
         glEnable(GL_SCISSOR_TEST);
         glEnable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 
         glScissor(32, 16, 384, 448);
 
-        glClearColor(.07f, .13f, .17f, 1.f);
+        glm::vec4 clearColor(.502f, .247f, .129f, 1.f);
+
+        glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shaderProgram.Activate();
 
+        shaderProgram.SetVec4("clearColor", clearColor);
         shaderProgram.SetVec3("viewPos", mainCamera->GetPosition());
+        shaderProgram.SetVec3("lightPos", mainCamera->GetPosition());
 
         glm::mat4 model = glm::mat4(1.f);   
 

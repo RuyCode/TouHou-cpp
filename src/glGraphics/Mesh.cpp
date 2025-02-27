@@ -5,17 +5,14 @@
 #include <glad/glad.h>
 #include <string>
 
-#include <iostream>
-
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::string name) :
     vertices(vertices),
     indices(indices),
     textures(textures),
     VAO(),
     VBO(&vertices[0], vertices.size() * sizeof(Vertex)),
-    EBO(&indices[0], indices.size() * sizeof(unsigned int)) {
-
-    this->name = name;
+    EBO(&indices[0], indices.size() * sizeof(unsigned int)),
+    name(name) {
 
     VAO.Bind();
     VBO.Bind();
@@ -29,6 +26,8 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std:
     VAO.Unbind();
 }
 
+#include <iostream>
+
 void Mesh::Draw(Shader &shader) {
 
     unsigned int heightNumber = 1;
@@ -38,7 +37,12 @@ void Mesh::Draw(Shader &shader) {
     unsigned int roughnessNumber = 1;
     unsigned int aoNumber = 1;
 
-    for (unsigned int i = 0; i < textures.size(); ++i) {
+    for (int i = 0; i < 16; i++) {
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    for (unsigned int i = 0; i < textures.size(); ++i) {   
         std::string name{};
         std::string number{};
         TextureType type = textures[i].GetType();
@@ -77,10 +81,9 @@ void Mesh::Draw(Shader &shader) {
         }
 
         // material_<type>_<number>
-        shader.Activate();
-        glUseProgram(shader.ID);
         textures[i].BindToUnit(i);
-        shader.SetInt(("material_" + name + "_" + number).c_str(), i);   
+        std::string uniformName = ("material_" + name + "_" + number);
+        shader.SetFloat(uniformName, i);
     }
 
     VAO.Bind();

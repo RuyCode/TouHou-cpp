@@ -18,14 +18,14 @@ enum class TextureType {
 
 class Texture2D {
 private:
-    sf::Texture texture;
+    sf::Image image;
     TextureType type;
     std::string path;
     
 public:
     GLuint ID;
 
-    Texture2D(const std::string& filePath);
+    Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType type);
 
     Texture2D(const std::string& filePath, TextureType type);
 

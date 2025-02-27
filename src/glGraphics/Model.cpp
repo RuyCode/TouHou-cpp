@@ -8,6 +8,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+#include <filesystem>
 
 Model::Model(const std::string& path){
     loadModel(path);
@@ -44,7 +45,6 @@ void Model::processNode(aiNode* node, const aiScene* scene) {
 }
 
 Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
-
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
     std::vector<Texture2D> textures;
@@ -98,52 +98,131 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
 
     if (mesh->mMaterialIndex >= 0) {
         aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-
-        std::vector<Texture2D> metallicMaps = loadMaterialTextures(material, aiTextureType_METALNESS, TextureType::Metallic);
-        textures.insert(textures.end(), metallicMaps.begin(), metallicMaps.end());
-
-        std::vector<Texture2D> normalMaps = loadMaterialTextures(material, aiTextureType_NORMALS, TextureType::NormalMap);
-        textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());  
-
-        std::vector<Texture2D> heightMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, TextureType::Height);
-        textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
-
-        std::vector<Texture2D> aoMaps = loadMaterialTextures(material, aiTextureType_AMBIENT_OCCLUSION, TextureType::AmbientOcclusion);
-        textures.insert(textures.end(), aoMaps.begin(), aoMaps.end());
-
-        std::vector<Texture2D> roughnessMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE_ROUGHNESS, TextureType::Roughness);
-        textures.insert(textures.end(), roughnessMaps.begin(), roughnessMaps.end());
-
-        std::vector<Texture2D> albedoMaps = loadMaterialTextures(material, aiTextureType_BASE_COLOR, TextureType::Albedo);
-        textures.insert(textures.end(), albedoMaps.begin(), albedoMaps.end());  
+        textures = loadMaterialTextures(material, scene);
     }
 
     return Mesh(vertices, indices, textures, mesh->mName.C_Str());
 }
 
-std::vector<Texture2D> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureType texture2DType) {
+std::vector<Texture2D> Model::loadMaterialTextures(aiMaterial* material, const aiScene* scene) {
     std::vector<Texture2D> textures;
 
-    for (unsigned int i = 0; i < mat->GetTextureCount(type); ++i) {
-        aiString str;
-        mat->GetTexture(type, i, &str);
+    std::vector<int> albedoTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_BASE_COLOR);
+    std::vector<int> roughnessTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_DIFFUSE_ROUGHNESS);
+    std::vector<int> metallicTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_METALNESS);
+    std::vector<int> normalTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_NORMALS);
+    std::vector<int> heightTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_HEIGHT);
+    std::vector<int> aoTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_AMBIENT_OCCLUSION);
 
-        bool skip = false;
+    std::vector<Texture2D> albedoTextures = loadEmbdeedTextures(albedoTextureIndices, TextureType::Albedo, scene);
+    std::vector<Texture2D> roughnessTextures = loadEmbdeedTextures(roughnessTextureIndices, TextureType::Roughness, scene);
+    std::vector<Texture2D> metallicTextures = loadEmbdeedTextures(metallicTextureIndices, TextureType::Metallic, scene);
+    std::vector<Texture2D> normalTextures = loadEmbdeedTextures(normalTextureIndices, TextureType::NormalMap, scene);
+    std::vector<Texture2D> heightTextures = loadEmbdeedTextures(heightTextureIndices, TextureType::Height, scene);
+    std::vector<Texture2D> aoTextures = loadEmbdeedTextures(aoTextureIndices, TextureType::AmbientOcclusion, scene);
 
-        for (unsigned int j = 0; j < texturesLoaded.size(); ++j) {
-            if (std::strcmp(texturesLoaded[j].GetPath().data(), str.C_Str()) == 0 && texturesLoaded[j].GetType() == texture2DType) {
-                textures.push_back(texturesLoaded[j]);
-                skip = true;
-                break;
+    textures.insert(textures.end(), albedoTextures.begin(), albedoTextures.end());
+    textures.insert(textures.end(), roughnessTextures.begin(), roughnessTextures.end());
+    textures.insert(textures.end(), metallicTextures.begin(), metallicTextures.end());
+    textures.insert(textures.end(), normalTextures.begin(), normalTextures.end());
+    textures.insert(textures.end(), heightTextures.begin(), heightTextures.end());
+    textures.insert(textures.end(), aoTextures.begin(), aoTextures.end());
+
+    return textures;
+}
+
+std::vector<int> Model::getEmbeddedTextureTypeIndices(const aiMaterial* material, aiTextureType type) {
+    std::vector<int> indices;
+
+    unsigned int textureNumber = material->GetTextureCount(type);
+
+    for (unsigned int i = 0; i < textureNumber; ++i) {
+        aiString path;
+
+        if (material->GetTexture(type, i, &path) == AI_SUCCESS) {
+            if (path.C_Str()[0] == '*') {
+                int index = std::stoi(path.C_Str() + 1);
+                indices.push_back(index);
             }
         }
+    }
 
-        if (!skip) {
-            Texture2D texture(str.C_Str(), texture2DType);
-            textures.push_back(texture);
-            
-            texturesLoaded.push_back(texture);
+    return indices;
+}
+
+std::vector<Texture2D> Model::loadEmbdeedTextures(std::vector<int> indices, TextureType type, const aiScene* scene) {
+    std::vector<Texture2D> textures;
+    
+    for (int index : indices) {
+        aiTexture* texture = scene->mTextures[index];
+
+        if (!texture) {
+            throw std::runtime_error("Error: Failed to load embedded texture");
         }
-    } 
+
+        if (texture->mHeight == 0) {
+            std::string path = "src/assets/textures/texture" + std::string(scene->mName.C_Str()) + std::to_string(index) + "." + std::string(texture->achFormatHint);
+            if (std::filesystem::exists(path)) {
+                bool skip = false;
+
+                for (Texture2D tex : texturesLoaded) {
+                    if (tex.GetPath() == path && tex.GetType() == type) {
+                        textures.push_back(tex);
+                        skip = true;
+                        break;
+                    }
+                }
+                
+                if (!skip) {
+                    Texture2D tex = Texture2D(path, type);
+
+                    texturesLoaded.push_back(tex);
+                    textures.push_back(tex);
+                }
+
+                continue;
+            }
+
+            std::ofstream file(path, std::ios::binary);
+            file.write(reinterpret_cast<char*>(texture->pcData), texture->mWidth);
+            file.close();
+            
+            Texture2D tex = Texture2D(path, type);
+
+            texturesLoaded.push_back(tex);
+            textures.push_back(tex);
+        } else {
+            bool skip = false;
+
+            for (Texture2D tex : texturesLoaded) {
+                if (tex.GetPath() == "*" + std::to_string(index) && tex.GetType() == type) {
+                    textures.push_back(tex);
+                    skip = true;
+                    break;
+                }
+            }
+            
+            if (skip) {
+                continue;
+            }
+            
+            unsigned int width = texture->mWidth;
+            unsigned int height = texture->mHeight;
+            
+            std::vector<std::uint8_t> rawData(width * height * 4);
+            for (unsigned int i = 0; i < width * height; ++i) {
+                rawData[i * 4] = texture->pcData[i].a;
+                rawData[i * 4 + 1] = texture->pcData[i].r;
+                rawData[i * 4 + 2] = texture->pcData[i].g;
+                rawData[i * 4 + 3] = texture->pcData[i].b;
+            }
+
+            Texture2D tex = Texture2D(rawData, index, type);
+            
+            texturesLoaded.push_back(tex);
+            textures.push_back(tex);
+        }
+    }
+
     return textures;
 }

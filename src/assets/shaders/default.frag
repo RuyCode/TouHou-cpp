@@ -3,6 +3,7 @@
 in vec2 texCoord;
 in mat3 TBN;
 in vec3 fragPos;
+in float height;
 
 uniform sampler2D material_albedo_1;
 uniform sampler2D material_metallic_1;
@@ -12,6 +13,8 @@ uniform sampler2D material_roughness_1;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
+
+uniform vec4 clearColor;
 
 out vec4 FragColor;
 
@@ -62,7 +65,7 @@ void main() {
    vec3 V = normalize(viewPos - fragPos);
 
    vec3 F0 = vec3(.04f);
-   float metallic = texture(material_metallic_1, texCoord).r;
+   float metallic = texture(material_metallic_1, texCoord).b;
    vec3 albedo = texture(material_albedo_1, texCoord).rgb;
    F0 = mix(F0, albedo, metallic);
 
@@ -76,7 +79,7 @@ void main() {
    float attenuation = 1.f / (distance * distance);
    vec3 radiance = lightColor * attenuation;
 
-   float roughness = texture(material_roughness_1, texCoord).r;
+   float roughness = texture(material_roughness_1, texCoord).g;
    float NDF = DistributionGGX(N, H, roughness);
    float G = GeometrySmith(N, V, L, roughness);
    vec3 F = FresnelSchlick(max(dot(H, V), 0.f), F0);
@@ -101,5 +104,11 @@ void main() {
    color = color / (color + vec3(1.f));
    color = pow(color, vec3(1.f / 2.2f));
 
-   FragColor = vec4(albedo, 1.f);
+   float distanceToCamera = length(fragPos - viewPos);
+
+   float fogDistance = 2.3f;
+
+   color = mix(color, clearColor.rgb, clamp((distanceToCamera - fogDistance) / fogDistance, 0.f, 1.f));
+
+   FragColor = vec4(color, 1.f);
 }

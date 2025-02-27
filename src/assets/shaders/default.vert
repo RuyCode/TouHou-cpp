@@ -8,6 +8,8 @@ out vec2 texCoord;
 out mat3 TBN;
 out vec3 fragPos;
 
+out float height;
+
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;

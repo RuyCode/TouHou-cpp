@@ -23,7 +23,11 @@ private:
 
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
-    std::vector<Texture2D> loadMaterialTextures(aiMaterial* mat, aiTextureType type, TextureType texture2DType);
+    std::vector<Texture2D> loadMaterialTextures(aiMaterial* material, const aiScene* scene);
+
+    std::vector<int> getEmbeddedTextureTypeIndices(const aiMaterial* material, aiTextureType type);
+
+    std::vector<Texture2D> loadEmbdeedTextures(std::vector<int> indices, TextureType type, const aiScene* scene);
 
 public:
     Model(const std::string& path);

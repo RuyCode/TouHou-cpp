@@ -4,45 +4,55 @@
 #include <cstdint>
 #include <string>
 
-Texture2D::Texture2D(const std::string& filePath) {
-    texture = sf::Texture();
+Texture2D::Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType type) {
+    this->type = type;
+    image = sf::Image();
 
-    if (!texture.loadFromFile(filePath)) {
-        throw std::runtime_error("Error: failed to load texture from file: " + filePath);
-    };
+    if (!image.loadFromMemory(rawData.data(), rawData.size() * sizeof(std::uint8_t))) {
+        throw std::runtime_error("Error: failed to load texture from memory");
+    }
 
-    if (!texture.generateMipmap()) {
-        throw std::runtime_error("Error: failed to generate mipmap for texture: " + filePath);
-    };
+    glGenTextures(1, &ID);
+    glBindTexture(GL_TEXTURE_2D, ID);
 
-    path = filePath;
-    ID = texture.getNativeHandle();
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    path = "*" + std::to_string(index);
 }
 
 Texture2D::Texture2D(const std::string& filePath, TextureType type) {
     this->type = type;
-    texture = sf::Texture();
+    image = sf::Image();
 
-    if (!texture.loadFromFile(filePath)) {
+    if (!image.loadFromFile(filePath)) {
         throw std::runtime_error("Error: failed to load texture from file: " + filePath);
     };
 
-    if (!texture.generateMipmap()) {
-        throw std::runtime_error("Error: failed to generate mipmap for texture: " + filePath);
-    };
+    glGenTextures(1, &ID);
+    glBindTexture(GL_TEXTURE_2D, ID);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     path = filePath;
-    ID = texture.getNativeHandle();
 }
 
 void Texture2D::BindToUnit(std::uint8_t unitNumber) {
-    if (unitNumber >= 16) {
-        throw std::runtime_error("Error: invalid unit number (must be in range [0, 15])");
-    }
-
     glActiveTexture(GL_TEXTURE0 + unitNumber);
     glBindTexture(GL_TEXTURE_2D, ID);
 }
+
 
 TextureType Texture2D::GetType() {
     return type;

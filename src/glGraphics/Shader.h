@@ -26,6 +26,8 @@ public:
 
     void SetVec3(const std::string &name, const glm::vec3& value);
 
+    void SetVec4(const std::string &name, const glm::vec4& value);
+
     void SetMat4(const std::string &name, const glm::mat4& value);
 };
 
