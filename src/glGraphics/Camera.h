@@ -10,7 +10,8 @@ class Camera {
 private:
     glm::vec3 position;
     glm::vec3 direction;
-
+    glm::vec3 up;
+    
 public:
     float FOV;
     float Aspect;
@@ -22,7 +23,7 @@ public:
 
     Camera(glm::vec3 position, glm::vec3 direction);
 
-    Camera(glm::vec3 position, glm::vec3 direction, float fov, float aspect, float near, float far);
+    Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up, float fov, float aspect, float near, float far);
 
     void SetPosition(glm::vec3 position);
 

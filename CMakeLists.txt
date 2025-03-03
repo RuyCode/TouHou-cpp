@@ -6,6 +6,10 @@ set(CMAKE_CXX_COMPILER g++)
 set(project "TouhouCPP")   
 project(${project} LANGUAGES C CXX)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
+
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include(FetchContent)
@@ -27,35 +31,9 @@ FetchContent_MakeAvailable(assimp)
 add_library(glad STATIC src/glad.c)
 target_include_directories(glad PUBLIC include)
 
-set(${project}_SOURCES 
-    src/main.cpp
-    src/core/GameManager.cpp
-    src/core/SceneManager.cpp
-    src/scenes/MainScene.cpp
-    src/glGraphics/Shader.cpp
-    src/glGraphics/VertexArrayObject.cpp
-    src/glGraphics/VertexBufferObject.cpp
-    src/glGraphics/ElementBufferObject.cpp
-    src/glGraphics/Texture2D.cpp
-    src/glGraphics/Camera.cpp
-    src/glGraphics/Model.cpp
-    src/glGraphics/Mesh.cpp
-)   
+file(GLOB_RECURSE ${project}_SOURCES "src/*.cpp")   
 
-set(${project}_HEADERS
-    src/core/GameManager.h
-    src/core/SceneManager.h
-    src/scenes/MainScene.h
-    src/scenes/Scene.h
-    src/glGraphics/Shader.h
-    src/glGraphics/VertexArrayObject.h
-    src/glGraphics/VertexBufferObject.h
-    src/glGraphics/ElementBufferObject.h
-    src/glGraphics/Texture2D.h
-    src/glGraphics/Camera.h
-    src/glGraphics/Model.h
-    src/glGraphics/Mesh.h
-)
+file(GLOB_RECURSE ${project}_HEADERS "src/*.h")
 
 set(${project}_SOURCE_LIST
     ${${project}_SOURCES}

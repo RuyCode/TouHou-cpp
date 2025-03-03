@@ -36,3 +36,7 @@ build/
 
 # IDE folders
 .vscode/
+
+
+# Textures
+src/assets/textures/

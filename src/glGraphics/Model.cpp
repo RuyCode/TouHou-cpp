@@ -1,6 +1,7 @@
 #include "glGraphics/Model.h"
 #include "glGraphics/Shader.h"
 #include "glGraphics/Mesh.h"
+#include "glGraphics/Camera.h"
 
 #include <glm/glm.hpp>
 #include <string>
@@ -9,9 +10,11 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <filesystem>
+#include <iostream>
 
 Model::Model(const std::string& path){
     loadModel(path);
+    std::cout << "Loaded model: " << path << std::endl;
 }
 
 void Model::Draw(Shader &shader) {
@@ -23,7 +26,7 @@ void Model::Draw(Shader &shader) {
 void Model::loadModel(const std::string& path) {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_PreTransformVertices);
-
+    
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
         throw std::runtime_error(importer.GetErrorString());
     }
@@ -31,9 +34,10 @@ void Model::loadModel(const std::string& path) {
     directory = path.substr(0, path.find_last_of('/'));
 
     processNode(scene->mRootNode, scene);
+    loadCameras(scene);
 }
 
-void Model::processNode(aiNode* node, const aiScene* scene) {
+void Model::processNode(aiNode* node, const aiScene* scene  ) {
     for (unsigned int i = 0; i < node->mNumMeshes; ++i) {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh, scene));
@@ -58,6 +62,8 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
         bufferVector.z = mesh->mVertices[i].z;
 
         vertex.Position = bufferVector;
+
+        std::cout << vertex.Position.x << " " << vertex.Position.y << " " << vertex.Position.z << std::endl;
 
         if (mesh->mNormals) {
             bufferVector.x = mesh->mNormals[i].x;
@@ -128,6 +134,8 @@ std::vector<Texture2D> Model::loadMaterialTextures(aiMaterial* material, const a
     textures.insert(textures.end(), heightTextures.begin(), heightTextures.end());
     textures.insert(textures.end(), aoTextures.begin(), aoTextures.end());
 
+    std::cout << "Loaded material: " << material->GetName().C_Str() << std::endl;
+
     return textures;
 }
 
@@ -172,7 +180,7 @@ std::vector<Texture2D> Model::loadEmbdeedTextures(std::vector<int> indices, Text
                         break;
                     }
                 }
-                
+
                 if (!skip) {
                     Texture2D tex = Texture2D(path, type);
 
@@ -225,4 +233,50 @@ std::vector<Texture2D> Model::loadEmbdeedTextures(std::vector<int> indices, Text
     }
 
     return textures;
+}
+
+glm::mat4 convertToGLMMatrix(const aiMatrix4x4& assimpMatrix) {
+    glm::mat4 glmMatrix;
+
+    glmMatrix[0][0] = assimpMatrix.a1; glmMatrix[1][0] = assimpMatrix.a2; glmMatrix[2][0] = assimpMatrix.a3; glmMatrix[3][0] = assimpMatrix.a4;
+    glmMatrix[0][1] = assimpMatrix.b1; glmMatrix[1][1] = assimpMatrix.b2; glmMatrix[2][1] = assimpMatrix.b3; glmMatrix[3][1] = assimpMatrix.b4;
+    glmMatrix[0][2] = assimpMatrix.c1; glmMatrix[1][2] = assimpMatrix.c2; glmMatrix[2][2] = assimpMatrix.c3; glmMatrix[3][2] = assimpMatrix.c4;
+    glmMatrix[0][3] = assimpMatrix.d1; glmMatrix[1][3] = assimpMatrix.d2; glmMatrix[2][3] = assimpMatrix.d3; glmMatrix[3][3] = assimpMatrix.d4;
+
+    return glmMatrix;
+}
+
+void Model::loadCameras(const aiScene* scene) {
+    for (unsigned int i = 0; i < scene->mNumCameras; ++i) {
+        aiCamera* assimpCamera = scene->mCameras[i];
+        const aiNode* camNode = scene->mRootNode->FindNode(assimpCamera->mName);
+
+        glm::mat4 glmTransform = convertToGLMMatrix(camNode->mTransformation);
+
+        glm::vec4 worldPosition = glmTransform * glm::vec4(assimpCamera->mPosition.x, assimpCamera->mPosition.y, assimpCamera->mPosition.z, 1.0f);
+        glm::vec3 position(worldPosition.x, worldPosition.y, worldPosition.z);
+
+        glm::vec4 worldLookAt = glmTransform * glm::vec4(assimpCamera->mLookAt.x, assimpCamera->mLookAt.y, assimpCamera->mLookAt.z, 0.0f);
+        glm::vec3 lookAt(worldLookAt.x, worldLookAt.y, worldLookAt.z);
+
+        glm::vec3 direction = glm::normalize(lookAt - position);
+
+        glm::vec4 worldUp = glmTransform * glm::vec4(0, 1, 0, 0);
+        glm::vec3 up = glm::normalize(glm::vec3(worldUp.x, worldUp.y, worldUp.z));
+
+        float aspect = assimpCamera->mAspect;
+        float near = assimpCamera->mClipPlaneNear;
+        float far = assimpCamera->mClipPlaneFar;
+        float hFov = assimpCamera->mHorizontalFOV;
+        float vFov = hFov / aspect;
+
+        Camera camera = Camera(position, direction, up, vFov, aspect, near, far);
+        cameras.push_back(camera);
+
+        std::cout << "Loaded camera: " << camNode->mName.C_Str() << std::endl;
+    }
+}
+
+std::vector<Camera> Model::GetCameras() {
+    return cameras;
 }

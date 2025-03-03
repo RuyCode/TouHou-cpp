@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 #include <string>
+#include <iostream>
 
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::string name) :
     vertices(vertices),
@@ -24,9 +25,9 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std:
     VAO.LinkAttrib(VBO, 3, 2, GL_FLOAT, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, TexCoords)));
 
     VAO.Unbind();
-}
 
-#include <iostream>
+    std::cout << "Loaded mesh: " << name << std::endl;
+}
 
 void Mesh::Draw(Shader &shader) {
 
@@ -83,7 +84,7 @@ void Mesh::Draw(Shader &shader) {
         // material_<type>_<number>
         textures[i].BindToUnit(i);
         std::string uniformName = ("material_" + name + "_" + number);
-        shader.SetFloat(uniformName, i);
+        shader.SetInt(uniformName, i);
     }
 
     VAO.Bind();

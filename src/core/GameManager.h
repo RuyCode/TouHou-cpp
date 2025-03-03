@@ -19,8 +19,6 @@ private:
     const uint16_t windowWidth = 640u;
     const uint16_t windowHeight = 480u;
 
-    Camera* mainCamera;
-
     SceneManager sceneManager;
 
     void fixedUpdate(float fixedDeltaTime);
@@ -31,8 +29,6 @@ private:
 
 public:
     GameManager();
-
-    void BindCamera(Camera* camera);
 
     void Run();
 };

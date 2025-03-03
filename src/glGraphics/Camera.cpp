@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
 Camera::Camera() {
     position = glm::vec3(0.f, 0.f, 0.f);
@@ -23,10 +24,11 @@ Camera::Camera(glm::vec3 position, glm::vec3 direction) {
     Far = 100.f;
 }
 
-Camera::Camera(glm::vec3 position, glm::vec3 direction, float fov, float aspect, float near, float far) {
+Camera::Camera(glm::vec3 position, glm::vec3 direction, glm::vec3 up,  float fov, float aspect, float near, float far) {
     this->position = position;
     this->direction = direction;
-    
+    this->up = up;
+
     FOV = fov;
     Aspect = aspect;
     Near = near;
@@ -58,11 +60,11 @@ void Camera::SetPositionZ(float z) {
 }
 
 glm::vec3 Camera::GetPosition() {
-    return this->position;
+    return position;
 }
 
 glm::vec3 Camera::GetDirection() {
-    return this->direction;
+    return direction;
 }
 
 void Camera::LookAt(glm::vec3 target) {
@@ -70,8 +72,7 @@ void Camera::LookAt(glm::vec3 target) {
 }
 
 glm::mat4 Camera::GetViewMatrix() {
-    glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-    return glm::lookAt(position, position + direction, worldUp);
+    return glm::lookAt(position, position + direction, up);
 }
 
 glm::mat4 Camera::GetPerspectiveMatrix() {
@@ -80,5 +81,4 @@ glm::mat4 Camera::GetPerspectiveMatrix() {
 
 glm::mat4 Camera::GetViewPerspectiveMatrix() {
     return GetPerspectiveMatrix() * GetViewMatrix();
-
 }

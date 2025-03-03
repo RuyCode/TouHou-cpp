@@ -7,8 +7,8 @@
 #include <fstream>
 #include <sstream>
 #include <cerrno>
-
 #include <iostream>
+#include <unordered_set>
 
 namespace {
     enum class ObjectType {
@@ -58,29 +58,47 @@ namespace {
     }
 }
 
-std::string getFileContents(const char* filePath) {
-    std::ifstream file(filePath, std::ios::binary);
+std::string LoadShader(const std::string& filename, std::unordered_set<std::string>& includedFiles) {
+    std::cout << "Including shader: " << filename << std::endl;
 
+    if (includedFiles.find(filename) != includedFiles.end()) {
+        throw std::runtime_error("Warning: Circular include detected: " + filename);
+    }
+    includedFiles.insert(filename);
+
+    std::ifstream file(filename);
     if (!file) {
-        throw errno;
-    };
+        throw std::runtime_error("Error: Could not open shader file: " + filename);
+    }
 
-    std::string fileContents{};
-    
-    file.seekg(0, std::ios::end);
-    fileContents.resize(file.tellg());
+    std::stringstream buffer;
+    std::string line;
 
-    file.seekg(0, std::ios::beg);
-    file.read(&fileContents[0], fileContents.size());
+    while (std::getline(file, line)) {
+        size_t pos = line.find("#pragma include");
+        if (pos != std::string::npos) {
+            std::string includeFile = line.substr(pos + 17);
+            includeFile.erase(0, includeFile.find_first_not_of(" \t\""));
+            includeFile.erase(includeFile.find_last_not_of(" \t\"") + 1);
 
-    file.close();
+            buffer << LoadShader(includeFile, includedFiles) << "\n";
+        } else {
+            buffer << line << "\n";
+        }
+    }
 
-    return fileContents;
+    return buffer.str();
 }
 
-Shader::Shader(const char* vertexShaderFilePath, const char* fragmentShaderFilePath) {
-    std::string vertexShaderCode = getFileContents(vertexShaderFilePath);
-    std::string fragmentShaderCode = getFileContents(fragmentShaderFilePath);
+std::string LoadShader(const std::string& filename) {
+    std::unordered_set<std::string> includedFiles;
+    return LoadShader(filename, includedFiles);
+}
+
+
+Shader::Shader(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath) {
+    std::string vertexShaderCode = LoadShader(vertexShaderFilePath);
+    std::string fragmentShaderCode = LoadShader(fragmentShaderFilePath);
 
     const char* vertexShaderSource = vertexShaderCode.c_str();
     const char* fragmentShaderSource = fragmentShaderCode.c_str();
@@ -108,6 +126,8 @@ Shader::Shader(const char* vertexShaderFilePath, const char* fragmentShaderFileP
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+
+    std::cout << "Loaded shader program: " << vertexShaderFilePath << " and " << fragmentShaderFilePath << std::endl;
 }
 
 void Shader::Activate() {
@@ -127,17 +147,21 @@ void Shader::SetInt(const std::string &name, int value) const {
 }
 
 void Shader::SetFloat(const std::string &name, float value) const {
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
-void Shader::SetVec3(const std::string &name, const glm::vec3& value) {
-    glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(value));
+void Shader::SetVec3(const std::string &name, const glm::vec3& value, unsigned int number) {
+    glUniform3fv(glGetUniformLocation(ID, name.c_str()), number, glm::value_ptr(value));
 }
 
-void Shader::SetVec4(const std::string &name, const glm::vec4& value) {
-    glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(value));
+void Shader::SetVec4(const std::string &name, const glm::vec4& value, unsigned int number) {
+    glUniform4fv(glGetUniformLocation(ID, name.c_str()), number, glm::value_ptr(value));
 }
 
-void Shader::SetMat4(const std::string &name, const glm::mat4& value) {
-    glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, glm::value_ptr(value));
+void Shader::SetMat4(const std::string &name, const glm::mat4& value, unsigned int number) {
+    glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), number, GL_FALSE, glm::value_ptr(value));
+}
+
+Shader::~Shader() {
+    Delete();
 }

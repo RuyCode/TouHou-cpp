@@ -1,8 +1,10 @@
 #include "glGraphics/Texture2D.h"
+
 #include <SFML/Graphics.hpp>
 #include <glad/glad.h>
 #include <cstdint>
 #include <string>
+#include <iostream>
 
 Texture2D::Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType type) {
     this->type = type;
@@ -24,6 +26,8 @@ Texture2D::Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType t
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     path = "*" + std::to_string(index);
+
+    std::cout << "loaded texture: " << path << std::endl;
 }
 
 Texture2D::Texture2D(const std::string& filePath, TextureType type) {
@@ -39,13 +43,15 @@ Texture2D::Texture2D(const std::string& filePath, TextureType type) {
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
     glGenerateMipmap(GL_TEXTURE_2D);
-    
+
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     path = filePath;
+
+    std::cout << "loaded texture: " << path << std::endl;   
 }
 
 void Texture2D::BindToUnit(std::uint8_t unitNumber) {

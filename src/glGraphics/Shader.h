@@ -12,7 +12,7 @@ class Shader {
 public:
     GLuint ID;
     
-    Shader(const char* vertexShaderFilePath, const char* fragmenShadertFilePath);
+    Shader(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath);
 
     void Activate();
 
@@ -24,11 +24,13 @@ public:
 
     void SetFloat(const std::string &name, float value) const;
 
-    void SetVec3(const std::string &name, const glm::vec3& value);
+    void SetVec3(const std::string &name, const glm::vec3& value, unsigned int number = 1);
 
-    void SetVec4(const std::string &name, const glm::vec4& value);
+    void SetVec4(const std::string &name, const glm::vec4& value, unsigned int number = 1);
 
-    void SetMat4(const std::string &name, const glm::mat4& value);
+    void SetMat4(const std::string &name, const glm::mat4& value, unsigned int number = 1);
+
+    ~Shader();
 };
 
 #endif // SHADER_H

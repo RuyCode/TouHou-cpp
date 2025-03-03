@@ -11,6 +11,8 @@ private:
     std::shared_ptr<Scene> currentScene;
     std::unordered_map<std::string, std::shared_ptr<Scene>> sceneCache;
 public:
+    SceneManager();
+
     SceneManager(const std::unordered_map<std::string, std::shared_ptr<Scene>>& sceneCache, const std::string& defaultSceneName);
 
     std::shared_ptr<Scene> GetCurrentScene() const;
