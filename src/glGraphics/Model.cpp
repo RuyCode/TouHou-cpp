@@ -17,9 +17,9 @@ Model::Model(const std::string& path){
     std::cout << "Loaded model: " << path << std::endl;
 }
 
-void Model::Draw(Shader &shader) {
+void Model::Draw(std::vector<Shader> &shaders) {
     for (unsigned int i = 0; i < meshes.size(); ++i) {
-        meshes[i].Draw(shader);
+        meshes[i].Draw(shaders);
     }
 }
 
@@ -38,6 +38,7 @@ void Model::loadModel(const std::string& path) {
 }
 
 void Model::processNode(aiNode* node, const aiScene* scene  ) {
+    std::cout << "Found " << node->mNumMeshes << " meshes" << std::endl;
     for (unsigned int i = 0; i < node->mNumMeshes; ++i) {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh, scene));
@@ -53,7 +54,9 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
     std::vector<unsigned int> indices;
     std::vector<Texture2D> textures;
 
+    std::cout << "Processing mesh: " << mesh->mName.C_Str() << std::endl;
     for (unsigned int i = 0; i < mesh->mNumVertices; ++i) {
+        
         Vertex vertex;
         glm::vec3 bufferVector;
 
@@ -107,7 +110,23 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene) {
         textures = loadMaterialTextures(material, scene);
     }
 
-    return Mesh(vertices, indices, textures, mesh->mName.C_Str());
+    std::string meshName = (mesh->mName).C_Str();
+
+    std::uint16_t shaderID = 0u;
+
+    std::size_t sPos = meshName.find("_s");
+    if (sPos != std::string::npos) {
+        std::size_t start = sPos + 2;
+        std::size_t end = meshName.find('-', start);
+
+        if (end == std::string::npos) {
+            end = meshName.length();
+        }
+
+        shaderID = static_cast<std::uint16_t>(std::stoi(meshName.substr(start, end - start)));
+    }
+
+    return Mesh(vertices, indices, textures, shaderID, meshName);
 }
 
 std::vector<Texture2D> Model::loadMaterialTextures(aiMaterial* material, const aiScene* scene) {

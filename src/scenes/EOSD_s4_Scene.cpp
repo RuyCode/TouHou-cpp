@@ -18,4 +18,4 @@ void EOSD_s4_Scene::Update(sf::RenderWindow& window, float deltaTime) {
 
 void EOSD_s4_Scene::Draw(sf::RenderWindow& window) {
     background.Draw();
-}
+}   

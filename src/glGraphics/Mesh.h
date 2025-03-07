@@ -17,14 +17,15 @@ private:
     ElementBufferObject EBO;
 
 public:
+    std::uint16_t ShaderID;
     std::string name;
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
     std::vector<Texture2D> textures;
 
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::string name = "");
+    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::uint16_t shaderID, std::string name = "");
 
-    void Draw(Shader &shader);
+    void Draw(std::vector<Shader>& shaders);
 };
 
 #endif // MESH_H

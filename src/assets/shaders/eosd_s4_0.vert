@@ -6,20 +6,23 @@ layout (location = 3) in vec2 aTex;
 
 out vec2 texCoord;
 out vec3 fragPos;
+out vec4 pos;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-uniform float time;
 uniform vec3 viewPos;
 
 #pragma include "src/assets/shaders/PBR.vert"
 
 void main() {
-   texCoord = aTex;
-   
+   texCoord = vec2(aTex.x, 1.0 - aTex.y);
+
    gl_Position = projection * view * model * vec4(aPos, 1.0);
+
+   pos = gl_Position;
+   pos.x = -pos.x;
 
    PBRvert(model, aNorm, aTang);
 

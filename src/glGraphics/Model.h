@@ -25,6 +25,8 @@ private:
 
     void loadModel(const std::string& path);
 
+    void applyNodeTransform(aiNode* node, const aiScene* scene, aiMatrix4x4 parentTransform);
+
     void processNode(aiNode* node, const aiScene* scene);
 
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
@@ -40,7 +42,7 @@ private:
 public:
     Model(const std::string& path);
 
-    void Draw(Shader& shader);
+    void Draw(std::vector<Shader>& shaders);
 
     std::vector<Camera> GetCameras();
 };

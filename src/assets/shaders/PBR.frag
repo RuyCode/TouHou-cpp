@@ -19,8 +19,6 @@ uniform vec3 lightColors[bufferSize];
 
 uniform vec3 viewPos;
 
-out vec4 FragColor;
-
 const float PI = 3.14159265359f;
 
 vec3 FresnelSchlick(float cosTheta, vec3 F0) {
@@ -99,7 +97,7 @@ vec3 PBRfrag() {
         Lo += (kD * albedo / PI + specular) * radiance * NdotL;
     }
 
-    vec3 ambient = vec3(.03f) * albedo;
+    vec3 ambient = vec3(.05f) * albedo;
     vec3 color = ambient + Lo; 
 
     color = color / (color + vec3(1.f));

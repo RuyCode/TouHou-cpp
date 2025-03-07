@@ -127,7 +127,7 @@ Shader::Shader(const std::string& vertexShaderFilePath, const std::string& fragm
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    std::cout << "Loaded shader program: " << vertexShaderFilePath << " and " << fragmentShaderFilePath << std::endl;
+    std::cout << "Loaded shader program: " << vertexShaderFilePath << " and " << fragmentShaderFilePath << " with ID of " << ID << std::endl;
 }
 
 void Shader::Activate() {
@@ -163,5 +163,6 @@ void Shader::SetMat4(const std::string &name, const glm::mat4& value, unsigned i
 }
 
 Shader::~Shader() {
+    std::cout << "deleted shader" << std::endl;
     Delete();
 }

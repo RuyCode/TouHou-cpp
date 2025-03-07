@@ -10,7 +10,7 @@
 class GLBackground {
 protected:
     Model scene;
-    Shader shaderProgram;
+    std::vector<Shader> shaders;
 
     std::vector<Camera> cameras;
 
@@ -22,7 +22,7 @@ protected:
 
     virtual void Draw() = 0;
 
-    GLBackground(const std::string& modelPath, const std::string& vertShaderPath, const std::string& fragShaderPath);
+    GLBackground(const std::string& modelPath, std::vector<std::string> vertShaderPath, std::vector<std::string> fragShaderPath);
 };
 
 #endif // GL_BACKGROUND_H

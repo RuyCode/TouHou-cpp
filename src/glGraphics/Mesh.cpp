@@ -6,14 +6,15 @@
 #include <string>
 #include <iostream>
 
-Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::string name) :
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::uint16_t shaderID, std::string name) :
     vertices(vertices),
     indices(indices),
     textures(textures),
     VAO(),
     VBO(&vertices[0], vertices.size() * sizeof(Vertex)),
     EBO(&indices[0], indices.size() * sizeof(unsigned int)),
-    name(name) {
+    name(name),
+    ShaderID(shaderID) {
 
     VAO.Bind();
     VBO.Bind();
@@ -26,10 +27,10 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std:
 
     VAO.Unbind();
 
-    std::cout << "Loaded mesh: " << name << std::endl;
+    std::cout << "Loaded mesh: " << name << " with shaderID of " << ShaderID << std::endl;
 }
 
-void Mesh::Draw(Shader &shader) {
+void Mesh::Draw(std::vector<Shader> &shaders) {
 
     unsigned int heightNumber = 1;
     unsigned int normalNumber = 1;
@@ -42,6 +43,8 @@ void Mesh::Draw(Shader &shader) {
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
+
+    shaders[ShaderID].Activate();
 
     for (unsigned int i = 0; i < textures.size(); ++i) {   
         std::string name{};
@@ -84,7 +87,7 @@ void Mesh::Draw(Shader &shader) {
         // material_<type>_<number>
         textures[i].BindToUnit(i);
         std::string uniformName = ("material_" + name + "_" + number);
-        shader.SetInt(uniformName, i);
+        shaders[ShaderID].SetInt(uniformName, i);
     }
 
     VAO.Bind();
