@@ -10,17 +10,16 @@ Texture2D::Texture2D() : Texture2D(0, 0) {};
 
 Texture2D::Texture2D(std::uint16_t width, std::uint16_t height) : width(width), height(height) {
     this->type = TextureType::Albedo;
-    image = sf::Image();
 
     glGenTextures(1, &ID);
     glBindTexture(GL_TEXTURE_2D, ID);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
     std::cout << "created empty texture with width " << width << " and height " << height << ", ID: " << ID << std::endl;
 }

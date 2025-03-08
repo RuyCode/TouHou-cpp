@@ -39,67 +39,6 @@ void EOSD_s4_Background::Update(float deltaTime) {
     }
 
     cameras[0].SetPosition(newCamPos);
-
-    // CAMERA MOVEMENT FOR DEBUGGING PURPOSE ////////////////////////////
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Enter)) {
-        std::cout << std::endl;
-        std::cout << "Position: " << cameras[1].GetPosition().x << " " << cameras[1].GetPosition().y << " " << cameras[1].GetPosition().z << std::endl;
-        std::cout << "Direction: " << cameras[1].GetDirection().x << " " << cameras[1].GetDirection().y << " " << cameras[1].GetDirection().z << std::endl;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::W)) {
-        cameras[1].SetPosition(cameras[1].GetPosition() + cameras[1].GetDirection() * deltaTime * 10.f);
-    } 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::S)) {
-        cameras[1].SetPosition(cameras[1].GetPosition() - cameras[1].GetDirection() * deltaTime * 10.f);
-    } 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::A)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::cross(worldUp, cameras[1].GetDirection());
-        cameras[1].SetPosition(cameras[1].GetPosition() + cameraRight * deltaTime * 10.f);
-    } 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::cross(worldUp, cameras[1].GetDirection());
-        cameras[1].SetPosition(cameras[1].GetPosition() - cameraRight * deltaTime * 10.f);
-    } 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Space)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::cross(worldUp, cameras[1].GetDirection());
-        glm::vec3 cameraUp = glm::cross(cameraRight, cameras[1].GetDirection());
-        cameras[1].SetPosition(cameras[1].GetPosition() - cameraUp * deltaTime * 10.f);
-    } 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::LControl)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::cross(worldUp, cameras[1].GetDirection());
-        glm::vec3 cameraUp = glm::cross(cameraRight, cameras[1].GetDirection());
-        cameras[1].SetPosition(cameras[1].GetPosition() + cameraUp * deltaTime * 10.f);
-    } 
-
-    auto rotateCamera = [](float angle, const glm::vec3& axis, Camera& cam) {
-        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
-        cam.SetDirection(glm::normalize(glm::vec3(rotationMatrix * glm::vec4(cam.GetDirection(), 1.0f))));
-    };
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Left)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        rotateCamera(40.f * deltaTime, worldUp, cameras[1]);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Right)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        rotateCamera(-40.f * deltaTime, worldUp, cameras[1]);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Up)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::normalize(glm::cross(worldUp, cameras[1].GetDirection()));
-        rotateCamera(-40.f * deltaTime, cameraRight, cameras[1]); 
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Down)) {
-        glm::vec3 worldUp = glm::vec3(0.f, 1.f, 0.f);
-        glm::vec3 cameraRight = glm::normalize(glm::cross(worldUp, cameras[1].GetDirection()));
-        rotateCamera(40.f * deltaTime, cameraRight, cameras[1]);
-    }
-
-    /////////////////////////////////////////////////////////////
 }
 
 void EOSD_s4_Background::Draw() {
@@ -107,14 +46,26 @@ void EOSD_s4_Background::Draw() {
 
     FBO.Unbind();
 
-    scene.Draw(shaders);
     FBO.BindDraw();
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBlitFramebuffer(0, 0, 384, 448, 0, 0, 384, 448, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    glEnable(GL_SCISSOR_TEST);
+    glViewport(0, 0, 384, 448);
+    glScissor(0, 0, 384, 448);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    scene.Draw(shaders);
+
+    glDisable(GL_SCISSOR_TEST);
     FBO.UnbindDraw();
 
     FBO.BindRead();
-    glBlitFramebuffer(0, 0, 384, 448, 0, 0, 384, 448, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    glEnable(GL_SCISSOR_TEST);
+    glViewport(32, 16, 384, 448);
+    glScissor(32, 16, 384, 448);
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glBlitFramebuffer(0, 0, 384, 448, 32, 16, 384 + 32, 448 + 16, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    glDisable(GL_SCISSOR_TEST);
     FBO.UnbindRead();
 
     setActiveCamera(0);
@@ -122,9 +73,9 @@ void EOSD_s4_Background::Draw() {
     shaders[0].Activate();
 
     Texture2D& frame = FBO.GetFrame();
-    
-    frame.BindToUnit(15);
-    shaders[0].SetInt("background", 15);
+
+    frame.BindToUnit(31);
+    shaders[0].SetInt("background", 31);
 
     shaders[0].SetVec4("clearColor", glm::vec4(.502f, .247f, .129f, 1.f));
     shaders[0].SetVec3("viewPos", cameras[0].GetPosition());

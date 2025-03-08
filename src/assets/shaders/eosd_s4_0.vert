@@ -22,7 +22,6 @@ void main() {
    gl_Position = projection * view * model * vec4(aPos, 1.0);
 
    pos = gl_Position;
-   pos.x = -pos.x;
 
    PBRvert(model, aNorm, aTang);
 
