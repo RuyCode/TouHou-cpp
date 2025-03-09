@@ -1,29 +1,15 @@
 #include "core/GameManager.h"
 #include "scenes/EOSD_s4_Scene.h"
-#include "glGraphics/Camera.h"
-#include "glGraphics/Texture2D.h"
-#include "glGraphics/Shader.h"
-#include "glGraphics/Model.h"
+#include "glGraphics/model/Model.h"
 
 #include <glad/glad.h>
 #include <SFML/Graphics.hpp>
-#include <SFML/OpenGL.hpp>
 #include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp> 
 
 GameManager::GameManager() {}
-
-/*---------------OpenGL Test----------------*/
-
-#include <iostream>
-
-void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* usedParam) {
-    std::cout << "OpenGL Debug Message (" << id <<  "): " << message << std::endl;
-}
-
-/*------------------------------------------*/
 
 void GameManager::Run() {
     sf::ContextSettings settings;
@@ -38,18 +24,12 @@ void GameManager::Run() {
     /*---------------OpenGL Test----------------*/
 
     gladLoadGL();
-    glEnable(GL_DEBUG_OUTPUT);
-    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-
-    glEnable(GL_DEBUG_OUTPUT);
-    glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-    glDebugMessageCallback(glDebugOutput, nullptr);
 
     const float aspectRatio = 448.f / 384.f;
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    sceneManager = SceneManager({{"MainScene", std::make_shared<EOSD_s4_Scene>()}}, "MainScene");
+    sceneManager = SceneManager({{"EOSD_s4", std::make_shared<EOSD_s4_Scene>()}}, "EOSD_s4");
 
 
     /*------------------------------------------*/

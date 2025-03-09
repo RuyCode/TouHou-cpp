@@ -5,7 +5,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-
 class Camera {
 private:
     glm::vec3 position;
@@ -17,7 +16,6 @@ public:
     float Aspect;
     float Near;
     float Far;
-
 
     Camera();
 
@@ -31,23 +29,23 @@ public:
 
     void SetDirection(glm::vec3 direction);
 
-    void SetPositionX(float x);
+    inline void SetPositionX(float x);
 
-    void SetPositionY(float x);
+    inline void SetPositionY(float y);
 
-    void SetPositionZ(float x);
+    inline void SetPositionZ(float z);
 
-    glm::vec3 GetPosition();
+    glm::vec3 GetPosition() const;
 
-    glm::vec3 GetDirection();
+    glm::vec3 GetDirection() const;
 
     void LookAt(glm::vec3 target);
 
-    glm::mat4 GetViewMatrix();
+    glm::mat4 GetViewMatrix() const;
 
-    glm::mat4 GetPerspectiveMatrix();
+    glm::mat4 GetPerspectiveMatrix() const;
 
-    glm::mat4 GetViewPerspectiveMatrix();
+    glm::mat4 GetViewPerspectiveMatrix() const;
 };
 
 #endif // CAMERA_H

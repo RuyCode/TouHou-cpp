@@ -32,10 +32,18 @@ public:
 
     Texture2D(std::uint16_t width, std::uint16_t height);
 
-    Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType type = TextureType::Albedo);
+    Texture2D(const std::vector<std::uint8_t>& rawData, int index, TextureType type = TextureType::Albedo);
 
     Texture2D(const std::string& filePath, TextureType type = TextureType::Albedo);
 
+    Texture2D(const Texture2D& other);
+
+    Texture2D(Texture2D&& other) noexcept;
+
+    Texture2D& operator=(const Texture2D& other);
+
+    Texture2D& operator=(Texture2D&& other) noexcept;
+ 
     void BindToUnit(std::uint8_t unitNumber);
 
     TextureType GetType();

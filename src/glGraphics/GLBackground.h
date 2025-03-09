@@ -1,4 +1,4 @@
-#include "glGraphics/Model.h"
+#include "glGraphics/model/Model.h"
 #include "glGraphics/Camera.h"
 #include "glGraphics/Shader.h"
 
@@ -22,7 +22,7 @@ protected:
 
     virtual void Draw() = 0;
 
-    GLBackground(const std::string& modelPath, std::vector<std::string> vertShaderPath, std::vector<std::string> fragShaderPath);
+    GLBackground(const std::string& modelPath, const std::vector<std::string>& vertShaderPath, const std::vector<std::string>& fragShaderPath);
 };
 
 #endif // GL_BACKGROUND_H

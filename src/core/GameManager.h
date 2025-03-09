@@ -1,5 +1,4 @@
 #include "core/SceneManager.h"
-#include "glGraphics/Camera.h"
 
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H

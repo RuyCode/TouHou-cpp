@@ -1,8 +1,8 @@
 #include "glGraphics/GLBackground.h"
-#include "glGraphics/Model.h"
+#include "glGraphics/model/Model.h"
 #include "glGraphics/Camera.h"
 #include "glGraphics/Shader.h"
-#include "glGraphics/FrameBufferObject.h"
+#include "glGraphics/buffers/FrameBufferObject.h"
 #include "glGraphics/Texture2D.h"
 
 #ifndef ESOD_S4_BACKGROUND_H

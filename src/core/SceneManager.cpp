@@ -1,5 +1,3 @@
-#include <SFML/Graphics.hpp>
-
 #include "scenes/Scene.h"
 #include "core/SceneManager.h"
 

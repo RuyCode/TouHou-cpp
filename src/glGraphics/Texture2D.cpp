@@ -8,9 +8,8 @@
 
 Texture2D::Texture2D() : Texture2D(0, 0) {};
 
-Texture2D::Texture2D(std::uint16_t width, std::uint16_t height) : width(width), height(height) {
-    this->type = TextureType::Albedo;
-
+Texture2D::Texture2D(std::uint16_t width, std::uint16_t height) 
+    : width(width), height(height), type(TextureType::Albedo) {
     glGenTextures(1, &ID);
     glBindTexture(GL_TEXTURE_2D, ID);
 
@@ -24,8 +23,7 @@ Texture2D::Texture2D(std::uint16_t width, std::uint16_t height) : width(width), 
     std::cout << "created empty texture with width " << width << " and height " << height << ", ID: " << ID << std::endl;
 }
 
-Texture2D::Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType type) {
-    this->type = type;
+Texture2D::Texture2D(const std::vector<std::uint8_t>& rawData, int index, TextureType type) : type(type) {
     image = sf::Image();
 
     if (!image.loadFromMemory(rawData.data(), rawData.size() * sizeof(std::uint8_t))) {
@@ -51,7 +49,7 @@ Texture2D::Texture2D(std::vector<std::uint8_t> rawData, int index, TextureType t
     std::cout << "loaded texture: " << path << ", ID: " << ID << std::endl;
 }
 
-Texture2D::Texture2D(const std::string& filePath, TextureType type) {
+Texture2D::Texture2D(const std::string& filePath, TextureType type) : type(type) {
     this->type = type;
     image = sf::Image();
 
@@ -73,6 +71,54 @@ Texture2D::Texture2D(const std::string& filePath, TextureType type) {
     path = filePath;
 
     std::cout << "loaded texture: " << path << ", ID: " << ID << std::endl;   
+}
+
+Texture2D::Texture2D(const Texture2D& other)
+    : image(other.image), type(other.type), path(other.path), 
+      width(other.width), height(other.height), ID(other.ID) {
+}
+
+Texture2D::Texture2D(Texture2D&& other) noexcept
+    : image(std::move(other.image)), type(std::move(other.type)),
+      path(std::move(other.path)), width(other.width), height(other.height),
+      ID(other.ID) {
+    other.width = 0;
+    other.height = 0;
+    other.ID = 0;
+}
+
+Texture2D& Texture2D::operator=(const Texture2D& other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    image = other.image;
+    type = other.type;
+    path = other.path;
+    width = other.width;
+    height = other.height;
+    ID = other.ID;
+
+    return *this;
+}
+
+Texture2D& Texture2D::operator=(Texture2D&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+
+    image = std::move(other.image);
+    type = std::move(other.type);
+    path = std::move(other.path);
+    width = other.width;
+    height = other.height;
+    ID = other.ID;
+
+    other.width = 0;
+    other.height = 0;
+    other.ID = 0;
+
+    return *this;
 }
 
 void Texture2D::LoadFromMemory(const std::vector<std::uint8_t>& rawData) {
@@ -116,7 +162,6 @@ void Texture2D::BindToUnit(std::uint8_t unitNumber) {
     glActiveTexture(GL_TEXTURE0 + unitNumber);
     glBindTexture(GL_TEXTURE_2D, ID);
 }
-
 
 TextureType Texture2D::GetType() {
     return type;

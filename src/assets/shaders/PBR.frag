@@ -58,52 +58,52 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness) {
 }
 
 vec3 PBRfrag() {
-    vec3 N =  texture(material_normal_1, texCoord).rgb;
-    N = N * 2.f - 1.f;
-    N = normalize(TBN * N);
+    // Sample material properties
+    vec3 albedo = texture(material_albedo_1, texCoord).rgb;
+    float metallic = texture(material_metallic_1, texCoord).r;
+    float roughness = texture(material_roughness_1, texCoord).r;
+    vec3 normal = texture(material_normal_1, texCoord).rgb * 2.0 - 1.0;
+    normal = normalize(TBN * normal);
 
+    // Compute view direction
     vec3 V = normalize(viewPos - fragPos);
 
-    vec3 F0 = vec3(.04f);
-    float metallic = texture(material_metallic_1, texCoord).b;
-    vec3 albedo = texture(material_albedo_1, texCoord).rgb;
-    F0 = mix(F0, albedo, metallic);
+    // Compute reflectance at normal incidence (F0)
+    vec3 F0 = mix(vec3(0.04), albedo, metallic);
 
-    vec3 Lo = vec3(0.f);
-
-    for (int i = 0; i < lightNumber; ++i) {
+    vec3 Lo = vec3(0.0);
+    for (int i = 0; i < lightNumber; i++) {
         vec3 L = normalize(lightPositions[i] - fragPos);
         vec3 H = normalize(V + L);
-
         float distance = length(lightPositions[i] - fragPos);
-        float attenuation = 1.f / (distance * distance);
+        float attenuation = 1.0 / (distance * distance + 0.1); // Prevent extreme falloff
         vec3 radiance = lightColors[i] * attenuation;
 
-        float roughness = texture(material_roughness_1, texCoord).g;
-        float NDF = DistributionGGX(N, H, roughness);
-        float G = GeometrySmith(N, V, L, roughness);
-        vec3 F = FresnelSchlick(max(dot(H, V), 0.f), F0);
-
-        vec3 kS = F;
-        vec3 kD = vec3(1.f) - kS;
-        kD *= 1.f - metallic;
+        // Cook-Torrance BRDF calculations
+        float NDF = pow(max(dot(normal, H), 0.0), (roughness * roughness * 128.0));
+        float k = (roughness + 1.0) * (roughness + 1.0) / 8.0;
+        float G = (dot(normal, V) / (dot(normal, V) * (1.0 - k) + k)) * 
+                  (dot(normal, L) / (dot(normal, L) * (1.0 - k) + k));
+        vec3 F = F0 + (1.0 - F0) * pow(1.0 - max(dot(H, V), 0.0), 5.0);
 
         vec3 numerator = NDF * G * F;
-        float denominator = 4.0 * max(dot(N, V), 0.f) * max(dot(N, L), 0.f);
-        vec3 specular = numerator / max(denominator, .001f);
-        
+        float denominator = 4.0 * max(dot(normal, V), 0.0) * max(dot(normal, L), 0.0) + 0.001;
+        vec3 specular = numerator / denominator;
 
-        float NdotL = max(dot(N, L), 0.f);
-        Lo += (kD * albedo / PI + specular) * radiance * NdotL;
+        // Diffuse reflection
+        vec3 kD = (1.0 - F) * (1.0 - metallic);
+        vec3 diffuse = kD * albedo;
+
+        // Accumulate contribution
+        float NdotL = max(dot(normal, L), 0.0);
+        Lo += (diffuse + specular) * radiance * NdotL;
     }
 
-    vec3 ambient = vec3(.05f) * albedo;
-    vec3 color = ambient + Lo; 
+    // Ambient lighting (boosted for visibility)
+    vec3 ambient = vec3(0.3) * albedo; // Increased ambient multiplier
 
-    color = color / (color + vec3(1.f));
-    color = pow(color, vec3(1.f / 2.2f));
-
-    return color;
+    return ambient + Lo;
 }
+
 
 #endif

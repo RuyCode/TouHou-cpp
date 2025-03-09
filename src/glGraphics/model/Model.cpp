@@ -1,6 +1,6 @@
-#include "glGraphics/Model.h"
+#include "glGraphics/model/Model.h"
 #include "glGraphics/Shader.h"
-#include "glGraphics/Mesh.h"
+#include "glGraphics/model/Mesh.h"
 #include "glGraphics/Camera.h"
 
 #include <glm/glm.hpp>
@@ -31,7 +31,8 @@ void Model::loadModel(const std::string& path) {
         throw std::runtime_error(importer.GetErrorString());
     }
 
-    directory = path.substr(0, path.find_last_of('/'));
+    directory = std::filesystem::path(path).parent_path().string();
+
 
     processNode(scene->mRootNode, scene);
     loadCameras(scene);
@@ -139,12 +140,12 @@ std::vector<Texture2D> Model::loadMaterialTextures(aiMaterial* material, const a
     std::vector<int> heightTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_HEIGHT);
     std::vector<int> aoTextureIndices = getEmbeddedTextureTypeIndices(material, aiTextureType_AMBIENT_OCCLUSION);
 
-    std::vector<Texture2D> albedoTextures = loadEmbdeedTextures(albedoTextureIndices, TextureType::Albedo, scene);
-    std::vector<Texture2D> roughnessTextures = loadEmbdeedTextures(roughnessTextureIndices, TextureType::Roughness, scene);
-    std::vector<Texture2D> metallicTextures = loadEmbdeedTextures(metallicTextureIndices, TextureType::Metallic, scene);
-    std::vector<Texture2D> normalTextures = loadEmbdeedTextures(normalTextureIndices, TextureType::NormalMap, scene);
-    std::vector<Texture2D> heightTextures = loadEmbdeedTextures(heightTextureIndices, TextureType::Height, scene);
-    std::vector<Texture2D> aoTextures = loadEmbdeedTextures(aoTextureIndices, TextureType::AmbientOcclusion, scene);
+    std::vector<Texture2D> albedoTextures = loadEmbddedTextures(albedoTextureIndices, TextureType::Albedo, scene);
+    std::vector<Texture2D> roughnessTextures = loadEmbddedTextures(roughnessTextureIndices, TextureType::Roughness, scene);
+    std::vector<Texture2D> metallicTextures = loadEmbddedTextures(metallicTextureIndices, TextureType::Metallic, scene);
+    std::vector<Texture2D> normalTextures = loadEmbddedTextures(normalTextureIndices, TextureType::NormalMap, scene);
+    std::vector<Texture2D> heightTextures = loadEmbddedTextures(heightTextureIndices, TextureType::Height, scene);
+    std::vector<Texture2D> aoTextures = loadEmbddedTextures(aoTextureIndices, TextureType::AmbientOcclusion, scene);
 
     textures.insert(textures.end(), albedoTextures.begin(), albedoTextures.end());
     textures.insert(textures.end(), roughnessTextures.begin(), roughnessTextures.end());
@@ -177,7 +178,7 @@ std::vector<int> Model::getEmbeddedTextureTypeIndices(const aiMaterial* material
     return indices;
 }
 
-std::vector<Texture2D> Model::loadEmbdeedTextures(std::vector<int> indices, TextureType type, const aiScene* scene) {
+std::vector<Texture2D> Model::loadEmbddedTextures(std::vector<int> indices, TextureType type, const aiScene* scene) {
     std::vector<Texture2D> textures;
     
     for (int index : indices) {
@@ -187,68 +188,42 @@ std::vector<Texture2D> Model::loadEmbdeedTextures(std::vector<int> indices, Text
             throw std::runtime_error("Error: Failed to load embedded texture");
         }
 
+        std::string textureKey = (texture->mHeight == 0)
+            ? "texture_" + std::to_string(index) + "_" + scene->mName.C_Str() + "." + std::string(texture->achFormatHint)
+            : "embedded_" + std::to_string(index);
+
+        if (texturesLoaded.find(textureKey) != texturesLoaded.end()) {
+            textures.push_back(texturesLoaded[textureKey]);
+            continue;
+        }
+
+        Texture2D tex;
         if (texture->mHeight == 0) {
-            std::string path = "src/assets/textures/texture" + std::string(scene->mName.C_Str()) + std::to_string(index) + "." + std::string(texture->achFormatHint);
-            if (std::filesystem::exists(path)) {
-                bool skip = false;
-
-                for (Texture2D tex : texturesLoaded) {
-                    if (tex.GetPath() == path && tex.GetType() == type) {
-                        textures.push_back(tex);
-                        skip = true;
-                        break;
-                    }
-                }
-
-                if (!skip) {
-                    Texture2D tex = Texture2D(path, type);
-
-                    texturesLoaded.push_back(tex);
-                    textures.push_back(tex);
-                }
-
-                continue;
-            }
-
+            std::string path = "src/assets/textures/" + textureKey;
             std::ofstream file(path, std::ios::binary);
+
             file.write(reinterpret_cast<char*>(texture->pcData), texture->mWidth);
             file.close();
-            
-            Texture2D tex = Texture2D(path, type);
 
-            texturesLoaded.push_back(tex);
-            textures.push_back(tex);
+            tex = Texture2D(path, type);
         } else {
-            bool skip = false;
-
-            for (Texture2D tex : texturesLoaded) {
-                if (tex.GetPath() == "*" + std::to_string(index) && tex.GetType() == type) {
-                    textures.push_back(tex);
-                    skip = true;
-                    break;
-                }
-            }
-            
-            if (skip) {
-                continue;
-            }
-            
             unsigned int width = texture->mWidth;
             unsigned int height = texture->mHeight;
-            
+
             std::vector<std::uint8_t> rawData(width * height * 4);
-            for (unsigned int i = 0; i < width * height; ++i) {
+
+            for (unsigned int i = 0; i < width * height * 4; ++i) {
                 rawData[i * 4] = texture->pcData[i].a;
                 rawData[i * 4 + 1] = texture->pcData[i].r;
                 rawData[i * 4 + 2] = texture->pcData[i].g;
                 rawData[i * 4 + 3] = texture->pcData[i].b;
             }
 
-            Texture2D tex = Texture2D(rawData, index, type);
-            
-            texturesLoaded.push_back(tex);
-            textures.push_back(tex);
+            tex = Texture2D(rawData, index, type);
         }
+
+        texturesLoaded[textureKey] = tex;
+        textures.push_back(tex);
     }
 
     return textures;

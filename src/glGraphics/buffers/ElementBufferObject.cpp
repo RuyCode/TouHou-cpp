@@ -1,4 +1,4 @@
-#include "glGraphics/ElementBufferObject.h"
+#include "glGraphics/buffers/ElementBufferObject.h"
 
 #include <glad/glad.h>
 

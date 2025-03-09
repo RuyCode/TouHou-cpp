@@ -1,4 +1,4 @@
-#include "glGraphics/FrameBufferObject.h"
+#include "glGraphics/buffers/FrameBufferObject.h"
 
 FrameBufferObject::FrameBufferObject(std::uint16_t width, std::uint16_t height) : frame(Texture2D(width, height)) {
     glGenFramebuffers(1, &ID);

@@ -1,9 +1,9 @@
 #include "glGraphics/Vertex.h"
 #include "glGraphics/Texture2D.h"
 #include "glGraphics/Shader.h"
-#include "glGraphics/VertexArrayObject.h"
-#include "glGraphics/VertexBufferObject.h"
-#include "glGraphics/ElementBufferObject.h"
+#include "glGraphics/buffers/VertexArrayObject.h"
+#include "glGraphics/buffers/VertexBufferObject.h"
+#include "glGraphics/buffers/ElementBufferObject.h"
 
 #ifndef MESH_H 
 #define MESH_H
@@ -23,7 +23,7 @@ public:
     std::vector<unsigned int> indices;
     std::vector<Texture2D> textures;
 
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture2D> textures, std::uint16_t shaderID, std::string name = "");
+    Mesh(std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, std::vector<Texture2D>& textures, std::uint16_t shaderID, const std::string& name = "");
 
     void Draw(std::vector<Shader>& shaders);
 };

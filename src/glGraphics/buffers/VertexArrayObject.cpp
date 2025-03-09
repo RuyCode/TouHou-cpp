@@ -1,5 +1,5 @@
-#include "glGraphics/VertexBufferObject.h"
-#include "glGraphics/VertexArrayObject.h"
+#include "glGraphics/buffers/VertexBufferObject.h"
+#include "glGraphics/buffers/VertexArrayObject.h"
 
 #include <glad/glad.h>
 

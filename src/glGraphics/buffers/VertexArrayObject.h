@@ -1,4 +1,4 @@
-#include "glGraphics/VertexBufferObject.h"
+#include "glGraphics/buffers/VertexBufferObject.h"
 
 #ifndef VAO_H
 #define VAO_H

@@ -1,7 +1,16 @@
 #include "glGraphics/EOSD_s4_Background.h"
-#include "glGraphics/FrameBufferObject.h"
+#include "glGraphics/GLBackground.h"
+#include "glGraphics/model/Model.h"
+#include "glGraphics/Camera.h"
+#include "glGraphics/Shader.h"
+#include "glGraphics/buffers/FrameBufferObject.h"
+#include "glGraphics/Texture2D.h"
 
 #include <iostream>
+#include <glm/glm.hpp>
+#include <vector>
+#include <string>
+
 
 const std::string EOSD_s4_Background::modelPath = "src/assets/scenes/EOSD_Stage4.glb";
 const std::vector<std::string> EOSD_s4_Background::vertShaderPaths = {"src/assets/shaders/eosd_s4_0.vert", "src/assets/shaders/eosd_s4_1.vert"};
@@ -50,39 +59,29 @@ void EOSD_s4_Background::Draw() {
     glEnable(GL_SCISSOR_TEST);
     glViewport(0, 0, 384, 448);
     glScissor(0, 0, 384, 448);
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene.Draw(shaders);
-
-    glDisable(GL_SCISSOR_TEST);
     FBO.UnbindDraw();
-
+    
     FBO.BindRead();
-    glEnable(GL_SCISSOR_TEST);
     glViewport(32, 16, 384, 448);
     glScissor(32, 16, 384, 448);
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    glBlitFramebuffer(0, 0, 384, 448, 32, 16, 384 + 32, 448 + 16, GL_COLOR_BUFFER_BIT, GL_NEAREST);
-    glDisable(GL_SCISSOR_TEST);
+    glBlitFramebuffer(0, 0, 384, 448, 32, 16, 416, 464, GL_COLOR_BUFFER_BIT, GL_NEAREST);
     FBO.UnbindRead();
+    glDisable(GL_SCISSOR_TEST);
 
     setActiveCamera(0);
-
     shaders[0].Activate();
 
     Texture2D& frame = FBO.GetFrame();
-
     frame.BindToUnit(31);
     shaders[0].SetInt("background", 31);
 
     shaders[0].SetVec4("clearColor", glm::vec4(.502f, .247f, .129f, 1.f));
     shaders[0].SetVec3("viewPos", cameras[0].GetPosition());
 
-    lightPositions[0] = cameras[0].GetPosition();
-    shaders[0].SetVec3("lightPositions", lightPositions[0], lightPositions.size());
-
+    shaders[0].SetVec3("lightPositions", cameras[0].GetPosition(), lightPositions.size());
     shaders[0].SetVec3("lightColors", lightColors[0], lightColors.size());
 
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -90,11 +89,13 @@ void EOSD_s4_Background::Draw() {
 }
 
 void EOSD_s4_Background::setActiveCamera(std::uint8_t cameraIndex) {
-    for (unsigned int i = 0; i < shaders.size(); ++i) {
-        shaders[i].Activate();
+    const glm::mat4 viewMatrix = cameras[cameraIndex].GetViewMatrix();
+    const glm::mat4 projMatrix = cameras[cameraIndex].GetPerspectiveMatrix();
 
-        shaders[i].SetMat4("model", glm::mat4(1.f));
-        shaders[i].SetMat4("view", cameras[cameraIndex].GetViewMatrix());
-        shaders[i].SetMat4("projection", cameras[cameraIndex].GetPerspectiveMatrix());
+    for (Shader& shader : shaders) {
+        shader.Activate();
+        shader.SetMat4("model", glm::mat4(1.f));
+        shader.SetMat4("view", viewMatrix);
+        shader.SetMat4("projection", projMatrix);
     }
 }

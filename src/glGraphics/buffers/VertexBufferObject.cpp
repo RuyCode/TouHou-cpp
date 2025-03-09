@@ -1,4 +1,4 @@
-#include "glGraphics/VertexBufferObject.h"
+#include "glGraphics/buffers/VertexBufferObject.h"
 #include "glGraphics/Vertex.h"
 
 #include <glad/glad.h>

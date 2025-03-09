@@ -1,6 +1,11 @@
 #include "GLBackground.h"
+#include "glGraphics/model/Model.h"
+#include "glGraphics/Camera.h"
+#include "glGraphics/Shader.h"
 
-GLBackground::GLBackground(const std::string& modelPath, std::vector<std::string> vertShaderPaths, std::vector<std::string> fragShaderPaths) : 
+#include <vector>
+
+GLBackground::GLBackground(const std::string& modelPath, const std::vector<std::string>& vertShaderPaths, const std::vector<std::string>& fragShaderPaths) : 
     scene(Model(modelPath)), 
     cameras(scene.GetCameras()),
     time(0.f) 
