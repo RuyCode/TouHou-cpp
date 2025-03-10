@@ -17,7 +17,7 @@ namespace {
         SHADER_PROGRAM
     };
 
-    void CompileErrors(uint objectID, ObjectType type) {
+    void CompileErrors(unsigned int objectID, ObjectType type) {
         int success;
         char infoLog[1024];
 
