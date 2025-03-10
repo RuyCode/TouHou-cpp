@@ -6,10 +6,6 @@ set(CMAKE_CXX_COMPILER g++)
 set(project "TouhouCPP")   
 project(${project} LANGUAGES C CXX)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
-
-
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include(FetchContent)
