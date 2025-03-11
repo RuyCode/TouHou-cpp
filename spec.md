@@ -1,0 +1,44 @@
+# v0.1.0
+- name
+- version
+- description
+- bg:
+    - 3D model  # .glb file
+    - shaders  # pairs of shader files (.frag, .vert)
+    - bg script  # .cpp file (like unity monobehaviour)
+- level script  # .cpp file (like unity monobehaviour)
+- batches of mobs:
+    - id
+    - ids of mobs
+    - delay after previous batch
+    - lifespan  # on timer end prepare next batch
+- mobs:
+    - id
+    - health  # double
+    - sprite  # .png or .jpg should work
+    - spawn delay  # relative to batch spawn begin
+    - path:
+        - key points  # points on the players screen (starts and ends out of the players screen)
+        - travel time  # in seconds
+    - drop:
+        - item  # large P, P, points, ... (possibly 1UPs and bombs)
+        - drop weight  # unsigned double != 0 idk
+    - attack id
+- attack:  # idgaf
+    - id
+- boss:
+    - id
+    - finally?  # if final boss (bool)
+    - batch id  # to spawn after
+    - drop item  # bombs or 1UPs
+    - phases:  # ordered list
+        - attack:  # ordered list
+            - attack id
+            - health
+            - spell card id  # nullable
+        - spell cards:
+            - id
+            - name
+            - damage reduction  # coefficient
+            - bg:
+                - shaders
