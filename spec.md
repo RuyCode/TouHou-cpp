@@ -24,13 +24,16 @@
         - item  # large P, P, points, ... (possibly 1UPs and bombs)
         - drop weight  # unsigned double != 0 idk
     - attack id
+    - collider
 - attack:  # idgaf
     - id
+    - bullet id
 - boss:
     - id
     - finally?  # if final boss (bool)
     - batch id  # to spawn after
     - drop item  # bombs or 1UPs
+    - collider
     - phases:  # ordered list
         - attack:  # ordered list
             - attack id
@@ -42,3 +45,7 @@
             - damage reduction  # coefficient
             - bg:
                 - shaders
+- bullet:
+    - id  # prefab id
+    - damage
+    - collider  # CircleCollider, RectangleCollider : Collider

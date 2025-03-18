@@ -8,9 +8,17 @@
 #include <QStandardItem>
 #include <QToolBar>
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
+namespace {
+const int kMinWidth = 320;
+const int kMinHeight = 60;
+}  // namespace
+
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), sceneWidget(new SceneWidget(this)) {
     setWindowTitle("Qt Unity-like Interface");
 
+    hierarchyDock = new QDockWidget("Hierarchy", this);
+    projectDock = new QDockWidget("Project", this);
+    inspectorDock = new QDockWidget("Inspector", this);
     createDockWidgets();
 
     createSceneWindow();
@@ -50,28 +58,40 @@ void MainWindow::SetTestData() {
 
     // toolBar - toolbar
     QToolBar* toolBar = addToolBar("Tools");
-    toolBar->addAction("Move");
-    toolBar->addAction("Rotate");
-    toolBar->addAction("Scale");
+    QAction* UndoAction = toolBar->addAction("Undo");
+    UndoAction->setShortcut(QKeySequence::Undo);
+    connect(UndoAction, &QAction::triggered, this, &MainWindow::UndoSlot);
+
+    QAction* RedoAction = toolBar->addAction("Redo");
+    RedoAction->setShortcut(QKeySequence::Redo);
+    connect(RedoAction, &QAction::triggered, this, &MainWindow::RedoSlot);
+
+    toolBar->setFloatable(false);
+    toolBar->setMovable(false);
+}
+
+void MainWindow::UndoSlot() {
+    qDebug() << "Undo";
+}
+
+void MainWindow::RedoSlot() {
+    qDebug() << "Redo";
 }
 
 void MainWindow::createDockWidgets() {
     // hierachyDock - hierachy of objects
-    hierarchyDock = new QDockWidget("Hierarchy", this);
     hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
     QTreeView* hierarchyTree = new QTreeView(hierarchyDock);
     hierarchyDock->setWidget(hierarchyTree);
     addDockWidget(Qt::LeftDockWidgetArea, hierarchyDock);
 
     // projectDock - project
-    projectDock = new QDockWidget("Project", this);
     projectDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
     QListView* projectList = new QListView(projectDock);
     projectDock->setWidget(projectList);
     addDockWidget(Qt::BottomDockWidgetArea, projectDock);
 
     // inspectorDock - inspector
-    inspectorDock = new QDockWidget("Inspector", this);
     inspectorDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
     QTextEdit* inspectorText = new QTextEdit(inspectorDock);
     inspectorDock->setWidget(inspectorText);
@@ -80,7 +100,6 @@ void MainWindow::createDockWidgets() {
 
 void MainWindow::createSceneWindow() {
     // scene window (QOpenGLWidget)
-    sceneWidget = new SceneWidget(this);
-    sceneWidget->setMinimumSize(320, 60);
+    sceneWidget->setMinimumSize(kMinWidth, kMinHeight);
     setCentralWidget(sceneWidget);
 }

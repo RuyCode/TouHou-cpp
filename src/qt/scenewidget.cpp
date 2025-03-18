@@ -1,11 +1,25 @@
 #include "scenewidget.h"
 
-SceneWidget::SceneWidget(QWidget* parent) : QOpenGLWidget(parent) {
+namespace {
+const int kMajor = 3;
+const int kMinor = 3;
+
+const float kGlColor = 0.1f;
+
+// vertexes of the triangle
+const GLfloat kVertices[] = {
+    -0.5f, -0.5f, 0.0f,  // left
+    0.5f,  -0.5f, 0.0f,  // right
+    0.0f,  0.5f,  0.0f   // top
+};
+}  // namespace
+
+SceneWidget::SceneWidget(QWidget* parent) : QOpenGLWidget(parent), shaderProgram(nullptr) {
     // enable OpenGL support
     QSurfaceFormat format;
     format.setRenderableType(QSurfaceFormat::OpenGL);
     format.setProfile(QSurfaceFormat::CoreProfile);
-    format.setVersion(3, 3);
+    format.setVersion(kMajor, kMinor);
     setFormat(format);
 }
 
@@ -14,7 +28,7 @@ SceneWidget::~SceneWidget() {
     delete shaderProgram;
 }
 
-void SceneWidget::mouseReleaseEvent(QMouseEvent* event) {
+void SceneWidget::mouseReleaseEvent(QMouseEvent*) {
     qDebug() << mapFromGlobal(QCursor::pos());
 }
 
@@ -22,7 +36,7 @@ void SceneWidget::initializeGL() {
     initializeOpenGLFunctions();
 
     // set bg color
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glClearColor(kGlColor, kGlColor, kGlColor, 1.0f);
 
     // create shader program
     shaderProgram = new QOpenGLShaderProgram(this);
@@ -42,17 +56,10 @@ void SceneWidget::initializeGL() {
                                            "}\n");
     shaderProgram->link();
 
-    // vertexes of the triangle
-    GLfloat vertices[] = {
-        -0.5f, -0.5f, 0.0f,  // left
-        0.5f,  -0.5f, 0.0f,  // right
-        0.0f,  0.5f,  0.0f   // top
-    };
-
     // create and set up vertex buffer
     vertexBuffer.create();
     vertexBuffer.bind();
-    vertexBuffer.allocate(vertices, sizeof(vertices));
+    vertexBuffer.allocate(kVertices, sizeof(kVertices));
 }
 void SceneWidget::resizeGL(int w, int h) {
     // rendering area
@@ -66,7 +73,7 @@ void SceneWidget::paintGL() {
     shaderProgram->bind();
     vertexBuffer.bind();
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
     glEnableVertexAttribArray(0);
 
     // draw the triangle

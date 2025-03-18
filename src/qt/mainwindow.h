@@ -16,6 +16,10 @@ public:
 
     void SetTestData();
 
+private slots:
+    void UndoSlot();
+    void RedoSlot();
+
 private:
     void createDockWidgets();
     void createSceneWindow();
