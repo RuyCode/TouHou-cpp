@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package game;
+
+// Background definition
+message Background {
+    string model_3d = 1; // .glb file
+    repeated ShaderPair shaders = 2; // pairs of shader files (.frag, .vert)
+    string bg_script = 3; // .cpp file (like Unity MonoBehaviour)
+}
+
+// Shader pair definition
+message ShaderPair {
+    string fragment_shader = 1; // .frag file
+    string vertex_shader = 2; // .vert file
+}
+
+// Level script definition
+message LevelScript {
+    string script = 1; // .cpp file (like Unity MonoBehaviour)
+}
+
+// Mob batch definition
+message MobBatch {
+    string id = 1;
+    repeated string mob_ids = 2; // ids of mobs in this batch
+    double delay_after_previous_batch = 3; // delay after previous batch
+    double lifespan = 4; // on timer end prepare next batch
+}
+
+// Mob definition
+message Mob {
+    string id = 1;
+    double health = 2;
+    string sprite = 3; // .png or .jpg file
+    double spawn_delay = 4; // relative to batch spawn begin
+    Path path = 5;
+    Drop drop = 6;
+    string attack_id = 7;
+    Collider collider = 8;
+}
+
+// Path definition
+message Path {
+    repeated Point key_points = 1; // points on the player's screen
+    double travel_time = 2; // in seconds
+}
+
+// Point definition
+message Point {
+    double x = 1;
+    double y = 2;
+}
+
+// Drop definition
+message Drop {
+    string item = 1; // large P, P, points, etc.
+    double drop_weight = 2; // unsigned double != 0
+}
+
+// Attack definition
+message Attack {
+    string id = 1;
+    string bullet_id = 2;
+}
+
+// Boss definition
+message Boss {
+    string id = 1;
+    bool finally = 2; // if final boss
+    string batch_id = 3; // batch to spawn after
+    string drop_item = 4; // bombs or 1UPs
+    Collider collider = 5;
+    repeated Phase phases = 6;
+}
+
+// Phase definition
+message Phase {
+    repeated Attack attacks = 1;
+    double health = 2;
+    string spell_card_id = 3; // nullable
+}
+
+// Spell card definition
+message SpellCard {
+    string id = 1;
+    string name = 2;
+    double damage_reduction = 3; // coefficient
+    Background bg = 4;
+}
+
+// Bullet definition
+message Bullet {
+    string id = 1; // prefab id
+    double damage = 2;
+    Collider collider = 3;
+}
+
+// Collider definition
+message Collider {
+    oneof collider_type {
+        CircleCollider circle_collider = 1;
+        RectangleCollider rectangle_collider = 2;
+    }
+}
+
+// Circle collider definition
+message CircleCollider {
+    double radius = 1;
+}
+
+// Rectangle collider definition
+message RectangleCollider {
+    double width = 1;
+    double height = 2;
+}
