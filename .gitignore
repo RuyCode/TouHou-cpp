@@ -31,7 +31,11 @@
 *.out
 *.app
 
+# Custom configs
 .vscode
 build/
 CMakeLists.txt.user
 
+# Proto generated files
+*.pb.h
+*.pb.cc
