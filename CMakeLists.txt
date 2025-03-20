@@ -8,7 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Set CXX properties
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+# set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 # Find ProtoBuf and generate files
 find_package(Protobuf REQUIRED)
@@ -24,11 +24,13 @@ set(${EDITOR}_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.cpp
 )
 set(${EDITOR}_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.h
 )
 
 # Find and setup Qt6

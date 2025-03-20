@@ -17,6 +17,7 @@ public:
     void SetTestData();
 
 private slots:
+    void LoadFile();
     void UndoSlot();
     void RedoSlot();
 

@@ -1,7 +1,10 @@
 #include "mainwindow.h"
 
+#include "../editor/datamanager.h"
 #include "scenewidget.h"
 
+#include <QApplication>
+#include <QFileDialog>
 #include <QFileSystemModel>
 #include <QFormLayout>
 #include <QLineEdit>
@@ -58,6 +61,11 @@ void MainWindow::SetTestData() {
 
     // toolBar - toolbar
     QToolBar* toolBar = addToolBar("Tools");
+
+    QAction* LoadFile = toolBar->addAction("Load File");
+    LoadFile->setShortcut(QKeySequence::Open);
+    connect(LoadFile, &QAction::triggered, this, &MainWindow::LoadFile);
+
     QAction* UndoAction = toolBar->addAction("Undo");
     UndoAction->setShortcut(QKeySequence::Undo);
     connect(UndoAction, &QAction::triggered, this, &MainWindow::UndoSlot);
@@ -68,6 +76,18 @@ void MainWindow::SetTestData() {
 
     toolBar->setFloatable(false);
     toolBar->setMovable(false);
+}
+
+void MainWindow::LoadFile() {
+    QString executableDir = QCoreApplication::applicationDirPath();
+
+    QString fileName = QFileDialog::getOpenFileName(this, "Выберите файл", executableDir, "*.bin");
+
+    if (!fileName.isEmpty()) {
+        DataManager::GetInstance().LoadLevel(fileName.toStdString());
+        qDebug() << "fileName: " << fileName;
+        qDebug() << QString::fromStdString(DataManager::GetInstance().level.DebugString());
+    }
 }
 
 void MainWindow::UndoSlot() {

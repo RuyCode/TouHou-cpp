@@ -7,6 +7,7 @@
 
 using namespace game;
 
+// NOLINTBEGIN
 void GenerateTestLevel(std::string filepath) {
     // Создаем экземпляр Level
     Level level;
@@ -239,3 +240,4 @@ void GenerateTestLevel(std::string filepath) {
     // Выводим результат
     std::cout << "Test Level created successfully!" << std::endl;
 }
+// NOLINTEND

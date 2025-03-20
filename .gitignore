@@ -39,3 +39,6 @@ CMakeLists.txt.user
 # Proto generated files
 *.pb.h
 *.pb.cc
+
+# Temp files
+level.bin

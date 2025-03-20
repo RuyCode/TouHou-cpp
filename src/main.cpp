@@ -22,6 +22,15 @@ int main(int argc, char* argv[]) {
         GenerateTestLevel(path.string());
     }
 
+    game::Level level;
+    std::ifstream ifs(path.string());
+    level.ParseFromIstream(&ifs);
+    std::cout << "Level loaded: " << path.string() << std::endl;
+    std::cout << level.DebugString() << std::endl;
+    level.Clear();
+    std::cout << "Level cleared: " << path.string() << std::endl;
+    std::cout << level.DebugString() << std::endl;
+
     window.resize(kWidth, kHeight);
     window.SetTestData();
     window.show();
