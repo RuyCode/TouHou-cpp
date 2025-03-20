@@ -30,4 +30,4 @@ private:
     QOpenGLWidget* sceneWidget;
 };
 
-#endif // GAMEWINDOW_H
+#endif  // GAMEWINDOW_H

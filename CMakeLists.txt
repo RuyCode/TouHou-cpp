@@ -8,7 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Set CXX properties
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 # Find ProtoBuf and generate files
 find_package(Protobuf REQUIRED)
@@ -56,10 +56,6 @@ add_custom_target(
     COMMAND clang-format
     --dry-run
     -Werror
-    ${SOURCES}
-    ${HEADERS}
+    ${${EDITOR}_SOURCES}
+    ${${EDITOR}_HEADERS}
 )
-
-# Copy clang config files
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.clang-tidy ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.clang-format ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
