@@ -23,10 +23,12 @@ set(${EDITOR}_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.cpp
 )
 set(${EDITOR}_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.h
 )
 
 # Find and setup Qt6

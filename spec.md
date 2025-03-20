@@ -8,12 +8,12 @@
     - bg script  # .cpp file (like unity monobehaviour)
 - level script  # .cpp file (like unity monobehaviour)
 - batches of mobs:
-    - id
+    - mob batch id
     - ids of mobs
     - delay after previous batch
     - lifespan  # on timer end prepare next batch
 - mobs:
-    - id
+    - mob id
     - health  # double
     - sprite  # .png or .jpg should work
     - spawn delay  # relative to batch spawn begin
@@ -26,10 +26,10 @@
     - attack id
     - collider
 - attack:  # idgaf
-    - id
+    - attack id
     - bullet id
 - boss:
-    - id
+    - boss id
     - finally?  # if final boss (bool)
     - batch id  # to spawn after
     - drop item  # bombs or 1UPs
@@ -40,12 +40,12 @@
             - health
             - spell card id  # nullable
         - spell cards:
-            - id
+            - spell card id
             - name
             - damage reduction  # coefficient
             - bg:
                 - shaders
 - bullet:
-    - id  # prefab id
+    - bullet id  # prefab id
     - damage
     - collider  # CircleCollider, RectangleCollider : Collider
