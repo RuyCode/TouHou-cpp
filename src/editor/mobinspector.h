@@ -9,7 +9,8 @@
 #include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
-#include "game.pb.h"  // Assuming you've generated this from game.proto
+#include <QPushButton>
+#include "game.pb.h"
 
 class MobInspector : public QDockWidget {
     Q_OBJECT
@@ -35,6 +36,7 @@ private:
     QGroupBox* pathGroup;
     QList<QDoubleSpinBox*> pathPointSpins;
     QDoubleSpinBox* travelTimeSpin;
+    QPushButton* addPathPointButton;
 
     // Drop group
     QGroupBox* dropGroup;
@@ -58,6 +60,8 @@ private:
 
     void ClearFields();
 
+    void AddPathPointRow(int pointIndex);
+
 private slots:
     void OnMobIdChanged(const QString& text);
     void OnHealthChanged(double value);
@@ -75,7 +79,8 @@ private slots:
     void OnRectWidthChanged(double value);
     void OnRectHeightChanged(double value);
 
-    // ... similar slots for other fields
+    void OnAddPathPointClicked();
+    void OnDeletePathPointClicked(int pointIndex);
 };
 
 #endif

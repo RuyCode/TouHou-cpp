@@ -5,20 +5,23 @@ const QString kPathGroupTitle = "Path";
 const QString kDropGroupTitle = "Drop";
 const QString kColliderGroupTitle = "Collider";
 
+const int kMinWidth = 300;
 const double kMaxHealth = 999999;
 const double kMaxValue = 999;
 const double kMinPositive = 0.1;
 const double kMinNegative = -999;
 const double kMaxPathSpin = 9999;
 const double kMinPathSpin = -9999;
+
 const double kSingleStep = 0.1;
-const double kDeaultSpin = 10.0;
+const double kDeaultColliderSpin = 10.0;
+const int kPathGroupOffset = 2;  // travel time and add button
+
+const int kDeleteButtonWidthPadding = 10;
 
 const int kCircleRadiusIndex = 3;
 const int kRectWidthIndex = 4;
 const int kRectHeightIndex = 5;
-
-const int kMinWidth = 300;
 
 // TODO : is it okay?
 enum class ColliderType {
@@ -36,6 +39,7 @@ MobInspector::MobInspector(QWidget* parent)
       attackIdEdit(new QLineEdit()),
       pathGroup(new QGroupBox(kPathGroupTitle)),
       travelTimeSpin(new QDoubleSpinBox()),
+      addPathPointButton(new QPushButton()),
       dropGroup(new QGroupBox(kDropGroupTitle)),
       dropItemEdit(new QLineEdit()),
       dropWeightSpin(new QDoubleSpinBox()),
@@ -49,8 +53,8 @@ MobInspector::MobInspector(QWidget* parent)
     setupUI();
     setMinimumWidth(kMinWidth);
 
-    colliderTypeCombo->setCurrentIndex(0);
-    colliderTypeCombo->currentIndexChanged(0);
+    colliderTypeCombo->setCurrentIndex(static_cast<int>(ColliderType::Circle));
+    colliderTypeCombo->currentIndexChanged(static_cast<int>(ColliderType::Circle));
 }
 
 void MobInspector::SetMob(game::Mob* mob) {
@@ -88,6 +92,9 @@ void MobInspector::setupUI() {
     travelTimeSpin->setRange(0, kMaxValue);
     travelTimeSpin->setSingleStep(kSingleStep);
     pathLayout->addRow("Travel Time:", travelTimeSpin);
+
+    addPathPointButton->setText("Add key point");
+    pathLayout->addRow(addPathPointButton);
 
     // Points will be added dynamically
     pathGroup->setLayout(pathLayout);
@@ -140,6 +147,7 @@ void MobInspector::setupUI() {
     connect(spawnDelaySpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MobInspector::OnSpawnDelayChanged);
     connect(attackIdEdit, &QLineEdit::textChanged, this, &MobInspector::OnAttackIdChanged);
     connect(travelTimeSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MobInspector::OnTravelTimeChanged);
+    connect(addPathPointButton, &QPushButton::clicked, this, &MobInspector::OnAddPathPointClicked);
     connect(dropItemEdit, &QLineEdit::textChanged, this, &MobInspector::OnDropItemChanged);
     connect(dropWeightSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MobInspector::OnDropWeightChanged);
     connect(colliderOffsetXSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &MobInspector::OnColliderOffsetXChanged);
@@ -199,35 +207,17 @@ void MobInspector::UpdatePathFields() {
     QFormLayout* pathLayout = qobject_cast<QFormLayout*>(pathGroup->layout());
 
     // Remove all rows except the first one (travel time)
-    while (pathLayout->rowCount() > 1) {
-        pathLayout->removeRow(1);
+    while (pathLayout->rowCount() > kPathGroupOffset) {
+        pathLayout->removeRow(kPathGroupOffset);
     }
 
     // Add points
-    for (int i = 0; i < path.key_points_size(); i++) {
+    for (int i = 0; i < path.key_points_size(); ++i) {
         const auto& point = path.key_points(i);
 
-        QLabel* pointLabel = new QLabel(QString("Point %1:").arg(i + 1));
-        QDoubleSpinBox* xSpin = new QDoubleSpinBox();
-        xSpin->setRange(kMinPathSpin, kMaxPathSpin);
-        xSpin->setValue(point.x());
-        QDoubleSpinBox* ySpin = new QDoubleSpinBox();
-        ySpin->setRange(kMinPathSpin, kMaxPathSpin);
-        ySpin->setValue(point.y());
-
-        QHBoxLayout* pointLayout = new QHBoxLayout();
-        pointLayout->addWidget(xSpin);
-        pointLayout->addWidget(ySpin);
-
-        pathLayout->addRow(pointLabel, pointLayout);
-
-        // Store references to the spin boxes
-        pathPointSpins.append(xSpin);
-        pathPointSpins.append(ySpin);
-
-        // Connect signals
-        connect(xSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this, i](double value) { OnPathPointChanged(i, value, true); });
-        connect(ySpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [this, i](double value) { OnPathPointChanged(i, value, false); });
+        AddPathPointRow(i);
+        pathPointSpins[i * 2]->setValue(point.x());
+        pathPointSpins[i * 2 + 1]->setValue(point.y());
     }
 }
 
@@ -235,10 +225,10 @@ void MobInspector::UpdateColliderFields() {
     if (!currentMob || !currentMob->has_collider()) {
         colliderOffsetXSpin->setValue(0);
         colliderOffsetYSpin->setValue(0);
-        colliderTypeCombo->setCurrentIndex(0);
-        circleRadiusSpin->setValue(kDeaultSpin);
-        rectWidthSpin->setValue(kDeaultSpin);
-        rectHeightSpin->setValue(kDeaultSpin);
+        colliderTypeCombo->setCurrentIndex(static_cast<int>(ColliderType::Circle));
+        circleRadiusSpin->setValue(kDeaultColliderSpin);
+        rectWidthSpin->setValue(kDeaultColliderSpin);
+        rectHeightSpin->setValue(kDeaultColliderSpin);
         return;
     }
 
@@ -249,13 +239,13 @@ void MobInspector::UpdateColliderFields() {
     QFormLayout* colliderLayout = qobject_cast<QFormLayout*>(colliderGroup->layout());
 
     if (collider.has_circle_collider()) {
-        colliderTypeCombo->setCurrentIndex(0);
+        colliderTypeCombo->setCurrentIndex(static_cast<int>(ColliderType::Circle));
         circleRadiusSpin->setValue(collider.circle_collider().radius());
         colliderLayout->setRowVisible(kCircleRadiusIndex, true);
         colliderLayout->setRowVisible(kRectWidthIndex, false);
         colliderLayout->setRowVisible(kRectHeightIndex, false);
     } else if (collider.has_rectangle_collider()) {
-        colliderTypeCombo->setCurrentIndex(1);
+        colliderTypeCombo->setCurrentIndex(static_cast<int>(ColliderType::Rectangle));
         rectWidthSpin->setValue(collider.rectangle_collider().width());
         rectHeightSpin->setValue(collider.rectangle_collider().height());
         colliderLayout->setRowVisible(kCircleRadiusIndex, false);
@@ -284,39 +274,88 @@ void MobInspector::ClearFields() {
     colliderOffsetXSpin->setValue(0);
     colliderOffsetYSpin->setValue(0);
     colliderTypeCombo->setCurrentIndex(0);
-    circleRadiusSpin->setValue(kDeaultSpin);
-    rectWidthSpin->setValue(kDeaultSpin);
-    rectHeightSpin->setValue(kDeaultSpin);
+    circleRadiusSpin->setValue(kDeaultColliderSpin);
+    rectWidthSpin->setValue(kDeaultColliderSpin);
+    rectHeightSpin->setValue(kDeaultColliderSpin);
+}
+
+void MobInspector::AddPathPointRow(int pointIndex) {
+    QFormLayout* pathLayout = qobject_cast<QFormLayout*>(pathGroup->layout());
+
+    QLabel* pointLabel = new QLabel(QString("Point %1:").arg(pointIndex + 1));
+
+    QDoubleSpinBox* xSpin = new QDoubleSpinBox();
+    xSpin->setRange(kMinPathSpin, kMaxPathSpin);
+    xSpin->setValue(0);
+
+    QDoubleSpinBox* ySpin = new QDoubleSpinBox();
+    ySpin->setRange(kMinPathSpin, kMaxPathSpin);
+    ySpin->setValue(0);
+
+    QPushButton* deleteButton = new QPushButton();
+    deleteButton->setText("X");
+    deleteButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    QFontMetrics fm(deleteButton->font());
+    int width = fm.horizontalAdvance(deleteButton->text()) + kDeleteButtonWidthPadding;
+    deleteButton->setFixedSize(width, deleteButton->sizeHint().height());
+
+    QHBoxLayout* pointLayout = new QHBoxLayout();
+    pointLayout->addWidget(xSpin);
+    pointLayout->addWidget(ySpin);
+    pointLayout->addWidget(deleteButton);
+
+    pathLayout->addRow(pointLabel, pointLayout);
+
+    // Store references to the spin boxes
+    pathPointSpins.append(xSpin);
+    pathPointSpins.append(ySpin);
+
+    // Connect signals
+    connect(xSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
+            [this, pointIndex](double value) { OnPathPointChanged(pointIndex, value, true); });
+    connect(ySpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
+            [this, pointIndex](double value) { OnPathPointChanged(pointIndex, value, false); });
+    connect(deleteButton, &QPushButton::clicked, this, [this, pointIndex]() { OnDeletePathPointClicked(pointIndex); });
 }
 
 void MobInspector::OnMobIdChanged(const QString& text) {
-    if (currentMob) {
-        currentMob->set_mob_id(text.toStdString());
+    if (!currentMob) {
+        return;
     }
+
+    currentMob->set_mob_id(text.toStdString());
 }
 
 void MobInspector::OnHealthChanged(double value) {
-    if (currentMob) {
-        currentMob->set_health(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    currentMob->set_health(static_cast<float>(value));
 }
 
 void MobInspector::OnSpriteChanged(const QString& text) {
-    if (currentMob) {
-        currentMob->set_sprite(text.toStdString());
+    if (!currentMob) {
+        return;
     }
+
+    currentMob->set_sprite(text.toStdString());
 }
 
 void MobInspector::OnSpawnDelayChanged(double value) {
-    if (currentMob) {
-        currentMob->set_spawn_delay(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    currentMob->set_spawn_delay(static_cast<float>(value));
 }
 
 void MobInspector::OnAttackIdChanged(const QString& text) {
-    if (currentMob) {
-        currentMob->set_attack_id(text.toStdString());
+    if (!currentMob) {
+        return;
     }
+
+    currentMob->set_attack_id(text.toStdString());
 }
 
 void MobInspector::OnPathPointChanged(int pointIndex, double value, bool isX) {
@@ -338,72 +377,66 @@ void MobInspector::OnPathPointChanged(int pointIndex, double value, bool isX) {
 }
 
 void MobInspector::OnTravelTimeChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_path()) {
-            currentMob->mutable_path();
-        }
-        currentMob->mutable_path()->set_travel_time(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_path()) {
+        currentMob->mutable_path();
+    }
+
+    currentMob->mutable_path()->set_travel_time(static_cast<float>(value));
 }
 
 void MobInspector::OnDropItemChanged(const QString& text) {
-    if (currentMob) {
-        if (!currentMob->has_drop()) {
-            currentMob->mutable_drop();
-        }
-        currentMob->mutable_drop()->set_item(text.toStdString());
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_drop()) {
+        currentMob->mutable_drop();
+    }
+
+    currentMob->mutable_drop()->set_item(text.toStdString());
 }
 
 void MobInspector::OnDropWeightChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_drop()) {
-            currentMob->mutable_drop();
-        }
-        currentMob->mutable_drop()->set_drop_weight(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_drop()) {
+        currentMob->mutable_drop();
+    }
+
+    currentMob->mutable_drop()->set_drop_weight(static_cast<float>(value));
 }
 
 void MobInspector::OnColliderOffsetXChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-        currentMob->mutable_collider()->set_offset_x(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    currentMob->mutable_collider()->set_offset_x(static_cast<float>(value));
 }
 
 void MobInspector::OnColliderOffsetYChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-        currentMob->mutable_collider()->set_offset_y(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    currentMob->mutable_collider()->set_offset_y(static_cast<float>(value));
 }
 
 void MobInspector::OnColliderTypeChanged(int index) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-
-        switch (static_cast<ColliderType>(index)) {
-            case ColliderType::Circle: {
-                if (!currentMob->mutable_collider()->has_circle_collider()) {
-                    currentMob->mutable_collider()->set_allocated_circle_collider(new game::CircleCollider());
-                }
-                break;
-            }
-            case ColliderType::Rectangle: {
-                if (!currentMob->mutable_collider()->has_rectangle_collider()) {
-                    currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
-                }
-                break;
-            }
-        }
-    }
-
     QFormLayout* colliderLayout = qobject_cast<QFormLayout*>(colliderGroup->layout());
     switch (static_cast<ColliderType>(index)) {
         case ColliderType::Circle: {
@@ -419,46 +452,108 @@ void MobInspector::OnColliderTypeChanged(int index) {
             break;
         }
     }
+
+    if (!currentMob) {
+        return;
+    }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    switch (static_cast<ColliderType>(index)) {
+        case ColliderType::Circle: {
+            if (!currentMob->mutable_collider()->has_circle_collider()) {
+                currentMob->mutable_collider()->set_allocated_circle_collider(new game::CircleCollider());
+            }
+            break;
+        }
+        case ColliderType::Rectangle: {
+            if (!currentMob->mutable_collider()->has_rectangle_collider()) {
+                currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
+            }
+            break;
+        }
+    }
 }
 
 void MobInspector::OnCircleRadiusChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-
-        if (!currentMob->mutable_collider()->has_circle_collider()) {
-            currentMob->mutable_collider()->set_allocated_circle_collider(new game::CircleCollider());
-        }
-
-        currentMob->mutable_collider()->mutable_circle_collider()->set_radius(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    if (!currentMob->mutable_collider()->has_circle_collider()) {
+        currentMob->mutable_collider()->set_allocated_circle_collider(new game::CircleCollider());
+    }
+
+    currentMob->mutable_collider()->mutable_circle_collider()->set_radius(static_cast<float>(value));
 }
 
 void MobInspector::OnRectWidthChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-
-        if (!currentMob->mutable_collider()->has_rectangle_collider()) {
-            currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
-        }
-
-        currentMob->mutable_collider()->mutable_rectangle_collider()->set_width(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    if (!currentMob->mutable_collider()->has_rectangle_collider()) {
+        currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
+    }
+
+    currentMob->mutable_collider()->mutable_rectangle_collider()->set_width(static_cast<float>(value));
 }
 
 void MobInspector::OnRectHeightChanged(double value) {
-    if (currentMob) {
-        if (!currentMob->has_collider()) {
-            currentMob->mutable_collider();
-        }
-
-        if (!currentMob->mutable_collider()->has_rectangle_collider()) {
-            currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
-        }
-
-        currentMob->mutable_collider()->mutable_rectangle_collider()->set_height(static_cast<float>(value));
+    if (!currentMob) {
+        return;
     }
+
+    if (!currentMob->has_collider()) {
+        currentMob->mutable_collider();
+    }
+
+    if (!currentMob->mutable_collider()->has_rectangle_collider()) {
+        currentMob->mutable_collider()->set_allocated_rectangle_collider(new game::RectangleCollider());
+    }
+
+    currentMob->mutable_collider()->mutable_rectangle_collider()->set_height(static_cast<float>(value));
+}
+
+void MobInspector::OnAddPathPointClicked() {
+    AddPathPointRow(static_cast<int>(pathPointSpins.count()) / 2);
+
+    if (!currentMob) {
+        return;
+    }
+
+    auto* path = currentMob->mutable_path();
+
+    auto* point = path->add_key_points();
+    point->set_x(0);
+    point->set_y(0);
+}
+
+void MobInspector::OnDeletePathPointClicked(int pointIndex) {
+    if (!currentMob || !currentMob->has_path()) {
+        return;
+    }
+
+    int size = currentMob->mutable_path()->key_points_size();
+    if (pointIndex >= size) {
+        return;
+    }
+
+    auto* keyPoints = currentMob->mutable_path()->mutable_key_points();
+    for (int i = pointIndex; i + 1 < size; ++i) {
+        keyPoints->SwapElements(i, i + 1);
+    }
+    keyPoints->RemoveLast();
+
+    UpdatePathFields();
 }
