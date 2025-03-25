@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 
-#include "../editor/datamanager.h"
+#include "datamanager.h"
+#include "mobinspector.hpp"
 #include "scenewidget.h"
 
 #include <QApplication>
@@ -21,7 +22,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), sceneWidget(new S
 
     hierarchyDock = new QDockWidget("Hierarchy", this);
     projectDock = new QDockWidget("Project", this);
-    inspectorDock = new QDockWidget("Inspector", this);
+    mobInspector = new MobInspector(this);
     createDockWidgets();
 
     createSceneWindow();
@@ -41,16 +42,7 @@ void MainWindow::SetTestData() {
 
     hierarchyTree->setModel(model);
 
-    // inspectorDock - inspector
-    QFormLayout* inspectorLayout = new QFormLayout();
-    inspectorLayout->addRow("Name:", new QLineEdit("Object 1"));
-    inspectorLayout->addRow("Position:", new QLineEdit("0, 0, 0"));
-    inspectorLayout->addRow("Rotation:", new QLineEdit("0, 0, 0"));
-    inspectorLayout->addRow("Scale:", new QLineEdit("1, 1, 1"));
-
-    QWidget* inspectorWidget = new QWidget();
-    inspectorWidget->setLayout(inspectorLayout);
-    inspectorDock->setWidget(inspectorWidget);
+    // mobInspector - inspector
 
     // projectDock - project
     QListView* projectList = dynamic_cast<QListView*>(projectDock->widget());
@@ -61,6 +53,10 @@ void MainWindow::SetTestData() {
 
     // toolBar - toolbar
     QToolBar* toolBar = addToolBar("Tools");
+
+    QAction* SaveFile = toolBar->addAction("Save File");
+    SaveFile->setShortcut(QKeySequence::Save);
+    connect(SaveFile, &QAction::triggered, this, &MainWindow::SaveFile);
 
     QAction* LoadFile = toolBar->addAction("Load File");
     LoadFile->setShortcut(QKeySequence::Open);
@@ -78,16 +74,30 @@ void MainWindow::SetTestData() {
     toolBar->setMovable(false);
 }
 
+void MainWindow::SaveFile() {
+    std::cout << "save fileName: " << DataManager::file_path;
+    std::cout << DataManager::GetInstance().level.DebugString();
+    DataManager::SaveLevel();
+}
+
 void MainWindow::LoadFile() {
     QString executableDir = QCoreApplication::applicationDirPath();
 
     QString fileName = QFileDialog::getOpenFileName(this, "Выберите файл", executableDir, "*.bin");
 
-    if (!fileName.isEmpty()) {
-        DataManager::GetInstance().LoadLevel(fileName.toStdString());
-        qDebug() << "fileName: " << fileName;
-        qDebug() << QString::fromStdString(DataManager::GetInstance().level.DebugString());
+    if (fileName.isEmpty()) {
+        qDebug() << "wrong file name: " << fileName;
+        return;
     }
+
+    DataManager::LoadLevel(fileName.toStdString());
+    std::cout << "load fileName: " << fileName.toStdString();
+    std::cout << DataManager::GetInstance().level.DebugString();
+
+    mobInspector->clear();
+    game::Level& level = DataManager::level;
+    auto mob = level.mutable_mobs(0);
+    mobInspector->setMob(mob);
 }
 
 void MainWindow::UndoSlot() {
@@ -111,11 +121,9 @@ void MainWindow::createDockWidgets() {
     projectDock->setWidget(projectList);
     addDockWidget(Qt::BottomDockWidgetArea, projectDock);
 
-    // inspectorDock - inspector
-    inspectorDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    QTextEdit* inspectorText = new QTextEdit(inspectorDock);
-    inspectorDock->setWidget(inspectorText);
-    addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
+    // mobInspector - inspector
+    mobInspector->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::RightDockWidgetArea, mobInspector);
 }
 
 void MainWindow::createSceneWindow() {

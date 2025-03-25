@@ -1,6 +1,6 @@
 #include "editor/game.pb.h"
+#include "editor/mainwindow.h"
 #include "levelgenerator.h"
-#include "qt/mainwindow.h"
 
 #include <QApplication>
 
@@ -21,15 +21,6 @@ int main(int argc, char* argv[]) {
     if (!std::filesystem::exists(path)) {
         GenerateTestLevel(path.string());
     }
-
-    game::Level level;
-    std::ifstream ifs(path.string());
-    level.ParseFromIstream(&ifs);
-    std::cout << "Level loaded: " << path.string() << std::endl;
-    std::cout << level.DebugString() << std::endl;
-    level.Clear();
-    std::cout << "Level cleared: " << path.string() << std::endl;
-    std::cout << level.DebugString() << std::endl;
 
     window.resize(kWidth, kHeight);
     window.SetTestData();

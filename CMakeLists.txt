@@ -21,14 +21,15 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${${EDITOR}_PROTO_FILES})
 # Set sources and headers
 set(${EDITOR}_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.hpp
 )
 set(${EDITOR}_HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/mainwindow.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/scenewidget.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.h
 )

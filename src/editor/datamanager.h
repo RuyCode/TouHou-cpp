@@ -7,9 +7,12 @@ class DataManager {
 public:
     static DataManager& GetInstance();
 
-    void LoadLevel(const std::string& file_path);
+    static void LoadLevel(const std::string& file_path);
+    static void SaveLevel();
 
-    game::Level level;
+    static std::string file_path;
+
+    static game::Level level;
 
 private:
     DataManager();
