@@ -15,7 +15,7 @@ public:
     static game::Level level;
 
 private:
-    DataManager();
+    DataManager() = default;
     ~DataManager();
     DataManager(const DataManager&) = delete;
     DataManager(DataManager&&) = delete;

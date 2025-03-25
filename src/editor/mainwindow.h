@@ -1,7 +1,7 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#include "mobinspector.hpp"
+#include "mobinspector.h"
 
 #include <QDockWidget>
 #include <QListView>
@@ -25,8 +25,8 @@ private slots:
     void RedoSlot();
 
 private:
-    void createDockWidgets();
-    void createSceneWindow();
+    void CreateDockWidgets();
+    void CreateSceneWindow();
 
     QDockWidget* hierarchyDock;
     MobInspector* mobInspector;

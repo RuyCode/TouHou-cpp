@@ -29,9 +29,6 @@ void DataManager::SaveLevel() {
     out.close();
 }
 
-DataManager::DataManager() {
-}
-
 DataManager::~DataManager() {
     level.Clear();
 }

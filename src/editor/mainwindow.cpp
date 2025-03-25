@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
 #include "datamanager.h"
-#include "mobinspector.hpp"
 #include "scenewidget.h"
 
 #include <QApplication>
@@ -17,15 +16,14 @@ const int kMinWidth = 320;
 const int kMinHeight = 60;
 }  // namespace
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), sceneWidget(new SceneWidget(this)) {
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), mobInspector(new MobInspector(this)), sceneWidget(new SceneWidget(this)) {
     setWindowTitle("Qt Unity-like Interface");
 
     hierarchyDock = new QDockWidget("Hierarchy", this);
     projectDock = new QDockWidget("Project", this);
-    mobInspector = new MobInspector(this);
-    createDockWidgets();
+    CreateDockWidgets();
 
-    createSceneWindow();
+    CreateSceneWindow();
 }
 
 void MainWindow::SetTestData() {
@@ -94,10 +92,10 @@ void MainWindow::LoadFile() {
     std::cout << "load fileName: " << fileName.toStdString();
     std::cout << DataManager::GetInstance().level.DebugString();
 
-    mobInspector->clear();
+    mobInspector->Clear();
     game::Level& level = DataManager::level;
     auto mob = level.mutable_mobs(0);
-    mobInspector->setMob(mob);
+    mobInspector->SetMob(mob);
 }
 
 void MainWindow::UndoSlot() {
@@ -108,7 +106,7 @@ void MainWindow::RedoSlot() {
     qDebug() << "Redo";
 }
 
-void MainWindow::createDockWidgets() {
+void MainWindow::CreateDockWidgets() {
     // hierachyDock - hierachy of objects
     hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
     QTreeView* hierarchyTree = new QTreeView(hierarchyDock);
@@ -126,7 +124,7 @@ void MainWindow::createDockWidgets() {
     addDockWidget(Qt::RightDockWidgetArea, mobInspector);
 }
 
-void MainWindow::createSceneWindow() {
+void MainWindow::CreateSceneWindow() {
     // scene window (QOpenGLWidget)
     sceneWidget->setMinimumSize(kMinWidth, kMinHeight);
     setCentralWidget(sceneWidget);
