@@ -1,83 +1,161 @@
+# =============================================================================
+# Basic Project Configuration
+# =============================================================================
 cmake_minimum_required(VERSION 3.16)
+project(
+    TouHouCPP
+    VERSION 1.0.0
+    LANGUAGES CXX
+)
 
-project(TouHouCPP VERSION 1.0.0 LANGUAGES CXX)
-set(EDITOR ${CMAKE_PROJECT_NAME}_editor)
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-# Set CXX properties
+# =============================================================================
+# Global Settings
+# =============================================================================
+set(EDITOR "${CMAKE_PROJECT_NAME}_editor")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find ProtoBuf and generate files
+# =============================================================================
+# Protocol Buffers Configuration
+# =============================================================================
 find_package(Protobuf REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS})
-set(${EDITOR}_PROTO_FILES
-    ${CMAKE_SOURCE_DIR}/src/proto/game.proto
-)
-protobuf_generate_cpp(${EDITOR}_PROTO_SRCS ${EDITOR}_PROTO_HDRS ${${EDITOR}_PROTO_FILES})
-set_source_files_properties(
-    "${${EDITOR}_PROTO_SRCS}" "${${EDITOR}_PROTO_HDRS}"
-    PROPERTIES
-    CXX_CLANG_TIDY ""  # Disable clang-tidy for ProtoBuf files
+
+set(
+    ${EDITOR}_PROTO_FILES
+    "${CMAKE_SOURCE_DIR}/src/proto/game.proto"
 )
 
-add_library(${EDITOR}_PROTO
+protobuf_generate_cpp(
+    ${EDITOR}_PROTO_SRCS
+    ${EDITOR}_PROTO_HDRS
+    ${${EDITOR}_PROTO_FILES}
+)
+
+add_library(
+    ${EDITOR}_PROTO
     STATIC
     ${${EDITOR}_PROTO_SRCS}
     ${${EDITOR}_PROTO_HDRS}
 )
 
-# Set sources and headers
-set(${EDITOR}_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.cpp
-)
-set(${EDITOR}_HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.h
+# =============================================================================
+# Source Files Configuration
+# =============================================================================
+set(
+    ${EDITOR}_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.cpp"
 )
 
-# Find and setup Qt6
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui OpenGLWidgets OpenGL)
+set(
+    ${EDITOR}_HEADERS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/levelgenerator.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mainwindow.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/scenewidget.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/datamanager.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.h"
+)
+
+# =============================================================================
+# Qt6 Configuration
+# =============================================================================
+find_package(
+    Qt6
+    REQUIRED
+    COMPONENTS
+        Core
+        Widgets
+        Gui
+        OpenGLWidgets
+        OpenGL
+)
+
 qt_standard_project_setup()
 
-# Add executable
-qt_add_executable(${EDITOR}
+# =============================================================================
+# Executable Target
+# =============================================================================
+qt_add_executable(
+    ${EDITOR}
     ${${EDITOR}_SOURCES}
     ${${EDITOR}_HEADERS}
 )
 
-# Link Qt6
-target_link_libraries(${EDITOR} PRIVATE Qt6::Widgets Qt6::Core Qt6::Gui Qt6::OpenGLWidgets Qt6::OpenGL)
-target_link_libraries(${EDITOR} PRIVATE ${Protobuf_LIBRARIES})
-target_link_libraries(${EDITOR} PRIVATE ${EDITOR}_PROTO)
+# =============================================================================
+# Target Linking
+# =============================================================================
+target_link_libraries(
+    ${EDITOR}
+    PRIVATE
+        Qt6::Widgets
+        Qt6::Core
+        Qt6::Gui
+        Qt6::OpenGLWidgets
+        Qt6::OpenGL
+        ${Protobuf_LIBRARIES}
+        ${EDITOR}_PROTO
+)
 
-# Add checks
-target_compile_options(${EDITOR} PRIVATE -Wall -Wextra -Werror -Wpedantic)
+# =============================================================================
+# Compiler Options and Quality Checks
+# =============================================================================
+target_compile_options(
+    ${EDITOR}
+    PRIVATE
+        -Wall
+        -Wextra
+        -Werror
+        -Wpedantic
+)
+
 if(ENABLE_DEBUG)
-    target_compile_options(${EDITOR} PRIVATE -g)
-    target_compile_options(${EDITOR}_PROTO PRIVATE -g)
+    target_compile_options(
+        ${EDITOR}
+        PRIVATE
+            -g
+    )
+
+    target_compile_options(
+        ${EDITOR}_PROTO
+        PRIVATE
+            -g
+    )
 endif()
+
+# Clang-format check target
 add_custom_target(
     clang-format
     COMMAND clang-format
-    --dry-run
-    -Werror
-    ${${EDITOR}_SOURCES}
-    ${${EDITOR}_HEADERS}
+        --dry-run
+        -Werror
+        ${${EDITOR}_SOURCES}
+        ${${EDITOR}_HEADERS}
 )
 
-set_target_properties(${EDITOR}
-    PROPERTIES CXX_CLANG_TIDY "clang-tidy"
+# Clang-tidy configuration
+set_target_properties(
+    ${EDITOR}
+    PROPERTIES
+        CXX_CLANG_TIDY "clang-tidy"
 )
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.clang-tidy ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.clang-format ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+# =============================================================================
+# Configuration Files
+# =============================================================================
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/.clang-tidy"
+    "${CMAKE_CURRENT_BINARY_DIR}"
+    COPYONLY
+)
+
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/.clang-format"
+    "${CMAKE_CURRENT_BINARY_DIR}"
+    COPYONLY
+)
