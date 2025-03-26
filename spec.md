@@ -1,4 +1,4 @@
-# v0.1.0
+# v0.1.1
 - name
 - version
 - description
@@ -20,9 +20,9 @@
     - path:
         - key points  # points on the players screen (starts and ends out of the players screen)
         - travel time  # in seconds
-    - drop:
-        - item  # large P, P, points, ... (possibly 1UPs and bombs)
-        - drop weight  # unsigned double != 0 idk
+        - spline type  # B-Spline, Cardinal Spline (s ∈ [0, 1])
+        - const speed  # bool
+    - drop item  # large P, P, points, ... (possibly 1UPs and bombs)
     - attack id
     - collider
 - attack:  # idgaf
@@ -45,7 +45,20 @@
             - damage reduction  # coefficient
             - bg:
                 - shaders
+- drop item:
+    - item  # large P, P, Full Power, points, 1UPs, bombs, life and bomb fragments
+    - weight  # unsigned double != 0 idk
+    - fixed amount  # bool
+    - amount  # int, fixed or min and max
 - bullet:
     - bullet id  # prefab id
     - damage
-    - collider  # CircleCollider, RectangleCollider : Collider
+    - collider
+- collider:
+    - offset  # x, y
+    - CircleCollider:
+        - radios
+    - RectangleCollider:
+        - angle
+        - width
+        - height
