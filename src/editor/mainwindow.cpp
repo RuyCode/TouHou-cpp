@@ -73,8 +73,6 @@ void MainWindow::SetTestData() {
 }
 
 void MainWindow::SaveFile() {
-    std::cout << "save fileName: " << DataManager::file_path;
-    std::cout << DataManager::GetInstance().level.DebugString();
     DataManager::SaveLevel();
 }
 
@@ -84,13 +82,10 @@ void MainWindow::LoadFile() {
     QString fileName = QFileDialog::getOpenFileName(this, "Выберите файл", executableDir, "*.bin");
 
     if (fileName.isEmpty()) {
-        qDebug() << "wrong file name: " << fileName;
         return;
     }
 
     DataManager::LoadLevel(fileName.toStdString());
-    std::cout << "load fileName: " << fileName.toStdString();
-    std::cout << DataManager::GetInstance().level.DebugString();
 
     mobInspector->Clear();
     game::Level& level = DataManager::level;
