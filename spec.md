@@ -1,4 +1,4 @@
-# v0.1.1
+# v0.2.0
 - name
 - version
 - description
@@ -7,40 +7,72 @@
     - shaders  # pairs of shader files (.frag, .vert)
     - bg script  # .cpp file (like unity monobehaviour)
 - level script  # .cpp file (like unity monobehaviour)
-- batches of mobs:
-    - mob batch id
-    - ids of mobs
+- batch of mobs:
+    - name
+    - mobs
     - delay after previous batch
     - lifespan  # on timer end prepare next batch
-- mobs:
-    - mob id
-    - health  # double
-    - sprite  # .png or .jpg should work
+- mob:
+    - name
+    - mob prefab id  # index in the list of mob prefabs
     - spawn delay  # relative to batch spawn begin
     - path:
         - key points  # points on the players screen (starts and ends out of the players screen)
         - travel time  # in seconds
         - spline type  # B-Spline, Cardinal Spline (s ∈ [0, 1])
         - const speed  # bool
+    - drop item  # override
+- mob prefab:
+    - name
+    - health  # double
+    - sprite  # .png or .jpg should work
     - drop item  # large P, P, points, ... (possibly 1UPs and bombs)
     - attack id
     - collider
-- attack:  # idgaf
-    - attack id
-    - bullet id
+- attack:
+    - name
+    - bullet id  # oneof1
+    - attack id  # oneof1, index in the list of attacks
+    - speed  # of bullets, override child's attacks speed
+    - spawn position offset  # x, y
+    - bullet/attack amount
+    - circle attack:  # in UI add an opportunity to calculate amount based on delta angle
+        - rotation angle
+    - arc attack:  # in UI add an opportunity to calculate amount based on delta angle
+        - lock on player  # bool
+        - direction angle  # disabled if lock on player
+        - spread angle  # from edge to edge
+    - line attack:
+        - lock on player  # bool
+        - direction angle  # disabled if lock on player
+        - delta time  # float, between attacks
+        - delta speed or random speed config  # oneof, changes between attacks
+        - delta amount or random amount config  # oneof
+        - delta direction or random direction config # oneof, random delta
+    - spiral:  # in UI add an opportunity to calculate amount based on delta angle
+        - lock on player  # bool
+        - begin angle  # disabled if lock on player
+        - rotation angle
+        - delta time  # float, between attacks
+        - delta speed or random speed config  # oneof
+        - delta amount or random amount config  # oneof
+        - delta direction or random direction config # oneof
+- random config:
+    - min value  # float
+    - max value  # float
 - boss:
-    - boss id
+    - name
     - finally?  # if final boss (bool)
-    - batch id  # to spawn after
+    - batch id  # to spawn after, index of in the list of mob batches
     - drop item  # bombs or 1UPs
     - collider
     - phases:  # ordered list
         - attack:  # ordered list
-            - attack id
+            - attack id  # list index
             - health
             - spell card id  # nullable
         - spell cards:
-            - spell card id
+            - spell card id  # list index
             - name
             - damage reduction  # coefficient
             - bg:
@@ -51,9 +83,13 @@
     - fixed amount  # bool
     - amount  # int, fixed or min and max
 - bullet:
-    - bullet id  # prefab id
     - damage
+    - sprite
     - collider
+    - bullet life config  # optional
+- bullet life config:
+    - lifespan
+    - attack id  # optional
 - collider:
     - offset  # x, y
     - CircleCollider:
@@ -62,3 +98,6 @@
         - angle
         - width
         - height
+
+> Note:
+> All amounts are float but we round it when use in code
