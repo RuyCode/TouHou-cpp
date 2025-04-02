@@ -23,6 +23,9 @@ const int kPathGroupOffset = 2;  // travel time and add button
 
 const int kDeleteButtonWidthPadding = 10;
 
+const int kDropFixedAmountIndex = 3;
+const int kDropRangeIndex = 4;
+
 const int kCircleRadiusIndex = 3;
 const int kRectWidthIndex = 4;
 const int kRectHeightIndex = 5;
@@ -35,7 +38,7 @@ enum class ColliderType {
 }  // namespace
 
 MobInspector::MobInspector(QWidget* parent)
-    : QDockWidget("Mob Inspector", parent),
+    : QWidget(parent),
       basicGroup(new QGroupBox(kBasicGroupTitle)),
       nameEdit(new QLineEdit()),
       mobPrefabIdSpin(new QSpinBox()),
@@ -63,23 +66,15 @@ MobInspector::MobInspector(QWidget* parent)
       rectHeightSpin(new QDoubleSpinBox()),
       rectAngleSpin(new QDoubleSpinBox()),
       currentMob(nullptr) {
-    setupUI();
     setMinimumWidth(kMinWidth);
+    setBaseSize(kMinWidth, 0);
 
-    // Make collider fields read-only since they come from prefab
-    colliderOffsetXSpin->setReadOnly(true);
-    colliderOffsetYSpin->setReadOnly(true);
-    colliderTypeCombo->setEnabled(false);
-    circleRadiusSpin->setReadOnly(true);
-    rectWidthSpin->setReadOnly(true);
-    rectHeightSpin->setReadOnly(true);
-    rectAngleSpin->setReadOnly(true);
+    SetupUI();
 
-    healthSpin->setReadOnly(true);
-    spriteEdit->setReadOnly(true);
-    attackIdSpin->setReadOnly(true);
-
+    fixedAmountCheck->setChecked(true);
     colliderTypeCombo->setCurrentIndex(static_cast<int>(ColliderType::Circle));
+
+    fixedAmountCheck->stateChanged(Qt::Checked);
 }
 
 void MobInspector::SetMob(game::Mob* mob) {
@@ -92,9 +87,8 @@ void MobInspector::Clear() {
     ClearFields();
 }
 
-void MobInspector::setupUI() {
-    QWidget* content = new QWidget(this);
-    QFormLayout* layout = new QFormLayout(content);
+void MobInspector::SetupUI() {
+    QFormLayout* layout = new QFormLayout(this);
 
     // Basic fields
     QFormLayout* basicLayout = new QFormLayout(basicGroup);
@@ -196,6 +190,19 @@ void MobInspector::setupUI() {
     colliderGroup->setLayout(colliderLayout);
     layout->addRow(colliderGroup);
 
+    // Make collider fields read-only since they come from prefab
+    colliderOffsetXSpin->setReadOnly(true);
+    colliderOffsetYSpin->setReadOnly(true);
+    colliderTypeCombo->setEnabled(false);
+    circleRadiusSpin->setReadOnly(true);
+    rectWidthSpin->setReadOnly(true);
+    rectHeightSpin->setReadOnly(true);
+    rectAngleSpin->setReadOnly(true);
+
+    healthSpin->setReadOnly(true);
+    spriteEdit->setReadOnly(true);
+    attackIdSpin->setReadOnly(true);
+
     // Connect signals
     connect(nameEdit, &QLineEdit::textChanged, this, &MobInspector::OnNameChanged);
     connect(mobPrefabIdSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &MobInspector::OnMobPrefabIdChanged);
@@ -208,8 +215,6 @@ void MobInspector::setupUI() {
     connect(fixedAmountSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &MobInspector::OnFixedAmountValueChanged);
     connect(minAmountSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &MobInspector::OnMinAmountChanged);
     connect(maxAmountSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &MobInspector::OnMaxAmountChanged);
-
-    setWidget(content);
 }
 
 void MobInspector::UpdateFields() {
@@ -465,6 +470,17 @@ void MobInspector::OnDropWeightChanged(double value) {
 }
 
 void MobInspector::OnFixedAmountChanged(int state) {
+    bool fixed = state == Qt::Checked;
+    auto layout = qobject_cast<QFormLayout*>(dropGroup->layout());
+
+    if (fixed) {
+        layout->setRowVisible(kDropFixedAmountIndex, true);
+        layout->setRowVisible(kDropRangeIndex, false);
+    } else {
+        layout->setRowVisible(kDropFixedAmountIndex, false);
+        layout->setRowVisible(kDropRangeIndex, true);
+    }
+
     if (!currentMob) {
         return;
     }
@@ -473,7 +489,7 @@ void MobInspector::OnFixedAmountChanged(int state) {
         currentMob->mutable_drop_item();
     }
 
-    currentMob->mutable_drop_item()->set_fixed_amount(state == Qt::Checked);
+    currentMob->mutable_drop_item()->set_fixed_amount(fixed);
 }
 
 void MobInspector::OnFixedAmountValueChanged(int value) {

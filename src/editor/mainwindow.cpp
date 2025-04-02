@@ -8,78 +8,91 @@
 #include <QFileSystemModel>
 #include <QFormLayout>
 #include <QLineEdit>
+#include <QScrollArea>
 #include <QStandardItem>
 #include <QToolBar>
 
 namespace {
-const int kMinWidth = 320;
-const int kMinHeight = 60;
+const QString kInspectorTitle = "Inspector";
+const QString kHierarchyTitle = "Hierarchy";
+const QString kProjectTitle = "Project";
+
+const int kWindowWidth = 800;
+const int kWinowHeight = 600;
+
+const int kOpenGLMinWidth = 320;
+const int kOpenGLMinHeight = 60;
+
+const int kMobInspectorIndex = 0;
 }  // namespace
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), mobInspector(new MobInspector(this)), sceneWidget(new SceneWidget(this)) {
+MainWindow::MainWindow(QWidget* parent)
+    : QMainWindow(parent),
+      hierarchyDock(new QDockWidget(kHierarchyTitle, this)),
+      inspectorDock(new QDockWidget(kInspectorTitle, this)),
+      projectDock(new QDockWidget(kProjectTitle, this)),
+      sceneWidget(new SceneWidget(this)),
+      inspectorStacked(new QStackedWidget(inspectorDock)) {
     setWindowTitle("Qt Unity-like Interface");
+    setMinimumSize(kWindowWidth, kWinowHeight);
 
-    hierarchyDock = new QDockWidget("Hierarchy", this);
-    projectDock = new QDockWidget("Project", this);
-    CreateDockWidgets();
-
-    CreateSceneWindow();
+    SetupUI();
 }
 
-void MainWindow::SetTestData() {
-    // hierarchyDock - hierachy of objects
-    QTreeView* hierarchyTree = dynamic_cast<QTreeView*>(hierarchyDock->widget());
-    QStandardItemModel* model = new QStandardItemModel(hierarchyTree);
-    model->setHorizontalHeaderLabels({"Objects"});
-
-    QStandardItem* rootItem = model->invisibleRootItem();
-    QStandardItem* object1 = new QStandardItem("Object 1");
-    QStandardItem* object2 = new QStandardItem("Object 2");
-    rootItem->appendRow(object1);
-    rootItem->appendRow(object2);
-
-    hierarchyTree->setModel(model);
-
-    // mobInspector - inspector
+void MainWindow::SetupUI() {
+    // hierachyDock - hierachy of objects
+    QTreeView* hierarchyTree = new QTreeView(hierarchyDock);
+    hierarchyDock->setWidget(hierarchyTree);
+    hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::LeftDockWidgetArea, hierarchyDock);
 
     // projectDock - project
-    QListView* projectList = dynamic_cast<QListView*>(projectDock->widget());
-    QFileSystemModel* projectModel = new QFileSystemModel(projectList);
-    projectModel->setRootPath(QDir::currentPath());
-    projectList->setModel(projectModel);
-    projectList->setRootIndex(projectModel->index(QDir::currentPath()));
+    QListView* projectList = new QListView(projectDock);
+    projectDock->setWidget(projectList);
+    projectDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::BottomDockWidgetArea, projectDock);
+
+    // inspectorDock - inspector
+    inspectorStacked->addWidget(new MobInspector(inspectorStacked));
+    QScrollArea* inspectorScroll = new QScrollArea(inspectorDock);
+    inspectorScroll->setWidget(inspectorStacked);
+    inspectorScroll->setWidgetResizable(true);
+    inspectorDock->setWidget(inspectorScroll);
+    inspectorDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
+
+    // scene window (QOpenGLWidget)
+    sceneWidget->setMinimumSize(kOpenGLMinWidth, kOpenGLMinHeight);
+    setCentralWidget(sceneWidget);
 
     // toolBar - toolbar
     QToolBar* toolBar = addToolBar("Tools");
 
     QAction* SaveFile = toolBar->addAction("Save File");
     SaveFile->setShortcut(QKeySequence::Save);
-    connect(SaveFile, &QAction::triggered, this, &MainWindow::SaveFile);
 
     QAction* LoadFile = toolBar->addAction("Load File");
     LoadFile->setShortcut(QKeySequence::Open);
-    connect(LoadFile, &QAction::triggered, this, &MainWindow::LoadFile);
 
     QAction* UndoAction = toolBar->addAction("Undo");
     UndoAction->setShortcut(QKeySequence::Undo);
-    connect(UndoAction, &QAction::triggered, this, &MainWindow::UndoSlot);
 
     QAction* RedoAction = toolBar->addAction("Redo");
     RedoAction->setShortcut(QKeySequence::Redo);
-    connect(RedoAction, &QAction::triggered, this, &MainWindow::RedoSlot);
 
     toolBar->setFloatable(false);
     toolBar->setMovable(false);
-}
 
-void MainWindow::SaveFile() {
-    DataManager::SaveLevel();
+    connect(SaveFile, &QAction::triggered, this, &MainWindow::SaveFile);
+    connect(LoadFile, &QAction::triggered, this, &MainWindow::LoadFile);
+    connect(UndoAction, &QAction::triggered, this, &MainWindow::UndoSlot);
+    connect(RedoAction, &QAction::triggered, this, &MainWindow::RedoSlot);
 }
 
 void MainWindow::LoadFile() {
     QString executableDir = QCoreApplication::applicationDirPath();
 
-    QString fileName = QFileDialog::getOpenFileName(this, "Выберите файл", executableDir, "*.bin");
+    QString fileName = QFileDialog::getOpenFileName(this, "Choose a file", executableDir, "*.bin");
 
     if (fileName.isEmpty()) {
         return;
@@ -87,10 +100,16 @@ void MainWindow::LoadFile() {
 
     DataManager::LoadLevel(fileName.toStdString());
 
+    inspectorStacked->setCurrentIndex(kMobInspectorIndex);
+    auto mobInspector = qobject_cast<MobInspector*>(inspectorStacked->currentWidget());
     mobInspector->Clear();
     game::Level& level = DataManager::level;
     auto mob = level.mutable_mob_batches(0)->mutable_mobs(0);
     mobInspector->SetMob(mob);
+}
+
+void MainWindow::SaveFile() {
+    DataManager::SaveLevel();
 }
 
 void MainWindow::UndoSlot() {
@@ -99,28 +118,4 @@ void MainWindow::UndoSlot() {
 
 void MainWindow::RedoSlot() {
     qDebug() << "Redo";
-}
-
-void MainWindow::CreateDockWidgets() {
-    // hierachyDock - hierachy of objects
-    hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    QTreeView* hierarchyTree = new QTreeView(hierarchyDock);
-    hierarchyDock->setWidget(hierarchyTree);
-    addDockWidget(Qt::LeftDockWidgetArea, hierarchyDock);
-
-    // projectDock - project
-    projectDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    QListView* projectList = new QListView(projectDock);
-    projectDock->setWidget(projectList);
-    addDockWidget(Qt::BottomDockWidgetArea, projectDock);
-
-    // mobInspector - inspector
-    mobInspector->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    addDockWidget(Qt::RightDockWidgetArea, mobInspector);
-}
-
-void MainWindow::CreateSceneWindow() {
-    // scene window (QOpenGLWidget)
-    sceneWidget->setMinimumSize(kMinWidth, kMinHeight);
-    setCentralWidget(sceneWidget);
 }

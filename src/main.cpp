@@ -7,11 +7,6 @@
 #include <filesystem>
 #include <fstream>
 
-namespace {
-const int kWidth = 800;
-const int kHeight = 600;
-}  // namespace
-
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     MainWindow window;
@@ -22,8 +17,6 @@ int main(int argc, char* argv[]) {
         GenerateTestLevel(path.string());
     }
 
-    window.resize(kWidth, kHeight);
-    window.SetTestData();
     window.show();
 
     return app.exec();

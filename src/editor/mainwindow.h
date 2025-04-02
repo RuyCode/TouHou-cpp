@@ -7,6 +7,7 @@
 #include <QListView>
 #include <QMainWindow>
 #include <QOpenGLWidget>
+#include <QStackedWidget>
 #include <QTextEdit>
 #include <QTreeView>
 
@@ -16,22 +17,21 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget* parent = nullptr);
 
-    void SetTestData();
-
-private slots:
-    void SaveFile();
-    void LoadFile();
-    void UndoSlot();
-    void RedoSlot();
-
 private:
-    void CreateDockWidgets();
-    void CreateSceneWindow();
+    void SetupUI();
 
     QDockWidget* hierarchyDock;
-    MobInspector* mobInspector;
+    QDockWidget* inspectorDock;
     QDockWidget* projectDock;
     QOpenGLWidget* sceneWidget;
+
+    QStackedWidget* inspectorStacked;
+
+private slots:
+    void LoadFile();
+    void SaveFile();
+    void UndoSlot();
+    void RedoSlot();
 };
 
 #endif  // GAMEWINDOW_H

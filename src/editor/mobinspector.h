@@ -16,7 +16,7 @@
 
 #include "game.pb.h"
 
-class MobInspector : public QDockWidget {
+class MobInspector : public QWidget {
     Q_OBJECT
 
 public:
@@ -25,7 +25,7 @@ public:
     void Clear();
 
 private:
-    void setupUI();
+    void SetupUI();
     void UpdateFields();
     void UpdatePathFields();
     void UpdateColliderFields();
