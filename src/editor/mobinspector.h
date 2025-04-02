@@ -1,5 +1,5 @@
-#ifndef MOBINSPECTOR_H
-#define MOBINSPECTOR_H
+#ifndef NEW_MOBINSPECTOR_H
+#define NEW_MOBINSPECTOR_H
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -7,43 +7,55 @@
 #include <QDoubleSpinBox>
 #include <QFormLayout>
 #include <QGroupBox>
+#include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSpinBox>
+#include <QWidget>
+
 #include "game.pb.h"
 
 class MobInspector : public QDockWidget {
     Q_OBJECT
 
 public:
-    MobInspector(QWidget* parent = nullptr);
-
+    explicit MobInspector(QWidget* parent = nullptr);
     void SetMob(game::Mob* mob);
-
     void Clear();
 
 private:
-    game::Mob* currentMob = nullptr;
+    void setupUI();
+    void UpdateFields();
+    void UpdatePathFields();
+    void UpdateColliderFields();
+    void ClearFields();
+    void AddPathPointRow(int pointIndex);
 
-    // Form widgets
-    QLineEdit* mobIdEdit;
+    // UI Elements
+    QGroupBox* basicGroup;
+    QLineEdit* nameEdit;
+    QSpinBox* mobPrefabIdSpin;
+    QDoubleSpinBox* spawnDelaySpin;
+
+    QGroupBox* basicPrefabGroup;
     QDoubleSpinBox* healthSpin;
     QLineEdit* spriteEdit;
-    QDoubleSpinBox* spawnDelaySpin;
-    QLineEdit* attackIdEdit;
+    QSpinBox* attackIdSpin;
 
-    // Path group
     QGroupBox* pathGroup;
-    QList<QDoubleSpinBox*> pathPointSpins;
     QDoubleSpinBox* travelTimeSpin;
     QPushButton* addPathPointButton;
+    QList<QDoubleSpinBox*> pathPointSpins;
 
-    // Drop group
     QGroupBox* dropGroup;
     QLineEdit* dropItemEdit;
     QDoubleSpinBox* dropWeightSpin;
+    QCheckBox* fixedAmountCheck;
+    QSpinBox* fixedAmountSpin;
+    QSpinBox* minAmountSpin;
+    QSpinBox* maxAmountSpin;
 
-    // Collider group
     QGroupBox* colliderGroup;
     QDoubleSpinBox* colliderOffsetXSpin;
     QDoubleSpinBox* colliderOffsetYSpin;
@@ -51,36 +63,24 @@ private:
     QDoubleSpinBox* circleRadiusSpin;
     QDoubleSpinBox* rectWidthSpin;
     QDoubleSpinBox* rectHeightSpin;
+    QDoubleSpinBox* rectAngleSpin;
 
-    void setupUI();
-
-    void UpdateFields();
-    void UpdatePathFields();
-    void UpdateColliderFields();
-
-    void ClearFields();
-
-    void AddPathPointRow(int pointIndex);
+    game::Mob* currentMob;
 
 private slots:
-    void OnMobIdChanged(const QString& text);
-    void OnHealthChanged(double value);
-    void OnSpriteChanged(const QString& text);
+    void OnNameChanged(const QString& text);
+    void OnMobPrefabIdChanged(int value);
     void OnSpawnDelayChanged(double value);
-    void OnAttackIdChanged(const QString& text);
     void OnPathPointChanged(int pointIndex, double value, bool isX);
     void OnTravelTimeChanged(double value);
     void OnDropItemChanged(const QString& text);
     void OnDropWeightChanged(double value);
-    void OnColliderOffsetXChanged(double value);
-    void OnColliderOffsetYChanged(double value);
-    void OnColliderTypeChanged(int index);
-    void OnCircleRadiusChanged(double value);
-    void OnRectWidthChanged(double value);
-    void OnRectHeightChanged(double value);
-
+    void OnFixedAmountChanged(int state);
+    void OnFixedAmountValueChanged(int value);
+    void OnMinAmountChanged(int value);
+    void OnMaxAmountChanged(int value);
     void OnAddPathPointClicked();
     void OnDeletePathPointClicked(int pointIndex);
 };
 
-#endif
+#endif  // NEW_MOBINSPECTOR_H

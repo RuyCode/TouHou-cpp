@@ -89,7 +89,7 @@ void MainWindow::LoadFile() {
 
     mobInspector->Clear();
     game::Level& level = DataManager::level;
-    auto mob = level.mutable_mobs(0);
+    auto mob = level.mutable_mob_batches(0)->mutable_mobs(0);
     mobInspector->SetMob(mob);
 }
 
