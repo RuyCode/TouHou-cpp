@@ -74,4 +74,7 @@ void Mesh::Draw(std::vector<Shader> &shaders) {
     VAO.Bind();
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     VAO.Unbind();
+    
+    VBO.Unbind();
+    EBO.Unbind();
 }

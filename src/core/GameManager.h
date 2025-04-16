@@ -1,9 +1,11 @@
 #include "core/SceneManager.h"
+#include "core/Player.h"
 
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 class GameManager {
 private:
@@ -19,6 +21,8 @@ private:
     const uint16_t windowHeight = 480u;
 
     SceneManager sceneManager;
+
+    void initializeOpenGL();
 
     void fixedUpdate(float fixedDeltaTime);
 

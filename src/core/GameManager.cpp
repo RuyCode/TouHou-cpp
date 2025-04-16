@@ -1,13 +1,9 @@
 #include "core/GameManager.h"
 #include "scenes/EOSD_s4_Scene.h"
-#include "glGraphics/model/Model.h"
+#include "scenes/MainMenu_Scene.h"
 
 #include <glad/glad.h>
 #include <SFML/Graphics.hpp>
-#include <cmath>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp> 
 
 GameManager::GameManager() {}
 
@@ -18,21 +14,22 @@ void GameManager::Run() {
     settings.minorVersion = 5;
     settings.attributeFlags = sf::ContextSettings::Default;
 
-    window.create(sf::VideoMode({windowWidth, windowHeight}), sf::String(windowName), sf::State::Windowed, settings);
-    window.setFramerateLimit(fps);
+    sf::VideoMode desktopMode = sf::VideoMode::getDesktopMode();
 
-    /*---------------OpenGL Test----------------*/
+    window.create(sf::VideoMode({windowWidth, windowHeight}), sf::String(windowName), sf::Style::Titlebar | sf::Style::Close, sf::State::Windowed, settings);
+    window.setPosition({desktopMode.size.x / 2 - windowWidth / 2, desktopMode.size.y / 2 - windowHeight / 2});
+
+    window.setFramerateLimit(fps);
 
     gladLoadGL();
 
-    const float aspectRatio = 448.f / 384.f;
-
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    sceneManager = SceneManager({{"EOSD_s4", std::make_shared<EOSD_s4_Scene>()}}, "EOSD_s4");
-
-
-    /*------------------------------------------*/
+    sceneManager = SceneManager(
+        {
+            {"MainMenu", std::make_shared<MainMenu_Scene>(window)},
+            {"EOSD_s4", std::make_shared<EOSD_s4_Scene>(window)},
+        },
+         "MainMenu"
+    );
 
     float accumulator = 0.f;
 
@@ -54,29 +51,7 @@ void GameManager::Run() {
             accumulator -= fixedDeltaTime;
         }
 
-        window.clear(sf::Color::Black);
-
-        /*---------------OpenGL Test----------------*/
-
-        glViewport(32, 16, 384, 448);
-        glEnable(GL_SCISSOR_TEST);
-        glEnable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
-        glScissor(32, 16, 384, 448);
-
-        glm::vec4 clearColor(1.f, 1.f, 1.f, 1.f);
-
-        glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
         draw();
-
-        glDisable(GL_SCISSOR_TEST);
-
-        /*------------------------------------------*/
 
         window.display();
     }
@@ -87,9 +62,19 @@ void GameManager::fixedUpdate(float fixedDeltaTime) {
 }
 
 void GameManager::update(float deltaTime) {
-    sceneManager.GetCurrentScene()->Update(window, deltaTime);
+
+    auto currentScene = sceneManager.GetCurrentScene();
+    currentScene->Update(window, deltaTime);
+
+    if (!currentScene->GetNextSceneName().empty()) {
+        std::string nextSceneName = currentScene->GetNextSceneName();
+        currentScene->ResetNextSceneName();
+        sceneManager.LoadScene(nextSceneName);
+    }
 }
 
 void GameManager::draw() {
+    window.clear(sf::Color::Black);
+
     sceneManager.GetCurrentScene()->Draw(window);
 }

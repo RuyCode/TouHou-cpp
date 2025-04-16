@@ -1,7 +1,9 @@
 #include "core/GameManager.h"
 
-int main()
-{
+#include "core/Spline.h"
+#include <iostream>
+
+int main() {
     GameManager gameManager = GameManager();
     gameManager.Run();
 }

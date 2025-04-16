@@ -15,7 +15,8 @@ protected:
     std::vector<Camera> cameras;
 
     float time;
-
+    
+public:
     virtual void FixedUpdate(float fixedDeltaTime) = 0;
 
     virtual void Update(float deltaTime) = 0;

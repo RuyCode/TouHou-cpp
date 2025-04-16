@@ -1,4 +1,4 @@
-#include "scenes/Scene.h"
+#include "core/Scene.h"
 
 #ifndef SCENE_MANAGER_H
 #define SCENE_MANAGER_H
