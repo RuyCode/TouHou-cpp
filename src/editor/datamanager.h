@@ -3,24 +3,26 @@
 
 #include "game.pb.h"
 
-class DataManager {
+class DataManager
+{
 public:
-    static DataManager& GetInstance();
+    DataManager() = delete;
+    ~DataManager();
+    DataManager(const DataManager &) = delete;
+    DataManager(DataManager &&) = delete;
+    DataManager &operator=(const DataManager &) = delete;
+    DataManager &operator=(DataManager &&) = delete;
 
-    static void LoadLevel(const std::string& file_path);
-    static void SaveLevel();
+    static void loadLevel(const std::string &file_path);
+    static void saveLevel();
 
-    static std::string file_path;
-
-    static game::Level level;
+    static const std::string &getFilePath();
+    static game::Level &getLevel();
 
 private:
-    DataManager() = default;
-    ~DataManager();
-    DataManager(const DataManager&) = delete;
-    DataManager(DataManager&&) = delete;
-    DataManager& operator=(const DataManager&) = delete;
-    DataManager& operator=(DataManager&&) = delete;
+    static std::string m_file_path;
+
+    static game::Level m_level;
 };
 
 #endif

@@ -6,13 +6,14 @@
 #include <QOpenGLShaderProgram>
 #include <QOpenGLWidget>
 
-class SceneWidget : public QOpenGLWidget, protected QOpenGLFunctions {
+class SceneWidget : public QOpenGLWidget, protected QOpenGLFunctions
+{
     Q_OBJECT
 
 public:
-    SceneWidget(QWidget* parent = nullptr);
+    SceneWidget(QWidget *parent = nullptr);
     ~SceneWidget();
-    void mouseReleaseEvent(QMouseEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 protected:
     void initializeGL() override;
@@ -20,8 +21,8 @@ protected:
     void paintGL() override;
 
 private:
-    QOpenGLShaderProgram* shaderProgram;
-    QOpenGLBuffer vertexBuffer;
+    QOpenGLShaderProgram *m_shaderProgram;
+    QOpenGLBuffer m_vertexBuffer;
 };
 
-#endif  // SCENEWIDGET_H
+#endif // SCENEWIDGET_H

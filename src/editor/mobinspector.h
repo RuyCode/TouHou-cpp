@@ -16,71 +16,73 @@
 
 #include "game.pb.h"
 
-class MobInspector : public QWidget {
+class MobInspector : public QWidget
+{
     Q_OBJECT
 
 public:
-    explicit MobInspector(QWidget* parent = nullptr);
-    void SetMob(game::Mob* mob);
-    void Clear();
+    explicit MobInspector(QWidget *parent = nullptr);
+    void setMob(game::Mob *mob);
+    void clear();
 
 private:
-    void SetupUI();
-    void UpdateFields();
-    void UpdatePathFields();
-    void UpdateColliderFields();
-    void ClearFields();
-    void AddPathPointRow(int pointIndex);
-
-    // UI Elements
-    QGroupBox* basicGroup;
-    QLineEdit* nameEdit;
-    QSpinBox* mobPrefabIdSpin;
-    QDoubleSpinBox* spawnDelaySpin;
-
-    QGroupBox* basicPrefabGroup;
-    QDoubleSpinBox* healthSpin;
-    QLineEdit* spriteEdit;
-    QSpinBox* attackIdSpin;
-
-    QGroupBox* pathGroup;
-    QDoubleSpinBox* travelTimeSpin;
-    QPushButton* addPathPointButton;
-    QList<QDoubleSpinBox*> pathPointSpins;
-
-    QGroupBox* dropGroup;
-    QLineEdit* dropItemEdit;
-    QDoubleSpinBox* dropWeightSpin;
-    QCheckBox* fixedAmountCheck;
-    QSpinBox* fixedAmountSpin;
-    QSpinBox* minAmountSpin;
-    QSpinBox* maxAmountSpin;
-
-    QGroupBox* colliderGroup;
-    QDoubleSpinBox* colliderOffsetXSpin;
-    QDoubleSpinBox* colliderOffsetYSpin;
-    QComboBox* colliderTypeCombo;
-    QDoubleSpinBox* circleRadiusSpin;
-    QDoubleSpinBox* rectWidthSpin;
-    QDoubleSpinBox* rectHeightSpin;
-    QDoubleSpinBox* rectAngleSpin;
-
-    game::Mob* currentMob;
+    void setupUI();
+    void updateFields();
+    void updatePathFields();
+    void updateColliderFields();
+    void clearFields();
+    void addPathPointRow(int pointIndex);
 
 private slots:
-    void OnNameChanged(const QString& text);
-    void OnMobPrefabIdChanged(int value);
-    void OnSpawnDelayChanged(double value);
-    void OnPathPointChanged(int pointIndex, double value, bool isX);
-    void OnTravelTimeChanged(double value);
-    void OnDropItemChanged(const QString& text);
-    void OnDropWeightChanged(double value);
-    void OnFixedAmountChanged(int state);
-    void OnFixedAmountValueChanged(int value);
-    void OnMinAmountChanged(int value);
-    void OnMaxAmountChanged(int value);
-    void OnAddPathPointClicked();
-    void OnDeletePathPointClicked(int pointIndex);
+    void onNameChanged(const QString &text);
+    void onMobPrefabIdChanged(int value);
+    void onSpawnDelayChanged(double value);
+    void onPathPointChanged(int pointIndex, double value, bool isX);
+    void onTravelTimeChanged(double value);
+    void onDropItemChanged(const QString &text);
+    void onDropWeightChanged(double value);
+    void onFixedAmountChanged(int state);
+    void onFixedAmountValueChanged(int value);
+    void onMinAmountChanged(int value);
+    void onMaxAmountChanged(int value);
+    void onAddPathPointClicked();
+    void onDeletePathPointClicked(int pointIndex);
+
+private:
+    // UI Elements
+    QGroupBox *m_basicGroup;
+    QLineEdit *m_nameEdit;
+    QSpinBox *m_mobPrefabIdSpin;
+    QDoubleSpinBox *m_spawnDelaySpin;
+
+    QGroupBox *m_basicPrefabGroup;
+    QDoubleSpinBox *m_healthSpin;
+    QLineEdit *m_spriteEdit;
+    QSpinBox *m_attackIdSpin;
+
+    QGroupBox *m_pathGroup;
+    QDoubleSpinBox *m_travelTimeSpin;
+    QPushButton *m_addPathPointButton;
+    QList<QDoubleSpinBox *> m_pathPointSpins;
+
+    QGroupBox *m_dropGroup;
+    QLineEdit *m_dropItemEdit;
+    QDoubleSpinBox *m_dropWeightSpin;
+    QCheckBox *m_fixedAmountCheck;
+    QSpinBox *m_fixedAmountSpin;
+    QSpinBox *m_minAmountSpin;
+    QSpinBox *m_maxAmountSpin;
+
+    QGroupBox *m_colliderGroup;
+    QDoubleSpinBox *m_colliderOffsetXSpin;
+    QDoubleSpinBox *m_colliderOffsetYSpin;
+    QComboBox *m_colliderTypeCombo;
+    QDoubleSpinBox *m_circleRadiusSpin;
+    QDoubleSpinBox *m_rectWidthSpin;
+    QDoubleSpinBox *m_rectHeightSpin;
+    QDoubleSpinBox *m_rectAngleSpin;
+
+    game::Mob *m_currentMob;
 };
 
-#endif  // NEW_MOBINSPECTOR_H
+#endif // NEW_MOBINSPECTOR_H

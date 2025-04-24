@@ -24,72 +24,75 @@ const int kOpenGLMinWidth = 320;
 const int kOpenGLMinHeight = 60;
 
 const int kMobInspectorIndex = 0;
-}  // namespace
+} // namespace
 
-MainWindow::MainWindow(QWidget* parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
-      hierarchyDock(new QDockWidget(kHierarchyTitle, this)),
-      inspectorDock(new QDockWidget(kInspectorTitle, this)),
-      projectDock(new QDockWidget(kProjectTitle, this)),
-      sceneWidget(new SceneWidget(this)),
-      inspectorStacked(new QStackedWidget(inspectorDock)) {
+      m_hierarchyDock(new QDockWidget(kHierarchyTitle, this)),
+      m_inspectorDock(new QDockWidget(kInspectorTitle, this)),
+      m_projectDock(new QDockWidget(kProjectTitle, this)),
+      m_sceneWidget(new SceneWidget(this)),
+      m_inspectorStacked(new QStackedWidget(m_inspectorDock))
+{
     setWindowTitle("Qt Unity-like Interface");
     setMinimumSize(kWindowWidth, kWinowHeight);
 
-    SetupUI();
+    setupUI();
 }
 
-void MainWindow::SetupUI() {
+void MainWindow::setupUI()
+{
     // hierachyDock - hierachy of objects
-    QTreeView* hierarchyTree = new QTreeView(hierarchyDock);
-    hierarchyDock->setWidget(hierarchyTree);
-    hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    addDockWidget(Qt::LeftDockWidgetArea, hierarchyDock);
+    QTreeView *hierarchyTree = new QTreeView(m_hierarchyDock);
+    m_hierarchyDock->setWidget(hierarchyTree);
+    m_hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::LeftDockWidgetArea, m_hierarchyDock);
 
     // projectDock - project
-    QListView* projectList = new QListView(projectDock);
-    projectDock->setWidget(projectList);
-    projectDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    addDockWidget(Qt::BottomDockWidgetArea, projectDock);
+    QListView *projectList = new QListView(m_projectDock);
+    m_projectDock->setWidget(projectList);
+    m_projectDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::BottomDockWidgetArea, m_projectDock);
 
     // inspectorDock - inspector
-    inspectorStacked->addWidget(new MobInspector(inspectorStacked));
-    QScrollArea* inspectorScroll = new QScrollArea(inspectorDock);
-    inspectorScroll->setWidget(inspectorStacked);
+    m_inspectorStacked->addWidget(new MobInspector(m_inspectorStacked));
+    QScrollArea *inspectorScroll = new QScrollArea(m_inspectorDock);
+    inspectorScroll->setWidget(m_inspectorStacked);
     inspectorScroll->setWidgetResizable(true);
-    inspectorDock->setWidget(inspectorScroll);
-    inspectorDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    addDockWidget(Qt::RightDockWidgetArea, inspectorDock);
+    m_inspectorDock->setWidget(inspectorScroll);
+    m_inspectorDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    addDockWidget(Qt::RightDockWidgetArea, m_inspectorDock);
 
     // scene window (QOpenGLWidget)
-    sceneWidget->setMinimumSize(kOpenGLMinWidth, kOpenGLMinHeight);
-    setCentralWidget(sceneWidget);
+    m_sceneWidget->setMinimumSize(kOpenGLMinWidth, kOpenGLMinHeight);
+    setCentralWidget(m_sceneWidget);
 
     // toolBar - toolbar
-    QToolBar* toolBar = addToolBar("Tools");
+    QToolBar *toolBar = addToolBar("Tools");
 
-    QAction* SaveFile = toolBar->addAction("Save File");
+    QAction *SaveFile = toolBar->addAction("Save File");
     SaveFile->setShortcut(QKeySequence::Save);
 
-    QAction* LoadFile = toolBar->addAction("Load File");
+    QAction *LoadFile = toolBar->addAction("Load File");
     LoadFile->setShortcut(QKeySequence::Open);
 
-    QAction* UndoAction = toolBar->addAction("Undo");
+    QAction *UndoAction = toolBar->addAction("Undo");
     UndoAction->setShortcut(QKeySequence::Undo);
 
-    QAction* RedoAction = toolBar->addAction("Redo");
+    QAction *RedoAction = toolBar->addAction("Redo");
     RedoAction->setShortcut(QKeySequence::Redo);
 
     toolBar->setFloatable(false);
     toolBar->setMovable(false);
 
-    connect(SaveFile, &QAction::triggered, this, &MainWindow::SaveFile);
-    connect(LoadFile, &QAction::triggered, this, &MainWindow::LoadFile);
-    connect(UndoAction, &QAction::triggered, this, &MainWindow::UndoSlot);
-    connect(RedoAction, &QAction::triggered, this, &MainWindow::RedoSlot);
+    connect(SaveFile, &QAction::triggered, this, &MainWindow::saveFile);
+    connect(LoadFile, &QAction::triggered, this, &MainWindow::loadFile);
+    connect(UndoAction, &QAction::triggered, this, &MainWindow::undoSlot);
+    connect(RedoAction, &QAction::triggered, this, &MainWindow::redoSlot);
 }
 
-void MainWindow::LoadFile() {
+void MainWindow::loadFile()
+{
     QString executableDir = QCoreApplication::applicationDirPath();
 
     QString fileName = QFileDialog::getOpenFileName(this, "Choose a file", executableDir, "*.bin");
@@ -98,24 +101,27 @@ void MainWindow::LoadFile() {
         return;
     }
 
-    DataManager::LoadLevel(fileName.toStdString());
+    DataManager::loadLevel(fileName.toStdString());
 
-    inspectorStacked->setCurrentIndex(kMobInspectorIndex);
-    auto mobInspector = qobject_cast<MobInspector*>(inspectorStacked->currentWidget());
-    mobInspector->Clear();
-    game::Level& level = DataManager::level;
+    m_inspectorStacked->setCurrentIndex(kMobInspectorIndex);
+    auto mobInspector = qobject_cast<MobInspector *>(m_inspectorStacked->currentWidget());
+    mobInspector->clear();
+    game::Level &level = DataManager::getLevel();
     auto mob = level.mutable_mob_batches(0)->mutable_mobs(0);
-    mobInspector->SetMob(mob);
+    mobInspector->setMob(mob);
 }
 
-void MainWindow::SaveFile() {
-    DataManager::SaveLevel();
+void MainWindow::saveFile()
+{
+    DataManager::saveLevel();
 }
 
-void MainWindow::UndoSlot() {
+void MainWindow::undoSlot()
+{
     qDebug() << "Undo";
 }
 
-void MainWindow::RedoSlot() {
+void MainWindow::redoSlot()
+{
     qDebug() << "Redo";
 }

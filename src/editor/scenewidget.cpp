@@ -8,13 +8,14 @@ const float kGlColor = 0.1f;
 
 // vertexes of the triangle
 const GLfloat kVertices[] = {
-    -0.5f, -0.5f, 0.0f,  // left
-    0.5f,  -0.5f, 0.0f,  // right
-    0.0f,  0.5f,  0.0f   // top
+    -0.5f, -0.5f, 0.0f, // left
+    0.5f,  -0.5f, 0.0f, // right
+    0.0f,  0.5f,  0.0f // top
 };
-}  // namespace
+} // namespace
 
-SceneWidget::SceneWidget(QWidget* parent) : QOpenGLWidget(parent), shaderProgram(nullptr) {
+SceneWidget::SceneWidget(QWidget *parent) : QOpenGLWidget(parent), m_shaderProgram(nullptr)
+{
     // enable OpenGL support
     QSurfaceFormat format;
     format.setRenderableType(QSurfaceFormat::OpenGL);
@@ -23,55 +24,60 @@ SceneWidget::SceneWidget(QWidget* parent) : QOpenGLWidget(parent), shaderProgram
     setFormat(format);
 }
 
-SceneWidget::~SceneWidget() {
-    vertexBuffer.destroy();
-    delete shaderProgram;
+SceneWidget::~SceneWidget()
+{
+    m_vertexBuffer.destroy();
+    delete m_shaderProgram;
 }
 
-void SceneWidget::mouseReleaseEvent(QMouseEvent*) {
+void SceneWidget::mouseReleaseEvent(QMouseEvent *)
+{
     qDebug() << mapFromGlobal(QCursor::pos());
 }
 
-void SceneWidget::initializeGL() {
+void SceneWidget::initializeGL()
+{
     initializeOpenGLFunctions();
 
     // set bg color
     glClearColor(kGlColor, kGlColor, kGlColor, 1.0f);
 
     // create shader program
-    shaderProgram = new QOpenGLShaderProgram(this);
-    shaderProgram->addShaderFromSourceCode(QOpenGLShader::Vertex,
+    m_shaderProgram = new QOpenGLShaderProgram(this);
+    m_shaderProgram->addShaderFromSourceCode(QOpenGLShader::Vertex,
                                            "#version 330 core\n"
                                            "layout(location = 0) in vec3 position;\n"
                                            "void main()\n"
                                            "{\n"
                                            "    gl_Position = vec4(position, 1.0);\n"
                                            "}\n");
-    shaderProgram->addShaderFromSourceCode(QOpenGLShader::Fragment,
+    m_shaderProgram->addShaderFromSourceCode(QOpenGLShader::Fragment,
                                            "#version 330 core\n"
                                            "out vec4 fragColor;\n"
                                            "void main()\n"
                                            "{\n"
                                            "    fragColor = vec4(1.0, 0.5, 0.2, 1.0);\n"
                                            "}\n");
-    shaderProgram->link();
+    m_shaderProgram->link();
 
     // create and set up vertex buffer
-    vertexBuffer.create();
-    vertexBuffer.bind();
-    vertexBuffer.allocate(kVertices, sizeof(kVertices));
+    m_vertexBuffer.create();
+    m_vertexBuffer.bind();
+    m_vertexBuffer.allocate(kVertices, sizeof(kVertices));
 }
-void SceneWidget::resizeGL(int w, int h) {
+void SceneWidget::resizeGL(int w, int h)
+{
     // rendering area
     glViewport(0, 0, w, h);
 }
 
-void SceneWidget::paintGL() {
+void SceneWidget::paintGL()
+{
     // clear color and depth buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    shaderProgram->bind();
-    vertexBuffer.bind();
+    m_shaderProgram->bind();
+    m_vertexBuffer.bind();
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), nullptr);
     glEnableVertexAttribArray(0);
@@ -80,5 +86,5 @@ void SceneWidget::paintGL() {
     glDrawArrays(GL_TRIANGLES, 0, 3);
 
     // disable shader program
-    shaderProgram->release();
+    m_shaderProgram->release();
 }

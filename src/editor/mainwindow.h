@@ -11,27 +11,29 @@
 #include <QTextEdit>
 #include <QTreeView>
 
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
-    MainWindow(QWidget* parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
 
 private:
-    void SetupUI();
-
-    QDockWidget* hierarchyDock;
-    QDockWidget* inspectorDock;
-    QDockWidget* projectDock;
-    QOpenGLWidget* sceneWidget;
-
-    QStackedWidget* inspectorStacked;
+    void setupUI();
 
 private slots:
-    void LoadFile();
-    void SaveFile();
-    void UndoSlot();
-    void RedoSlot();
+    void loadFile();
+    void saveFile();
+    void undoSlot();
+    void redoSlot();
+
+private:
+    QDockWidget *m_hierarchyDock;
+    QDockWidget *m_inspectorDock;
+    QDockWidget *m_projectDock;
+    QOpenGLWidget *m_sceneWidget;
+
+    QStackedWidget *m_inspectorStacked;
 };
 
-#endif  // GAMEWINDOW_H
+#endif // GAMEWINDOW_H

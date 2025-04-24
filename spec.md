@@ -77,6 +77,11 @@
             - damage reduction  # coefficient
             - bg:
                 - shaders
+    - dialogue:  # ordered list
+        - name
+        - sprite
+        - side  # right or left
+        - text
 - drop item:
     - item  # large P, P, Full Power, points, 1UPs, bombs, life and bomb fragments
     - weight  # unsigned double != 0 idk

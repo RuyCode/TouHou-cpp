@@ -2,33 +2,41 @@
 
 #include <fstream>
 
-game::Level DataManager::level = game::Level();
-std::string DataManager::file_path = "";
+game::Level DataManager::m_level = game::Level();
+std::string DataManager::m_file_path = "";
 
-DataManager& DataManager::GetInstance() {
-    static DataManager instance;
-    return instance;
-}
+void DataManager::loadLevel(const std::string &file_path)
+{
+    DataManager::m_file_path = file_path;
 
-void DataManager::LoadLevel(const std::string& file_path) {
-    DataManager::file_path = file_path;
-
-    level.Clear();
+    m_level.Clear();
     std::ifstream in(file_path);
-    level.ParseFromIstream(&in);
+    m_level.ParseFromIstream(&in);
     in.close();
 }
 
-void DataManager::SaveLevel() {
-    if (file_path.empty()) {
+void DataManager::saveLevel()
+{
+    if (m_file_path.empty()) {
         return;
     }
 
-    std::ofstream out(file_path, std::ios::trunc | std::ios::out);
-    level.SerializeToOstream(&out);
+    std::ofstream out(m_file_path, std::ios::trunc | std::ios::out);
+    m_level.SerializeToOstream(&out);
     out.close();
 }
 
-DataManager::~DataManager() {
-    level.Clear();
+const std::string &DataManager::getFilePath()
+{
+    return m_file_path;
+}
+
+game::Level &DataManager::getLevel()
+{
+    return m_level;
+}
+
+DataManager::~DataManager()
+{
+    m_level.Clear();
 }

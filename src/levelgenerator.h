@@ -3,6 +3,6 @@
 
 #include <string>
 
-void GenerateTestLevel(std::string filepath);
+void qGenerateTestLevel(std::string filepath);
 
-#endif  // LEVELGENERATOR_H
+#endif // LEVELGENERATOR_H
