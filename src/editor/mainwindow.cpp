@@ -32,7 +32,8 @@ MainWindow::MainWindow(QWidget *parent)
       m_inspectorDock(new QDockWidget(kInspectorTitle, this)),
       m_projectDock(new QDockWidget(kProjectTitle, this)),
       m_sceneWidget(new SceneWidget(this)),
-      m_inspectorStacked(new QStackedWidget(m_inspectorDock))
+      m_inspectorStacked(new QStackedWidget(m_inspectorDock)),
+      m_undoStack(new QUndoStack(this))
 {
     setWindowTitle("Qt Unity-like Interface");
     setMinimumSize(kWindowWidth, kWinowHeight);
@@ -55,7 +56,7 @@ void MainWindow::setupUI()
     addDockWidget(Qt::BottomDockWidgetArea, m_projectDock);
 
     // inspectorDock - inspector
-    m_inspectorStacked->addWidget(new MobInspector(m_inspectorStacked));
+    m_inspectorStacked->addWidget(new MobInspector(m_undoStack, m_inspectorStacked));
     QScrollArea *inspectorScroll = new QScrollArea(m_inspectorDock);
     inspectorScroll->setWidget(m_inspectorStacked);
     inspectorScroll->setWidgetResizable(true);
@@ -118,10 +119,10 @@ void MainWindow::saveFile()
 
 void MainWindow::undoSlot()
 {
-    qDebug() << "Undo";
+    m_undoStack->undo();
 }
 
 void MainWindow::redoSlot()
 {
-    qDebug() << "Redo";
+    m_undoStack->redo();
 }

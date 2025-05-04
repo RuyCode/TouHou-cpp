@@ -10,6 +10,7 @@
 #include <QStackedWidget>
 #include <QTextEdit>
 #include <QTreeView>
+#include <QUndoStack>
 
 class MainWindow : public QMainWindow
 {
@@ -34,6 +35,8 @@ private:
     QOpenGLWidget *m_sceneWidget;
 
     QStackedWidget *m_inspectorStacked;
+
+    QUndoStack *m_undoStack;
 };
 
 #endif // GAMEWINDOW_H

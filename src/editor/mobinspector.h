@@ -13,6 +13,7 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QWidget>
+#include <QUndoStack>
 
 #include "game.pb.h"
 
@@ -21,7 +22,7 @@ class MobInspector : public QWidget
     Q_OBJECT
 
 public:
-    explicit MobInspector(QWidget *parent = nullptr);
+    explicit MobInspector(QUndoStack *undoStack, QWidget *parent = nullptr);
     void setMob(game::Mob *mob);
     void clear();
 
@@ -83,6 +84,7 @@ private:
     QDoubleSpinBox *m_rectAngleSpin;
 
     game::Mob *m_currentMob;
+    QUndoStack *m_undoStack;
 };
 
 #endif // NEW_MOBINSPECTOR_H

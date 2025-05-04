@@ -1,5 +1,6 @@
 #include "mobinspector.h"
 
+#include "command.h"
 #include "datamanager.h"
 
 namespace {
@@ -37,7 +38,7 @@ enum class ColliderType {
 };
 } // namespace
 
-MobInspector::MobInspector(QWidget *parent)
+MobInspector::MobInspector(QUndoStack *undoStack, QWidget *parent)
     : QWidget(parent),
       m_basicGroup(new QGroupBox(kBasicGroupTitle)),
       m_nameEdit(new QLineEdit()),
@@ -65,7 +66,8 @@ MobInspector::MobInspector(QWidget *parent)
       m_rectWidthSpin(new QDoubleSpinBox()),
       m_rectHeightSpin(new QDoubleSpinBox()),
       m_rectAngleSpin(new QDoubleSpinBox()),
-      m_currentMob(nullptr)
+      m_currentMob(nullptr),
+      m_undoStack(undoStack)
 {
     setMinimumWidth(kMinWidth);
     setBaseSize(kMinWidth, 0);
@@ -215,11 +217,13 @@ void MobInspector::setupUI()
             &MobInspector::onSpawnDelayChanged);
     connect(m_travelTimeSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
             &MobInspector::onTravelTimeChanged);
-    connect(m_addPathPointButton, &QPushButton::clicked, this, &MobInspector::onAddPathPointClicked);
+    connect(m_addPathPointButton, &QPushButton::clicked, this,
+            &MobInspector::onAddPathPointClicked);
     connect(m_dropItemEdit, &QLineEdit::textChanged, this, &MobInspector::onDropItemChanged);
     connect(m_dropWeightSpin, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this,
             &MobInspector::onDropWeightChanged);
-    connect(m_fixedAmountCheck, &QCheckBox::stateChanged, this, &MobInspector::onFixedAmountChanged);
+    connect(m_fixedAmountCheck, &QCheckBox::stateChanged, this,
+            &MobInspector::onFixedAmountChanged);
     connect(m_fixedAmountSpin, QOverload<int>::of(&QSpinBox::valueChanged), this,
             &MobInspector::onFixedAmountValueChanged);
     connect(m_minAmountSpin, QOverload<int>::of(&QSpinBox::valueChanged), this,
@@ -437,9 +441,10 @@ void MobInspector::onNameChanged(const QString &text)
 
 void MobInspector::onMobPrefabIdChanged(int value)
 {
-    if (m_currentMob) {
-        m_currentMob->set_mob_prefab_id(value);
-    }
+    m_undoStack->push(new IntUndoCommand(
+            value, [this]() { return m_currentMob->mob_prefab_id(); },
+            [this](int value) { m_currentMob->set_mob_prefab_id(value); }, "MobPrefabId",
+            [this]() { m_mobPrefabIdSpin->setValue(m_currentMob->mob_prefab_id()); }));
 }
 
 void MobInspector::onSpawnDelayChanged(double value)
