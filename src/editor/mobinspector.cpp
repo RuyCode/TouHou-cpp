@@ -1,6 +1,5 @@
 #include "mobinspector.h"
 
-#include "command.h"
 #include "datamanager.h"
 
 namespace {
@@ -441,10 +440,9 @@ void MobInspector::onNameChanged(const QString &text)
 
 void MobInspector::onMobPrefabIdChanged(int value)
 {
-    m_undoStack->push(new IntUndoCommand(
-            value, [this]() { return m_currentMob->mob_prefab_id(); },
-            [this](int value) { m_currentMob->set_mob_prefab_id(value); }, "MobPrefabId",
-            [this]() { m_mobPrefabIdSpin->setValue(m_currentMob->mob_prefab_id()); }));
+    if (m_currentMob) {
+        m_currentMob->set_mob_prefab_id(value);
+    }
 }
 
 void MobInspector::onSpawnDelayChanged(double value)

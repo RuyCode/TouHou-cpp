@@ -2,6 +2,10 @@
 
 #include "datamanager.h"
 #include "scenewidget.h"
+#include "mobinspector.h"
+#include "mobbatchinspector.h"
+#include "mobprefabinspector.h"
+#include "hierarchywindow.h"
 
 #include <QApplication>
 #include <QFileDialog>
@@ -23,7 +27,11 @@ const int kWinowHeight = 600;
 const int kOpenGLMinWidth = 320;
 const int kOpenGLMinHeight = 60;
 
-const int kMobInspectorIndex = 0;
+enum class InspectorType {
+    MobInspector,
+    MobBatchInspector,
+    MobPrefabInspector,
+};
 } // namespace
 
 MainWindow::MainWindow(QWidget *parent)
@@ -41,10 +49,36 @@ MainWindow::MainWindow(QWidget *parent)
     setupUI();
 }
 
+void MainWindow::showMobInspector(game::Mob *mob)
+{
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::MobInspector));
+    auto mobInspector = qobject_cast<MobInspector *>(m_inspectorStacked->currentWidget());
+    mobInspector->clear();
+    mobInspector->setMob(mob);
+}
+
+void MainWindow::showMobBatchInspector(game::MobBatch *mobBatch)
+{
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::MobBatchInspector));
+    auto mobBatchInspector = qobject_cast<MobBatchInspector *>(m_inspectorStacked->currentWidget());
+    mobBatchInspector->clear();
+    mobBatchInspector->setMobBatch(mobBatch);
+}
+
+void MainWindow::showMobPrefabInspector(game::MobPrefab *mobPrefab)
+{
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::MobPrefabInspector));
+    auto mobPrefabInspector =
+            qobject_cast<MobPrefabInspector *>(m_inspectorStacked->currentWidget());
+    mobPrefabInspector->clear();
+    mobPrefabInspector->setMobPrefab(mobPrefab);
+}
+
 void MainWindow::setupUI()
 {
     // hierachyDock - hierachy of objects
-    QTreeView *hierarchyTree = new QTreeView(m_hierarchyDock);
+    HierarchyWindow *hierarchyTree =
+            new HierarchyWindow(this, qobject_cast<QWidget *>(m_hierarchyDock));
     m_hierarchyDock->setWidget(hierarchyTree);
     m_hierarchyDock->setFeatures(QDockWidget::NoDockWidgetFeatures);
     addDockWidget(Qt::LeftDockWidgetArea, m_hierarchyDock);
@@ -57,6 +91,8 @@ void MainWindow::setupUI()
 
     // inspectorDock - inspector
     m_inspectorStacked->addWidget(new MobInspector(m_undoStack, m_inspectorStacked));
+    m_inspectorStacked->addWidget(new MobBatchInspector(m_undoStack, m_inspectorStacked));
+    m_inspectorStacked->addWidget(new MobPrefabInspector(m_undoStack, m_inspectorStacked));
     QScrollArea *inspectorScroll = new QScrollArea(m_inspectorDock);
     inspectorScroll->setWidget(m_inspectorStacked);
     inspectorScroll->setWidgetResizable(true);
@@ -83,6 +119,8 @@ void MainWindow::setupUI()
     QAction *RedoAction = toolBar->addAction("Redo");
     RedoAction->setShortcut(QKeySequence::Redo);
 
+    QAction *UpdateHierarchyAction = toolBar->addAction("Update Hierarchy");
+
     toolBar->setFloatable(false);
     toolBar->setMovable(false);
 
@@ -90,6 +128,7 @@ void MainWindow::setupUI()
     connect(LoadFile, &QAction::triggered, this, &MainWindow::loadFile);
     connect(UndoAction, &QAction::triggered, this, &MainWindow::undoSlot);
     connect(RedoAction, &QAction::triggered, this, &MainWindow::redoSlot);
+    connect(UpdateHierarchyAction, &QAction::triggered, this, &MainWindow::UpdateHierarchySlot);
 }
 
 void MainWindow::loadFile()
@@ -104,10 +143,14 @@ void MainWindow::loadFile()
 
     DataManager::loadLevel(fileName.toStdString());
 
-    m_inspectorStacked->setCurrentIndex(kMobInspectorIndex);
+    game::Level &level = DataManager::getLevel();
+
+    HierarchyWindow *hierarchyTree = qobject_cast<HierarchyWindow *>(m_hierarchyDock->widget());
+    hierarchyTree->updateHierarchy(level);
+
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::MobInspector));
     auto mobInspector = qobject_cast<MobInspector *>(m_inspectorStacked->currentWidget());
     mobInspector->clear();
-    game::Level &level = DataManager::getLevel();
     auto mob = level.mutable_mob_batches(0)->mutable_mobs(0);
     mobInspector->setMob(mob);
 }
@@ -125,4 +168,11 @@ void MainWindow::undoSlot()
 void MainWindow::redoSlot()
 {
     m_undoStack->redo();
+}
+
+void MainWindow::UpdateHierarchySlot()
+{
+    game::Level &level = DataManager::getLevel();
+    HierarchyWindow *hierarchyTree = qobject_cast<HierarchyWindow *>(m_hierarchyDock->widget());
+    hierarchyTree->updateHierarchy(level);
 }

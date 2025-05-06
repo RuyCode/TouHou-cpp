@@ -1,7 +1,7 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#include "mobinspector.h"
+#include "game.pb.h"
 
 #include <QDockWidget>
 #include <QListView>
@@ -19,6 +19,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
 
+public slots:
+    void showMobInspector(game::Mob *mob);
+    void showMobBatchInspector(game::MobBatch *mobBatch);
+    void showMobPrefabInspector(game::MobPrefab *mobPrefab);
+
 private:
     void setupUI();
 
@@ -27,6 +32,7 @@ private slots:
     void saveFile();
     void undoSlot();
     void redoSlot();
+    void UpdateHierarchySlot();
 
 private:
     QDockWidget *m_hierarchyDock;
