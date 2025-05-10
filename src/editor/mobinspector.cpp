@@ -2,6 +2,7 @@
 
 #include "command.h"
 #include "datamanager.h"
+#include "generator.cpp"
 
 namespace {
 const QString kBasicGroupTitle = "Basic";
@@ -444,7 +445,8 @@ void MobInspector::onMobPrefabIdChanged(int value)
     m_undoStack->push(new IntUndoCommand(
             value, [this]() { return m_currentMob->mob_prefab_id(); },
             [this](int value) { m_currentMob->set_mob_prefab_id(value); }, "MobPrefabId",
-            [this]() { m_mobPrefabIdSpin->setValue(m_currentMob->mob_prefab_id()); }));
+            Generator::UpdateInspector(m_mobPrefabIdSpin,
+                                       [this]() { return m_currentMob->mob_prefab_id(); })));
 }
 
 void MobInspector::onSpawnDelayChanged(double value)
