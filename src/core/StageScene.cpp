@@ -1,22 +1,21 @@
 #include "core/StageScene.h"
+#include "core/PlayerMarisa.h"
+#include <SFML/Graphics.hpp>
+
 
 StageScene::StageScene(sf::Window& window, std::shared_ptr<GLBackground> background)
   : background(background),
-    collisionManager(objectManager),
+    objectManager(std::make_shared<ObjectManager>()),
+    collisionManager(*objectManager),
     window(window),
     uiBackgroundTexture(sf::Texture("src/assets/textures/backgrounds/TouhouEchoesOfDigitalDream.png")),
     uiBackgroundSprite(sf::Sprite(uiBackgroundTexture)),
     statFont(sf::Font("src/assets/fonts/La-chata-normal.ttf")),
     statText(sf::Text(statFont)) {
 
-    auto playerTex = std::make_shared<sf::Texture>();
-    if (!playerTex->loadFromFile("src/assets/textures/Player/marisaFumo.png")) {
-        throw std::runtime_error("Error: failed to load player texture");
-    }
+    objectManager->SetPlayer(std::make_shared<PlayerMarisa>());
 
-    objectManager.SetPlayer(Player(std::vector<std::shared_ptr<sf::Texture>>{playerTex}, 300.f));
-
-    initializeOpenGL(window);
+    initializeOpenGL();
 
     statText.setCharacterSize(16);
     statText.setFillColor(sf::Color::White);
@@ -29,15 +28,17 @@ StageScene::StageScene(sf::Window& window, std::shared_ptr<GLBackground> backgro
     power = 354u;
 }
 
-void StageScene::FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) {
-    objectManager.GetPlayer().FixedUpdate(fixedDeltaTime);
+void StageScene::FixedUpdate(sf::Window& window, float fixedDeltaTime) {
+    objectManager->GetPlayer()->FixedUpdate(fixedDeltaTime);
     background->FixedUpdate(fixedDeltaTime);
 }
 
-void StageScene::Update(sf::RenderWindow& window, float deltaTime) {
+void StageScene::Update(sf::Window& window, float deltaTime) {
     currentFPS = 1.f / deltaTime;
+    time += deltaTime;
+
     if (!isPaused) {
-        objectManager.GetPlayer().Update(deltaTime);
+        objectManager->Update(deltaTime);
         background->Update(deltaTime);
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Escape)) {
@@ -67,8 +68,8 @@ void StageScene::Update(sf::RenderWindow& window, float deltaTime) {
     }
 }
 
-void StageScene::Draw(sf::RenderWindow& window) {
-    window.draw(uiBackgroundSprite);
+void StageScene::Draw(sf::RenderTarget& target) {
+    target.draw(uiBackgroundSprite);
 
     statText.setCharacterSize(16);
     statText.setStyle(sf::Text::Regular);
@@ -76,62 +77,85 @@ void StageScene::Draw(sf::RenderWindow& window) {
     statText.setString("HiScore");
     sf::FloatRect bounds = statText.getLocalBounds();
     statText.setPosition({510 - bounds.size.x, 45});
-    window.draw(statText);
+    target.draw(statText);
 
     std::ostringstream oss;
     oss << std::setw(10) << std::setfill('0') << hiScore;
     statText.setString(oss.str());
     statText.setPosition({520, 45});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString("Score");
     bounds = statText.getLocalBounds();
     statText.setPosition({510 - bounds.size.x, 70});
-    window.draw(statText);
+    target.draw(statText);
 
     oss.str("");
     oss << std::setw(10) << std::setfill('0') << score;
     statText.setString(oss.str());
     statText.setPosition({520, 70});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString("Player");
     bounds = statText.getLocalBounds();
     statText.setPosition({510 - bounds.size.x, 105});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString(L"★★★★");
     statText.setPosition({520, 105});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString("Power");
     bounds = statText.getLocalBounds();
     statText.setPosition({510 - bounds.size.x, 130});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString(std::to_string(power));
     statText.setPosition({520, 130});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setCharacterSize(8);
     statText.setStyle(sf::Text::Bold);
 
     statText.setString(std::to_string(currentFPS).substr(0, 4));
     statText.setPosition({600, 470});
-    window.draw(statText);
+    target.draw(statText);
 
     statText.setString("fps");
     statText.setPosition({620, 470});
-    window.draw(statText);
+    target.draw(statText);
 
-    setupOpenGLState(window);
-    background->Draw();
-    restoreOpenGLState(window);
+    sf::ContextSettings settings;
+    settings.depthBits = 24;
+    sf::RenderTexture renderTexture({384, 448}, settings);
+    
+    setupOpenGLState();
+    background->Draw(renderTexture);
+    restoreOpenGLState(target);
+    
+    sf::Shader shader;
+    std::string fragShader = isPaused ? "src/assets/shaders/pause.frag" : "src/assets/shaders/default.frag";
+    if (!shader.loadFromFile("src/assets/shaders/default.vert", fragShader)) {
+        throw std::runtime_error("Error: could not load shaders");
+    }
+    
+    shader.setUniform("frame", renderTexture.getTexture());
 
-    objectManager.GetPlayer().Draw(window);
+    if (isPaused) shader.setUniform("time", time);
+    
+    sf::Sprite sprite(renderTexture.getTexture());
+    sprite.setScale({1, -1});
+    sprite.setPosition({32, 448 + 16});
 
+    glEnable(GL_SCISSOR_TEST);
+    glScissor(32, 16, 384, 448);
+    objectManager->Draw(renderTexture);
+    glDisable(GL_SCISSOR_TEST);
+
+    target.draw(sprite, &shader);
+    
     if (isPaused) {
-        pauseScene.Draw(window);
+        pauseScene.Draw(target);
     }
 }
 

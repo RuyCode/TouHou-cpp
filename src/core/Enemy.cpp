@@ -13,6 +13,6 @@ void Enemy::Update(float deltaTime) {
 
 }
     
-void Enemy::Draw(sf::RenderWindow& window) {
+void Enemy::Draw(sf::RenderTarget& target) {
 
 }

@@ -1,5 +1,9 @@
 #include "core/CollisionManager.h"
 
+#include "core/Enemy.h"
+#include "core/Player.h"
+#include "core/Bullet.h"
+
 #include <limits>
 
 CollisionManager::CollisionManager(ObjectManager& ObjectManager): objectManager(objectManager){};
@@ -135,9 +139,9 @@ const CollisionPair& CollisionManager::EnemyBulletToPlayerCollision() {
     playerAndEnemyBulletCollision.bullet = nullptr;
     playerAndEnemyBulletCollision.object = nullptr;
     for (const std::shared_ptr<Bullet>& bullet : objectManager.GetEnemyBullets()) {
-        if (checkCollision(bullet->GetPosition(), objectManager.GetPlayer().GetPosition(), bullet->GetCollider(), objectManager.GetPlayer().GetCollider())) {
+        if (checkCollision(bullet->GetPosition(), objectManager.GetPlayer()->GetPosition(), bullet->GetCollider(), objectManager.GetPlayer()->GetCollider())) {
             playerAndEnemyBulletCollision.bullet = bullet;
-            playerAndEnemyBulletCollision.object = std::make_shared<Player>(objectManager.GetPlayer());
+            playerAndEnemyBulletCollision.object = objectManager.GetPlayer();
             break;
         }
     }

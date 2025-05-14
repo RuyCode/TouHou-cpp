@@ -19,19 +19,20 @@ private:
 
     sf::Keyboard::Scan lastPressedKey = sf::Keyboard::Scan::Unknown;
 
-    std::string pauseDisplayText[2] = {
-        "No",
-        "Yes"
+    std::string pauseDisplayText[3] = {
+        "Resume",
+        "Return to Title Screen",
+        "Retry this Game"
     };
     
 public:
     Pause_Scene();
 
-    void FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) override;
+    void FixedUpdate(sf::Window& window, float fixedDeltaTime) override;
 
-    void Update(sf::RenderWindow& window, float deltaTime) override;
+    void Update(sf::Window& window, float deltaTime) override;
 
-    void Draw(sf::RenderWindow& window) override;
+    void Draw(sf::RenderTarget& target) override;
 
     PauseResult GetPauseResult();
 

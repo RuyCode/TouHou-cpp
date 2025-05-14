@@ -50,8 +50,10 @@ void EOSD_s4_Background::Update(float deltaTime) {
     cameras[0].SetPosition(newCamPos);
 }
 
-void EOSD_s4_Background::Draw() {
+void EOSD_s4_Background::Draw(sf::RenderTarget& target) {
     setActiveCamera(1);
+
+    target.clear();
 
     FBO.Unbind();
 
@@ -62,12 +64,13 @@ void EOSD_s4_Background::Draw() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     scene.Draw(shaders);
     FBO.UnbindDraw();
-    
+
+    target.setActive(true);
     FBO.BindRead();
-    glViewport(32, 16, 384, 448);
-    glScissor(32, 16, 384, 448);
+    glViewport(0, 0, 384, 448);
+    glScissor(0, 0, 384, 448);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glBlitFramebuffer(0, 0, 384, 448, 32, 16, 416, 464, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+    glBlitFramebuffer(0, 0, 384, 448, 0, 0, 384, 448, GL_COLOR_BUFFER_BIT, GL_NEAREST);
     FBO.Unbind();
     glDisable(GL_SCISSOR_TEST);
 
@@ -84,8 +87,15 @@ void EOSD_s4_Background::Draw() {
     shaders[0].SetVec3("lightPositions", cameras[0].GetPosition(), lightPositions.size());
     shaders[0].SetVec3("lightColors", lightColors[0], lightColors.size());
 
+    target.setActive(true);
+    glEnable(GL_DEPTH_TEST);
     glClear(GL_DEPTH_BUFFER_BIT);
+
+    glViewport(0, 0, 384, 448);
+    glScissor(0, 0, 384, 448);
+
     scene.Draw(shaders);
+    target.setActive(false);
 }
 
 void EOSD_s4_Background::setActiveCamera(std::uint8_t cameraIndex) {

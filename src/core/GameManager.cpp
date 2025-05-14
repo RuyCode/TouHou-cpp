@@ -44,6 +44,8 @@ void GameManager::Run() {
             }
         }
 
+        if (!window.isOpen()) break;
+
         update(deltaTime);
 
         while (accumulator >= fixedDeltaTime) {
@@ -75,6 +77,6 @@ void GameManager::update(float deltaTime) {
 
 void GameManager::draw() {
     window.clear(sf::Color::Black);
-
+    
     sceneManager.GetCurrentScene()->Draw(window);
 }

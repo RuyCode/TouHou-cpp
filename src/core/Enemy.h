@@ -1,4 +1,5 @@
 #include "core/GameObject.h"
+#include "core/ObjectManager.h"
 
 #ifndef ENEMY_H
 #define ENEMY_H
@@ -11,7 +12,7 @@ public:
 
     void Update(float deltaTime) override;
     
-    void Draw(sf::RenderWindow& window) override;
+    void Draw(sf::RenderTarget& target) override;
 
 };
 

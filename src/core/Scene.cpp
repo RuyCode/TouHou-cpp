@@ -1,6 +1,6 @@
 #include "core/Scene.h"
 
-void Scene::setupOpenGLState(sf::Window& window) {
+void Scene::setupOpenGLState() {
     glGetIntegerv(GL_ACTIVE_TEXTURE, &this->activeTextureBuffer);
 
     for (GLint i = 0; i < maxTextureUnits; ++i) {
@@ -22,10 +22,10 @@ void Scene::setupOpenGLState(sf::Window& window) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Scene::restoreOpenGLState(sf::Window& window) {
+void Scene::restoreOpenGLState(sf::RenderTarget& target) {
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_SCISSOR_TEST);
-    glViewport(0, 0, window.getSize().x, window.getSize().y);
+    glViewport(0, 0, target.getSize().x, target.getSize().y);
 
     glUseProgram(0);
 
@@ -37,7 +37,7 @@ void Scene::restoreOpenGLState(sf::Window& window) {
     glActiveTexture(activeTextureBuffer);
 }
 
-void Scene::initializeOpenGL(sf::Window& window) {
+void Scene::initializeOpenGL() {
 
     glGetIntegerv(GL_ACTIVE_TEXTURE, &this->activeTextureBuffer);
     glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextureUnits);

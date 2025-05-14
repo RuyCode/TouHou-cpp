@@ -1,4 +1,5 @@
 #include "core/GameObject.h"
+#include "core/ObjectManager.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -9,11 +10,19 @@
 #include <glm/glm.hpp>
 
 class Player : public GameObject {
-private:
+protected:
+    std::weak_ptr<ObjectManager> objectManager;
     std::vector<std::shared_ptr<sf::Texture>> textures;
     std::shared_ptr<sf::Sprite> sprite;
 
+    std::vector<std::shared_ptr<sf::Texture>> attackBulletTextures;
+
+    float attackCooldown;
+    float attackTimer;
+
     float speed;
+
+    virtual void attack() = 0;
 
 public: 
     Player();
@@ -24,11 +33,13 @@ public:
 
     Player& operator=(const Player& other);
 
+    void SetObjectManager(std::shared_ptr<ObjectManager> objectManager);
+
     void FixedUpdate(float fixedDeltaTime) override;    
 
     void Update(float deltaTime) override;
     
-    void Draw(sf::RenderWindow& window) override;
+    void Draw(sf::RenderTarget& target) override;
 };
 
 #endif

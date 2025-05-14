@@ -16,18 +16,18 @@ protected:
 
     void switchScene(const std::string& nextSceneName);
 
-    void setupOpenGLState(sf::Window& window);
+    void setupOpenGLState();
 
-    void restoreOpenGLState(sf::Window& window);
+    void restoreOpenGLState(sf::RenderTarget& window);
 
-    void initializeOpenGL(sf::Window& window);
+    void initializeOpenGL();
 
 public:
-    virtual void FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) = 0;
+    virtual void FixedUpdate(sf::Window& window, float fixedDeltaTime) = 0;
 
-    virtual void Update(sf::RenderWindow& window, float deltaTime) = 0;
+    virtual void Update(sf::Window& window, float deltaTime) = 0;
 
-    virtual void Draw(sf::RenderWindow& window) = 0;
+    virtual void Draw(sf::RenderTarget& target) = 0;
 
     const std::string& GetNextSceneName();
 

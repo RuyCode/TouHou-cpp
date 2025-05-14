@@ -10,13 +10,13 @@ MainMenu_Scene::MainMenu_Scene(sf::Window& window)
     mainMenuText.setOutlineThickness(3);   
 }
 
-void MainMenu_Scene::FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) {
+void MainMenu_Scene::FixedUpdate(sf::Window& window, float fixedDeltaTime) {
 
 }
 
 #include <iostream>
 
-void MainMenu_Scene::Update(sf::RenderWindow& window, float deltaTime) {
+void MainMenu_Scene::Update(sf::Window& window, float deltaTime) {
     bool isArrowKeyPressed;
 
     auto handleArrowKey = [&](bool isPressed, int direction) {
@@ -67,7 +67,7 @@ void MainMenu_Scene::Update(sf::RenderWindow& window, float deltaTime) {
 }
 
 
-void MainMenu_Scene::Draw(sf::RenderWindow& window) {
+void MainMenu_Scene::Draw(sf::RenderTarget& target) {
     for (int i = 0; i < 8; ++i) {
         mainMenuText.setString(menuDisplayText[i]);
 
@@ -78,7 +78,7 @@ void MainMenu_Scene::Draw(sf::RenderWindow& window) {
             mainMenuText.setPosition({450 - 5 * i, 200 + 30 * i});
         }
         
-        window.draw(mainMenuText);
+        target.draw(mainMenuText);
 
         mainMenuText.setFillColor(sf::Color::White);
     }

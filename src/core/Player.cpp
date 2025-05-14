@@ -77,10 +77,20 @@ void Player::Update(float deltaTime) {
     }
 
     sprite->setPosition(sf::Vector2f(position.x, position.y));
+
+    attackTimer -= deltaTime;
+    if (attackTimer <= 0) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::Z)) {
+            attack();
+        }
+        attackTimer = attackCooldown;
+    }
 }
 
-#include <iostream>
+void Player::Draw(sf::RenderTarget& target) {
+    target.draw(*sprite);
+}
 
-void Player::Draw(sf::RenderWindow& window) {
-    window.draw(*sprite);
+void Player::SetObjectManager(std::shared_ptr<ObjectManager> objectManager) {
+    this->objectManager = objectManager;
 }

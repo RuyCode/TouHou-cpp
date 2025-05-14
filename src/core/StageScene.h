@@ -11,6 +11,8 @@ class StageScene : public Scene {
 protected:
     sf::Window& window;
 
+    float time = 0.f;
+
     bool isPaused = false;
     Pause_Scene pauseScene;
 
@@ -31,16 +33,16 @@ protected:
     std::uint8_t player;
     std::uint16_t power;
 
-    ObjectManager objectManager;
+    std::shared_ptr<ObjectManager> objectManager;
     CollisionManager collisionManager;
 public:
     StageScene(sf::Window& window, std::shared_ptr<GLBackground> background);
 
-    void FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) override;
+    void FixedUpdate(sf::Window& window, float fixedDeltaTime) override;
 
-    void Update(sf::RenderWindow& window, float deltaTime) override;
+    void Update(sf::Window& window, float deltaTime) override;
 
-    void Draw(sf::RenderWindow& window) override;
+    void Draw(sf::RenderTarget& target) override;
 };
 
 #endif // STAGE_SCENE_H

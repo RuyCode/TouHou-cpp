@@ -6,8 +6,7 @@
 #include <vector>
 #include <memory>
 
-
-template <typename T, typename = std::enable_if_t<std::is_base_of_v<GameObject, T>>>
+template <typename T>
 class ObjectPool {
 private:
     std::vector<std::shared_ptr<T>> pool;
@@ -29,7 +28,7 @@ public:
 
     bool HasFreeElement(std::shared_ptr<T>& element) {
         for (const std::shared_ptr<T>& obj : pool) {
-            if (!obj->isActive()) {
+            if (!obj->GetActive()) {
                 element = obj;
                 return true; 
             }
@@ -43,6 +42,7 @@ public:
         std::shared_ptr<T> element = nullptr;
 
         if (HasFreeElement(element)) {
+            element->SetActive(true);
             return element;
         }
 

@@ -21,7 +21,7 @@ public:
 
     virtual void Update(float deltaTime) = 0;
 
-    virtual void Draw() = 0;
+    virtual void Draw(sf::RenderTarget& target) = 0;
 
     GLBackground(const std::string& modelPath, const std::vector<std::string>& vertShaderPath, const std::vector<std::string>& fragShaderPath);
 };

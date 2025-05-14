@@ -12,14 +12,14 @@ EOSD_s4_Scene::EOSD_s4_Scene(sf::Window& window)
     std::cout << "Loaded scene: EOSD stage 4" << std::endl;
 }
 
-void EOSD_s4_Scene::FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) {
+void EOSD_s4_Scene::FixedUpdate(sf::Window& window, float fixedDeltaTime) {
     StageScene::Update(window, fixedDeltaTime);
 }
 
-void EOSD_s4_Scene::Update(sf::RenderWindow& window, float deltaTime) {
+void EOSD_s4_Scene::Update(sf::Window& window, float deltaTime) {
     StageScene::Update(window, deltaTime);
 }
 
-void EOSD_s4_Scene::Draw(sf::RenderWindow& window) {
-    StageScene::Draw(window);
+void EOSD_s4_Scene::Draw(sf::RenderTarget& target) {
+    StageScene::Draw(target);
 }

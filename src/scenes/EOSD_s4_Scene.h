@@ -14,11 +14,11 @@ private:
 public:
     EOSD_s4_Scene(sf::Window& window);
 
-    void FixedUpdate(sf::RenderWindow& window, float fixedDeltaTime) override;
+    void FixedUpdate(sf::Window& window, float fixedDeltaTime) override;
 
-    void Update(sf::RenderWindow& window, float deltaTime) override;
+    void Update(sf::Window& window, float deltaTime) override;
 
-    void Draw(sf::RenderWindow& window) override;
+    void Draw(sf::RenderTarget& target) override;
 };
 
 #endif // MAIN_SCENE_H

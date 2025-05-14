@@ -36,7 +36,7 @@ public:
 
     void Update(float deltaTime) override;
 
-    void Draw() override;
+    void Draw(sf::RenderTarget& target) override;
 };
 
 #endif // ESOD_S4_BACKGROUND_H
