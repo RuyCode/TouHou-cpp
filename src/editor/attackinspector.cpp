@@ -2,6 +2,8 @@
 
 #include "datamanager.h"
 
+#include <QSpacerItem>
+
 namespace {
 const QString kBasicGroupTitle = "Basic";
 const QString kPatternGroupTitle = "Attack Pattern";
@@ -11,9 +13,6 @@ const double kMaxValue = 999;
 const double kMinNegative = -999;
 const double kMaxAngle = 360;
 const double kSingleStep = 0.1;
-
-const int kBulletIdIndex = 2;
-const int kAttackIdIndex = 3;
 
 enum class AttackType {
     BulletId,
@@ -44,7 +43,9 @@ AttackInspector::AttackInspector(QUndoStack *undoStack, QWidget *parent)
       m_spawnOffsetXSpin(new QDoubleSpinBox()),
       m_spawnOffsetYSpin(new QDoubleSpinBox()),
       m_amountSpin(new QDoubleSpinBox()),
+      m_attackTypeStack(new QStackedWidget()),
       m_attackPatternCombo(new QComboBox()),
+      m_patternStack(new QStackedWidget()),
       m_circleGroup(new QGroupBox("Circle Pattern")),
       m_circleRotationAngleSpin(new QDoubleSpinBox()),
       m_arcGroup(new QGroupBox("Arc Pattern")),
@@ -84,6 +85,12 @@ AttackInspector::AttackInspector(QUndoStack *undoStack, QWidget *parent)
       m_spiralDeltaDirectionSpin(new QDoubleSpinBox()),
       m_spiralRandomDirectionMinSpin(new QDoubleSpinBox()),
       m_spiralRandomDirectionMaxSpin(new QDoubleSpinBox()),
+      m_lineSpeedStack(new QStackedWidget()),
+      m_lineAmountStack(new QStackedWidget()),
+      m_lineDirectionStack(new QStackedWidget()),
+      m_spiralSpeedStack(new QStackedWidget()),
+      m_spiralAmountStack(new QStackedWidget()),
+      m_spiralDirectionStack(new QStackedWidget()),
       m_currentAttack(nullptr),
       m_undoStack(undoStack)
 {
@@ -116,11 +123,25 @@ void AttackInspector::setupUI()
     basicLayout->addRow("Attack Type:", m_attackTypeCombo);
 
     m_bulletIdSpin->setRange(0, INT_MAX);
-    basicLayout->addRow("Bullet ID:", m_bulletIdSpin);
-
     m_attackIdSpin->setRange(0, INT_MAX);
-    basicLayout->addRow("Attack ID:", m_attackIdSpin);
 
+    // m_attackTypeStack (bullet id or attack id)
+    QGroupBox *bulletGroup = new QGroupBox(m_attackTypeStack);
+    QFormLayout *bulletLayout = new QFormLayout(bulletGroup);
+    bulletLayout->addRow("Bullet ID:", m_bulletIdSpin);
+
+    QGroupBox *attackGroup = new QGroupBox(m_attackTypeStack);
+    QFormLayout *attackLayout = new QFormLayout(attackGroup);
+    attackLayout->addRow("Attack ID:", m_attackIdSpin);
+
+    m_attackTypeStack = new QStackedWidget();
+    m_attackTypeStack->addWidget(bulletGroup);
+    m_attackTypeStack->addWidget(attackGroup);
+
+    basicLayout->addRow("Attack Target:", m_attackTypeCombo);
+    basicLayout->addRow(m_attackTypeStack);
+
+    // Continue create basic fields
     m_speedSpin->setRange(0, kMaxValue);
     m_speedSpin->setSingleStep(kSingleStep);
     basicLayout->addRow("Speed:", m_speedSpin);
@@ -152,7 +173,7 @@ void AttackInspector::setupUI()
     m_circleRotationAngleSpin->setSingleStep(kSingleStep);
     circleLayout->addRow("Rotation Angle:", m_circleRotationAngleSpin);
     m_circleGroup->setLayout(circleLayout);
-    layout->addRow(m_circleGroup);
+    m_patternStack->addWidget(m_circleGroup);
 
     // Arc pattern
     QFormLayout *arcLayout = new QFormLayout(m_arcGroup);
@@ -164,7 +185,7 @@ void AttackInspector::setupUI()
     m_arcSpreadAngleSpin->setSingleStep(kSingleStep);
     arcLayout->addRow("Spread Angle:", m_arcSpreadAngleSpin);
     m_arcGroup->setLayout(arcLayout);
-    layout->addRow(m_arcGroup);
+    m_patternStack->addWidget(m_arcGroup);
 
     // Line pattern
     QFormLayout *lineLayout = new QFormLayout(m_lineGroup);
@@ -176,59 +197,95 @@ void AttackInspector::setupUI()
     m_lineDeltaTimeSpin->setSingleStep(kSingleStep);
     lineLayout->addRow("Delta Time:", m_lineDeltaTimeSpin);
 
+    // Line speed config
     m_lineSpeedConfigCombo->addItem("Delta Speed");
     m_lineSpeedConfigCombo->addItem("Random Speed");
-    lineLayout->addRow("Speed Config:", m_lineSpeedConfigCombo);
-    m_lineDeltaSpeedSpin->setRange(kMinNegative, kMaxValue);
-    m_lineDeltaSpeedSpin->setSingleStep(kSingleStep);
-    lineLayout->addRow("Delta Speed:", m_lineDeltaSpeedSpin);
+
+    QGroupBox *lineDeltaSpeedGroup = new QGroupBox(m_lineSpeedStack);
+    QFormLayout *lineDeltaSpeedLayout = new QFormLayout(lineDeltaSpeedGroup);
+    lineDeltaSpeedLayout->addRow("Delta Speed:", m_lineDeltaSpeedSpin);
+    lineDeltaSpeedGroup->setLayout(lineDeltaSpeedLayout);
+
+    QGroupBox *lineRandomSpeedGroup = new QGroupBox(m_lineSpeedStack);
+    QHBoxLayout *randomSpeedLayout = new QHBoxLayout(lineRandomSpeedGroup);
+
     m_lineRandomSpeedMinSpin->setRange(kMinNegative, kMaxValue);
     m_lineRandomSpeedMinSpin->setSingleStep(kSingleStep);
     m_lineRandomSpeedMaxSpin->setRange(kMinNegative, kMaxValue);
     m_lineRandomSpeedMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *randomSpeedLayout = new QHBoxLayout();
+
     randomSpeedLayout->addWidget(new QLabel("Min:"));
     randomSpeedLayout->addWidget(m_lineRandomSpeedMinSpin);
     randomSpeedLayout->addWidget(new QLabel("Max:"));
     randomSpeedLayout->addWidget(m_lineRandomSpeedMaxSpin);
-    lineLayout->addRow("Random Speed:", randomSpeedLayout);
+    lineRandomSpeedGroup->setLayout(randomSpeedLayout);
 
+    m_lineSpeedStack->addWidget(lineDeltaSpeedGroup);
+    m_lineSpeedStack->addWidget(lineRandomSpeedGroup);
+
+    lineLayout->addRow("Speed Config:", m_lineSpeedConfigCombo);
+    lineLayout->addRow(m_lineSpeedStack);
+
+    // Line amount Config
     m_lineAmountConfigCombo->addItem("Delta Amount");
     m_lineAmountConfigCombo->addItem("Random Amount");
-    lineLayout->addRow("Amount Config:", m_lineAmountConfigCombo);
-    m_lineDeltaAmountSpin->setRange(kMinNegative, kMaxValue);
-    m_lineDeltaAmountSpin->setSingleStep(kSingleStep);
-    lineLayout->addRow("Delta Amount:", m_lineDeltaAmountSpin);
+
+    QGroupBox *lineDeltaAmountGroup = new QGroupBox(m_lineAmountStack);
+    QFormLayout *lineDeltaAmountLayout = new QFormLayout(lineDeltaAmountGroup);
+    lineDeltaAmountLayout->addRow("Delta Amount:", m_lineDeltaAmountSpin);
+    lineDeltaAmountGroup->setLayout(lineDeltaAmountLayout);
+
+    QGroupBox *lineRandomAmountGroup = new QGroupBox(m_lineAmountStack);
+    QHBoxLayout *randomAmountLayout = new QHBoxLayout(lineRandomAmountGroup);
+
     m_lineRandomAmountMinSpin->setRange(1, kMaxValue);
     m_lineRandomAmountMinSpin->setSingleStep(kSingleStep);
     m_lineRandomAmountMaxSpin->setRange(1, kMaxValue);
     m_lineRandomAmountMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *randomAmountLayout = new QHBoxLayout();
+    lineRandomAmountGroup->setLayout(randomAmountLayout);
+
     randomAmountLayout->addWidget(new QLabel("Min:"));
     randomAmountLayout->addWidget(m_lineRandomAmountMinSpin);
     randomAmountLayout->addWidget(new QLabel("Max:"));
     randomAmountLayout->addWidget(m_lineRandomAmountMaxSpin);
-    lineLayout->addRow("Random Amount:", randomAmountLayout);
 
+    m_lineAmountStack->addWidget(lineDeltaAmountGroup);
+    m_lineAmountStack->addWidget(lineRandomAmountGroup);
+
+    lineLayout->addRow("Amount Config:", m_lineAmountConfigCombo);
+    lineLayout->addRow(m_lineAmountStack);
+
+    // Line direction config
     m_lineDirectionConfigCombo->addItem("Delta Direction");
     m_lineDirectionConfigCombo->addItem("Random Direction");
-    lineLayout->addRow("Direction Config:", m_lineDirectionConfigCombo);
-    m_lineDeltaDirectionSpin->setRange(kMinNegative, kMaxValue);
-    m_lineDeltaDirectionSpin->setSingleStep(kSingleStep);
-    lineLayout->addRow("Delta Direction:", m_lineDeltaDirectionSpin);
+
+    QGroupBox *lineDeltaDirectionGroup = new QGroupBox(m_lineDirectionStack);
+    QFormLayout *lineDeltaDirectionLayout = new QFormLayout(lineDeltaDirectionGroup);
+    lineDeltaDirectionLayout->addRow("Delta Direction:", m_lineDeltaDirectionSpin);
+    lineDeltaDirectionGroup->setLayout(lineDeltaDirectionLayout);
+
+    QGroupBox *lineRandomDirectionGroup = new QGroupBox(m_lineDirectionStack);
+    QHBoxLayout *randomDirectionLayout = new QHBoxLayout(lineRandomDirectionGroup);
+
     m_lineRandomDirectionMinSpin->setRange(kMinNegative, kMaxValue);
     m_lineRandomDirectionMinSpin->setSingleStep(kSingleStep);
     m_lineRandomDirectionMaxSpin->setRange(kMinNegative, kMaxValue);
     m_lineRandomDirectionMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *randomDirectionLayout = new QHBoxLayout();
+
     randomDirectionLayout->addWidget(new QLabel("Min:"));
     randomDirectionLayout->addWidget(m_lineRandomDirectionMinSpin);
     randomDirectionLayout->addWidget(new QLabel("Max:"));
     randomDirectionLayout->addWidget(m_lineRandomDirectionMaxSpin);
-    lineLayout->addRow("Random Direction:", randomDirectionLayout);
+    lineRandomDirectionGroup->setLayout(randomDirectionLayout);
+
+    m_lineDirectionStack->addWidget(lineDeltaDirectionGroup);
+    m_lineDirectionStack->addWidget(lineRandomDirectionGroup);
+
+    lineLayout->addRow("Direction Config:", m_lineDirectionConfigCombo);
+    lineLayout->addRow(m_lineDirectionStack);
 
     m_lineGroup->setLayout(lineLayout);
-    layout->addRow(m_lineGroup);
+    m_patternStack->addWidget(m_lineGroup);
 
     // Spiral pattern (similar to Line pattern)
     QFormLayout *spiralLayout = new QFormLayout(m_spiralGroup);
@@ -243,59 +300,97 @@ void AttackInspector::setupUI()
     m_spiralDeltaTimeSpin->setSingleStep(kSingleStep);
     spiralLayout->addRow("Delta Time:", m_spiralDeltaTimeSpin);
 
+    // Sprial speed config
     m_spiralSpeedConfigCombo->addItem("Delta Speed");
     m_spiralSpeedConfigCombo->addItem("Random Speed");
-    spiralLayout->addRow("Speed Config:", m_spiralSpeedConfigCombo);
-    m_spiralDeltaSpeedSpin->setRange(kMinNegative, kMaxValue);
-    m_spiralDeltaSpeedSpin->setSingleStep(kSingleStep);
-    spiralLayout->addRow("Delta Speed:", m_spiralDeltaSpeedSpin);
+
+    QGroupBox *spiralDeltaSpeedGroup = new QGroupBox(m_spiralSpeedStack);
+    QFormLayout *spiralDeltaSpeedLayout = new QFormLayout(spiralDeltaSpeedGroup);
+    spiralDeltaSpeedLayout->addRow("Delta Speed:", m_spiralDeltaSpeedSpin);
+    spiralDeltaSpeedGroup->setLayout(spiralDeltaSpeedLayout);
+
+    QGroupBox *spiralRandomSpeedGroup = new QGroupBox(m_spiralSpeedStack);
+    QHBoxLayout *spiralRandomSpeedLayout = new QHBoxLayout(spiralRandomSpeedGroup);
+
     m_spiralRandomSpeedMinSpin->setRange(kMinNegative, kMaxValue);
     m_spiralRandomSpeedMinSpin->setSingleStep(kSingleStep);
     m_spiralRandomSpeedMaxSpin->setRange(kMinNegative, kMaxValue);
     m_spiralRandomSpeedMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *spiralRandomSpeedLayout = new QHBoxLayout();
+
     spiralRandomSpeedLayout->addWidget(new QLabel("Min:"));
     spiralRandomSpeedLayout->addWidget(m_spiralRandomSpeedMinSpin);
     spiralRandomSpeedLayout->addWidget(new QLabel("Max:"));
     spiralRandomSpeedLayout->addWidget(m_spiralRandomSpeedMaxSpin);
-    spiralLayout->addRow("Random Speed:", spiralRandomSpeedLayout);
+    spiralRandomSpeedGroup->setLayout(spiralRandomSpeedLayout);
 
+    m_spiralSpeedStack->addWidget(spiralDeltaSpeedGroup);
+    m_spiralSpeedStack->addWidget(spiralRandomSpeedGroup);
+
+    spiralLayout->addRow("Speed Config:", m_spiralSpeedConfigCombo);
+    spiralLayout->addRow(m_spiralSpeedStack);
+
+    // Spiral amount config
     m_spiralAmountConfigCombo->addItem("Delta Amount");
     m_spiralAmountConfigCombo->addItem("Random Amount");
-    spiralLayout->addRow("Amount Config:", m_spiralAmountConfigCombo);
-    m_spiralDeltaAmountSpin->setRange(kMinNegative, kMaxValue);
-    m_spiralDeltaAmountSpin->setSingleStep(kSingleStep);
-    spiralLayout->addRow("Delta Amount:", m_spiralDeltaAmountSpin);
+
+    QGroupBox *spiralDeltaAmountGroup = new QGroupBox();
+    QFormLayout *spiralDeltaAmountLayout = new QFormLayout(spiralDeltaAmountGroup);
+    spiralDeltaAmountLayout->addRow("Delta Amount:", m_spiralDeltaAmountSpin);
+    spiralDeltaAmountGroup->setLayout(spiralDeltaAmountLayout);
+
+    QGroupBox *spiralRandomAmountGroup = new QGroupBox();
+    QHBoxLayout *spiralRandomAmountLayout = new QHBoxLayout(spiralRandomAmountGroup);
+
     m_spiralRandomAmountMinSpin->setRange(1, kMaxValue);
     m_spiralRandomAmountMinSpin->setSingleStep(kSingleStep);
     m_spiralRandomAmountMaxSpin->setRange(1, kMaxValue);
     m_spiralRandomAmountMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *spiralRandomAmountLayout = new QHBoxLayout();
+
     spiralRandomAmountLayout->addWidget(new QLabel("Min:"));
     spiralRandomAmountLayout->addWidget(m_spiralRandomAmountMinSpin);
     spiralRandomAmountLayout->addWidget(new QLabel("Max:"));
     spiralRandomAmountLayout->addWidget(m_spiralRandomAmountMaxSpin);
-    spiralLayout->addRow("Random Amount:", spiralRandomAmountLayout);
+    spiralRandomAmountGroup->setLayout(spiralRandomAmountLayout);
 
+    m_spiralAmountStack->addWidget(spiralDeltaAmountGroup);
+    m_spiralAmountStack->addWidget(spiralRandomAmountGroup);
+
+    spiralLayout->addRow("Amount Config:", m_spiralAmountConfigCombo);
+    spiralLayout->addRow(m_spiralAmountStack);
+
+    // Spiral direction config
     m_spiralDirectionConfigCombo->addItem("Delta Direction");
     m_spiralDirectionConfigCombo->addItem("Random Direction");
-    spiralLayout->addRow("Direction Config:", m_spiralDirectionConfigCombo);
-    m_spiralDeltaDirectionSpin->setRange(kMinNegative, kMaxValue);
-    m_spiralDeltaDirectionSpin->setSingleStep(kSingleStep);
-    spiralLayout->addRow("Delta Direction:", m_spiralDeltaDirectionSpin);
+
+    QGroupBox *spiralDeltaDirectionGroup = new QGroupBox();
+    QFormLayout *spiralDeltaDirectionLayout = new QFormLayout(spiralDeltaDirectionGroup);
+    spiralDeltaDirectionLayout->addRow("Delta Direction:", m_spiralDeltaDirectionSpin);
+    spiralDeltaDirectionGroup->setLayout(spiralDeltaDirectionLayout);
+
+    QGroupBox *spiralRandomDirectionGroup = new QGroupBox();
+    QHBoxLayout *spiralRandomDirectionLayout = new QHBoxLayout(spiralRandomDirectionGroup);
+
     m_spiralRandomDirectionMinSpin->setRange(kMinNegative, kMaxValue);
     m_spiralRandomDirectionMinSpin->setSingleStep(kSingleStep);
     m_spiralRandomDirectionMaxSpin->setRange(kMinNegative, kMaxValue);
     m_spiralRandomDirectionMaxSpin->setSingleStep(kSingleStep);
-    QHBoxLayout *spiralRandomDirectionLayout = new QHBoxLayout();
+
     spiralRandomDirectionLayout->addWidget(new QLabel("Min:"));
     spiralRandomDirectionLayout->addWidget(m_spiralRandomDirectionMinSpin);
     spiralRandomDirectionLayout->addWidget(new QLabel("Max:"));
     spiralRandomDirectionLayout->addWidget(m_spiralRandomDirectionMaxSpin);
-    spiralLayout->addRow("Random Direction:", spiralRandomDirectionLayout);
+    spiralRandomDirectionGroup->setLayout(spiralRandomDirectionLayout);
+
+    m_spiralDirectionStack->addWidget(spiralDeltaDirectionGroup);
+    m_spiralDirectionStack->addWidget(spiralRandomDirectionGroup);
+
+    spiralLayout->addRow("Direction Config:", m_spiralDirectionConfigCombo);
+    spiralLayout->addRow(m_spiralDirectionStack);
 
     m_spiralGroup->setLayout(spiralLayout);
-    layout->addRow(m_spiralGroup);
+    m_patternStack->addWidget(m_spiralGroup);
+
+    layout->addRow(m_patternStack);
 
     // Connect signals
     connect(m_nameEdit, &QLineEdit::textChanged, this, &AttackInspector::onNameChanged);
@@ -354,6 +449,14 @@ void AttackInspector::setupUI()
     connect(m_lineRandomDirectionMaxSpin, &QDoubleSpinBox::valueChanged, this,
             &AttackInspector::onLineRandomDirectionMaxChanged);
 
+    // Line config stack switches
+    connect(m_lineSpeedConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_lineSpeedStack, &QStackedWidget::setCurrentIndex);
+    connect(m_lineAmountConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_lineAmountStack, &QStackedWidget::setCurrentIndex);
+    connect(m_lineDirectionConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_lineDirectionStack, &QStackedWidget::setCurrentIndex);
+
     // Connect Spiral Pattern group signals to appropriate slots
     connect(m_spiralLockOnPlayerCheck, &QCheckBox::stateChanged, this,
             &AttackInspector::onSpiralLockOnPlayerChanged);
@@ -381,6 +484,14 @@ void AttackInspector::setupUI()
             &AttackInspector::onSpiralRandomDirectionMinChanged);
     connect(m_spiralRandomDirectionMaxSpin, &QDoubleSpinBox::valueChanged, this,
             &AttackInspector::onSpiralRandomDirectionMaxChanged);
+
+    // Spiral config stack switches
+    connect(m_spiralSpeedConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_spiralSpeedStack, &QStackedWidget::setCurrentIndex);
+    connect(m_spiralAmountConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_spiralAmountStack, &QStackedWidget::setCurrentIndex);
+    connect(m_spiralDirectionConfigCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            m_spiralDirectionStack, &QStackedWidget::setCurrentIndex);
 }
 
 void AttackInspector::updateFields()
@@ -416,24 +527,20 @@ void AttackInspector::updateAttackPatternFields()
     }
 
     // Hide all pattern groups first
-    m_circleGroup->hide();
-    m_arcGroup->hide();
-    m_lineGroup->hide();
-    m_spiralGroup->hide();
 
     if (m_currentAttack->has_circle()) {
         m_attackPatternCombo->setCurrentIndex(static_cast<int>(AttackPattern::Circle));
-        m_circleGroup->show();
+        m_patternStack->setCurrentWidget(m_circleGroup);
         m_circleRotationAngleSpin->setValue(m_currentAttack->circle().rotation_angle());
     } else if (m_currentAttack->has_arc()) {
         m_attackPatternCombo->setCurrentIndex(static_cast<int>(AttackPattern::Arc));
-        m_arcGroup->show();
+        m_patternStack->setCurrentWidget(m_arcGroup);
         m_arcLockOnPlayerCheck->setChecked(m_currentAttack->arc().lock_on_player());
         m_arcDirectionAngleSpin->setValue(m_currentAttack->arc().direction_angle());
         m_arcSpreadAngleSpin->setValue(m_currentAttack->arc().spread_angle());
     } else if (m_currentAttack->has_line()) {
         m_attackPatternCombo->setCurrentIndex(static_cast<int>(AttackPattern::Line));
-        m_lineGroup->show();
+        m_patternStack->setCurrentWidget(m_lineGroup);
         const auto &line = m_currentAttack->line();
         m_lineLockOnPlayerCheck->setChecked(line.lock_on_player());
         m_lineDirectionAngleSpin->setValue(line.direction_angle());
@@ -467,7 +574,7 @@ void AttackInspector::updateAttackPatternFields()
         }
     } else if (m_currentAttack->has_spiral()) {
         m_attackPatternCombo->setCurrentIndex(static_cast<int>(AttackPattern::Spiral));
-        m_spiralGroup->show();
+        m_patternStack->setCurrentWidget(m_spiralGroup);
         const auto &spiral = m_currentAttack->spiral();
         m_spiralLockOnPlayerCheck->setChecked(spiral.lock_on_player());
         m_spiralBeginAngleSpin->setValue(spiral.begin_angle());
@@ -544,11 +651,6 @@ void AttackInspector::clearFields()
     m_spiralDeltaDirectionSpin->setValue(0);
     m_spiralRandomDirectionMinSpin->setValue(0);
     m_spiralRandomDirectionMaxSpin->setValue(0);
-
-    m_circleGroup->hide();
-    m_arcGroup->hide();
-    m_lineGroup->hide();
-    m_spiralGroup->hide();
 }
 
 void AttackInspector::updateAttackTypeFields()
@@ -556,16 +658,11 @@ void AttackInspector::updateAttackTypeFields()
     if (!m_currentAttack) {
         return;
     }
-
-    QFormLayout *basicLayout = qobject_cast<QFormLayout *>(m_basicGroup->layout());
-
     if (m_currentAttack->has_bullet_id()) {
-        basicLayout->setRowVisible(kBulletIdIndex, true);
-        basicLayout->setRowVisible(kAttackIdIndex, false);
+        m_attackTypeStack->setCurrentIndex(0);
         m_bulletIdSpin->setValue(m_currentAttack->bullet_id());
     } else if (m_currentAttack->has_attack_id()) {
-        basicLayout->setRowVisible(kBulletIdIndex, false);
-        basicLayout->setRowVisible(kAttackIdIndex, true);
+        m_attackTypeStack->setCurrentIndex(1);
         m_attackIdSpin->setValue(m_currentAttack->attack_id());
     }
 }

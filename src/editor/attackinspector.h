@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QWidget>
+#include <QStackedWidget>
 #include <QUndoStack>
 
 #include "game.pb.h"
@@ -49,15 +50,12 @@ private slots:
     void onLineLockOnPlayerChanged(int state);
     void onLineDirectionAngleChanged(double value);
     void onLineDeltaTimeChanged(double value);
-    void onLineDeltaSpeedTypeChanged(int index);
     void onLineDeltaSpeedChanged(double value);
     void onLineRandomSpeedMinChanged(double value);
     void onLineRandomSpeedMaxChanged(double value);
-    void onLineDeltaAmountTypeChanged(int index);
     void onLineDeltaAmountChanged(double value);
     void onLineRandomAmountMinChanged(double value);
     void onLineRandomAmountMaxChanged(double value);
-    void onLineDeltaDirectionTypeChanged(int index);
     void onLineDeltaDirectionChanged(double value);
     void onLineRandomDirectionMinChanged(double value);
     void onLineRandomDirectionMaxChanged(double value);
@@ -65,15 +63,12 @@ private slots:
     void onSpiralBeginAngleChanged(double value);
     void onSpiralRotationAngleChanged(double value);
     void onSpiralDeltaTimeChanged(double value);
-    void onSpiralDeltaSpeedTypeChanged(int index);
     void onSpiralDeltaSpeedChanged(double value);
     void onSpiralRandomSpeedMinChanged(double value);
     void onSpiralRandomSpeedMaxChanged(double value);
-    void onSpiralDeltaAmountTypeChanged(int index);
     void onSpiralDeltaAmountChanged(double value);
     void onSpiralRandomAmountMinChanged(double value);
     void onSpiralRandomAmountMaxChanged(double value);
-    void onSpiralDeltaDirectionTypeChanged(int index);
     void onSpiralDeltaDirectionChanged(double value);
     void onSpiralRandomDirectionMinChanged(double value);
     void onSpiralRandomDirectionMaxChanged(double value);
@@ -89,9 +84,11 @@ private:
     QDoubleSpinBox *m_spawnOffsetXSpin;
     QDoubleSpinBox *m_spawnOffsetYSpin;
     QDoubleSpinBox *m_amountSpin;
+    QStackedWidget *m_attackTypeStack;
     QComboBox *m_attackPatternCombo;
 
     // Circle pattern
+    QStackedWidget *m_patternStack;
     QGroupBox *m_circleGroup;
     QDoubleSpinBox *m_circleRotationAngleSpin;
 
@@ -137,6 +134,13 @@ private:
     QDoubleSpinBox *m_spiralDeltaDirectionSpin;
     QDoubleSpinBox *m_spiralRandomDirectionMinSpin;
     QDoubleSpinBox *m_spiralRandomDirectionMaxSpin;
+
+    QStackedWidget *m_lineSpeedStack;
+    QStackedWidget *m_lineAmountStack;
+    QStackedWidget *m_lineDirectionStack;
+    QStackedWidget *m_spiralSpeedStack;
+    QStackedWidget *m_spiralAmountStack;
+    QStackedWidget *m_spiralDirectionStack;
 
     game::Attack *m_currentAttack;
     QUndoStack *m_undoStack;
