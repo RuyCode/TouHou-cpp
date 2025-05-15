@@ -23,6 +23,7 @@ public slots:
     void showMobInspector(game::Mob *mob);
     void showMobBatchInspector(game::MobBatch *mobBatch);
     void showMobPrefabInspector(game::MobPrefab *mobPrefab);
+    void showAttackInspector(game::Attack *attack);
 
 private:
     void setupUI();

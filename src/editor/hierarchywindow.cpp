@@ -151,7 +151,7 @@ void HierarchyWindow::onItemClicked(QTreeWidgetItem *item)
 
     case ObjectType::Attack:
         if (ref.index >= 0 && ref.index < level.attacks_size()) {
-            // m_mainWindow->showAttackInspector(level.mutable_attacks(ref.index));
+            m_mainWindow->showAttackInspector(level.mutable_attacks(ref.index));
         }
         break;
 

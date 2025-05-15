@@ -5,6 +5,7 @@
 #include "mobinspector.h"
 #include "mobbatchinspector.h"
 #include "mobprefabinspector.h"
+#include "attackinspector.h"
 #include "hierarchywindow.h"
 
 #include <QApplication>
@@ -15,6 +16,8 @@
 #include <QScrollArea>
 #include <QStandardItem>
 #include <QToolBar>
+
+#include <filesystem>
 
 namespace {
 const QString kInspectorTitle = "Inspector";
@@ -31,6 +34,7 @@ enum class InspectorType {
     MobInspector,
     MobBatchInspector,
     MobPrefabInspector,
+    AttackInspector,
 };
 } // namespace
 
@@ -47,6 +51,25 @@ MainWindow::MainWindow(QWidget *parent)
     setMinimumSize(kWindowWidth, kWinowHeight);
 
     setupUI();
+
+    // TODO: remove at release version
+    std::string filename = "level.bin";
+    const std::filesystem::path path(filename);
+    if (std::filesystem::exists(path)) {
+        qDebug() << "loaded test level";
+        DataManager::loadLevel(path);
+
+        game::Level &level = DataManager::getLevel();
+
+        HierarchyWindow *hierarchyTree = qobject_cast<HierarchyWindow *>(m_hierarchyDock->widget());
+        hierarchyTree->updateHierarchy(level);
+
+        m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::MobInspector));
+        auto mobInspector = qobject_cast<MobInspector *>(m_inspectorStacked->currentWidget());
+        mobInspector->clear();
+        auto mob = level.mutable_mob_batches(0)->mutable_mobs(0);
+        mobInspector->setMob(mob);
+    }
 }
 
 void MainWindow::showMobInspector(game::Mob *mob)
@@ -74,6 +97,14 @@ void MainWindow::showMobPrefabInspector(game::MobPrefab *mobPrefab)
     mobPrefabInspector->setMobPrefab(mobPrefab);
 }
 
+void MainWindow::showAttackInspector(game::Attack *attack)
+{
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::AttackInspector));
+    auto attackInspector = qobject_cast<AttackInspector *>(m_inspectorStacked->currentWidget());
+    attackInspector->clear();
+    attackInspector->setAttack(attack);
+}
+
 void MainWindow::setupUI()
 {
     // hierachyDock - hierachy of objects
@@ -93,6 +124,7 @@ void MainWindow::setupUI()
     m_inspectorStacked->addWidget(new MobInspector(m_undoStack, m_inspectorStacked));
     m_inspectorStacked->addWidget(new MobBatchInspector(m_undoStack, m_inspectorStacked));
     m_inspectorStacked->addWidget(new MobPrefabInspector(m_undoStack, m_inspectorStacked));
+    m_inspectorStacked->addWidget(new AttackInspector(m_undoStack, m_inspectorStacked));
     QScrollArea *inspectorScroll = new QScrollArea(m_inspectorDock);
     inspectorScroll->setWidget(m_inspectorStacked);
     inspectorScroll->setWidgetResizable(true);
