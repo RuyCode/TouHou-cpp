@@ -6,6 +6,7 @@
 #include "mobbatchinspector.h"
 #include "mobprefabinspector.h"
 #include "attackinspector.h"
+#include "bulletinspector.h"
 #include "hierarchywindow.h"
 
 #include <QApplication>
@@ -35,6 +36,7 @@ enum class InspectorType {
     MobBatchInspector,
     MobPrefabInspector,
     AttackInspector,
+    BulletInspector,
 };
 } // namespace
 
@@ -105,6 +107,14 @@ void MainWindow::showAttackInspector(game::Attack *attack)
     attackInspector->setAttack(attack);
 }
 
+void MainWindow::showBulletInspector(game::Bullet *bullet)
+{
+    m_inspectorStacked->setCurrentIndex(static_cast<int>(InspectorType::BulletInspector));
+    auto bulletInspector = qobject_cast<BulletInspector *>(m_inspectorStacked->currentWidget());
+    bulletInspector->clear();
+    bulletInspector->setBullet(bullet);
+}
+
 void MainWindow::setupUI()
 {
     // hierachyDock - hierachy of objects
@@ -125,6 +135,7 @@ void MainWindow::setupUI()
     m_inspectorStacked->addWidget(new MobBatchInspector(m_undoStack, m_inspectorStacked));
     m_inspectorStacked->addWidget(new MobPrefabInspector(m_undoStack, m_inspectorStacked));
     m_inspectorStacked->addWidget(new AttackInspector(m_undoStack, m_inspectorStacked));
+    m_inspectorStacked->addWidget(new BulletInspector(m_undoStack, m_inspectorStacked));
     QScrollArea *inspectorScroll = new QScrollArea(m_inspectorDock);
     inspectorScroll->setWidget(m_inspectorStacked);
     inspectorScroll->setWidgetResizable(true);

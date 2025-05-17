@@ -54,6 +54,7 @@ set(
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobbatchinspector.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobprefabinspector.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/attackinspector.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/bulletinspector.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/hierarchywindow.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/command.cpp"
 )
@@ -67,6 +68,7 @@ set(
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobinspector.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobbatchinspector.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/mobprefabinspector.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/attackinspector.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/attackinspector.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/hierarchywindow.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/editor/command.h"

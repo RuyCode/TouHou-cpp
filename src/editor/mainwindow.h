@@ -24,6 +24,7 @@ public slots:
     void showMobBatchInspector(game::MobBatch *mobBatch);
     void showMobPrefabInspector(game::MobPrefab *mobPrefab);
     void showAttackInspector(game::Attack *attack);
+    void showBulletInspector(game::Bullet *bullet);
 
 private:
     void setupUI();

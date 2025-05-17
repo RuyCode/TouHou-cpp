@@ -157,7 +157,7 @@ void HierarchyWindow::onItemClicked(QTreeWidgetItem *item)
 
     case ObjectType::Bullet:
         if (ref.index >= 0 && ref.index < level.bullets_size()) {
-            // m_mainWindow->showBulletInspector(level.mutable_bullets(ref.index));
+            m_mainWindow->showBulletInspector(level.mutable_bullets(ref.index));
         }
         break;
 
