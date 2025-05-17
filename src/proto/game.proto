@@ -30,16 +30,44 @@ message RandomConfig {
     float max_value = 2;
 }
 
-message Bullet {
-    float damage = 1;
-    string sprite = 2;
-    Collider collider = 3;
-    optional BulletLifeConfig bullet_life_config = 4;
-
-    message BulletLifeConfig {
-        float lifespan = 1;
-        optional int32 attack_id = 2;
+message Path {
+    repeated Vector2 key_points = 1;
+    float travel_time = 2;
+    oneof spline_type {
+        BSpline b_spline = 3;
+        CardinalSpline cardinal_spline = 4;
     }
+    bool const_speed = 5;
+
+    message BSpline {}
+
+    message CardinalSpline {
+        float s = 1;
+    }
+}
+
+message Mob {
+    string name = 1;
+    int32 mob_prefab_id = 2;
+    float spawn_delay = 3;
+    Path path = 4;
+    optional DropItem drop_item = 5;
+}
+
+message MobBatch {
+    string name = 1;
+    repeated Mob mobs = 2;
+    float delay_after_previous_batch = 3;
+    float lifespan = 4;
+}
+
+message MobPrefab {
+    string name = 1;
+    double health = 2;
+    string sprite = 3;
+    DropItem drop_item = 4;
+    int32 attack_id = 5;
+    Collider collider = 6;
 }
 
 message Attack {
@@ -122,44 +150,16 @@ message DropItem {
     }
 }
 
-message MobPrefab {
-    string name = 1;
-    double health = 2;
-    string sprite = 3;
-    DropItem drop_item = 4;
-    int32 attack_id = 5;
-    Collider collider = 6;
-}
+message Bullet {
+    float damage = 1;
+    string sprite = 2;
+    Collider collider = 3;
+    optional BulletLifeConfig bullet_life_config = 4;
 
-message Path {
-    repeated Vector2 key_points = 1;
-    float travel_time = 2;
-    oneof spline_type {
-        BSpline b_spline = 3;
-        CardinalSpline cardinal_spline = 4;
-    };
-    bool const_speed = 5;
-
-    message BSpline {}
-
-    message CardinalSpline {
-        float s = 1;
+    message BulletLifeConfig {
+        float lifespan = 1;
+        optional int32 attack_id = 2;
     }
-}
-
-message Mob {
-    string name = 1;
-    int32 mob_prefab_id = 2;
-    float spawn_delay = 3;
-    Path path = 4;
-    optional DropItem drop_item = 5;
-}
-
-message MobBatch {
-    string name = 1;
-    repeated Mob mobs = 2;
-    float delay_after_previous_batch = 3;
-    float lifespan = 4;
 }
 
 message SpellCard {
@@ -170,6 +170,17 @@ message SpellCard {
         repeated ShaderPair shaders = 1;
     }
     Background bg = 4;
+}
+
+message Dialogue {
+    string name = 1;
+    string sprite = 2;
+    enum Side {
+        LEFT = 0;
+        RIGHT = 1;
+    }
+    Side side = 3;
+    string text = 4;
 }
 
 message BossPhase {
@@ -189,17 +200,18 @@ message Boss {
     DropItem drop_item = 4;
     Collider collider = 5;
     repeated BossPhase phases = 6;
+    repeated Dialogue dialogues = 7;
 }
 
 message ShaderPair {
-    string fragment_shader = 1; // .frag file
-    string vertex_shader = 2; // .vert file
+    string fragment_shader = 1;  // .frag file
+    string vertex_shader = 2;    // .vert file
 }
 
 message Background {
-    string model_3d = 1; // .glb file
-    repeated ShaderPair shaders = 2; // pairs of shader files (.frag, .vert)
-    string bg_script = 3; // .cpp file
+    string model_3d = 1;              // .glb file
+    repeated ShaderPair shaders = 2;  // pairs of shader files (.frag, .vert)
+    string bg_script = 3;             // .cpp file
 }
 
 message Level {
