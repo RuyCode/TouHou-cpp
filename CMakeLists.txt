@@ -29,12 +29,12 @@ FetchContent_Declare(assimp
 )
 FetchContent_MakeAvailable(assimp)
 
-add_library(glad STATIC src/glad.c)
+add_library(glad STATIC src/scripts/glad.c)
 target_include_directories(glad PUBLIC include)
 
-file(GLOB_RECURSE ${project}_SOURCES "src/*.cpp")   
+file(GLOB_RECURSE ${project}_SOURCES "src/scripts/*.cpp")   
 
-file(GLOB_RECURSE ${project}_HEADERS "src/*.h")
+file(GLOB_RECURSE ${project}_HEADERS "src/scripts/*.h")
 
 set(${project}_SOURCE_LIST
     ${${project}_SOURCES}
