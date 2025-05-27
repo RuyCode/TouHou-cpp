@@ -21,6 +21,7 @@ StageScene::StageScene(sf::RenderWindow& window, std::shared_ptr<GLBackground> b
     statText(sf::Text(statFont)) {
 
     objectManager->SetPlayer(std::make_shared<PlayerMarisa>());
+    objectManager->GetPlayer()->SetLocalPosition(glm::vec2(194.f, 324.f));
 
     initializeOpenGL();
 
@@ -59,6 +60,8 @@ StageScene::StageScene(sf::RenderWindow& window, std::shared_ptr<GLBackground> b
     dummyEnemy->SetTextures(textures);
     dummyEnemy->SetTravelTime(5.f);
     dummyEnemy->SetHealth(200.f);
+
+    // dummyEnemy->SetParent(objectManager->GetPlayer());
     // ----------------------------------------------------------------------------
 }
 

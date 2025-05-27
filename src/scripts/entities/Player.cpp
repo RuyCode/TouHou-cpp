@@ -17,7 +17,7 @@ Player::Player(std::vector<std::shared_ptr<sf::Texture>> textures, float speed)
 }
 
 Player::Player(const Player& other) 
-  : GameObject(other.position, other.collider), 
+  : GameObject(other.GetLocalPosition(), other.collider), 
     power(other.power),
     textures(other.textures), 
     baseSpeed(other.baseSpeed) {
@@ -84,6 +84,11 @@ void Player::Update(float deltaTime) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::P)) {
         power = std::min(power + 1, 400);
     } 
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::O)) {
+        power = std::max(power - 1, 0);
+    } 
+
     ///////////////////////////////////////////////////////
 
     position += (glm::length(direction) > 0.0001f ? glm::normalize(direction) : glm::vec2(0.f, 0.f)) * speed * deltaTime;

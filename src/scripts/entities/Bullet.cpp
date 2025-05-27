@@ -40,9 +40,11 @@ void Bullet::FixedUpdate(float fixedDeltaTime) {
 }
 
 void Bullet::Update(float deltaTime) {
-    position += velocity * deltaTime;
+    SetLocalPosition(GetLocalPosition() + velocity * deltaTime);
 
-    if (position.x < -50 || position.x > 434 || position.y < -50 || position.y > 498) {
+    glm::vec2 worldPos = GetWorldPosition();
+
+    if (worldPos.x < -50 || worldPos.x > 434 || worldPos.y < -50 || worldPos.y > 498) {
         SetActive(false);
     }
 }
@@ -50,9 +52,13 @@ void Bullet::Update(float deltaTime) {
 void Bullet::Draw(sf::RenderTarget& target) {
     if (!sprite) return;
     sprite->setOrigin({sprite->getLocalBounds().size.x / 2, sprite->getLocalBounds().size.y / 2});
-    sprite->setPosition({position.x, position.y});
+
+    glm::vec2 worldPos = GetWorldPosition();
+    sprite->setPosition({worldPos.x, worldPos.y});
+
     sf::Angle rad = sf::degrees(90 + angle);
     sprite->setRotation(rad);
+
     target.draw(*sprite);
 
     if (DEBUG_MODE) {

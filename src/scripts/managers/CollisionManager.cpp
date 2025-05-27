@@ -131,7 +131,7 @@ const std::vector<CollisionPair>& CollisionManager::GetPlayerBulletToEnemyCollis
             continue;
         }
 
-        float bulletY = bullet->GetPosition().y;
+        float bulletY = bullet->GetWorldPosition().y;
         float bulletCollisionDistance = bullet->GetCollider()->GetMaxCollisionDistance();
 
         for (const auto& enemy : enemies) {
@@ -139,11 +139,11 @@ const std::vector<CollisionPair>& CollisionManager::GetPlayerBulletToEnemyCollis
                 continue;
             }
 
-            if (std::abs(enemy->GetPosition().y - bulletY) > enemy->GetCollider()->GetMaxCollisionDistance() + bulletCollisionDistance) {
+            if (std::abs(enemy->GetWorldPosition().y - bulletY) > enemy->GetCollider()->GetMaxCollisionDistance() + bulletCollisionDistance) {
                 continue;
             }
 
-            if (checkCollision(bullet->GetPosition(), enemy->GetPosition(), bullet->GetCollider(), enemy->GetCollider())) {
+            if (checkCollision(bullet->GetWorldPosition(), enemy->GetWorldPosition(), bullet->GetCollider(), enemy->GetCollider())) {
                 enemyAndPlayerBulletsCollisions.emplace_back(CollisionPair(bullet, enemy));
             }
         }
@@ -156,7 +156,7 @@ const CollisionPair& CollisionManager::EnemyBulletToPlayerCollision() {
     playerAndEnemyBulletCollision.bullet = nullptr;
     playerAndEnemyBulletCollision.object = nullptr;
     for (const std::shared_ptr<Bullet>& bullet : objectManager->GetEnemyBullets()) {
-        if (checkCollision(bullet->GetPosition(), objectManager->GetPlayer()->GetPosition(), bullet->GetCollider(), objectManager->GetPlayer()->GetCollider())) {
+        if (checkCollision(bullet->GetWorldPosition(), objectManager->GetPlayer()->GetWorldPosition(), bullet->GetCollider(), objectManager->GetPlayer()->GetCollider())) {
             playerAndEnemyBulletCollision.bullet = bullet;
             playerAndEnemyBulletCollision.object = objectManager->GetPlayer();
             break;

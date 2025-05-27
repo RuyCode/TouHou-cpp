@@ -44,8 +44,11 @@ void Enemy::FixedUpdate(float fixedDeltaTime) {
 
 void Enemy::Update(float deltaTime) {
     t += deltaTime / travelTime;
-    position = path.GetUniformPoint(t);
-    position.y = Env::gameViewportHeight - position.y;
+
+    glm::vec2 pos = path.GetUniformPoint(t);
+    pos.y = Env::gameViewportHeight - pos.y;
+
+    SetLocalPosition(pos);
 
     if (health <= 0) {
         SetActive(false);
@@ -59,7 +62,10 @@ void Enemy::Update(float deltaTime) {
 void Enemy::Draw(sf::RenderTarget& target) {
     if (!sprite) return;
     sprite->setOrigin({sprite->getLocalBounds().size.x / 2, sprite->getLocalBounds().size.y / 2});
-    sprite->setPosition({position.x, position.y});
+
+    glm::vec2 worldPos = GetWorldPosition();
+    sprite->setPosition({worldPos.x, worldPos.y});
+
     target.draw(*sprite);
 
     if (DEBUG_MODE) {

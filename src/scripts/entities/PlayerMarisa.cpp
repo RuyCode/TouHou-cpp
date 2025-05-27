@@ -38,12 +38,18 @@ PlayerMarisa::PlayerMarisa() : Player() {
 
 void PlayerMarisa::attack() {
     std::uint8_t powerLevel = power / 100;
+    if (powerLevel == 3) { powerLevel = 2;}
 
     for (float i = -2.5 * powerLevel; i <= 2.5 * powerLevel; i += 5.f) {
         if (auto manager = objectManager.lock()){
             std::shared_ptr<Bullet> bullet = manager->GetFreePlayerBullet();
-            glm::vec2 pos = position + glm::vec2(0, -10);
-            bullet->SetPosition(pos);
+            glm::vec2 pos = position + glm::vec2(0.f, -10.f);
+
+            if (powerLevel == 1) {
+                pos += glm::vec2(8.f, 0.f) * (i > 0 ? 1.f : -1.f);
+            }
+
+            bullet->SetLocalPosition(pos);
             bullet->SetAngle(i - 90);
             bullet->SetSpeed(720.f);
             bullet->SetTextures(attackBulletTextures);

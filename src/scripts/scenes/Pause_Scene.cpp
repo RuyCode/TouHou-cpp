@@ -53,7 +53,7 @@ void Pause_Scene::Update(sf::RenderWindow& window, float deltaTime) {
 
 void Pause_Scene::Draw(sf::RenderTarget& target) {
     text.setString("Pause");
-    text.setPosition({Env::gameViewportWidth / 2 - text.getLocalBounds().size.x * .5f, 180});
+    text.setPosition({Env::gameViewportPositionX + Env::gameViewportWidth / 2 - text.getLocalBounds().size.x * .5f, 180});
     target.draw(text);
 
     for (int i = 0; i < 3; ++i) {
@@ -61,9 +61,9 @@ void Pause_Scene::Draw(sf::RenderTarget& target) {
 
         if (i == selectedOption) {
             text.setFillColor(sf::Color(255, 160, 160, 255));
-            text.setPosition({Env::gameViewportWidth / 2 - text.getLocalBounds().size.x / 2, 230 + 40 * i});
+            text.setPosition({Env::gameViewportPositionX + Env::gameViewportWidth / 2 - text.getLocalBounds().size.x / 2, 230 + 40 * i});
         } else {
-            text.setPosition({Env::gameViewportWidth / 2 - text.getLocalBounds().size.x / 2, 230 + 40 * i + 5});
+            text.setPosition({Env::gameViewportPositionX + Env::gameViewportWidth / 2 - text.getLocalBounds().size.x / 2, 230 + 40 * i + 5});
         }
         
         target.draw(text);

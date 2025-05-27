@@ -1,928 +1,928 @@
-[01:53:14.770](INFO) Found 0 meshes
-[01:53:14.770](INFO) Found 1 meshes
-[01:53:14.770](INFO) Processing mesh: Bookshelf_r12_0_s0-0 (240) vertices
-[01:53:14.770](INFO) created empty texture with width 0 and height 0, ID: 1
-[01:53:14.798](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_0_EOSD_s4.jpg, ID: 2
-[01:53:14.798](INFO) deleted texture 0
-[01:53:14.798](INFO) created empty texture with width 0 and height 0, ID: 3
-[01:53:14.801](INFO) Copied texture with width 0 and height 0, ID: 2
-[01:53:14.801](INFO) deleted texture 2
-[01:53:14.801](INFO) created empty texture with width 0 and height 0, ID: 4
-[01:53:14.861](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_1_EOSD_s4.png, ID: 5
-[01:53:14.861](INFO) deleted texture 0
-[01:53:14.861](INFO) created empty texture with width 0 and height 0, ID: 6
-[01:53:14.865](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.865](INFO) deleted texture 5
-[01:53:14.867](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.867](INFO) created empty texture with width 0 and height 0, ID: 7
-[01:53:14.907](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_2_EOSD_s4.jpg, ID: 8
-[01:53:14.907](INFO) deleted texture 0
-[01:53:14.907](INFO) created empty texture with width 0 and height 0, ID: 9
-[01:53:14.910](INFO) Copied texture with width 0 and height 0, ID: 8
-[01:53:14.910](INFO) deleted texture 8
-[01:53:14.912](INFO) Copied texture with width 0 and height 0, ID: 2
-[01:53:14.913](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.913](INFO) deleted texture 0
-[01:53:14.915](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.915](INFO) deleted texture 0
-[01:53:14.915](INFO) deleted texture 0
-[01:53:14.917](INFO) Copied texture with width 0 and height 0, ID: 8
-[01:53:14.917](INFO) Loaded material: Wood2
-[01:53:14.917](INFO) deleted texture 8
-[01:53:14.917](INFO) deleted texture 5
-[01:53:14.917](INFO) deleted texture 5
-[01:53:14.917](INFO) deleted texture 2
-[01:53:14.919](INFO) Copied texture with width 0 and height 0, ID: 2
-[01:53:14.921](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.923](INFO) Copied texture with width 0 and height 0, ID: 5
-[01:53:14.925](INFO) Copied texture with width 0 and height 0, ID: 8
-[01:53:14.925](INFO) Loaded mesh: Bookshelf_r12_0_s0-0 with shaderID of 0
-[01:53:14.925](INFO) deleted texture 2
-[01:53:14.925](INFO) deleted texture 5
-[01:53:14.925](INFO) deleted texture 5
-[01:53:14.925](INFO) deleted texture 8
-[01:53:14.925](INFO) Found 1 meshes
-[01:53:14.925](INFO) Processing mesh: Bookshelf_r12_0_s0-1 (48) vertices
-[01:53:14.926](INFO) created empty texture with width 0 and height 0, ID: 10
-[01:53:14.950](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_3_EOSD_s4.jpg, ID: 11
-[01:53:14.950](INFO) deleted texture 0
-[01:53:14.950](INFO) created empty texture with width 0 and height 0, ID: 12
-[01:53:14.953](INFO) Copied texture with width 0 and height 0, ID: 11
-[01:53:14.953](INFO) deleted texture 11
-[01:53:14.953](INFO) created empty texture with width 0 and height 0, ID: 13
-[01:53:14.992](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_4_EOSD_s4.png, ID: 14
-[01:53:14.992](INFO) deleted texture 0
-[01:53:14.992](INFO) created empty texture with width 0 and height 0, ID: 15
-[01:53:14.994](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:14.995](INFO) deleted texture 14
-[01:53:14.996](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:14.996](INFO) created empty texture with width 0 and height 0, ID: 16
-[01:53:15.107](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_5_EOSD_s4.png, ID: 17
-[01:53:15.107](INFO) deleted texture 0
-[01:53:15.107](INFO) created empty texture with width 0 and height 0, ID: 18
-[01:53:15.110](INFO) Copied texture with width 0 and height 0, ID: 17
-[01:53:15.110](INFO) deleted texture 17
-[01:53:15.111](INFO) Copied texture with width 0 and height 0, ID: 11
-[01:53:15.113](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:15.113](INFO) deleted texture 0
-[01:53:15.115](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:15.115](INFO) deleted texture 0
-[01:53:15.115](INFO) deleted texture 0
-[01:53:15.116](INFO) Copied texture with width 0 and height 0, ID: 17
-[01:53:15.116](INFO) Loaded material: Books2
-[01:53:15.116](INFO) deleted texture 17
-[01:53:15.116](INFO) deleted texture 14
-[01:53:15.117](INFO) deleted texture 14
-[01:53:15.117](INFO) deleted texture 11
-[01:53:15.119](INFO) Copied texture with width 0 and height 0, ID: 11
-[01:53:15.120](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:15.122](INFO) Copied texture with width 0 and height 0, ID: 14
-[01:53:15.124](INFO) Copied texture with width 0 and height 0, ID: 17
-[01:53:15.124](INFO) Loaded mesh: Bookshelf_r12_0_s0-1 with shaderID of 0
-[01:53:15.124](INFO) deleted texture 11
-[01:53:15.124](INFO) deleted texture 14
-[01:53:15.124](INFO) deleted texture 14
-[01:53:15.124](INFO) deleted texture 17
-[01:53:15.124](INFO) Found 1 meshes
-[01:53:15.124](INFO) Processing mesh: Bookshelf_r5_1_s0-0 (160) vertices
-[01:53:15.125](INFO) created empty texture with width 0 and height 0, ID: 19
-[01:53:15.127](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_6_EOSD_s4.jpg, ID: 20
-[01:53:15.127](INFO) deleted texture 0
-[01:53:15.127](INFO) created empty texture with width 0 and height 0, ID: 21
-[01:53:15.127](INFO) Copied texture with width 0 and height 0, ID: 20
-[01:53:15.127](INFO) deleted texture 20
-[01:53:15.127](INFO) created empty texture with width 0 and height 0, ID: 22
-[01:53:15.131](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_7_EOSD_s4.png, ID: 23
-[01:53:15.131](INFO) deleted texture 0
-[01:53:15.131](INFO) created empty texture with width 0 and height 0, ID: 24
-[01:53:15.132](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.132](INFO) deleted texture 23
-[01:53:15.132](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.132](INFO) created empty texture with width 0 and height 0, ID: 25
-[01:53:15.133](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_8_EOSD_s4.jpg, ID: 26
-[01:53:15.133](INFO) deleted texture 0
-[01:53:15.133](INFO) created empty texture with width 0 and height 0, ID: 27
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 26
-[01:53:15.134](INFO) deleted texture 26
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 20
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.134](INFO) deleted texture 0
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.134](INFO) deleted texture 0
-[01:53:15.134](INFO) deleted texture 0
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 26
-[01:53:15.134](INFO) Loaded material: Wood
-[01:53:15.134](INFO) deleted texture 26
-[01:53:15.134](INFO) deleted texture 23
-[01:53:15.134](INFO) deleted texture 23
-[01:53:15.134](INFO) deleted texture 20
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 20
-[01:53:15.134](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.135](INFO) Copied texture with width 0 and height 0, ID: 23
-[01:53:15.135](INFO) Copied texture with width 0 and height 0, ID: 26
-[01:53:15.135](INFO) Loaded mesh: Bookshelf_r5_1_s0-0 with shaderID of 0
-[01:53:15.135](INFO) deleted texture 20
-[01:53:15.135](INFO) deleted texture 23
-[01:53:15.135](INFO) deleted texture 23
-[01:53:15.135](INFO) deleted texture 26
-[01:53:15.135](INFO) Found 1 meshes
-[01:53:15.135](INFO) Processing mesh: Bookshelf_r5_1_s0-1 (32) vertices
-[01:53:15.135](INFO) created empty texture with width 0 and height 0, ID: 28
-[01:53:15.158](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_9_EOSD_s4.jpg, ID: 29
-[01:53:15.158](INFO) deleted texture 0
-[01:53:15.158](INFO) created empty texture with width 0 and height 0, ID: 30
-[01:53:15.161](INFO) Copied texture with width 0 and height 0, ID: 29
-[01:53:15.161](INFO) deleted texture 29
-[01:53:15.161](INFO) created empty texture with width 0 and height 0, ID: 31
-[01:53:15.200](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_10_EOSD_s4.png, ID: 32
-[01:53:15.200](INFO) deleted texture 0
-[01:53:15.200](INFO) created empty texture with width 0 and height 0, ID: 33
-[01:53:15.203](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.203](INFO) deleted texture 32
-[01:53:15.205](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.205](INFO) created empty texture with width 0 and height 0, ID: 34
-[01:53:15.328](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_11_EOSD_s4.png, ID: 35
-[01:53:15.328](INFO) deleted texture 0
-[01:53:15.328](INFO) created empty texture with width 0 and height 0, ID: 36
-[01:53:15.332](INFO) Copied texture with width 0 and height 0, ID: 35
-[01:53:15.332](INFO) deleted texture 35
-[01:53:15.333](INFO) Copied texture with width 0 and height 0, ID: 29
-[01:53:15.335](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.335](INFO) deleted texture 0
-[01:53:15.337](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.337](INFO) deleted texture 0
-[01:53:15.337](INFO) deleted texture 0
-[01:53:15.339](INFO) Copied texture with width 0 and height 0, ID: 35
-[01:53:15.339](INFO) Loaded material: Books
-[01:53:15.339](INFO) deleted texture 35
-[01:53:15.339](INFO) deleted texture 32
-[01:53:15.339](INFO) deleted texture 32
-[01:53:15.339](INFO) deleted texture 29
-[01:53:15.341](INFO) Copied texture with width 0 and height 0, ID: 29
-[01:53:15.343](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.345](INFO) Copied texture with width 0 and height 0, ID: 32
-[01:53:15.347](INFO) Copied texture with width 0 and height 0, ID: 35
-[01:53:15.347](INFO) Loaded mesh: Bookshelf_r5_1_s0-1 with shaderID of 0
-[01:53:15.347](INFO) deleted texture 29
-[01:53:15.347](INFO) deleted texture 32
-[01:53:15.347](INFO) deleted texture 32
-[01:53:15.347](INFO) deleted texture 35
-[01:53:15.347](INFO) Found 1 meshes
-[01:53:15.347](INFO) Processing mesh: Background_s1 (4) vertices
-[01:53:15.348](INFO) Loaded material: 
-[01:53:15.348](INFO) Loaded mesh: Background_s1 with shaderID of 1
-[01:53:15.348](INFO) Found 0 meshes
-[01:53:15.348](INFO) Found 0 meshes
-[01:53:15.348](INFO) Created camera with FOV: 0.526763, aspect: 0.857143
-[01:53:15.348](INFO) Loaded camera: cam_0
-[01:53:15.348](INFO) Created camera with FOV: 0.526763, aspect: 0.857143
-[01:53:15.348](INFO) Loaded camera: cam_1
-[01:53:15.348](INFO) Loaded model: src/assets/backgroundScenes/EOSD_Stage4.glb
-[01:53:15.348](INFO) Including shader: src/assets/shaders/eosd_s4_0.vert
-[01:53:15.348](INFO) Including shader: src/assets/shaders/PBR.vert
-[01:53:15.349](INFO) Including shader: src/assets/shaders/eosd_s4_0.frag
-[01:53:15.349](INFO) Including shader: src/assets/shaders/PBR.frag
-[01:53:15.378](INFO) Loaded shader program: src/assets/shaders/eosd_s4_0.vert and src/assets/shaders/eosd_s4_0.frag with ID of 3
-[01:53:15.378](INFO) Including shader: src/assets/shaders/eosd_s4_1.vert
-[01:53:15.378](INFO) Including shader: src/assets/shaders/eosd_s4_1.frag
-[01:53:15.379](INFO) Loaded shader program: src/assets/shaders/eosd_s4_1.vert and src/assets/shaders/eosd_s4_1.frag with ID of 6
-[01:53:15.380](INFO) created empty texture with width 384 and height 448, ID: 37
-[01:53:15.380](INFO) Loaded gameBackground: EOSD stage 4
-[01:53:15.401](INFO) Created object with id 05812ca7-3e4b-4f08-bbc9-856126ab3519
-[01:53:15.401](INFO) Created object with id d1b050c9-e8b8-440d-95fd-dc436d1b3336
-[01:53:15.402](INFO) Created object with id beb077e1-4553-467f-9f45-972f60b13bce
-[01:53:15.402](INFO) Created object with id 185b4e3c-7518-4ec2-afc5-a32e81d58db5
-[01:53:15.402](INFO) Created object with id 45c3b460-57dd-4cbc-899f-1badfde11a9a
-[01:53:15.402](INFO) Created object with id be6bce52-0bf2-4de6-a23c-1a4695e0dec6
-[01:53:15.402](INFO) Created object with id abff04a1-632f-4ac8-a9e7-44e63bd24591
-[01:53:15.402](INFO) Created object with id 8adb2b78-c5d2-40c0-bbcc-fff74aaf4cfd
-[01:53:15.402](INFO) Created object with id 0935e587-bb6d-40b1-a3f6-ccb5a3dc6268
-[01:53:15.402](INFO) Created object with id db572b86-2538-4fa1-9972-239ff6aad2b6
-[01:53:15.402](INFO) Created object with id 10fe1dd5-6335-47ac-8516-1f63925eb363
-[01:53:15.402](INFO) Created object with id f091ddbf-5157-42f6-b349-085a1213a18e
-[01:53:15.402](INFO) Created object with id 1c26b850-4025-4337-9fce-a5ca17489f67
-[01:53:15.402](INFO) Created object with id 86531085-ff8b-4213-9793-a0b61b5a337e
-[01:53:15.402](INFO) Created object with id a0d96b52-1c2d-4618-b471-704f917e99eb
-[01:53:15.402](INFO) Created object with id 56ad9006-6d3d-4061-9d2c-d156ce88babc
-[01:53:15.402](INFO) Created object with id 5d806a0f-2f19-440f-9084-6c0ba1b10c2e
-[01:53:15.402](INFO) Created object with id 9cd0fdd9-6286-4a19-8427-304a885a3f0a
-[01:53:15.402](INFO) Created object with id c17b8661-9461-44ea-9c18-f64e884aac24
-[01:53:15.402](INFO) Created object with id ff211e2b-b438-4b1c-99a3-07734ac92feb
-[01:53:15.402](INFO) Created object with id 6113b8ec-a6af-4b58-a7d9-de95672f8c99
-[01:53:15.402](INFO) Created object with id c159c7aa-0536-4029-b822-6b6074885314
-[01:53:15.402](INFO) Created object with id 0dce4a8f-4495-4fcd-9ca8-cbce0fd0c653
-[01:53:15.402](INFO) Created object with id 9d78e6bf-805d-4f2a-9770-fe7f35f3b77e
-[01:53:15.402](INFO) Created object with id 5d77db03-1862-4f03-b84a-430577ce8346
-[01:53:15.402](INFO) Created object with id c3365578-a2de-4141-8daf-f5b0cb24d3bf
-[01:53:15.402](INFO) Created object with id dea1c263-b0f3-40af-9455-de2c9b69a9cd
-[01:53:15.402](INFO) Created object with id 866f23e4-24ac-4c15-b41f-a8d1a5a22e5b
-[01:53:15.402](INFO) Created object with id 1c7fe05b-d9fe-4e9d-9e46-cd56575341c4
-[01:53:15.402](INFO) Created object with id 55f3df17-0ffc-4acb-8b3d-62ef7a5bf8be
-[01:53:15.403](INFO) Created object with id fe072de3-e40b-45d8-aa38-1a35a3ae40f8
-[01:53:15.403](INFO) Created object with id a9586b95-803e-4df2-a6cf-5890d2f12a18
-[01:53:15.403](INFO) Created object with id 71c24800-59ed-4b04-88e1-c46f0a81790f
-[01:53:15.403](INFO) Created object with id 3f0f7ee1-b135-4833-aeae-1cb2e21d66ee
-[01:53:15.403](INFO) Created object with id 0ab13bad-a642-4785-a473-64f429f05b16
-[01:53:15.403](INFO) Created object with id 8c92ef76-d5db-441d-a908-b49d33eb1463
-[01:53:15.403](INFO) Created object with id 75ff2464-df7b-4dbe-aa6b-b39bbf641c35
-[01:53:15.403](INFO) Created object with id 9df3187d-da60-4451-97c7-2b4f503c66bc
-[01:53:15.403](INFO) Created object with id b5ce8b8a-fc93-4dc3-97c5-30c0e55685dd
-[01:53:15.403](INFO) Created object with id b0c2b7fd-a16d-4186-b778-d85ca582de68
-[01:53:15.403](INFO) Created object with id 627da782-2f58-45df-83f0-5748b7f183ed
-[01:53:15.403](INFO) Created object with id 339709f9-3c51-48b4-a902-e54a3e9ba920
-[01:53:15.403](INFO) Created object with id 7900f147-4056-4a4e-8739-f7fc5285dd3c
-[01:53:15.403](INFO) Created object with id e2995ed1-93d8-4a86-9b6a-8e5d7e999a1e
-[01:53:15.403](INFO) Created object with id e0563917-33de-4f85-905b-de0f17c1131a
-[01:53:15.403](INFO) Created object with id 08f6e8d5-1308-4ed9-8b05-2db094f6ebe5
-[01:53:15.403](INFO) Created object with id f63e1efb-0d76-453d-89a4-eced3ae53c75
-[01:53:15.403](INFO) Created object with id 6a88eadd-f566-415f-9864-016193c819bd
-[01:53:15.403](INFO) Created object with id b6934926-a846-47c9-98ef-0833ee106344
-[01:53:15.403](INFO) Created object with id 5ea8fa9e-054e-41e5-868b-c1913bfd525a
-[01:53:15.403](INFO) Created object with id 8d9f787a-3ad0-4578-8693-1c66d8c50cfd
-[01:53:15.403](INFO) Created object with id 2a3873a0-a941-4137-b6cf-f35f13480408
-[01:53:15.403](INFO) Created object with id 2c1ec815-92dc-4edd-8bbe-3725e7a5e4d6
-[01:53:15.403](INFO) Created object with id fb32db14-e7fe-4051-acdc-3fb8fa1963b1
-[01:53:15.403](INFO) Created object with id b8b1fb00-658e-4637-aa6b-0c2e83a690a0
-[01:53:15.403](INFO) Created object with id fb68a35d-e222-4761-a401-4b4cc0eb35e3
-[01:53:15.403](INFO) Created object with id 7ecf6b06-cc2b-4234-b04e-0f2a2edc1110
-[01:53:15.403](INFO) Created object with id 48753a1e-325f-4961-af81-04e0661a981b
-[01:53:15.403](INFO) Created object with id 3a5875e9-55de-4152-8d3a-560c7de255a8
-[01:53:15.403](INFO) Created object with id c233dd10-b0e5-4693-a81e-8deccfd1a8db
-[01:53:15.403](INFO) Created object with id 4f53ce39-ef49-4dd5-9bdb-4961408e1062
-[01:53:15.403](INFO) Created object with id 2324ba71-91c5-45a7-9dee-5c705e83de04
-[01:53:15.403](INFO) Created object with id d18d6249-205a-4475-aaf3-65b3d0a52a26
-[01:53:15.403](INFO) Created object with id bab450f0-1520-49e5-8340-13fe4eab5ce3
-[01:53:15.403](INFO) Created object with id a3c53296-a772-4933-8cbb-499c28099232
-[01:53:15.403](INFO) Created object with id 9bf1d9e9-2658-4533-88c2-eba487715c48
-[01:53:15.403](INFO) Created object with id f4f892f2-59fc-49c7-aa11-a0af4d953a8f
-[01:53:15.403](INFO) Created object with id ce46a4d4-a162-42be-9d47-23d8d15ad55c
-[01:53:15.403](INFO) Created object with id f07747bc-b69c-4b4f-a0cf-629ce9773d31
-[01:53:15.403](INFO) Created object with id 36b206bb-2c25-4d15-9e35-6bf412c3cead
-[01:53:15.403](INFO) Created object with id 7143243c-cdd5-43b7-b6e9-237d7cd1aabf
-[01:53:15.403](INFO) Created object with id 2a938bbd-c866-465a-98a7-9ae60b86dd78
-[01:53:15.403](INFO) Created object with id 00ae8a16-3dc4-409b-96ec-0593a94624ef
-[01:53:15.403](INFO) Created object with id 3b57328c-f156-48ca-916b-5ae660183ca6
-[01:53:15.404](INFO) Created object with id ad894af7-d0f8-475f-9425-49760ef1f150
-[01:53:15.404](INFO) Created object with id 4e87c3e1-558d-4349-87be-d5d1801df04b
-[01:53:15.404](INFO) Created object with id 55e9e580-69a4-4e54-8245-52d8dcc3c2d2
-[01:53:15.404](INFO) Created object with id 8ed29479-0e9b-471e-8dc9-54915131921c
-[01:53:15.404](INFO) Created object with id 6e5341af-d0d0-4eb9-b8af-79cff026c490
-[01:53:15.404](INFO) Created object with id d029cdef-ce79-4948-b438-2a8635542906
-[01:53:15.404](INFO) Created object with id 854aa492-d00c-4991-88b2-aa9a0c9e6b35
-[01:53:15.404](INFO) Created object with id 1d78d4e1-19fa-438c-b119-4368d968fdc7
-[01:53:15.404](INFO) Created object with id bc3a4c12-4684-4220-96ac-220e9d7bfb97
-[01:53:15.404](INFO) Created object with id 70792dc1-baaf-4be5-82a0-02a6507c75bc
-[01:53:15.404](INFO) Created object with id 44d1a71f-f922-4ac8-afca-05946f382199
-[01:53:15.404](INFO) Created object with id 21c5cf98-e00b-4698-988f-d6b698e88e53
-[01:53:15.404](INFO) Created object with id 2b07662c-280e-4977-8f5a-c23223bf2e62
-[01:53:15.404](INFO) Created object with id dcf320b0-0034-4862-b51f-5a9c466d4b45
-[01:53:15.404](INFO) Created object with id 6a519ae2-955f-4749-9ca2-1d6f00bced9f
-[01:53:15.404](INFO) Created object with id 84535ff3-8f19-4a60-bc4e-1c501eb64f65
-[01:53:15.404](INFO) Created object with id 0405319f-bb40-470d-a42a-6980945bdfdb
-[01:53:15.404](INFO) Created object with id b876bd59-0820-4eda-bef1-be0b2e029dc5
-[01:53:15.404](INFO) Created object with id 9a06971f-59ec-4461-9632-bd9f57ea34ac
-[01:53:15.404](INFO) Created object with id ac94ca14-1041-4642-99f2-753a4fb09201
-[01:53:15.404](INFO) Created object with id c4eb5085-7571-4a67-a4b1-a16218dcf12d
-[01:53:15.404](INFO) Created object with id e1e28108-38ad-4e34-9990-3e1c646fd0e7
-[01:53:15.404](INFO) Created object with id 99d0f93c-c108-4a35-b890-eb57921918a5
-[01:53:15.404](INFO) Created object with id 6548c65b-cea9-41f2-9d32-97923323cd65
-[01:53:15.404](INFO) Created object with id 5acac5bb-36cc-45e1-9649-2f84c4208f0b
-[01:53:15.404](INFO) Created object with id 8527673a-b6d1-429b-95e9-d7eeb2399b23
-[01:53:15.404](INFO) Created object with id 8f932b55-eeae-41e0-b6bf-e86966de34aa
-[01:53:15.404](INFO) Created object with id cd1c964b-db8e-46b1-935b-8377e8b650dc
-[01:53:15.404](INFO) Created object with id 7b08d4d5-c8d0-47a6-95b9-a5b61f0148f6
-[01:53:15.404](INFO) Created object with id f2341c68-5602-4abb-b1e0-e2b36a09d8a2
-[01:53:15.404](INFO) Created object with id 85ee9025-b740-408f-a08a-5b924c5eaf65
-[01:53:15.404](INFO) Created object with id 99839d0c-13f0-4fe6-a1cf-62276db0abb3
-[01:53:15.404](INFO) Created object with id 797bcc2f-5ccd-468e-a7c2-042a3ebbd1b9
-[01:53:15.404](INFO) Created object with id bde30242-d37c-4510-9885-d711f7a10211
-[01:53:15.404](INFO) Created object with id d92d31d4-597e-4b9b-b281-98490cf202f8
-[01:53:15.404](INFO) Created object with id ce571c84-d9b3-4491-a92f-bb86b49aa172
-[01:53:15.404](INFO) Created object with id 4e4710d9-fc69-4958-95cf-23e752593c7b
-[01:53:15.404](INFO) Created object with id 64d813a2-001f-4a27-8ac8-1c3279d29d72
-[01:53:15.404](INFO) Created object with id b2b46f5a-8944-42bc-a5bc-f4872a6c64bb
-[01:53:15.404](INFO) Created object with id b2840f75-9ffc-4bbc-a71f-7665aca1539e
-[01:53:15.404](INFO) Created object with id b3237a51-b66f-48af-947d-2d564d179ac3
-[01:53:15.404](INFO) Created object with id 03c804b0-d8b3-463e-a226-85ab16416dc0
-[01:53:15.404](INFO) Created object with id 4d517ff2-3689-4f68-b53f-d149fe00336c
-[01:53:15.404](INFO) Created object with id a39d4b56-c646-4aeb-a68c-d359d4004757
-[01:53:15.404](INFO) Created object with id 2f712f6d-b46d-4dd3-afa4-9614c45db312
-[01:53:15.404](INFO) Created object with id 607f29b5-8c4a-4b8e-b393-ffd3360164dc
-[01:53:15.405](INFO) Created object with id b2ec5b97-b1e0-4b96-a7d2-8f1187caabb3
-[01:53:15.405](INFO) Created object with id 8e3ed607-4b64-41a5-8477-76bee867852d
-[01:53:15.405](INFO) Created object with id ac6b2827-fa0a-432e-b390-ffd06306f38f
-[01:53:15.405](INFO) Created object with id 227bb875-315f-4fde-9826-67870bfa71ba
-[01:53:15.405](INFO) Created object with id fae2bc0f-4f83-47db-bc74-f76663bf529d
-[01:53:15.405](INFO) Created object with id aceddb6d-5368-4eae-b53b-2a24e0d4b73b
-[01:53:15.405](INFO) Created object with id 01727b1d-5e91-4b2e-a0f2-c06a60c47f29
-[01:53:15.405](INFO) Created object with id cfbe1944-4e37-4cb6-a11d-9e80e38a8f91
-[01:53:15.405](INFO) Created object with id 7a6bace5-48b6-41ea-a833-fe05f9a0b702
-[01:53:15.405](INFO) Created object with id 5a717e33-bec6-4cb8-8183-353e53067793
-[01:53:15.405](INFO) Created object with id bf9c3cc8-9511-4111-91ff-df0715040118
-[01:53:15.405](INFO) Created object with id 08898677-4b99-488a-89b0-95707f137010
-[01:53:15.405](INFO) Created object with id a02278cf-a870-4d2f-b2f4-1653a7372cef
-[01:53:15.405](INFO) Created object with id 57982ef3-01e4-4f3c-a0b4-ebc214dd62fb
-[01:53:15.405](INFO) Created object with id af549104-79f3-44fd-997d-e8486e72a7d2
-[01:53:15.405](INFO) Created object with id e19c53d6-1682-4047-b00e-5bd12a926425
-[01:53:15.405](INFO) Created object with id e0a5fc35-1c5b-4b0d-b47e-f8545e1d1326
-[01:53:15.405](INFO) Created object with id d740e8f2-0118-4510-b887-b6a31d0c3526
-[01:53:15.405](INFO) Created object with id feddf30f-4dbc-48d6-b3e5-47a0848dfc90
-[01:53:15.405](INFO) Created object with id 7bb8ea0b-fd0d-4291-9ae2-b517f51be1d7
-[01:53:15.405](INFO) Created object with id ceb682c9-833f-46b9-95b3-cd7a7163ac2b
-[01:53:15.405](INFO) Created object with id b7312027-8d5d-4bb3-b892-aa0003b6cb3e
-[01:53:15.405](INFO) Created object with id b76e22f8-0007-4400-b786-1094b6b5af7e
-[01:53:15.405](INFO) Created object with id d8161ec3-d436-42f1-80c6-ee91b2453735
-[01:53:15.405](INFO) Created object with id fee204c3-4492-4a47-b8e9-d648c3c66cfd
-[01:53:15.405](INFO) Created object with id 8efac3a8-1ef7-4ad2-80c3-714776861c72
-[01:53:15.405](INFO) Created object with id 498c3c7c-a296-4970-9feb-ea8560cb5d01
-[01:53:15.405](INFO) Created object with id 165adbaa-9fc8-43a2-b9b1-a421d25a115c
-[01:53:15.405](INFO) Created object with id 1ede8eb3-0061-481a-aa66-0328aead821d
-[01:53:15.405](INFO) Created object with id 73175039-1ad6-43f5-886e-0e65d1845668
-[01:53:15.405](INFO) Created object with id 0e1c84f6-6b73-438c-be5c-2917e5e0c03f
-[01:53:15.405](INFO) Created object with id cac5de12-12ad-4d53-83e3-2e48c8ee39e2
-[01:53:15.405](INFO) Created object with id 5f76063f-2e9a-4241-b052-d3707637bb58
-[01:53:15.405](INFO) Created object with id c9479a67-88b8-4ae2-a6d0-1f6182918bf7
-[01:53:15.405](INFO) Created object with id 0a1ff445-690e-4927-8bde-f4d75ef1061c
-[01:53:15.405](INFO) Created object with id da6cbb09-aa7d-4b0a-8be6-8ddf882f33a0
-[01:53:15.405](INFO) Created object with id b0fd7641-2a36-4365-a580-37d99cbc160f
-[01:53:15.405](INFO) Created object with id c785f304-12a8-47bb-b540-c71269c00d4b
-[01:53:15.405](INFO) Created object with id 83b88399-9ef5-49e1-9dcb-9ab404699d7f
-[01:53:15.405](INFO) Created object with id 1b5cac21-ed5c-4a10-9b3b-376a25517155
-[01:53:15.405](INFO) Created object with id 34df61d4-0e32-4471-a21b-99b62269c621
-[01:53:15.405](INFO) Created object with id 3991d19d-10b9-4e8e-932f-1171a1c2c8ea
-[01:53:15.405](INFO) Created object with id 1816a5ab-300e-480f-b642-b148a3577cbf
-[01:53:15.405](INFO) Created object with id 8bdd539a-ffcf-47f2-a6ff-f1783ff95316
-[01:53:15.405](INFO) Created object with id a8bd8242-d2c6-448a-abeb-3a5fec4ae21b
-[01:53:15.405](INFO) Created object with id 8e8457d1-f19d-4112-87e2-5311d4b9b35d
-[01:53:15.406](INFO) Created object with id 3bbd73e9-f056-4a36-82f6-2b239bc7c23f
-[01:53:15.406](INFO) Created object with id feff80ba-b86d-4193-a0a6-a347e9ed9efa
-[01:53:15.406](INFO) Created object with id b1857064-0fd0-4e23-9575-44b8891179a0
-[01:53:15.406](INFO) Created object with id ac8d16ea-6f96-404a-adeb-b5c106553e8f
-[01:53:15.406](INFO) Created object with id 53764c14-d0df-4c76-b8a6-76782c40aa25
-[01:53:15.406](INFO) Created object with id 5c146785-db23-4e91-ad30-c0cd49381a11
-[01:53:15.406](INFO) Created object with id 31f05611-3a40-458e-a839-7f923366569b
-[01:53:15.406](INFO) Created object with id 20ad4bea-4a1c-40ea-aa7e-2a1d40684eed
-[01:53:15.406](INFO) Created object with id 5ccbe185-3eb4-47ff-bc32-971394e12e15
-[01:53:15.406](INFO) Created object with id 6e93ceb4-615f-4b7c-9dd0-1861d56968d9
-[01:53:15.406](INFO) Created object with id 7467ed2e-ff75-43a0-b001-a3ef8b4ee2a5
-[01:53:15.406](INFO) Created object with id d6a2447d-4f3c-4d79-ad24-01968722660a
-[01:53:15.406](INFO) Created object with id a1554451-4fa9-4171-b3b5-c3bebdabe2a2
-[01:53:15.406](INFO) Created object with id 3d713c75-8ae2-4587-8618-0296f9445b09
-[01:53:15.406](INFO) Created object with id 3d5f7931-f961-4165-b3b8-02d893c88116
-[01:53:15.406](INFO) Created object with id 9bf6b52d-5440-40f7-89ea-792dc4207d8c
-[01:53:15.406](INFO) Created object with id edbb43ca-d08c-482a-987e-cf0080a6bfea
-[01:53:15.406](INFO) Created object with id 81a4f4f7-e076-4ca4-954b-e663c350a3c6
-[01:53:15.406](INFO) Created object with id 06fbbcd8-4c0a-464e-a69f-961cd670b28c
-[01:53:15.406](INFO) Created object with id 9bf0fc09-eeca-4d3f-abab-cb6ce61cf144
-[01:53:15.406](INFO) Created object with id 2e841a8e-d009-4e81-b2fe-f1326e27795a
-[01:53:15.406](INFO) Created object with id 9b6245c5-e97b-42ec-98d1-8964e5b567a4
-[01:53:15.406](INFO) Created object with id 6e7e0a4a-967f-4c59-a505-0a306a7a95b1
-[01:53:15.406](INFO) Created object with id 44efce1b-8f13-402e-b435-d0e7773a8d68
-[01:53:15.407](INFO) Created object with id 23ae0e66-e44d-4189-b626-e31a552959c2
-[01:53:15.407](INFO) Created object with id 4a240f3f-7319-4b7b-bd43-fd6779a92384
-[01:53:15.407](INFO) Created object with id ae34f732-52e0-4a15-8d6e-b89e01bcad8b
-[01:53:15.407](INFO) Created object with id 3cba909d-ab79-427c-aa03-e0acf145f6e9
-[01:53:15.407](INFO) Created object with id f023e53f-88c0-485d-8c7e-2366ff8250c6
-[01:53:15.407](INFO) Created object with id e805704c-500d-4ba2-8fd2-0b2c5e192c64
-[01:53:15.407](INFO) Created object with id 1fa33ef3-763f-4fbb-9933-ea10eb14a77e
-[01:53:15.407](INFO) Created object with id 9b420db9-719a-4042-8f96-8686ad60f9f4
-[01:53:15.407](INFO) Created object with id fef9604a-f22f-4403-8435-cac768161f8c
-[01:53:15.407](INFO) Created object with id 79126079-9af9-4f56-8f47-3c740b55b361
-[01:53:15.407](INFO) Created object with id 11a8b73a-3eb1-4c99-8c15-f864b3838fc5
-[01:53:15.407](INFO) Created object with id f5980ebc-dcbd-45fe-b4e7-963be43788bb
-[01:53:15.407](INFO) Created object with id fa3204ca-3cb8-446d-900d-372e73c1b388
-[01:53:15.407](INFO) Created object with id cfff11ae-24ef-468c-9121-44f6f1ec1203
-[01:53:15.407](INFO) Created object with id 604983bd-3eb5-45f8-8cc7-8c4cb2082be0
-[01:53:15.407](INFO) Created object with id b008c997-2359-4a6b-b2ab-470c7d2491c9
-[01:53:15.407](INFO) Created object with id 869e397e-8105-4d49-a122-5bb989474d0a
-[01:53:15.407](INFO) Created object with id 7f04c2b7-7695-4654-b686-3ac532b0b71e
-[01:53:15.407](INFO) Created object with id 4c449305-e91d-46e2-8af5-9f9574b31bd8
-[01:53:15.407](INFO) Created object with id 8fc4620c-c49f-4213-9489-876779eb1fc8
-[01:53:15.407](INFO) Created object with id b09c9913-2779-4ed5-970b-a8abeec64ee1
-[01:53:15.407](INFO) Created object with id da55a817-8aab-4bcf-9fd4-264c248548bd
-[01:53:15.407](INFO) Created object with id dcfd820b-0dc3-4170-bd73-248e3ce3737d
-[01:53:15.407](INFO) Created object with id b15cb4bd-4d15-4f91-ab68-4bff71bddc82
-[01:53:15.407](INFO) Created object with id 0389cea1-5792-4a98-802a-17b6ced549e7
-[01:53:15.407](INFO) Created object with id 9b398e4d-a573-4f38-b8ae-e6e1692bc865
-[01:53:15.407](INFO) Created object with id d7de3393-00dc-4a86-8709-135dc03c847d
-[01:53:15.407](INFO) Created object with id d5d44543-b925-4467-b5b0-f1a8d5717029
-[01:53:15.407](INFO) Created object with id cea2123a-cbe0-4a05-ae63-e54813b9cfa4
-[01:53:15.407](INFO) Created object with id 7e109e59-17bb-47f2-b83d-7059ee87db97
-[01:53:15.407](INFO) Created object with id 77aba4ab-37df-410a-bca3-1c95811db4df
-[01:53:15.407](INFO) Created object with id eaca191c-eea9-4e0a-af71-9ffdab285406
-[01:53:15.407](INFO) Created object with id 9b10e623-e8e7-4085-a976-ec5feceead95
-[01:53:15.407](INFO) Created object with id e938e6f4-d654-4d10-819f-c2c2abd57891
-[01:53:15.407](INFO) Created object with id 523270e1-6927-407a-a842-e49d132f0fb0
-[01:53:15.407](INFO) Created object with id ffa7d3fa-8362-40bd-843c-7ff840686fc3
-[01:53:15.407](INFO) Created object with id c7b5a4ed-23cb-48ed-a355-82ec7db24c5a
-[01:53:15.407](INFO) Created object with id 795aa7db-4297-4e6f-847e-9a6c72f8b627
-[01:53:15.407](INFO) Created object with id d21bbbcc-82a2-49a2-870a-226d4ac05ed4
-[01:53:15.407](INFO) Created object with id ebe1d594-660f-4ae8-96de-b8c7dbb0748b
-[01:53:15.407](INFO) Created object with id 3ac27f68-1195-4bf6-a8a0-dcdf9066b376
-[01:53:15.407](INFO) Created object with id e6cb9a3f-1628-4814-ab11-ad244f181d54
-[01:53:15.407](INFO) Created object with id 28e22ecf-005a-454f-aba4-b4c2a7132072
-[01:53:15.407](INFO) Created object with id 306b8a11-d92f-4847-a29f-6cf6f2349a98
-[01:53:15.407](INFO) Created object with id 13502ad7-92b4-421b-831a-6122c559b959
-[01:53:15.408](INFO) Created object with id 48e7d441-f4da-4f87-b472-c93cba7e4e14
-[01:53:15.408](INFO) Created object with id d1aa7112-6ffb-4a57-85ca-8144e3645d1f
-[01:53:15.408](INFO) Created object with id 42865ab4-6f3d-440d-b673-cae1ff7ba1b8
-[01:53:15.408](INFO) Created object with id b28652b4-4d2f-4049-b521-03505d03dc50
-[01:53:15.408](INFO) Created object with id 1221cac8-5964-47f0-9219-f3b72d8d3e1e
-[01:53:15.408](INFO) Created object with id e35d21f2-167e-455d-93bd-b659ca0e1527
-[01:53:15.408](INFO) Created object with id 59058c7a-3dd5-48b3-a3ab-cce5ef07623f
-[01:53:15.408](INFO) Created object with id 2eafa887-8698-46c3-ae28-9f84213cfbd3
-[01:53:15.408](INFO) Created object with id d7477415-f3bf-466f-9801-c54dfa4f6bf1
-[01:53:15.408](INFO) Created object with id 2116683a-1c90-456c-b0a6-7547cc6ddae3
-[01:53:15.408](INFO) Created object with id 6127fe82-bebb-4d28-b683-e356ccc32467
-[01:53:15.408](INFO) Created object with id 13c010a6-6c02-4327-8882-7b9dbdd1137a
-[01:53:15.408](INFO) Created object with id b00ddbc8-306c-4a90-bd7e-1a549bc71ccc
-[01:53:15.408](INFO) Created object with id d02495d1-9558-425c-b465-acc306373e9f
-[01:53:15.408](INFO) Created object with id a7d56091-7a3f-4087-a9cc-c8fec0e6ba74
-[01:53:15.408](INFO) Created object with id 9768e1b1-6ccd-4dda-baaf-158956162e3a
-[01:53:15.408](INFO) Created object with id 15223618-5c0f-4b41-a06e-976a6bfd2c32
-[01:53:15.408](INFO) Created object with id 5102b323-7932-4a83-8e69-156a77a67fc7
-[01:53:15.408](INFO) Created object with id fe11568c-3b14-4a2d-8a78-494189971271
-[01:53:15.408](INFO) Created object with id db5bffcc-771f-4289-95c5-1c2190690bd4
-[01:53:15.408](INFO) Created object with id b64989f1-4f01-424f-a185-276d83fb4b89
-[01:53:15.408](INFO) Created object with id 5591804d-1fbd-4d67-aaf9-ee8df2c6a563
-[01:53:15.408](INFO) Created object with id d97cdfbb-3cdb-4991-9c33-acbd4513f1e1
-[01:53:15.408](INFO) Created object with id 81a2d8ce-ed13-4c5c-918b-09cb7efc7bbf
-[01:53:15.408](INFO) Created object with id bc654da9-6b0b-4a57-ac0d-fbb68a014090
-[01:53:15.408](INFO) Created object with id 724e4a25-594f-4431-8c08-5b3ed77032ed
-[01:53:15.408](INFO) Created object with id 138d2fae-4c02-478c-9eec-314792a5b823
-[01:53:15.408](INFO) Created object with id 6cfc56e4-59ec-48e3-a849-07f3b1ce4db6
-[01:53:15.408](INFO) Created object with id d09bf97c-4e62-4788-b2d3-42c4c8df980f
-[01:53:15.408](INFO) Created object with id 30c38013-3910-458d-b747-cf78df60f79c
-[01:53:15.408](INFO) Created object with id 134d1c51-186b-4f29-a98a-5481cad65a73
-[01:53:15.408](INFO) Created object with id 14f0e5f0-e7ca-4bcf-be33-050777e80e7d
-[01:53:15.408](INFO) Created object with id 5efbe7d5-e785-4012-8419-5c099c3275d7
-[01:53:15.408](INFO) Created object with id cac9bffd-2b6f-4bca-9bf5-8f86cbf9dbe2
-[01:53:15.408](INFO) Created object with id b2929c39-4042-4220-85a0-deb976fb6fc3
-[01:53:15.408](INFO) Created object with id d57348c4-6dc8-4a81-b96a-199f30d6ae77
-[01:53:15.408](INFO) Created object with id 12c9b29a-f228-48e7-bd3a-882740d5af85
-[01:53:15.408](INFO) Created object with id 65558a2d-2a7c-4918-bf51-3a29aa2732d0
-[01:53:15.408](INFO) Created object with id cd34c536-81c0-44a8-912b-75ad062d0287
-[01:53:15.408](INFO) Created object with id ba54693d-58cc-4988-a7e9-0226fd1a7c44
-[01:53:15.408](INFO) Created object with id 2c847f95-280e-49f1-96ae-1f32feb7c950
-[01:53:15.408](INFO) Created object with id ce3ac3d7-556b-43da-be2e-0e3a7b27a6a4
-[01:53:15.408](INFO) Created object with id 5da49888-d038-4dda-b6bd-629f5d84dff0
-[01:53:15.408](INFO) Created object with id dc3386ff-90ad-4702-b3ab-e9f0fb27db35
-[01:53:15.408](INFO) Created object with id 748b689d-fe4f-46bb-bf32-c9ae7abe3e2e
-[01:53:15.409](INFO) Created object with id 42c9057f-d7a4-44a0-9da7-c1d040b96858
-[01:53:15.409](INFO) Created object with id 756a7b68-59c8-4503-8771-6686e6d650fb
-[01:53:15.409](INFO) Created object with id 2396756d-b7db-42a6-adc5-b71ed0d715df
-[01:53:15.409](INFO) Created object with id 7591482b-b273-4309-93eb-0bf74dbfc197
-[01:53:15.409](INFO) Created object with id 0e76a798-eb1a-48c9-96b8-e9aced5ece32
-[01:53:15.409](INFO) Created object with id 285f28d3-6f20-4f50-9e8a-8e872156c865
-[01:53:15.409](INFO) Created object with id 417eb97c-74fa-4e29-bfa5-5bc10f6ee46e
-[01:53:15.409](INFO) Created object with id 018ce8c4-9c19-45d2-b7fd-b1e9e20e8251
-[01:53:15.409](INFO) Created object with id e0cd5d99-1a0d-42ab-8004-ff5112527e1f
-[01:53:15.409](INFO) Created object with id add9eff6-c665-487a-b827-81152c56ce89
-[01:53:15.409](INFO) Created object with id 96aa907d-a129-4cc9-94bc-07a0d7116387
-[01:53:15.409](INFO) Created object with id 21f080dd-e718-4768-a2d4-5afad78dbc9b
-[01:53:15.409](INFO) Created object with id 8e70fa2f-8603-4c1b-bb2e-2901b4914833
-[01:53:15.409](INFO) Created object with id 4a60fe1a-0bf3-4118-9ad6-40e7c723da49
-[01:53:15.409](INFO) Created object with id 37b95777-a405-44bb-bc1e-1cdc5453fe20
-[01:53:15.409](INFO) Created object with id f35b87ae-0299-4462-b81a-b0db307dc07d
-[01:53:15.409](INFO) Created object with id 975ee5c2-4ea9-42ff-ad67-6f77fd7b0013
-[01:53:15.409](INFO) Created object with id 14922674-4e82-4b52-a55c-5f58497d3833
-[01:53:15.409](INFO) Created object with id 07873029-d5d5-4378-a27f-5edae46c87f0
-[01:53:15.409](INFO) Created object with id ac0e7506-5a7d-40f4-9c47-2c717bd5d65b
-[01:53:15.409](INFO) Created object with id a9a8514a-d2eb-411e-9fd9-f03a2404d296
-[01:53:15.409](INFO) Created object with id df721c59-4cc6-4f15-b1c1-f786cddd3ce4
-[01:53:15.409](INFO) Created object with id 7fc6e8a4-1061-4d68-9df8-715c1e87c667
-[01:53:15.409](INFO) Created object with id 49006859-3d5c-474f-a04b-f8290af7f185
-[01:53:15.409](INFO) Created object with id 2e0a5e0c-d60f-42b3-a2d9-9197e2321f2a
-[01:53:15.409](INFO) Created object with id ffc5c7b0-bc4c-4024-b658-60076a790903
-[01:53:15.409](INFO) Created object with id ce3dd49d-2830-4df1-a237-ca38ec66401c
-[01:53:15.409](INFO) Created object with id 00383208-3613-4466-bd63-511fcabf691d
-[01:53:15.409](INFO) Created object with id e55bd3cc-9e4e-4abf-9639-85ef37488775
-[01:53:15.409](INFO) Created object with id 48774499-3ad8-45ca-8509-a2f923e4041e
-[01:53:15.409](INFO) Created object with id 73b10476-6fb6-4623-a9bc-a7e0ced966f6
-[01:53:15.409](INFO) Created object with id d6bb47ce-d436-4cb7-a024-f71b46f3599d
-[01:53:15.409](INFO) Created object with id a0de6549-b5d8-49e3-ae10-90c79a0ef3b9
-[01:53:15.409](INFO) Created object with id 90d00397-34f1-4b64-ad34-bac10b4dd669
-[01:53:15.409](INFO) Created object with id ac85ed7b-e545-459b-88db-4264ef594e19
-[01:53:15.409](INFO) Created object with id aece4d7d-f574-4e12-9278-633ae3e1c6aa
-[01:53:15.409](INFO) Created object with id 0bf06106-4c1b-4017-bce6-4a5728ac795a
-[01:53:15.409](INFO) Created object with id 81cf1bb9-825a-473d-8738-3cfa1fc0f93c
-[01:53:15.409](INFO) Created object with id c55b240f-f2c5-45e5-9d7e-f87f107e0939
-[01:53:15.409](INFO) Created object with id eb895fda-56b3-4cd2-b7e7-24a05c3593e6
-[01:53:15.409](INFO) Created object with id 53c94dcb-6868-4728-a1b1-d26a0ea16b25
-[01:53:15.409](INFO) Created object with id c351898a-208b-4435-9291-5d9ff0030e15
-[01:53:15.409](INFO) Created object with id 920b8995-2665-4d86-a84e-24c0cd2d5dcb
-[01:53:15.409](INFO) Created object with id abd626b1-88f5-444e-a27d-fff088bb815e
-[01:53:15.409](INFO) Created object with id 0f6310e6-e4ac-4182-8074-764480edbaeb
-[01:53:15.409](INFO) Created object with id 182063ef-0184-4d1b-93e4-697d60e0dda8
-[01:53:15.410](INFO) Created object with id 2a36dc81-1cf5-4895-8e4c-bae93e99fbfa
-[01:53:15.410](INFO) Created object with id 10127e30-450c-485f-94bb-5426d2568990
-[01:53:15.410](INFO) Created object with id c8e232e5-6da8-4639-b000-c6f6eb825e38
-[01:53:15.410](INFO) Created object with id cf456878-8617-4e9d-83f9-ff99ee670274
-[01:53:15.410](INFO) Created object with id ceeddd7b-4101-4d73-b800-6934e7d013e9
-[01:53:15.410](INFO) Created object with id 16fa2157-c940-4daa-943a-1d1201689bbc
-[01:53:15.410](INFO) Created object with id 4c33059f-da54-4649-a951-beb17f7a072b
-[01:53:15.410](INFO) Created object with id aed9db1f-d37f-49e2-94c1-a9d157efa185
-[01:53:15.410](INFO) Created object with id 62798282-a74f-4941-a1b0-556f88748611
-[01:53:15.410](INFO) Created object with id 725a2455-2e9a-446b-aec3-e7b6214d51f1
-[01:53:15.410](INFO) Created object with id 3ce3abfb-e414-4a5b-b891-8f510cac9cfb
-[01:53:15.410](INFO) Created object with id b64b6b26-edd2-48f3-9a75-26d416dfbd21
-[01:53:15.410](INFO) Created object with id 6980dc5b-0359-4693-a346-357d081c9874
-[01:53:15.410](INFO) Created object with id e0ce4157-9e90-4154-895b-1cc4ada454e1
-[01:53:15.410](INFO) Created object with id e66453e8-ab2f-451b-afe3-48c15a40501b
-[01:53:15.410](INFO) Created object with id 6b130111-a2ff-4f75-91ee-91695a5d447b
-[01:53:15.410](INFO) Created object with id 0c2f586f-6842-4226-9a18-f07df0fdecc4
-[01:53:15.410](INFO) Created object with id 574e4a1c-0dfb-441a-969b-e029cd1a65b4
-[01:53:15.410](INFO) Created object with id 6e512f8d-f722-4800-980e-8ed2c4ee99f4
-[01:53:15.410](INFO) Created object with id d1c566be-0e26-408f-b880-513d300a5695
-[01:53:15.410](INFO) Created object with id 8b91aca3-c1d8-4c5b-9fad-e7bc85b79aea
-[01:53:15.410](INFO) Created object with id 15f92333-56d2-4259-a6b0-47fa0de39a7e
-[01:53:15.410](INFO) Created object with id bd5ea7e7-573c-4ced-b456-ea940ecbf021
-[01:53:15.410](INFO) Created object with id 248336ea-9799-4873-9ebe-ae8196bf1577
-[01:53:15.410](INFO) Created object with id 6d608fff-5163-4789-acd1-87f39b9912a5
-[01:53:15.410](INFO) Created object with id f110a50d-0c36-4ffc-a57a-21a632a97a26
-[01:53:15.410](INFO) Created object with id 70959871-1a6e-4e07-b3be-2641f37d226c
-[01:53:15.544](INFO) Loaded scene: EOSD stage 4
-[01:53:26.787](INFO) Deleted object with id e0cd5d99-1a0d-42ab-8004-ff5112527e1f
-[01:53:26.788](INFO) Deleted object with id add9eff6-c665-487a-b827-81152c56ce89
-[01:53:26.788](INFO) Deleted object with id 96aa907d-a129-4cc9-94bc-07a0d7116387
-[01:53:26.788](INFO) Deleted object with id 21f080dd-e718-4768-a2d4-5afad78dbc9b
-[01:53:26.788](INFO) Deleted object with id 8e70fa2f-8603-4c1b-bb2e-2901b4914833
-[01:53:26.788](INFO) Deleted object with id 4a60fe1a-0bf3-4118-9ad6-40e7c723da49
-[01:53:26.788](INFO) Deleted object with id 37b95777-a405-44bb-bc1e-1cdc5453fe20
-[01:53:26.788](INFO) Deleted object with id f35b87ae-0299-4462-b81a-b0db307dc07d
-[01:53:26.788](INFO) Deleted object with id 975ee5c2-4ea9-42ff-ad67-6f77fd7b0013
-[01:53:26.788](INFO) Deleted object with id 14922674-4e82-4b52-a55c-5f58497d3833
-[01:53:26.788](INFO) Deleted object with id 07873029-d5d5-4378-a27f-5edae46c87f0
-[01:53:26.788](INFO) Deleted object with id ac0e7506-5a7d-40f4-9c47-2c717bd5d65b
-[01:53:26.788](INFO) Deleted object with id a9a8514a-d2eb-411e-9fd9-f03a2404d296
-[01:53:26.788](INFO) Deleted object with id df721c59-4cc6-4f15-b1c1-f786cddd3ce4
-[01:53:26.788](INFO) Deleted object with id 7fc6e8a4-1061-4d68-9df8-715c1e87c667
-[01:53:26.788](INFO) Deleted object with id 49006859-3d5c-474f-a04b-f8290af7f185
-[01:53:26.788](INFO) Deleted object with id 2e0a5e0c-d60f-42b3-a2d9-9197e2321f2a
-[01:53:26.788](INFO) Deleted object with id ffc5c7b0-bc4c-4024-b658-60076a790903
-[01:53:26.788](INFO) Deleted object with id ce3dd49d-2830-4df1-a237-ca38ec66401c
-[01:53:26.788](INFO) Deleted object with id 00383208-3613-4466-bd63-511fcabf691d
-[01:53:26.788](INFO) Deleted object with id e55bd3cc-9e4e-4abf-9639-85ef37488775
-[01:53:26.788](INFO) Deleted object with id 48774499-3ad8-45ca-8509-a2f923e4041e
-[01:53:26.788](INFO) Deleted object with id 73b10476-6fb6-4623-a9bc-a7e0ced966f6
-[01:53:26.788](INFO) Deleted object with id d6bb47ce-d436-4cb7-a024-f71b46f3599d
-[01:53:26.788](INFO) Deleted object with id a0de6549-b5d8-49e3-ae10-90c79a0ef3b9
-[01:53:26.788](INFO) Deleted object with id 90d00397-34f1-4b64-ad34-bac10b4dd669
-[01:53:26.788](INFO) Deleted object with id ac85ed7b-e545-459b-88db-4264ef594e19
-[01:53:26.788](INFO) Deleted object with id aece4d7d-f574-4e12-9278-633ae3e1c6aa
-[01:53:26.788](INFO) Deleted object with id 0bf06106-4c1b-4017-bce6-4a5728ac795a
-[01:53:26.788](INFO) Deleted object with id 81cf1bb9-825a-473d-8738-3cfa1fc0f93c
-[01:53:26.788](INFO) Deleted object with id c55b240f-f2c5-45e5-9d7e-f87f107e0939
-[01:53:26.788](INFO) Deleted object with id eb895fda-56b3-4cd2-b7e7-24a05c3593e6
-[01:53:26.788](INFO) Deleted object with id 53c94dcb-6868-4728-a1b1-d26a0ea16b25
-[01:53:26.788](INFO) Deleted object with id c351898a-208b-4435-9291-5d9ff0030e15
-[01:53:26.788](INFO) Deleted object with id 920b8995-2665-4d86-a84e-24c0cd2d5dcb
-[01:53:26.788](INFO) Deleted object with id abd626b1-88f5-444e-a27d-fff088bb815e
-[01:53:26.788](INFO) Deleted object with id 0f6310e6-e4ac-4182-8074-764480edbaeb
-[01:53:26.788](INFO) Deleted object with id 182063ef-0184-4d1b-93e4-697d60e0dda8
-[01:53:26.788](INFO) Deleted object with id 2a36dc81-1cf5-4895-8e4c-bae93e99fbfa
-[01:53:26.788](INFO) Deleted object with id 10127e30-450c-485f-94bb-5426d2568990
-[01:53:26.788](INFO) Deleted object with id c8e232e5-6da8-4639-b000-c6f6eb825e38
-[01:53:26.788](INFO) Deleted object with id cf456878-8617-4e9d-83f9-ff99ee670274
-[01:53:26.788](INFO) Deleted object with id ceeddd7b-4101-4d73-b800-6934e7d013e9
-[01:53:26.788](INFO) Deleted object with id 16fa2157-c940-4daa-943a-1d1201689bbc
-[01:53:26.788](INFO) Deleted object with id 4c33059f-da54-4649-a951-beb17f7a072b
-[01:53:26.788](INFO) Deleted object with id aed9db1f-d37f-49e2-94c1-a9d157efa185
-[01:53:26.788](INFO) Deleted object with id 62798282-a74f-4941-a1b0-556f88748611
-[01:53:26.788](INFO) Deleted object with id 725a2455-2e9a-446b-aec3-e7b6214d51f1
-[01:53:26.788](INFO) Deleted object with id 3ce3abfb-e414-4a5b-b891-8f510cac9cfb
-[01:53:26.788](INFO) Deleted object with id b64b6b26-edd2-48f3-9a75-26d416dfbd21
-[01:53:26.788](INFO) Deleted object with id 6980dc5b-0359-4693-a346-357d081c9874
-[01:53:26.788](INFO) Deleted object with id e0ce4157-9e90-4154-895b-1cc4ada454e1
-[01:53:26.788](INFO) Deleted object with id e66453e8-ab2f-451b-afe3-48c15a40501b
-[01:53:26.788](INFO) Deleted object with id 6b130111-a2ff-4f75-91ee-91695a5d447b
-[01:53:26.788](INFO) Deleted object with id 0c2f586f-6842-4226-9a18-f07df0fdecc4
-[01:53:26.788](INFO) Deleted object with id 574e4a1c-0dfb-441a-969b-e029cd1a65b4
-[01:53:26.788](INFO) Deleted object with id 6e512f8d-f722-4800-980e-8ed2c4ee99f4
-[01:53:26.788](INFO) Deleted object with id d1c566be-0e26-408f-b880-513d300a5695
-[01:53:26.788](INFO) Deleted object with id 8b91aca3-c1d8-4c5b-9fad-e7bc85b79aea
-[01:53:26.788](INFO) Deleted object with id 15f92333-56d2-4259-a6b0-47fa0de39a7e
-[01:53:26.788](INFO) Deleted object with id bd5ea7e7-573c-4ced-b456-ea940ecbf021
-[01:53:26.788](INFO) Deleted object with id 248336ea-9799-4873-9ebe-ae8196bf1577
-[01:53:26.788](INFO) Deleted object with id 6d608fff-5163-4789-acd1-87f39b9912a5
-[01:53:26.788](INFO) Deleted object with id f110a50d-0c36-4ffc-a57a-21a632a97a26
-[01:53:26.788](INFO) Deleted object with id 70959871-1a6e-4e07-b3be-2641f37d226c
-[01:53:26.788](INFO) Deleted object with id 71c24800-59ed-4b04-88e1-c46f0a81790f
-[01:53:26.788](INFO) Deleted object with id 3f0f7ee1-b135-4833-aeae-1cb2e21d66ee
-[01:53:26.788](INFO) Deleted object with id 0ab13bad-a642-4785-a473-64f429f05b16
-[01:53:26.788](INFO) Deleted object with id 8c92ef76-d5db-441d-a908-b49d33eb1463
-[01:53:26.788](INFO) Deleted object with id 75ff2464-df7b-4dbe-aa6b-b39bbf641c35
-[01:53:26.788](INFO) Deleted object with id 9df3187d-da60-4451-97c7-2b4f503c66bc
-[01:53:26.788](INFO) Deleted object with id b5ce8b8a-fc93-4dc3-97c5-30c0e55685dd
-[01:53:26.788](INFO) Deleted object with id b0c2b7fd-a16d-4186-b778-d85ca582de68
-[01:53:26.788](INFO) Deleted object with id 627da782-2f58-45df-83f0-5748b7f183ed
-[01:53:26.788](INFO) Deleted object with id 339709f9-3c51-48b4-a902-e54a3e9ba920
-[01:53:26.788](INFO) Deleted object with id 7900f147-4056-4a4e-8739-f7fc5285dd3c
-[01:53:26.788](INFO) Deleted object with id e2995ed1-93d8-4a86-9b6a-8e5d7e999a1e
-[01:53:26.788](INFO) Deleted object with id e0563917-33de-4f85-905b-de0f17c1131a
-[01:53:26.788](INFO) Deleted object with id 08f6e8d5-1308-4ed9-8b05-2db094f6ebe5
-[01:53:26.788](INFO) Deleted object with id f63e1efb-0d76-453d-89a4-eced3ae53c75
-[01:53:26.788](INFO) Deleted object with id 6a88eadd-f566-415f-9864-016193c819bd
-[01:53:26.788](INFO) Deleted object with id b6934926-a846-47c9-98ef-0833ee106344
-[01:53:26.788](INFO) Deleted object with id 5ea8fa9e-054e-41e5-868b-c1913bfd525a
-[01:53:26.788](INFO) Deleted object with id 8d9f787a-3ad0-4578-8693-1c66d8c50cfd
-[01:53:26.788](INFO) Deleted object with id 2a3873a0-a941-4137-b6cf-f35f13480408
-[01:53:26.788](INFO) Deleted object with id 2c1ec815-92dc-4edd-8bbe-3725e7a5e4d6
-[01:53:26.788](INFO) Deleted object with id fb32db14-e7fe-4051-acdc-3fb8fa1963b1
-[01:53:26.788](INFO) Deleted object with id b8b1fb00-658e-4637-aa6b-0c2e83a690a0
-[01:53:26.788](INFO) Deleted object with id fb68a35d-e222-4761-a401-4b4cc0eb35e3
-[01:53:26.788](INFO) Deleted object with id 7ecf6b06-cc2b-4234-b04e-0f2a2edc1110
-[01:53:26.788](INFO) Deleted object with id 48753a1e-325f-4961-af81-04e0661a981b
-[01:53:26.788](INFO) Deleted object with id 3a5875e9-55de-4152-8d3a-560c7de255a8
-[01:53:26.788](INFO) Deleted object with id c233dd10-b0e5-4693-a81e-8deccfd1a8db
-[01:53:26.788](INFO) Deleted object with id 4f53ce39-ef49-4dd5-9bdb-4961408e1062
-[01:53:26.788](INFO) Deleted object with id 2324ba71-91c5-45a7-9dee-5c705e83de04
-[01:53:26.788](INFO) Deleted object with id d18d6249-205a-4475-aaf3-65b3d0a52a26
-[01:53:26.788](INFO) Deleted object with id bab450f0-1520-49e5-8340-13fe4eab5ce3
-[01:53:26.788](INFO) Deleted object with id a3c53296-a772-4933-8cbb-499c28099232
-[01:53:26.788](INFO) Deleted object with id 9bf1d9e9-2658-4533-88c2-eba487715c48
-[01:53:26.788](INFO) Deleted object with id f4f892f2-59fc-49c7-aa11-a0af4d953a8f
-[01:53:26.788](INFO) Deleted object with id ce46a4d4-a162-42be-9d47-23d8d15ad55c
-[01:53:26.788](INFO) Deleted object with id f07747bc-b69c-4b4f-a0cf-629ce9773d31
-[01:53:26.788](INFO) Deleted object with id 36b206bb-2c25-4d15-9e35-6bf412c3cead
-[01:53:26.788](INFO) Deleted object with id 7143243c-cdd5-43b7-b6e9-237d7cd1aabf
-[01:53:26.788](INFO) Deleted object with id 2a938bbd-c866-465a-98a7-9ae60b86dd78
-[01:53:26.788](INFO) Deleted object with id 00ae8a16-3dc4-409b-96ec-0593a94624ef
-[01:53:26.788](INFO) Deleted object with id 3b57328c-f156-48ca-916b-5ae660183ca6
-[01:53:26.788](INFO) Deleted object with id ad894af7-d0f8-475f-9425-49760ef1f150
-[01:53:26.788](INFO) Deleted object with id 4e87c3e1-558d-4349-87be-d5d1801df04b
-[01:53:26.788](INFO) Deleted object with id 55e9e580-69a4-4e54-8245-52d8dcc3c2d2
-[01:53:26.788](INFO) Deleted object with id 8ed29479-0e9b-471e-8dc9-54915131921c
-[01:53:26.788](INFO) Deleted object with id 6e5341af-d0d0-4eb9-b8af-79cff026c490
-[01:53:26.788](INFO) Deleted object with id d029cdef-ce79-4948-b438-2a8635542906
-[01:53:26.788](INFO) Deleted object with id 854aa492-d00c-4991-88b2-aa9a0c9e6b35
-[01:53:26.788](INFO) Deleted object with id 1d78d4e1-19fa-438c-b119-4368d968fdc7
-[01:53:26.788](INFO) Deleted object with id bc3a4c12-4684-4220-96ac-220e9d7bfb97
-[01:53:26.788](INFO) Deleted object with id 70792dc1-baaf-4be5-82a0-02a6507c75bc
-[01:53:26.788](INFO) Deleted object with id 44d1a71f-f922-4ac8-afca-05946f382199
-[01:53:26.788](INFO) Deleted object with id 21c5cf98-e00b-4698-988f-d6b698e88e53
-[01:53:26.788](INFO) Deleted object with id 2b07662c-280e-4977-8f5a-c23223bf2e62
-[01:53:26.788](INFO) Deleted object with id dcf320b0-0034-4862-b51f-5a9c466d4b45
-[01:53:26.788](INFO) Deleted object with id 6a519ae2-955f-4749-9ca2-1d6f00bced9f
-[01:53:26.788](INFO) Deleted object with id 84535ff3-8f19-4a60-bc4e-1c501eb64f65
-[01:53:26.788](INFO) Deleted object with id 0405319f-bb40-470d-a42a-6980945bdfdb
-[01:53:26.788](INFO) Deleted object with id b876bd59-0820-4eda-bef1-be0b2e029dc5
-[01:53:26.788](INFO) Deleted object with id 9a06971f-59ec-4461-9632-bd9f57ea34ac
-[01:53:26.788](INFO) Deleted object with id ac94ca14-1041-4642-99f2-753a4fb09201
-[01:53:26.788](INFO) Deleted object with id c4eb5085-7571-4a67-a4b1-a16218dcf12d
-[01:53:26.788](INFO) Deleted object with id e1e28108-38ad-4e34-9990-3e1c646fd0e7
-[01:53:26.788](INFO) Deleted object with id 99d0f93c-c108-4a35-b890-eb57921918a5
-[01:53:26.788](INFO) Deleted object with id 6548c65b-cea9-41f2-9d32-97923323cd65
-[01:53:26.788](INFO) Deleted object with id 5acac5bb-36cc-45e1-9649-2f84c4208f0b
-[01:53:26.788](INFO) Deleted object with id 8527673a-b6d1-429b-95e9-d7eeb2399b23
-[01:53:26.788](INFO) Deleted object with id 8f932b55-eeae-41e0-b6bf-e86966de34aa
-[01:53:26.788](INFO) Deleted object with id cd1c964b-db8e-46b1-935b-8377e8b650dc
-[01:53:26.788](INFO) Deleted object with id 7b08d4d5-c8d0-47a6-95b9-a5b61f0148f6
-[01:53:26.788](INFO) Deleted object with id f2341c68-5602-4abb-b1e0-e2b36a09d8a2
-[01:53:26.788](INFO) Deleted object with id 85ee9025-b740-408f-a08a-5b924c5eaf65
-[01:53:26.788](INFO) Deleted object with id 99839d0c-13f0-4fe6-a1cf-62276db0abb3
-[01:53:26.788](INFO) Deleted object with id 797bcc2f-5ccd-468e-a7c2-042a3ebbd1b9
-[01:53:26.788](INFO) Deleted object with id bde30242-d37c-4510-9885-d711f7a10211
-[01:53:26.788](INFO) Deleted object with id d92d31d4-597e-4b9b-b281-98490cf202f8
-[01:53:26.788](INFO) Deleted object with id ce571c84-d9b3-4491-a92f-bb86b49aa172
-[01:53:26.788](INFO) Deleted object with id 4e4710d9-fc69-4958-95cf-23e752593c7b
-[01:53:26.788](INFO) Deleted object with id 64d813a2-001f-4a27-8ac8-1c3279d29d72
-[01:53:26.788](INFO) Deleted object with id b2b46f5a-8944-42bc-a5bc-f4872a6c64bb
-[01:53:26.788](INFO) Deleted object with id b2840f75-9ffc-4bbc-a71f-7665aca1539e
-[01:53:26.788](INFO) Deleted object with id b3237a51-b66f-48af-947d-2d564d179ac3
-[01:53:26.788](INFO) Deleted object with id 03c804b0-d8b3-463e-a226-85ab16416dc0
-[01:53:26.788](INFO) Deleted object with id 4d517ff2-3689-4f68-b53f-d149fe00336c
-[01:53:26.788](INFO) Deleted object with id a39d4b56-c646-4aeb-a68c-d359d4004757
-[01:53:26.788](INFO) Deleted object with id 2f712f6d-b46d-4dd3-afa4-9614c45db312
-[01:53:26.788](INFO) Deleted object with id 607f29b5-8c4a-4b8e-b393-ffd3360164dc
-[01:53:26.788](INFO) Deleted object with id b2ec5b97-b1e0-4b96-a7d2-8f1187caabb3
-[01:53:26.788](INFO) Deleted object with id 8e3ed607-4b64-41a5-8477-76bee867852d
-[01:53:26.788](INFO) Deleted object with id ac6b2827-fa0a-432e-b390-ffd06306f38f
-[01:53:26.788](INFO) Deleted object with id 227bb875-315f-4fde-9826-67870bfa71ba
-[01:53:26.788](INFO) Deleted object with id fae2bc0f-4f83-47db-bc74-f76663bf529d
-[01:53:26.788](INFO) Deleted object with id aceddb6d-5368-4eae-b53b-2a24e0d4b73b
-[01:53:26.788](INFO) Deleted object with id 01727b1d-5e91-4b2e-a0f2-c06a60c47f29
-[01:53:26.788](INFO) Deleted object with id cfbe1944-4e37-4cb6-a11d-9e80e38a8f91
-[01:53:26.788](INFO) Deleted object with id 7a6bace5-48b6-41ea-a833-fe05f9a0b702
-[01:53:26.788](INFO) Deleted object with id 5a717e33-bec6-4cb8-8183-353e53067793
-[01:53:26.788](INFO) Deleted object with id bf9c3cc8-9511-4111-91ff-df0715040118
-[01:53:26.788](INFO) Deleted object with id 08898677-4b99-488a-89b0-95707f137010
-[01:53:26.789](INFO) Deleted object with id a02278cf-a870-4d2f-b2f4-1653a7372cef
-[01:53:26.789](INFO) Deleted object with id 57982ef3-01e4-4f3c-a0b4-ebc214dd62fb
-[01:53:26.789](INFO) Deleted object with id af549104-79f3-44fd-997d-e8486e72a7d2
-[01:53:26.789](INFO) Deleted object with id e19c53d6-1682-4047-b00e-5bd12a926425
-[01:53:26.789](INFO) Deleted object with id e0a5fc35-1c5b-4b0d-b47e-f8545e1d1326
-[01:53:26.789](INFO) Deleted object with id d740e8f2-0118-4510-b887-b6a31d0c3526
-[01:53:26.789](INFO) Deleted object with id feddf30f-4dbc-48d6-b3e5-47a0848dfc90
-[01:53:26.789](INFO) Deleted object with id 7bb8ea0b-fd0d-4291-9ae2-b517f51be1d7
-[01:53:26.789](INFO) Deleted object with id ceb682c9-833f-46b9-95b3-cd7a7163ac2b
-[01:53:26.789](INFO) Deleted object with id b7312027-8d5d-4bb3-b892-aa0003b6cb3e
-[01:53:26.789](INFO) Deleted object with id b76e22f8-0007-4400-b786-1094b6b5af7e
-[01:53:26.789](INFO) Deleted object with id d8161ec3-d436-42f1-80c6-ee91b2453735
-[01:53:26.789](INFO) Deleted object with id fee204c3-4492-4a47-b8e9-d648c3c66cfd
-[01:53:26.789](INFO) Deleted object with id 8efac3a8-1ef7-4ad2-80c3-714776861c72
-[01:53:26.789](INFO) Deleted object with id 498c3c7c-a296-4970-9feb-ea8560cb5d01
-[01:53:26.789](INFO) Deleted object with id 165adbaa-9fc8-43a2-b9b1-a421d25a115c
-[01:53:26.789](INFO) Deleted object with id 1ede8eb3-0061-481a-aa66-0328aead821d
-[01:53:26.789](INFO) Deleted object with id 73175039-1ad6-43f5-886e-0e65d1845668
-[01:53:26.789](INFO) Deleted object with id 0e1c84f6-6b73-438c-be5c-2917e5e0c03f
-[01:53:26.789](INFO) Deleted object with id cac5de12-12ad-4d53-83e3-2e48c8ee39e2
-[01:53:26.789](INFO) Deleted object with id 5f76063f-2e9a-4241-b052-d3707637bb58
-[01:53:26.789](INFO) Deleted object with id c9479a67-88b8-4ae2-a6d0-1f6182918bf7
-[01:53:26.789](INFO) Deleted object with id 0a1ff445-690e-4927-8bde-f4d75ef1061c
-[01:53:26.789](INFO) Deleted object with id da6cbb09-aa7d-4b0a-8be6-8ddf882f33a0
-[01:53:26.789](INFO) Deleted object with id b0fd7641-2a36-4365-a580-37d99cbc160f
-[01:53:26.789](INFO) Deleted object with id c785f304-12a8-47bb-b540-c71269c00d4b
-[01:53:26.789](INFO) Deleted object with id 83b88399-9ef5-49e1-9dcb-9ab404699d7f
-[01:53:26.789](INFO) Deleted object with id 1b5cac21-ed5c-4a10-9b3b-376a25517155
-[01:53:26.789](INFO) Deleted object with id 34df61d4-0e32-4471-a21b-99b62269c621
-[01:53:26.789](INFO) Deleted object with id 3991d19d-10b9-4e8e-932f-1171a1c2c8ea
-[01:53:26.789](INFO) Deleted object with id 1816a5ab-300e-480f-b642-b148a3577cbf
-[01:53:26.789](INFO) Deleted object with id 8bdd539a-ffcf-47f2-a6ff-f1783ff95316
-[01:53:26.789](INFO) Deleted object with id a8bd8242-d2c6-448a-abeb-3a5fec4ae21b
-[01:53:26.789](INFO) Deleted object with id 8e8457d1-f19d-4112-87e2-5311d4b9b35d
-[01:53:26.789](INFO) Deleted object with id 3bbd73e9-f056-4a36-82f6-2b239bc7c23f
-[01:53:26.789](INFO) Deleted object with id feff80ba-b86d-4193-a0a6-a347e9ed9efa
-[01:53:26.789](INFO) Deleted object with id b1857064-0fd0-4e23-9575-44b8891179a0
-[01:53:26.789](INFO) Deleted object with id ac8d16ea-6f96-404a-adeb-b5c106553e8f
-[01:53:26.789](INFO) Deleted object with id 53764c14-d0df-4c76-b8a6-76782c40aa25
-[01:53:26.789](INFO) Deleted object with id 5c146785-db23-4e91-ad30-c0cd49381a11
-[01:53:26.789](INFO) Deleted object with id 31f05611-3a40-458e-a839-7f923366569b
-[01:53:26.789](INFO) Deleted object with id 20ad4bea-4a1c-40ea-aa7e-2a1d40684eed
-[01:53:26.789](INFO) Deleted object with id 5ccbe185-3eb4-47ff-bc32-971394e12e15
-[01:53:26.789](INFO) Deleted object with id 6e93ceb4-615f-4b7c-9dd0-1861d56968d9
-[01:53:26.789](INFO) Deleted object with id 7467ed2e-ff75-43a0-b001-a3ef8b4ee2a5
-[01:53:26.789](INFO) Deleted object with id d6a2447d-4f3c-4d79-ad24-01968722660a
-[01:53:26.789](INFO) Deleted object with id a1554451-4fa9-4171-b3b5-c3bebdabe2a2
-[01:53:26.789](INFO) Deleted object with id 3d713c75-8ae2-4587-8618-0296f9445b09
-[01:53:26.789](INFO) Deleted object with id 3d5f7931-f961-4165-b3b8-02d893c88116
-[01:53:26.789](INFO) Deleted object with id 9bf6b52d-5440-40f7-89ea-792dc4207d8c
-[01:53:26.789](INFO) Deleted object with id edbb43ca-d08c-482a-987e-cf0080a6bfea
-[01:53:26.789](INFO) Deleted object with id 81a4f4f7-e076-4ca4-954b-e663c350a3c6
-[01:53:26.789](INFO) Deleted object with id 06fbbcd8-4c0a-464e-a69f-961cd670b28c
-[01:53:26.789](INFO) Deleted object with id 9bf0fc09-eeca-4d3f-abab-cb6ce61cf144
-[01:53:26.789](INFO) Deleted object with id 2e841a8e-d009-4e81-b2fe-f1326e27795a
-[01:53:26.789](INFO) Deleted object with id 9b6245c5-e97b-42ec-98d1-8964e5b567a4
-[01:53:26.789](INFO) Deleted object with id 6e7e0a4a-967f-4c59-a505-0a306a7a95b1
-[01:53:26.789](INFO) Deleted object with id 44efce1b-8f13-402e-b435-d0e7773a8d68
-[01:53:26.789](INFO) Deleted object with id 23ae0e66-e44d-4189-b626-e31a552959c2
-[01:53:26.789](INFO) Deleted object with id 4a240f3f-7319-4b7b-bd43-fd6779a92384
-[01:53:26.789](INFO) Deleted object with id ae34f732-52e0-4a15-8d6e-b89e01bcad8b
-[01:53:26.789](INFO) Deleted object with id 3cba909d-ab79-427c-aa03-e0acf145f6e9
-[01:53:26.789](INFO) Deleted object with id f023e53f-88c0-485d-8c7e-2366ff8250c6
-[01:53:26.789](INFO) Deleted object with id e805704c-500d-4ba2-8fd2-0b2c5e192c64
-[01:53:26.789](INFO) Deleted object with id 1fa33ef3-763f-4fbb-9933-ea10eb14a77e
-[01:53:26.789](INFO) Deleted object with id 9b420db9-719a-4042-8f96-8686ad60f9f4
-[01:53:26.789](INFO) Deleted object with id fef9604a-f22f-4403-8435-cac768161f8c
-[01:53:26.789](INFO) Deleted object with id 79126079-9af9-4f56-8f47-3c740b55b361
-[01:53:26.789](INFO) Deleted object with id 11a8b73a-3eb1-4c99-8c15-f864b3838fc5
-[01:53:26.789](INFO) Deleted object with id f5980ebc-dcbd-45fe-b4e7-963be43788bb
-[01:53:26.789](INFO) Deleted object with id fa3204ca-3cb8-446d-900d-372e73c1b388
-[01:53:26.789](INFO) Deleted object with id cfff11ae-24ef-468c-9121-44f6f1ec1203
-[01:53:26.789](INFO) Deleted object with id 604983bd-3eb5-45f8-8cc7-8c4cb2082be0
-[01:53:26.789](INFO) Deleted object with id b008c997-2359-4a6b-b2ab-470c7d2491c9
-[01:53:26.789](INFO) Deleted object with id 869e397e-8105-4d49-a122-5bb989474d0a
-[01:53:26.789](INFO) Deleted object with id 7f04c2b7-7695-4654-b686-3ac532b0b71e
-[01:53:26.789](INFO) Deleted object with id 4c449305-e91d-46e2-8af5-9f9574b31bd8
-[01:53:26.789](INFO) Deleted object with id 8fc4620c-c49f-4213-9489-876779eb1fc8
-[01:53:26.789](INFO) Deleted object with id b09c9913-2779-4ed5-970b-a8abeec64ee1
-[01:53:26.789](INFO) Deleted object with id da55a817-8aab-4bcf-9fd4-264c248548bd
-[01:53:26.789](INFO) Deleted object with id dcfd820b-0dc3-4170-bd73-248e3ce3737d
-[01:53:26.789](INFO) Deleted object with id b15cb4bd-4d15-4f91-ab68-4bff71bddc82
-[01:53:26.789](INFO) Deleted object with id 0389cea1-5792-4a98-802a-17b6ced549e7
-[01:53:26.789](INFO) Deleted object with id 9b398e4d-a573-4f38-b8ae-e6e1692bc865
-[01:53:26.789](INFO) Deleted object with id d7de3393-00dc-4a86-8709-135dc03c847d
-[01:53:26.789](INFO) Deleted object with id d5d44543-b925-4467-b5b0-f1a8d5717029
-[01:53:26.789](INFO) Deleted object with id cea2123a-cbe0-4a05-ae63-e54813b9cfa4
-[01:53:26.789](INFO) Deleted object with id 7e109e59-17bb-47f2-b83d-7059ee87db97
-[01:53:26.789](INFO) Deleted object with id 77aba4ab-37df-410a-bca3-1c95811db4df
-[01:53:26.789](INFO) Deleted object with id eaca191c-eea9-4e0a-af71-9ffdab285406
-[01:53:26.789](INFO) Deleted object with id 9b10e623-e8e7-4085-a976-ec5feceead95
-[01:53:26.789](INFO) Deleted object with id e938e6f4-d654-4d10-819f-c2c2abd57891
-[01:53:26.789](INFO) Deleted object with id 523270e1-6927-407a-a842-e49d132f0fb0
-[01:53:26.789](INFO) Deleted object with id ffa7d3fa-8362-40bd-843c-7ff840686fc3
-[01:53:26.789](INFO) Deleted object with id c7b5a4ed-23cb-48ed-a355-82ec7db24c5a
-[01:53:26.789](INFO) Deleted object with id 795aa7db-4297-4e6f-847e-9a6c72f8b627
-[01:53:26.789](INFO) Deleted object with id d21bbbcc-82a2-49a2-870a-226d4ac05ed4
-[01:53:26.789](INFO) Deleted object with id ebe1d594-660f-4ae8-96de-b8c7dbb0748b
-[01:53:26.789](INFO) Deleted object with id 3ac27f68-1195-4bf6-a8a0-dcdf9066b376
-[01:53:26.789](INFO) Deleted object with id e6cb9a3f-1628-4814-ab11-ad244f181d54
-[01:53:26.789](INFO) Deleted object with id 28e22ecf-005a-454f-aba4-b4c2a7132072
-[01:53:26.789](INFO) Deleted object with id 306b8a11-d92f-4847-a29f-6cf6f2349a98
-[01:53:26.789](INFO) Deleted object with id 13502ad7-92b4-421b-831a-6122c559b959
-[01:53:26.789](INFO) Deleted object with id 48e7d441-f4da-4f87-b472-c93cba7e4e14
-[01:53:26.789](INFO) Deleted object with id d1aa7112-6ffb-4a57-85ca-8144e3645d1f
-[01:53:26.789](INFO) Deleted object with id 42865ab4-6f3d-440d-b673-cae1ff7ba1b8
-[01:53:26.789](INFO) Deleted object with id b28652b4-4d2f-4049-b521-03505d03dc50
-[01:53:26.789](INFO) Deleted object with id 1221cac8-5964-47f0-9219-f3b72d8d3e1e
-[01:53:26.789](INFO) Deleted object with id e35d21f2-167e-455d-93bd-b659ca0e1527
-[01:53:26.789](INFO) Deleted object with id 59058c7a-3dd5-48b3-a3ab-cce5ef07623f
-[01:53:26.789](INFO) Deleted object with id 2eafa887-8698-46c3-ae28-9f84213cfbd3
-[01:53:26.789](INFO) Deleted object with id d7477415-f3bf-466f-9801-c54dfa4f6bf1
-[01:53:26.789](INFO) Deleted object with id 2116683a-1c90-456c-b0a6-7547cc6ddae3
-[01:53:26.789](INFO) Deleted object with id 6127fe82-bebb-4d28-b683-e356ccc32467
-[01:53:26.789](INFO) Deleted object with id 13c010a6-6c02-4327-8882-7b9dbdd1137a
-[01:53:26.789](INFO) Deleted object with id b00ddbc8-306c-4a90-bd7e-1a549bc71ccc
-[01:53:26.789](INFO) Deleted object with id d02495d1-9558-425c-b465-acc306373e9f
-[01:53:26.789](INFO) Deleted object with id a7d56091-7a3f-4087-a9cc-c8fec0e6ba74
-[01:53:26.789](INFO) Deleted object with id 9768e1b1-6ccd-4dda-baaf-158956162e3a
-[01:53:26.789](INFO) Deleted object with id 15223618-5c0f-4b41-a06e-976a6bfd2c32
-[01:53:26.789](INFO) Deleted object with id 5102b323-7932-4a83-8e69-156a77a67fc7
-[01:53:26.789](INFO) Deleted object with id fe11568c-3b14-4a2d-8a78-494189971271
-[01:53:26.789](INFO) Deleted object with id db5bffcc-771f-4289-95c5-1c2190690bd4
-[01:53:26.789](INFO) Deleted object with id b64989f1-4f01-424f-a185-276d83fb4b89
-[01:53:26.789](INFO) Deleted object with id 5591804d-1fbd-4d67-aaf9-ee8df2c6a563
-[01:53:26.789](INFO) Deleted object with id d97cdfbb-3cdb-4991-9c33-acbd4513f1e1
-[01:53:26.789](INFO) Deleted object with id 81a2d8ce-ed13-4c5c-918b-09cb7efc7bbf
-[01:53:26.789](INFO) Deleted object with id bc654da9-6b0b-4a57-ac0d-fbb68a014090
-[01:53:26.789](INFO) Deleted object with id 724e4a25-594f-4431-8c08-5b3ed77032ed
-[01:53:26.789](INFO) Deleted object with id 138d2fae-4c02-478c-9eec-314792a5b823
-[01:53:26.789](INFO) Deleted object with id 6cfc56e4-59ec-48e3-a849-07f3b1ce4db6
-[01:53:26.789](INFO) Deleted object with id d09bf97c-4e62-4788-b2d3-42c4c8df980f
-[01:53:26.789](INFO) Deleted object with id 30c38013-3910-458d-b747-cf78df60f79c
-[01:53:26.789](INFO) Deleted object with id 134d1c51-186b-4f29-a98a-5481cad65a73
-[01:53:26.789](INFO) Deleted object with id 14f0e5f0-e7ca-4bcf-be33-050777e80e7d
-[01:53:26.789](INFO) Deleted object with id 5efbe7d5-e785-4012-8419-5c099c3275d7
-[01:53:26.789](INFO) Deleted object with id cac9bffd-2b6f-4bca-9bf5-8f86cbf9dbe2
-[01:53:26.789](INFO) Deleted object with id b2929c39-4042-4220-85a0-deb976fb6fc3
-[01:53:26.789](INFO) Deleted object with id d57348c4-6dc8-4a81-b96a-199f30d6ae77
-[01:53:26.789](INFO) Deleted object with id 12c9b29a-f228-48e7-bd3a-882740d5af85
-[01:53:26.789](INFO) Deleted object with id 65558a2d-2a7c-4918-bf51-3a29aa2732d0
-[01:53:26.789](INFO) Deleted object with id cd34c536-81c0-44a8-912b-75ad062d0287
-[01:53:26.789](INFO) Deleted object with id ba54693d-58cc-4988-a7e9-0226fd1a7c44
-[01:53:26.789](INFO) Deleted object with id 2c847f95-280e-49f1-96ae-1f32feb7c950
-[01:53:26.789](INFO) Deleted object with id ce3ac3d7-556b-43da-be2e-0e3a7b27a6a4
-[01:53:26.789](INFO) Deleted object with id 5da49888-d038-4dda-b6bd-629f5d84dff0
-[01:53:26.789](INFO) Deleted object with id dc3386ff-90ad-4702-b3ab-e9f0fb27db35
-[01:53:26.789](INFO) Deleted object with id 748b689d-fe4f-46bb-bf32-c9ae7abe3e2e
-[01:53:26.789](INFO) Deleted object with id 42c9057f-d7a4-44a0-9da7-c1d040b96858
-[01:53:26.789](INFO) Deleted object with id 756a7b68-59c8-4503-8771-6686e6d650fb
-[01:53:26.789](INFO) Deleted object with id 2396756d-b7db-42a6-adc5-b71ed0d715df
-[01:53:26.789](INFO) Deleted object with id 7591482b-b273-4309-93eb-0bf74dbfc197
-[01:53:26.789](INFO) Deleted object with id 0e76a798-eb1a-48c9-96b8-e9aced5ece32
-[01:53:26.789](INFO) Deleted object with id 285f28d3-6f20-4f50-9e8a-8e872156c865
-[01:53:26.789](INFO) Deleted object with id 417eb97c-74fa-4e29-bfa5-5bc10f6ee46e
-[01:53:26.789](INFO) Deleted object with id 018ce8c4-9c19-45d2-b7fd-b1e9e20e8251
-[01:53:26.789](INFO) Deleted object with id 05812ca7-3e4b-4f08-bbc9-856126ab3519
-[01:53:26.789](INFO) Deleted object with id d1b050c9-e8b8-440d-95fd-dc436d1b3336
-[01:53:26.789](INFO) Deleted object with id beb077e1-4553-467f-9f45-972f60b13bce
-[01:53:26.789](INFO) Deleted object with id 185b4e3c-7518-4ec2-afc5-a32e81d58db5
-[01:53:26.789](INFO) Deleted object with id 45c3b460-57dd-4cbc-899f-1badfde11a9a
-[01:53:26.789](INFO) Deleted object with id be6bce52-0bf2-4de6-a23c-1a4695e0dec6
-[01:53:26.789](INFO) Deleted object with id abff04a1-632f-4ac8-a9e7-44e63bd24591
-[01:53:26.789](INFO) Deleted object with id 8adb2b78-c5d2-40c0-bbcc-fff74aaf4cfd
-[01:53:26.789](INFO) Deleted object with id 0935e587-bb6d-40b1-a3f6-ccb5a3dc6268
-[01:53:26.789](INFO) Deleted object with id db572b86-2538-4fa1-9972-239ff6aad2b6
-[01:53:26.789](INFO) Deleted object with id 10fe1dd5-6335-47ac-8516-1f63925eb363
-[01:53:26.789](INFO) Deleted object with id f091ddbf-5157-42f6-b349-085a1213a18e
-[01:53:26.789](INFO) Deleted object with id 1c26b850-4025-4337-9fce-a5ca17489f67
-[01:53:26.789](INFO) Deleted object with id 86531085-ff8b-4213-9793-a0b61b5a337e
-[01:53:26.789](INFO) Deleted object with id a0d96b52-1c2d-4618-b471-704f917e99eb
-[01:53:26.789](INFO) Deleted object with id 56ad9006-6d3d-4061-9d2c-d156ce88babc
-[01:53:26.789](INFO) Deleted object with id 5d806a0f-2f19-440f-9084-6c0ba1b10c2e
-[01:53:26.789](INFO) Deleted object with id 9cd0fdd9-6286-4a19-8427-304a885a3f0a
-[01:53:26.789](INFO) Deleted object with id c17b8661-9461-44ea-9c18-f64e884aac24
-[01:53:26.789](INFO) Deleted object with id ff211e2b-b438-4b1c-99a3-07734ac92feb
-[01:53:26.789](INFO) Deleted object with id 6113b8ec-a6af-4b58-a7d9-de95672f8c99
-[01:53:26.789](INFO) Deleted object with id c159c7aa-0536-4029-b822-6b6074885314
-[01:53:26.789](INFO) Deleted object with id 0dce4a8f-4495-4fcd-9ca8-cbce0fd0c653
-[01:53:26.789](INFO) Deleted object with id 9d78e6bf-805d-4f2a-9770-fe7f35f3b77e
-[01:53:26.789](INFO) Deleted object with id 5d77db03-1862-4f03-b84a-430577ce8346
-[01:53:26.789](INFO) Deleted object with id c3365578-a2de-4141-8daf-f5b0cb24d3bf
-[01:53:26.789](INFO) Deleted object with id dea1c263-b0f3-40af-9455-de2c9b69a9cd
-[01:53:26.790](INFO) Deleted object with id 866f23e4-24ac-4c15-b41f-a8d1a5a22e5b
-[01:53:26.790](INFO) Deleted object with id 1c7fe05b-d9fe-4e9d-9e46-cd56575341c4
-[01:53:26.790](INFO) Deleted object with id 55f3df17-0ffc-4acb-8b3d-62ef7a5bf8be
-[01:53:26.790](INFO) Deleted object with id fe072de3-e40b-45d8-aa38-1a35a3ae40f8
-[01:53:26.790](INFO) Deleted object with id a9586b95-803e-4df2-a6cf-5890d2f12a18
-[01:53:26.790](INFO) deleted texture 37
-[01:53:26.790](INFO) Deleted shader
-[01:53:26.790](INFO) Deleted shader
-[01:53:26.790](INFO) deleted texture 35
-[01:53:26.790](INFO) deleted texture 32
-[01:53:26.793](INFO) deleted texture 29
-[01:53:26.793](INFO) deleted texture 26
-[01:53:26.793](INFO) deleted texture 20
-[01:53:26.793](INFO) deleted texture 17
-[01:53:26.794](INFO) deleted texture 23
-[01:53:26.794](INFO) deleted texture 14
-[01:53:26.794](INFO) deleted texture 8
-[01:53:26.794](INFO) deleted texture 5
-[01:53:26.794](INFO) deleted texture 11
-[01:53:26.794](INFO) deleted texture 2
-[01:53:26.797](INFO) deleted texture 2
-[01:53:26.797](INFO) deleted texture 5
-[01:53:26.797](INFO) deleted texture 5
-[01:53:26.797](INFO) deleted texture 8
-[01:53:26.798](INFO) deleted texture 11
-[01:53:26.798](INFO) deleted texture 14
-[01:53:26.798](INFO) deleted texture 14
-[01:53:26.800](INFO) deleted texture 17
-[01:53:26.800](INFO) deleted texture 20
-[01:53:26.800](INFO) deleted texture 23
-[01:53:26.800](INFO) deleted texture 23
-[01:53:26.800](INFO) deleted texture 26
-[01:53:26.800](INFO) deleted texture 29
-[01:53:26.801](INFO) deleted texture 32
-[01:53:26.801](INFO) deleted texture 32
-[01:53:26.801](INFO) deleted texture 35
+[13:09:18.793](INFO) Found 0 meshes
+[13:09:18.793](INFO) Found 1 meshes
+[13:09:18.793](INFO) Processing mesh: Bookshelf_r12_0_s0-0 (240) vertices
+[13:09:18.793](INFO) created empty texture with width 0 and height 0, ID: 1
+[13:09:18.820](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_0_EOSD_s4.jpg, ID: 2
+[13:09:18.820](INFO) deleted texture 0
+[13:09:18.820](INFO) created empty texture with width 0 and height 0, ID: 3
+[13:09:18.823](INFO) Copied texture with width 0 and height 0, ID: 2
+[13:09:18.823](INFO) deleted texture 2
+[13:09:18.824](INFO) created empty texture with width 0 and height 0, ID: 4
+[13:09:18.882](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_1_EOSD_s4.png, ID: 5
+[13:09:18.882](INFO) deleted texture 0
+[13:09:18.882](INFO) created empty texture with width 0 and height 0, ID: 6
+[13:09:18.885](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.885](INFO) deleted texture 5
+[13:09:18.887](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.888](INFO) created empty texture with width 0 and height 0, ID: 7
+[13:09:18.926](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_2_EOSD_s4.jpg, ID: 8
+[13:09:18.926](INFO) deleted texture 0
+[13:09:18.926](INFO) created empty texture with width 0 and height 0, ID: 9
+[13:09:18.930](INFO) Copied texture with width 0 and height 0, ID: 8
+[13:09:18.930](INFO) deleted texture 8
+[13:09:18.932](INFO) Copied texture with width 0 and height 0, ID: 2
+[13:09:18.933](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.934](INFO) deleted texture 0
+[13:09:18.935](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.935](INFO) deleted texture 0
+[13:09:18.935](INFO) deleted texture 0
+[13:09:18.937](INFO) Copied texture with width 0 and height 0, ID: 8
+[13:09:18.937](INFO) Loaded material: Wood2
+[13:09:18.937](INFO) deleted texture 8
+[13:09:18.937](INFO) deleted texture 5
+[13:09:18.937](INFO) deleted texture 5
+[13:09:18.937](INFO) deleted texture 2
+[13:09:18.939](INFO) Copied texture with width 0 and height 0, ID: 2
+[13:09:18.941](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.943](INFO) Copied texture with width 0 and height 0, ID: 5
+[13:09:18.944](INFO) Copied texture with width 0 and height 0, ID: 8
+[13:09:18.944](INFO) Loaded mesh: Bookshelf_r12_0_s0-0 with shaderID of 0
+[13:09:18.944](INFO) deleted texture 2
+[13:09:18.945](INFO) deleted texture 5
+[13:09:18.945](INFO) deleted texture 5
+[13:09:18.945](INFO) deleted texture 8
+[13:09:18.945](INFO) Found 1 meshes
+[13:09:18.945](INFO) Processing mesh: Bookshelf_r12_0_s0-1 (48) vertices
+[13:09:18.945](INFO) created empty texture with width 0 and height 0, ID: 10
+[13:09:18.968](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_3_EOSD_s4.jpg, ID: 11
+[13:09:18.968](INFO) deleted texture 0
+[13:09:18.968](INFO) created empty texture with width 0 and height 0, ID: 12
+[13:09:18.971](INFO) Copied texture with width 0 and height 0, ID: 11
+[13:09:18.971](INFO) deleted texture 11
+[13:09:18.971](INFO) created empty texture with width 0 and height 0, ID: 13
+[13:09:19.007](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_4_EOSD_s4.png, ID: 14
+[13:09:19.007](INFO) deleted texture 0
+[13:09:19.007](INFO) created empty texture with width 0 and height 0, ID: 15
+[13:09:19.010](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.010](INFO) deleted texture 14
+[13:09:19.012](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.012](INFO) created empty texture with width 0 and height 0, ID: 16
+[13:09:19.118](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_5_EOSD_s4.png, ID: 17
+[13:09:19.118](INFO) deleted texture 0
+[13:09:19.118](INFO) created empty texture with width 0 and height 0, ID: 18
+[13:09:19.121](INFO) Copied texture with width 0 and height 0, ID: 17
+[13:09:19.121](INFO) deleted texture 17
+[13:09:19.123](INFO) Copied texture with width 0 and height 0, ID: 11
+[13:09:19.124](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.124](INFO) deleted texture 0
+[13:09:19.126](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.126](INFO) deleted texture 0
+[13:09:19.126](INFO) deleted texture 0
+[13:09:19.127](INFO) Copied texture with width 0 and height 0, ID: 17
+[13:09:19.127](INFO) Loaded material: Books2
+[13:09:19.127](INFO) deleted texture 17
+[13:09:19.128](INFO) deleted texture 14
+[13:09:19.128](INFO) deleted texture 14
+[13:09:19.128](INFO) deleted texture 11
+[13:09:19.130](INFO) Copied texture with width 0 and height 0, ID: 11
+[13:09:19.132](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.133](INFO) Copied texture with width 0 and height 0, ID: 14
+[13:09:19.135](INFO) Copied texture with width 0 and height 0, ID: 17
+[13:09:19.135](INFO) Loaded mesh: Bookshelf_r12_0_s0-1 with shaderID of 0
+[13:09:19.135](INFO) deleted texture 11
+[13:09:19.135](INFO) deleted texture 14
+[13:09:19.135](INFO) deleted texture 14
+[13:09:19.135](INFO) deleted texture 17
+[13:09:19.136](INFO) Found 1 meshes
+[13:09:19.136](INFO) Processing mesh: Bookshelf_r5_1_s0-0 (160) vertices
+[13:09:19.136](INFO) created empty texture with width 0 and height 0, ID: 19
+[13:09:19.138](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_6_EOSD_s4.jpg, ID: 20
+[13:09:19.138](INFO) deleted texture 0
+[13:09:19.138](INFO) created empty texture with width 0 and height 0, ID: 21
+[13:09:19.139](INFO) Copied texture with width 0 and height 0, ID: 20
+[13:09:19.139](INFO) deleted texture 20
+[13:09:19.139](INFO) created empty texture with width 0 and height 0, ID: 22
+[13:09:19.143](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_7_EOSD_s4.png, ID: 23
+[13:09:19.143](INFO) deleted texture 0
+[13:09:19.143](INFO) created empty texture with width 0 and height 0, ID: 24
+[13:09:19.143](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.143](INFO) deleted texture 23
+[13:09:19.143](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.143](INFO) created empty texture with width 0 and height 0, ID: 25
+[13:09:19.145](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_8_EOSD_s4.jpg, ID: 26
+[13:09:19.145](INFO) deleted texture 0
+[13:09:19.145](INFO) created empty texture with width 0 and height 0, ID: 27
+[13:09:19.145](INFO) Copied texture with width 0 and height 0, ID: 26
+[13:09:19.145](INFO) deleted texture 26
+[13:09:19.145](INFO) Copied texture with width 0 and height 0, ID: 20
+[13:09:19.145](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.145](INFO) deleted texture 0
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.146](INFO) deleted texture 0
+[13:09:19.146](INFO) deleted texture 0
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 26
+[13:09:19.146](INFO) Loaded material: Wood
+[13:09:19.146](INFO) deleted texture 26
+[13:09:19.146](INFO) deleted texture 23
+[13:09:19.146](INFO) deleted texture 23
+[13:09:19.146](INFO) deleted texture 20
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 20
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 23
+[13:09:19.146](INFO) Copied texture with width 0 and height 0, ID: 26
+[13:09:19.146](INFO) Loaded mesh: Bookshelf_r5_1_s0-0 with shaderID of 0
+[13:09:19.146](INFO) deleted texture 20
+[13:09:19.146](INFO) deleted texture 23
+[13:09:19.146](INFO) deleted texture 23
+[13:09:19.146](INFO) deleted texture 26
+[13:09:19.146](INFO) Found 1 meshes
+[13:09:19.147](INFO) Processing mesh: Bookshelf_r5_1_s0-1 (32) vertices
+[13:09:19.147](INFO) created empty texture with width 0 and height 0, ID: 28
+[13:09:19.170](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_9_EOSD_s4.jpg, ID: 29
+[13:09:19.170](INFO) deleted texture 0
+[13:09:19.170](INFO) created empty texture with width 0 and height 0, ID: 30
+[13:09:19.173](INFO) Copied texture with width 0 and height 0, ID: 29
+[13:09:19.174](INFO) deleted texture 29
+[13:09:19.174](INFO) created empty texture with width 0 and height 0, ID: 31
+[13:09:19.213](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_10_EOSD_s4.png, ID: 32
+[13:09:19.213](INFO) deleted texture 0
+[13:09:19.213](INFO) created empty texture with width 0 and height 0, ID: 33
+[13:09:19.217](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.217](INFO) deleted texture 32
+[13:09:19.218](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.218](INFO) created empty texture with width 0 and height 0, ID: 34
+[13:09:19.332](INFO) Loaded texture: src/assets/textures/scenes/EOSD_s4/texture_11_EOSD_s4.png, ID: 35
+[13:09:19.332](INFO) deleted texture 0
+[13:09:19.332](INFO) created empty texture with width 0 and height 0, ID: 36
+[13:09:19.335](INFO) Copied texture with width 0 and height 0, ID: 35
+[13:09:19.335](INFO) deleted texture 35
+[13:09:19.337](INFO) Copied texture with width 0 and height 0, ID: 29
+[13:09:19.338](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.338](INFO) deleted texture 0
+[13:09:19.340](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.340](INFO) deleted texture 0
+[13:09:19.340](INFO) deleted texture 0
+[13:09:19.342](INFO) Copied texture with width 0 and height 0, ID: 35
+[13:09:19.342](INFO) Loaded material: Books
+[13:09:19.342](INFO) deleted texture 35
+[13:09:19.342](INFO) deleted texture 32
+[13:09:19.342](INFO) deleted texture 32
+[13:09:19.342](INFO) deleted texture 29
+[13:09:19.344](INFO) Copied texture with width 0 and height 0, ID: 29
+[13:09:19.346](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.348](INFO) Copied texture with width 0 and height 0, ID: 32
+[13:09:19.350](INFO) Copied texture with width 0 and height 0, ID: 35
+[13:09:19.350](INFO) Loaded mesh: Bookshelf_r5_1_s0-1 with shaderID of 0
+[13:09:19.350](INFO) deleted texture 29
+[13:09:19.350](INFO) deleted texture 32
+[13:09:19.350](INFO) deleted texture 32
+[13:09:19.350](INFO) deleted texture 35
+[13:09:19.350](INFO) Found 1 meshes
+[13:09:19.350](INFO) Processing mesh: Background_s1 (4) vertices
+[13:09:19.350](INFO) Loaded material: 
+[13:09:19.350](INFO) Loaded mesh: Background_s1 with shaderID of 1
+[13:09:19.350](INFO) Found 0 meshes
+[13:09:19.350](INFO) Found 0 meshes
+[13:09:19.350](INFO) Created camera with FOV: 0.526763, aspect: 0.857143
+[13:09:19.350](INFO) Loaded camera: cam_0
+[13:09:19.350](INFO) Created camera with FOV: 0.526763, aspect: 0.857143
+[13:09:19.350](INFO) Loaded camera: cam_1
+[13:09:19.351](INFO) Loaded model: src/assets/backgroundScenes/EOSD_Stage4.glb
+[13:09:19.351](INFO) Including shader: src/assets/shaders/eosd_s4_0.vert
+[13:09:19.351](INFO) Including shader: src/assets/shaders/PBR.vert
+[13:09:19.351](INFO) Including shader: src/assets/shaders/eosd_s4_0.frag
+[13:09:19.351](INFO) Including shader: src/assets/shaders/PBR.frag
+[13:09:19.381](INFO) Loaded shader program: src/assets/shaders/eosd_s4_0.vert and src/assets/shaders/eosd_s4_0.frag with ID of 3
+[13:09:19.382](INFO) Including shader: src/assets/shaders/eosd_s4_1.vert
+[13:09:19.382](INFO) Including shader: src/assets/shaders/eosd_s4_1.frag
+[13:09:19.383](INFO) Loaded shader program: src/assets/shaders/eosd_s4_1.vert and src/assets/shaders/eosd_s4_1.frag with ID of 6
+[13:09:19.383](INFO) created empty texture with width 384 and height 448, ID: 37
+[13:09:19.383](INFO) Loaded gameBackground: EOSD stage 4
+[13:09:19.405](INFO) Created object with id a9f97c1c-20d1-41ca-84c1-9d2b23b06369
+[13:09:19.405](INFO) Created object with id c3735ac7-2262-45cf-999a-cc53bc44da98
+[13:09:19.405](INFO) Created object with id 70cdca9b-93a7-4f64-82a4-a167f71fe34d
+[13:09:19.405](INFO) Created object with id e10f3b7d-69b2-4c2c-a091-2e4be13fa0d7
+[13:09:19.405](INFO) Created object with id a8f6f2b1-2bde-4f53-af2e-1f2cd32788bf
+[13:09:19.405](INFO) Created object with id 59761927-fa66-4704-ad18-7cb0493bac1a
+[13:09:19.405](INFO) Created object with id 0cf5d11e-c1dd-4e24-8c0b-36a764e145e9
+[13:09:19.405](INFO) Created object with id f22b488e-320a-472c-b28b-99374e29b5b7
+[13:09:19.405](INFO) Created object with id 5ad4ae18-9ad2-411f-b721-b10adc754b4a
+[13:09:19.405](INFO) Created object with id 507279d1-70b5-494e-8569-25b757f90614
+[13:09:19.405](INFO) Created object with id 0b172ee4-b163-42b0-adb8-e9ff91e36019
+[13:09:19.405](INFO) Created object with id a50afd2e-43e3-4249-99da-47a4c932daec
+[13:09:19.405](INFO) Created object with id 34b5def2-c528-4048-986c-f1112baf5242
+[13:09:19.405](INFO) Created object with id 7c750220-9576-42e8-b290-697fefa4e77f
+[13:09:19.405](INFO) Created object with id 8c21785d-cff6-4830-868d-1b581b6baca2
+[13:09:19.405](INFO) Created object with id 58e17aca-596f-453e-bf4b-b9957ea86cae
+[13:09:19.405](INFO) Created object with id fe67e037-6293-4ad9-bca9-310cb9aeff20
+[13:09:19.405](INFO) Created object with id 3bf59462-3c0f-4946-a2fe-fdd506ab3dc6
+[13:09:19.405](INFO) Created object with id 20f45494-9f84-4c3e-a4c0-1aa894d64441
+[13:09:19.406](INFO) Created object with id 70107547-d5ad-447d-8ca3-10f5b610ae8f
+[13:09:19.406](INFO) Created object with id accf5adf-755a-4fdd-8e2e-9a05ad025b51
+[13:09:19.406](INFO) Created object with id 705a163e-c4bb-4c3f-a88a-f7584472a937
+[13:09:19.406](INFO) Created object with id 227979a9-9300-47e1-ab3d-30542d52895f
+[13:09:19.406](INFO) Created object with id de704b69-cdc9-4279-962d-eb8af2316462
+[13:09:19.406](INFO) Created object with id 330120d6-4329-4561-83a5-7c3869aefd0c
+[13:09:19.406](INFO) Created object with id d237b9d4-aa10-4357-9949-05049360ef33
+[13:09:19.406](INFO) Created object with id c4884847-7cba-4194-8f11-441aa6030e77
+[13:09:19.406](INFO) Created object with id 273abcc5-d6a6-43dc-bbdd-4d9fcdc2c5d3
+[13:09:19.406](INFO) Created object with id 05ce9096-2c99-4ce5-953c-cbcc0592d6dd
+[13:09:19.406](INFO) Created object with id a21e46af-244e-4866-85b8-a5b9f067befb
+[13:09:19.406](INFO) Created object with id b17b61f1-1de6-4e26-ab0c-87607db03d22
+[13:09:19.406](INFO) Created object with id b8a326c1-cda6-46f7-a582-b53d93669393
+[13:09:19.406](INFO) Created object with id 4d1aca61-ed88-4fa6-b97c-86b88094f82d
+[13:09:19.406](INFO) Created object with id 738438e7-ab27-415b-ba58-e83ba52d6390
+[13:09:19.406](INFO) Created object with id 873eb674-0bbe-43eb-ae91-b99ac9647ca7
+[13:09:19.406](INFO) Created object with id f34863c7-8f35-41ac-8407-88515374940d
+[13:09:19.406](INFO) Created object with id 217c49fc-48f2-42d2-8476-168b64024257
+[13:09:19.406](INFO) Created object with id 183db04c-b2b6-4282-8f8f-ee098be62d24
+[13:09:19.406](INFO) Created object with id f71d25cc-366c-4348-8ab8-591d82f20397
+[13:09:19.406](INFO) Created object with id b0c08c08-9705-4fe8-8b00-8c9c98e8ac92
+[13:09:19.406](INFO) Created object with id f68d7336-4b41-4bd7-a9ac-33de38e3a8dc
+[13:09:19.406](INFO) Created object with id 0e13e70c-5f0f-402f-a622-37cb49d1872e
+[13:09:19.406](INFO) Created object with id 7e521aa6-283e-4039-b111-a3c98e796255
+[13:09:19.406](INFO) Created object with id 1cfb5858-6dca-41ed-92cb-51f52c827ad2
+[13:09:19.406](INFO) Created object with id 74270281-422a-42ec-a048-e7c5ebbb90fe
+[13:09:19.406](INFO) Created object with id f4a2e3ae-d296-454b-bd10-024881c56bdd
+[13:09:19.406](INFO) Created object with id 3e165b38-8c62-469d-aced-aede1c2f9b29
+[13:09:19.406](INFO) Created object with id 693aa81b-35f7-4b93-85eb-e6899a8a056a
+[13:09:19.406](INFO) Created object with id 17dd69a0-4c7f-492d-b8ac-17d5d97df0bb
+[13:09:19.406](INFO) Created object with id 610493e4-2a50-4b6f-a6c7-738891f636df
+[13:09:19.406](INFO) Created object with id 5dde668a-637f-4dc3-b59b-c3c42438e8d4
+[13:09:19.406](INFO) Created object with id 0cf70533-a69f-480f-9ad0-b624c800f9d9
+[13:09:19.406](INFO) Created object with id c243978c-3723-4431-9090-2ad9c7107771
+[13:09:19.406](INFO) Created object with id 6917d80f-d323-41c9-bf94-ff8f345848d1
+[13:09:19.406](INFO) Created object with id 5a748100-c89c-44a4-bf2a-40f879a742ea
+[13:09:19.406](INFO) Created object with id 15cd05e3-e441-4007-a16e-347a75d4e747
+[13:09:19.406](INFO) Created object with id 003feb69-236c-48d7-8934-b501b7d1f8b9
+[13:09:19.407](INFO) Created object with id 611f5b56-8e23-4183-a03b-5759d4af02b0
+[13:09:19.407](INFO) Created object with id 3aa80dfd-14ca-4521-9d65-2ed47f51f129
+[13:09:19.407](INFO) Created object with id 4973745b-618a-43d5-8047-f3cfb8c8f251
+[13:09:19.407](INFO) Created object with id 1078b7c8-2b35-4879-b608-3e0e730c575c
+[13:09:19.407](INFO) Created object with id 4a41063f-b1c7-4432-be61-3e603ebe83ba
+[13:09:19.407](INFO) Created object with id aaeedbd4-afa4-4619-8277-d853028d4573
+[13:09:19.407](INFO) Created object with id c5b796a5-c8d4-4ffa-9385-3a6555c779f9
+[13:09:19.407](INFO) Created object with id c1f5e4b3-82b4-4cc6-a47d-7c251356a0b7
+[13:09:19.407](INFO) Created object with id 18bf540d-0978-4e0a-a977-7dce236ed883
+[13:09:19.407](INFO) Created object with id d29fe877-0c46-4d6f-bbbc-424f9b627aa4
+[13:09:19.407](INFO) Created object with id b68ac3eb-30e1-4303-9665-805fda3361a2
+[13:09:19.407](INFO) Created object with id 306ba530-e5f8-451d-8e98-82c4a3d35de3
+[13:09:19.407](INFO) Created object with id 40505ac8-44fa-4fce-8e89-93ea373de668
+[13:09:19.407](INFO) Created object with id b9363f4d-a06a-458e-b0f5-d3843906ec17
+[13:09:19.407](INFO) Created object with id a2dcc9a2-359f-4845-9de7-93abc6964f52
+[13:09:19.407](INFO) Created object with id 961034ea-2cf0-4176-920b-b2672977fcce
+[13:09:19.407](INFO) Created object with id 66095231-6b13-4296-97c3-06e8f013398c
+[13:09:19.407](INFO) Created object with id 657c5578-f580-4097-a23c-79b2ca6247d8
+[13:09:19.407](INFO) Created object with id 415ff5ab-743c-437b-ba85-e1a2dc024bc9
+[13:09:19.407](INFO) Created object with id 009a7ba7-5cfd-4619-9228-d2b0ca7358d5
+[13:09:19.407](INFO) Created object with id 626e6d52-8ed9-4b89-80fb-0b503a31fd5d
+[13:09:19.407](INFO) Created object with id f28ba5ab-2ea3-48c0-8026-e3e4c64bb778
+[13:09:19.407](INFO) Created object with id 4a64544e-36a3-42c4-879b-f94d193d662d
+[13:09:19.407](INFO) Created object with id 04eb7c0e-f1b2-4812-9236-4bba2e4aa2cd
+[13:09:19.407](INFO) Created object with id 5fd30f68-b1e9-4ee4-9850-bf8cdc8a3f4b
+[13:09:19.407](INFO) Created object with id a71a1c10-6c89-4eb6-b202-3fee727f6cf8
+[13:09:19.407](INFO) Created object with id 49161b20-07dd-4e73-8fe3-12c139c63599
+[13:09:19.407](INFO) Created object with id ef4c2c86-f9d2-430e-ba7b-b74833873cc4
+[13:09:19.407](INFO) Created object with id 5d8e4146-5158-455f-961b-027502c5c700
+[13:09:19.407](INFO) Created object with id 0f53708b-8482-4249-ac12-be97137fe5ab
+[13:09:19.407](INFO) Created object with id 5aa25748-c234-43f9-ab39-03b61d8c73bc
+[13:09:19.407](INFO) Created object with id d4ae66b5-91f0-4a7e-ab5b-ce90a0624820
+[13:09:19.407](INFO) Created object with id c4f28a7b-4bdd-4be3-bed4-23224f035d2d
+[13:09:19.407](INFO) Created object with id cbdf90fa-7d67-42b7-9e32-c21ff3299d6d
+[13:09:19.407](INFO) Created object with id 09a14dae-2f07-4219-9291-8195d22a0230
+[13:09:19.407](INFO) Created object with id e5b24c83-05cf-48d2-8693-1ceaf2b747e1
+[13:09:19.407](INFO) Created object with id 368e741c-71fa-43ea-a3cd-701959093efd
+[13:09:19.407](INFO) Created object with id b4f5d0fa-bae4-4e03-abaf-07516a18dc0b
+[13:09:19.407](INFO) Created object with id 55044fb2-66a5-4e12-ac3f-ae0ca77042b5
+[13:09:19.407](INFO) Created object with id de643437-c586-4ecf-95ff-9e5e922babcd
+[13:09:19.407](INFO) Created object with id 78a6f3eb-b1d0-4f50-9d52-91c968c54617
+[13:09:19.407](INFO) Created object with id 4dc86e9a-776d-4df5-b169-4a8b6834ae9b
+[13:09:19.407](INFO) Created object with id 2df533b3-70f5-4f29-994b-f71df8339a91
+[13:09:19.407](INFO) Created object with id f11f5e04-6671-42ff-bcd9-4fd0263c3b06
+[13:09:19.407](INFO) Created object with id 0cd38712-ee98-47f2-bb49-879d572226ae
+[13:09:19.407](INFO) Created object with id 7972a035-e235-428e-a5cc-a7daeb6df65c
+[13:09:19.408](INFO) Created object with id ba6e98df-0394-4369-aa08-c4a8554afbed
+[13:09:19.408](INFO) Created object with id 1781e72b-3ba7-4aa9-81a3-67d9e7e70c9f
+[13:09:19.408](INFO) Created object with id ee6fa877-69f6-4a72-b441-cdd06c1e83c6
+[13:09:19.408](INFO) Created object with id 861614af-ed77-42c3-9566-0b5cb2543587
+[13:09:19.408](INFO) Created object with id 9722a0d6-d460-419a-a21e-f2582a5f103b
+[13:09:19.408](INFO) Created object with id 39e3958a-215a-484c-a797-83f5a6a887b6
+[13:09:19.408](INFO) Created object with id c109537d-6f07-4aaf-90b2-606e67e1b146
+[13:09:19.408](INFO) Created object with id 8b1baf64-a285-4cdd-b728-c6a9637acfc7
+[13:09:19.408](INFO) Created object with id 3abd8180-5fbc-47af-9694-b8c51b7edc6b
+[13:09:19.408](INFO) Created object with id cd5a1b35-b53c-46b9-ac11-d6f6c8a0bb95
+[13:09:19.408](INFO) Created object with id 9bd93fb7-8317-43c0-a9b0-2714eae67a15
+[13:09:19.408](INFO) Created object with id 57fa02ef-fecf-4dcd-8dd6-7275d135fc91
+[13:09:19.408](INFO) Created object with id 5323e1d4-6b40-4edb-a198-460a946d32ed
+[13:09:19.408](INFO) Created object with id ca5f56c0-cf4b-4b17-9b84-316845a31297
+[13:09:19.408](INFO) Created object with id c066e303-12ef-4f95-8ff0-540fe6634b77
+[13:09:19.408](INFO) Created object with id 0f6e36f3-7589-4b47-9e9e-10a04ad8d412
+[13:09:19.408](INFO) Created object with id 8d98ffeb-903e-4176-94e9-8c6961fa1436
+[13:09:19.408](INFO) Created object with id e193f93a-00de-4f20-93c7-2d81720aaacd
+[13:09:19.408](INFO) Created object with id 8e05c242-8288-49e8-bd5e-48191107805c
+[13:09:19.408](INFO) Created object with id a0debeaa-be1b-4c7c-a82f-91f689e6cb02
+[13:09:19.408](INFO) Created object with id 8bda7488-f45b-4dcf-97e6-598e2295f9a7
+[13:09:19.408](INFO) Created object with id 28a4cdd2-be52-4c58-8c08-507bda28340b
+[13:09:19.408](INFO) Created object with id 1d4aced6-e591-438c-b16b-f6881b6104b4
+[13:09:19.408](INFO) Created object with id f5de5b77-bac4-4486-8e53-b4fba763a0c6
+[13:09:19.408](INFO) Created object with id 37477660-8f3c-474b-946e-f9aacb2fea56
+[13:09:19.408](INFO) Created object with id bfd4642e-70c3-4f86-afc7-5093a1effbc9
+[13:09:19.409](INFO) Created object with id 465eef53-f8a7-4fa4-8680-14bff0d03fe6
+[13:09:19.409](INFO) Created object with id 302a8643-8ae3-46e2-8749-e62381d32be0
+[13:09:19.409](INFO) Created object with id aa34280b-2b89-4062-a709-7fd494094edd
+[13:09:19.409](INFO) Created object with id 3ca4ec2a-d0ec-4ffa-9b2f-a05613683aa2
+[13:09:19.409](INFO) Created object with id 378c28cf-8c0b-430d-a63c-fe4acfefef97
+[13:09:19.409](INFO) Created object with id b40fcd91-b57e-4477-a3ba-61ddecf1ed79
+[13:09:19.409](INFO) Created object with id 3e19d4c7-c501-4fc7-a5f3-ba8578f19344
+[13:09:19.409](INFO) Created object with id 21c9bc0f-54ca-43e5-973e-780977e00f66
+[13:09:19.409](INFO) Created object with id 289e8ff8-a465-48f6-9e13-a95a9c1d6403
+[13:09:19.409](INFO) Created object with id 920a4921-4d7e-44ec-a7e3-6316fe8b12f7
+[13:09:19.409](INFO) Created object with id 671140d6-87bf-46f6-9997-279e2740e0be
+[13:09:19.409](INFO) Created object with id a5249d2e-6e63-43f1-b8bd-0c89c1cff81d
+[13:09:19.409](INFO) Created object with id d1e837d2-7253-4f10-a860-34ea4a86db1a
+[13:09:19.409](INFO) Created object with id 63e4f10a-2c0e-4b39-be39-294db93cd3cc
+[13:09:19.409](INFO) Created object with id f19fe638-d732-461a-9d6c-6d3c38c75281
+[13:09:19.409](INFO) Created object with id e8411ea6-9963-4112-a8c2-597998250aa9
+[13:09:19.409](INFO) Created object with id 4c901833-bc30-4621-a723-cc9db91f34b9
+[13:09:19.409](INFO) Created object with id 51dd5709-5943-4080-b17a-ba3d81078481
+[13:09:19.409](INFO) Created object with id 7f654d67-479b-4229-b894-be24733f91ff
+[13:09:19.409](INFO) Created object with id 60d3c5cb-a8e7-4343-ba26-fbae44561241
+[13:09:19.409](INFO) Created object with id c5282776-fcc6-4c75-af1e-9623f7b62707
+[13:09:19.409](INFO) Created object with id ca058b14-c722-40f0-8ee8-2c44c01840c7
+[13:09:19.409](INFO) Created object with id 4b1e95e6-1949-4844-8870-9af8191eb9e0
+[13:09:19.409](INFO) Created object with id 18530903-ca5d-4014-9258-1395a6072f9d
+[13:09:19.409](INFO) Created object with id c6b8b0bd-ac2c-4593-8eb8-81f05ad712e5
+[13:09:19.409](INFO) Created object with id e288042e-208c-4beb-81e7-99e3f349c3a9
+[13:09:19.409](INFO) Created object with id 31398a5f-176e-4f67-89db-451ce200c0ee
+[13:09:19.409](INFO) Created object with id a936b2ce-b018-4580-b5ae-a3e54c250522
+[13:09:19.409](INFO) Created object with id ef647143-386f-484a-bbc5-fcc5c60ca29c
+[13:09:19.409](INFO) Created object with id 5ffb7741-91c1-4b51-8184-4ecd3c20bf5d
+[13:09:19.409](INFO) Created object with id 47fe292c-ccba-458e-8c84-2e9f8a73028d
+[13:09:19.409](INFO) Created object with id 404e1fee-1376-4aa7-bc34-169b91c95dc4
+[13:09:19.409](INFO) Created object with id cd528ad1-53e0-4df8-8f6b-d68fff1aaef5
+[13:09:19.409](INFO) Created object with id ffb0effa-898f-403f-aa3b-5147468a0315
+[13:09:19.409](INFO) Created object with id 0faa663f-e9d9-4a2a-8661-076c88f8a491
+[13:09:19.409](INFO) Created object with id 3c561828-77f5-49f9-aa3f-d5ef03f62add
+[13:09:19.409](INFO) Created object with id 796b8c55-0471-4587-92c8-d9b1e3856207
+[13:09:19.409](INFO) Created object with id a3d1b2f2-bb3a-49a4-9d26-4854003602a3
+[13:09:19.409](INFO) Created object with id 5fc3399e-d389-47da-ba4d-2109fb0f7857
+[13:09:19.409](INFO) Created object with id 82ca6c5a-870b-465a-9854-3616d0207b78
+[13:09:19.409](INFO) Created object with id 27fe1de9-14f7-4001-8886-537ebe24505c
+[13:09:19.410](INFO) Created object with id 8cfcac29-3b1e-4842-8c85-8c9be59501dc
+[13:09:19.410](INFO) Created object with id fd8d4433-a5d7-4367-9960-7cd6d553c4b3
+[13:09:19.410](INFO) Created object with id 3d6f9173-f29c-4ecc-91a8-30ba794890ca
+[13:09:19.410](INFO) Created object with id 547d0bd1-097a-4a68-aafe-407f890076ca
+[13:09:19.410](INFO) Created object with id 66ab754d-8d9f-4b7f-88b2-82e8c2533ae4
+[13:09:19.410](INFO) Created object with id b8a559c8-b4fe-4510-b5f2-4b1b2a507554
+[13:09:19.410](INFO) Created object with id 233df63f-898a-4480-946d-128df7868ab0
+[13:09:19.410](INFO) Created object with id b5f06145-d631-45e0-908d-453d24e12b67
+[13:09:19.410](INFO) Created object with id 322e4c7e-1521-4434-b977-48f0a71add23
+[13:09:19.410](INFO) Created object with id a4e9fee3-d38b-4b1b-a77b-a45be167bdef
+[13:09:19.410](INFO) Created object with id 19527430-84e5-4985-be39-065041675051
+[13:09:19.410](INFO) Created object with id df66fef4-4742-42e7-97d1-093b7dc60802
+[13:09:19.410](INFO) Created object with id d075222d-837d-40a7-ae77-e7b13bea38cb
+[13:09:19.410](INFO) Created object with id b0afece2-592a-47d6-9749-7cf766517130
+[13:09:19.410](INFO) Created object with id 799a1f9e-9e7f-452e-89c6-ce1c4d3fdc0b
+[13:09:19.410](INFO) Created object with id bda0816b-ab12-432d-9fbc-03ff042abc55
+[13:09:19.410](INFO) Created object with id 8fbd64bb-e921-4efa-ba93-861c226f7949
+[13:09:19.410](INFO) Created object with id 46d52fbb-2abb-462b-a9b7-05f3bd35d12b
+[13:09:19.410](INFO) Created object with id 1abc0371-a981-435f-b13e-f3a230062350
+[13:09:19.410](INFO) Created object with id f4f374d2-4a71-4e81-9a99-f146b1c70cfe
+[13:09:19.410](INFO) Created object with id e157bffe-6062-4446-b385-4f933681985f
+[13:09:19.410](INFO) Created object with id 3b7241df-f66b-43d6-b81c-c721595b63a6
+[13:09:19.410](INFO) Created object with id aef61839-9aea-4eba-94f3-7dd49ecd347b
+[13:09:19.410](INFO) Created object with id e7040b5b-ae2f-42f2-82ed-fb1784071187
+[13:09:19.410](INFO) Created object with id 3524091d-58c2-49ea-81d5-c2066d30af7c
+[13:09:19.410](INFO) Created object with id a0897732-4123-4196-8751-c8309c630437
+[13:09:19.410](INFO) Created object with id 1379f0a8-9364-4457-9bab-aae87680de8f
+[13:09:19.410](INFO) Created object with id 50f351f6-1e75-400b-98a3-5c7362725842
+[13:09:19.410](INFO) Created object with id 7118d7f2-410a-4632-9d40-c89bf26044da
+[13:09:19.410](INFO) Created object with id 09fc01e5-b560-4804-8c95-f9c67a039015
+[13:09:19.410](INFO) Created object with id 360cf5ac-0bb6-4ded-9faf-8b3af35b7af2
+[13:09:19.410](INFO) Created object with id 4e4caf79-c26c-4659-a143-b8aa46f70596
+[13:09:19.410](INFO) Created object with id 9539e36e-0c4e-41ba-9c95-548068752fca
+[13:09:19.410](INFO) Created object with id fd1d306d-f421-4c1b-bd0a-a23bec76c073
+[13:09:19.410](INFO) Created object with id d7f981f6-2bee-4781-9460-11fa663cb17b
+[13:09:19.410](INFO) Created object with id 9ef4882a-33dc-4089-868a-e08df7dbe832
+[13:09:19.410](INFO) Created object with id b5022785-2403-4e89-8946-da2eafb33319
+[13:09:19.410](INFO) Created object with id 7d915e3a-b3e9-446a-9fd5-94229da8767f
+[13:09:19.410](INFO) Created object with id 0e48ce44-4a20-4396-aeed-f5d9710112eb
+[13:09:19.410](INFO) Created object with id 8503cad5-9428-41ec-947e-e8d845a3579c
+[13:09:19.410](INFO) Created object with id c6e26791-be1a-410e-bfad-f65fd891f58a
+[13:09:19.410](INFO) Created object with id 3d02ebea-6f6f-4726-8a8a-617e0fda27a7
+[13:09:19.410](INFO) Created object with id be1278cc-cbfc-4022-8a48-3e62a3f8bc7c
+[13:09:19.410](INFO) Created object with id cdaa1e0c-59f7-4e65-9e0b-481bd3e1a079
+[13:09:19.411](INFO) Created object with id f20d0dde-5d77-432b-9720-256462f459eb
+[13:09:19.411](INFO) Created object with id 44740e42-d6a5-4d83-b0eb-04681f1dd546
+[13:09:19.411](INFO) Created object with id e06b3590-fd1b-4367-9d4b-d391698a0c67
+[13:09:19.411](INFO) Created object with id 578f00ea-e6d7-40c2-9da5-4a597adf9246
+[13:09:19.411](INFO) Created object with id ae6605d2-73f7-417a-bf1a-2c82502bf920
+[13:09:19.411](INFO) Created object with id d353ef39-303d-4227-a43e-f2eba013c325
+[13:09:19.411](INFO) Created object with id c77ac0e0-bed6-4972-8143-a4185b9329d1
+[13:09:19.411](INFO) Created object with id 82383694-0fcb-48c1-8b17-f48dbda006c8
+[13:09:19.411](INFO) Created object with id 411f49b3-3c60-486d-b27e-7924d20e3a77
+[13:09:19.411](INFO) Created object with id a1065a3c-8f8d-49bd-ba42-bea2b85104b5
+[13:09:19.411](INFO) Created object with id 6c722e98-f06f-45f8-b17e-bcc89eb0369a
+[13:09:19.411](INFO) Created object with id b0605f6d-9a14-4153-8c9f-1808c15244f5
+[13:09:19.411](INFO) Created object with id 2bb77f3d-aaee-44c8-8018-d875d733f3f0
+[13:09:19.411](INFO) Created object with id 6e9c2aba-c7dc-411d-b7e4-3b833c1412e0
+[13:09:19.411](INFO) Created object with id 37d2c365-afea-4f33-9422-9cf52229cfe1
+[13:09:19.411](INFO) Created object with id c2e1e34d-4e30-42b3-879c-27d82d753057
+[13:09:19.411](INFO) Created object with id 5006b925-97a7-403b-8c01-75de930d8057
+[13:09:19.411](INFO) Created object with id 38a6bec7-a861-4bce-933d-d74655226d56
+[13:09:19.411](INFO) Created object with id cde47b58-111d-48b4-a075-3b9f9f8f8974
+[13:09:19.411](INFO) Created object with id 88e6c861-b50b-46dc-9311-dfcafc67b6da
+[13:09:19.411](INFO) Created object with id c50c27ab-cd2a-4695-ae53-bf361673cb04
+[13:09:19.411](INFO) Created object with id c7707035-0388-4a46-b947-4182875cd0ca
+[13:09:19.411](INFO) Created object with id ad9ac655-a0eb-4472-9499-8e900f91abc0
+[13:09:19.411](INFO) Created object with id 570569b6-987c-4ebc-b3f1-89cbbdd9fd11
+[13:09:19.411](INFO) Created object with id 8bef6094-8ec5-48f0-9a15-1ec8f3488def
+[13:09:19.411](INFO) Created object with id 2df3e8ad-ebd7-4582-8291-281e275a5c9f
+[13:09:19.411](INFO) Created object with id aa30b05a-d306-4b26-bc01-581853befddf
+[13:09:19.411](INFO) Created object with id 48b31aa7-c0b6-4099-bafb-a76e3d296fee
+[13:09:19.411](INFO) Created object with id 8cf72626-1e17-4eaa-aa5a-8a57f4971c35
+[13:09:19.411](INFO) Created object with id 6d1aa591-9e52-49c8-a339-e25ecc9d9256
+[13:09:19.411](INFO) Created object with id 3b8af4a0-dbed-4dd2-802a-a6d53d4fb927
+[13:09:19.411](INFO) Created object with id b7caaa4e-33e3-4e13-bb92-b6fa5ef2513d
+[13:09:19.411](INFO) Created object with id c3a9ea6e-c513-4f87-a4bd-81c6532730e9
+[13:09:19.411](INFO) Created object with id 33124bd8-a560-4472-96dc-3ad737f43214
+[13:09:19.411](INFO) Created object with id 1b7f064a-f721-42ef-8ea6-ecd2ed38a1c1
+[13:09:19.411](INFO) Created object with id e5adeca2-90f0-48b6-ab9a-fe1fa4055077
+[13:09:19.411](INFO) Created object with id a28539d7-828b-4f05-9517-c5cf7b897311
+[13:09:19.411](INFO) Created object with id 043eac59-2c7c-4828-a274-833f51e32916
+[13:09:19.411](INFO) Created object with id 031fa11a-84d0-406f-9bfe-027ff1f62078
+[13:09:19.411](INFO) Created object with id ec7b2efc-f6e0-495b-9c52-4dbaf5568228
+[13:09:19.411](INFO) Created object with id 643417d1-9ea4-4596-ad1e-5b111741ce98
+[13:09:19.411](INFO) Created object with id 809f66cb-04da-4a59-a6e4-fa2b0e59020f
+[13:09:19.411](INFO) Created object with id 7b11ff1f-695f-4acd-a712-04dee0e148ac
+[13:09:19.411](INFO) Created object with id 7a6646f6-bdbf-42ce-a41a-28923303dd3c
+[13:09:19.411](INFO) Created object with id 4c7495e4-cd9a-41ee-b760-fb50c89f9e0d
+[13:09:19.411](INFO) Created object with id d5d79a56-1c7d-4194-9282-bc5cf14d630e
+[13:09:19.412](INFO) Created object with id 41a9049f-8423-49ab-85ec-34f074c5047f
+[13:09:19.412](INFO) Created object with id 70a2b41e-0530-41f7-9a3e-1727010889b5
+[13:09:19.412](INFO) Created object with id 6e204a0b-c563-4590-a96b-f0b91a9745ba
+[13:09:19.412](INFO) Created object with id dde98c43-503c-4dae-9f9b-b315601399f5
+[13:09:19.412](INFO) Created object with id 12dba757-659d-4c02-a62b-202ccfefc31f
+[13:09:19.412](INFO) Created object with id 3d1d1966-deb7-4466-a682-d567ee03a189
+[13:09:19.412](INFO) Created object with id 8a9bfc09-99be-4cd3-a896-aa350ee4e753
+[13:09:19.412](INFO) Created object with id 2227d7f2-4a03-4635-a378-a1e2280000b7
+[13:09:19.412](INFO) Created object with id 9853ca23-7413-4381-ba90-0210a14a67c4
+[13:09:19.412](INFO) Created object with id bcdfbede-12bd-497b-953e-b40f0a312743
+[13:09:19.412](INFO) Created object with id 4d443006-49f9-4428-a7ab-934bf0246c5a
+[13:09:19.412](INFO) Created object with id 4e69f9ce-7236-48d2-9ccb-1bcd3c5f21b8
+[13:09:19.412](INFO) Created object with id c9981296-96c6-4b54-829f-372c4d53b49a
+[13:09:19.412](INFO) Created object with id dfa377bf-afca-4583-8868-c1c23a300e14
+[13:09:19.412](INFO) Created object with id ecd73fed-85b9-4d9e-b3db-0e41add7d3cd
+[13:09:19.412](INFO) Created object with id 75308d21-2ccb-4bcc-9fae-1f4238773033
+[13:09:19.412](INFO) Created object with id 2b4f8fcd-c497-4c7a-a55e-1733e3bb997f
+[13:09:19.412](INFO) Created object with id 47d745b7-1c0b-4e91-b8ac-895bd48b2e38
+[13:09:19.412](INFO) Created object with id 2fb67f00-24b8-4d70-aca4-beee3a32e922
+[13:09:19.412](INFO) Created object with id 0c8c9e3f-bf6d-4ac1-ab6d-d1b1c714690b
+[13:09:19.412](INFO) Created object with id 531c39de-ff3a-4775-86e4-65b5909a38be
+[13:09:19.412](INFO) Created object with id c610c4c9-9b27-439b-a387-c66a99e39af1
+[13:09:19.412](INFO) Created object with id edb98778-9cac-47e6-ae93-2c8dca1dff80
+[13:09:19.412](INFO) Created object with id 4047c15e-29a3-41b6-8925-861d044fdc21
+[13:09:19.412](INFO) Created object with id 4406ab18-21f3-4887-844e-fe6807f85536
+[13:09:19.412](INFO) Created object with id a8869793-8f1b-4d77-a7cc-d8bfb0f8219b
+[13:09:19.412](INFO) Created object with id ee51f7d6-9f1b-4f90-9ce7-da6f8b57a58a
+[13:09:19.412](INFO) Created object with id b10d5e0a-57ff-43cc-8b03-8579ccd65cdb
+[13:09:19.412](INFO) Created object with id 000f43bb-3546-4d96-9ef6-a241a6210a49
+[13:09:19.412](INFO) Created object with id 6ea48e1a-c318-4e63-8754-e6d674a55543
+[13:09:19.412](INFO) Created object with id 5644160c-6c92-4f19-b365-36ce6bf28a96
+[13:09:19.412](INFO) Created object with id 6c522232-3660-48fa-8cab-547699cae425
+[13:09:19.412](INFO) Created object with id 541b1480-bb19-4bb0-97ec-b4c2bfc6e1b7
+[13:09:19.412](INFO) Created object with id 9a63f7ad-2e44-497a-bcc9-582b84484b40
+[13:09:19.412](INFO) Created object with id e79955cb-ee18-4f97-8bab-cb93b5436825
+[13:09:19.412](INFO) Created object with id 69fde1cd-5363-4a34-9253-c1581f2b16a7
+[13:09:19.412](INFO) Created object with id 81a293c8-6906-48ea-9d7f-aabedacd4afb
+[13:09:19.412](INFO) Created object with id 83a2a0ce-f8e2-4354-9414-038204d517a9
+[13:09:19.412](INFO) Created object with id 46b1c4c2-921f-4d5d-b017-951b1abbe0cb
+[13:09:19.412](INFO) Created object with id 9dea6fd8-1108-4ee0-bd91-080033a9416b
+[13:09:19.412](INFO) Created object with id a9860659-390f-43c1-9380-330b8f5dca2c
+[13:09:19.412](INFO) Created object with id f32deb8a-1855-449f-9522-21a4f1a29ad2
+[13:09:19.412](INFO) Created object with id 9fef5754-4d56-4288-ad4f-9681682f173c
+[13:09:19.412](INFO) Created object with id d9ba16fc-c638-4fbc-9841-51ac32d1060e
+[13:09:19.412](INFO) Created object with id e5387c89-a4b1-48c7-80ce-c7129abe61ed
+[13:09:19.412](INFO) Created object with id 3e130926-4bca-4593-b09c-9e14dafc57df
+[13:09:19.413](INFO) Created object with id 1b54c07d-8978-4827-98fe-6d43f6956bed
+[13:09:19.413](INFO) Created object with id 5d123b8d-9dc1-4758-adcb-e098690a4673
+[13:09:19.413](INFO) Created object with id 1ff2958c-a398-45b3-b275-d72c8dff6784
+[13:09:19.413](INFO) Created object with id 340e5a0f-34a1-4847-89b2-11fdedf68710
+[13:09:19.413](INFO) Created object with id b48f225a-dd79-4806-99c9-01b8c25985be
+[13:09:19.413](INFO) Created object with id 506907d4-2415-45a3-bb04-08d5171567d7
+[13:09:19.413](INFO) Created object with id 8775107b-0bf6-40bc-9b7d-d47564199a9c
+[13:09:19.413](INFO) Created object with id 392f5e48-305e-4289-8549-8bb8ce23a4ed
+[13:09:19.413](INFO) Created object with id b8835d46-b818-46b7-94c2-d90bd41e9b83
+[13:09:19.413](INFO) Created object with id 80deb48f-b2cd-46ae-90a2-1d3d8947e101
+[13:09:19.413](INFO) Created object with id 89eecea8-0041-4a44-8dba-c2d896cc22a8
+[13:09:19.413](INFO) Created object with id e2eda3cf-a447-4857-9006-cf2052f701f9
+[13:09:19.413](INFO) Created object with id 0d0d30b1-9a9d-4f4e-a6f5-6bd510920b96
+[13:09:19.413](INFO) Created object with id 41f437a1-e894-426e-8e39-9af220df8e81
+[13:09:19.413](INFO) Created object with id fa395660-0af1-4bd7-abfe-4d4383f5e853
+[13:09:19.413](INFO) Created object with id 7c06b3b3-307a-4202-a3f1-b1e8c72508ce
+[13:09:19.413](INFO) Created object with id 52bf8141-2481-434f-969a-15340f2f6363
+[13:09:19.413](INFO) Created object with id b2470766-b28f-4d23-971b-dc5e4ea4aec9
+[13:09:19.413](INFO) Created object with id 73e43d95-c61a-4e55-b1be-cc3b5321ce3f
+[13:09:19.413](INFO) Created object with id c32c65b1-6395-4780-82e5-f03086b7fdb2
+[13:09:19.413](INFO) Created object with id 41a6a860-6e8d-4d5c-9d81-4ba9c1da3b49
+[13:09:19.413](INFO) Created object with id 1db61a30-6d65-4061-b01a-fae323b49ca1
+[13:09:19.413](INFO) Created object with id dc42ade8-533e-43a5-9b51-8764d5fbeef9
+[13:09:19.413](INFO) Created object with id 6fea7862-d24c-4fb9-b153-4f6a53270111
+[13:09:19.413](INFO) Created object with id f25933c7-ba6a-4c60-8213-8ec3a3c91023
+[13:09:19.413](INFO) Created object with id 9148a5f2-3132-448a-9065-4c25ae03c1c5
+[13:09:19.413](INFO) Created object with id 1d10c6c6-14f8-456a-91b6-3d151ce5e373
+[13:09:19.413](INFO) Created object with id 5c593b70-e477-4ebf-9c72-563a640aeefd
+[13:09:19.413](INFO) Created object with id d227e729-5b10-418a-90ff-be5f829fa6f3
+[13:09:19.413](INFO) Created object with id ef92f12d-690b-4344-9910-9846691a88c1
+[13:09:19.413](INFO) Created object with id fb483550-d043-49a1-9c9e-03aa869db6c4
+[13:09:19.413](INFO) Created object with id 9d7a4e24-7c81-4e2c-a5e8-9ec3c46c7bd9
+[13:09:19.413](INFO) Created object with id 217014ee-f85f-445e-86c0-82911788ec7f
+[13:09:19.413](INFO) Created object with id c103f816-b29b-4a14-b61b-1c12e0ae3144
+[13:09:19.413](INFO) Created object with id 0f731dc1-71b9-4ea0-a921-415fd3aacbd8
+[13:09:19.413](INFO) Created object with id 0f079268-9dfd-48cb-b6f2-e3796cc6963e
+[13:09:19.413](INFO) Created object with id 9df4b4a2-f9dd-49a1-9b7d-8dcfe4c26ac8
+[13:09:19.413](INFO) Created object with id d9bd87a4-5bab-42f4-87fb-f0469df7bea5
+[13:09:19.413](INFO) Created object with id cdbd25eb-ee6e-4419-9843-58c6ef79640c
+[13:09:19.413](INFO) Created object with id 4e6b21f4-96b5-4726-8a12-e188200d31bc
+[13:09:19.413](INFO) Created object with id 5efc3ce5-9fca-489d-ad27-24159ac8ec4d
+[13:09:19.413](INFO) Created object with id 967f24ff-2b9f-4490-a948-54adc29c44f1
+[13:09:19.413](INFO) Created object with id f6c36bfe-d91b-446d-b503-47e8e5a4adeb
+[13:09:19.413](INFO) Created object with id 4dd884f9-1aec-4c7d-b040-27fc8beea868
+[13:09:19.413](INFO) Created object with id 36cbc248-a708-454b-b35b-e4a9da089014
+[13:09:19.413](INFO) Created object with id a1efd4fd-78fb-4e0c-8eb9-42ded0a2f1c5
+[13:09:19.414](INFO) Created object with id 0630de57-9471-45d0-abb1-c2e50f8119a8
+[13:09:19.541](INFO) Loaded scene: EOSD stage 4
+[13:11:46.717](INFO) Deleted object with id 000f43bb-3546-4d96-9ef6-a241a6210a49
+[13:11:46.717](INFO) Deleted object with id 6ea48e1a-c318-4e63-8754-e6d674a55543
+[13:11:46.717](INFO) Deleted object with id 5644160c-6c92-4f19-b365-36ce6bf28a96
+[13:11:46.717](INFO) Deleted object with id 6c522232-3660-48fa-8cab-547699cae425
+[13:11:46.717](INFO) Deleted object with id 541b1480-bb19-4bb0-97ec-b4c2bfc6e1b7
+[13:11:46.717](INFO) Deleted object with id 9a63f7ad-2e44-497a-bcc9-582b84484b40
+[13:11:46.717](INFO) Deleted object with id e79955cb-ee18-4f97-8bab-cb93b5436825
+[13:11:46.717](INFO) Deleted object with id 69fde1cd-5363-4a34-9253-c1581f2b16a7
+[13:11:46.717](INFO) Deleted object with id 81a293c8-6906-48ea-9d7f-aabedacd4afb
+[13:11:46.717](INFO) Deleted object with id 83a2a0ce-f8e2-4354-9414-038204d517a9
+[13:11:46.717](INFO) Deleted object with id 46b1c4c2-921f-4d5d-b017-951b1abbe0cb
+[13:11:46.717](INFO) Deleted object with id 9dea6fd8-1108-4ee0-bd91-080033a9416b
+[13:11:46.717](INFO) Deleted object with id a9860659-390f-43c1-9380-330b8f5dca2c
+[13:11:46.717](INFO) Deleted object with id f32deb8a-1855-449f-9522-21a4f1a29ad2
+[13:11:46.717](INFO) Deleted object with id 9fef5754-4d56-4288-ad4f-9681682f173c
+[13:11:46.717](INFO) Deleted object with id d9ba16fc-c638-4fbc-9841-51ac32d1060e
+[13:11:46.717](INFO) Deleted object with id e5387c89-a4b1-48c7-80ce-c7129abe61ed
+[13:11:46.717](INFO) Deleted object with id 3e130926-4bca-4593-b09c-9e14dafc57df
+[13:11:46.717](INFO) Deleted object with id 1b54c07d-8978-4827-98fe-6d43f6956bed
+[13:11:46.717](INFO) Deleted object with id 5d123b8d-9dc1-4758-adcb-e098690a4673
+[13:11:46.717](INFO) Deleted object with id 1ff2958c-a398-45b3-b275-d72c8dff6784
+[13:11:46.717](INFO) Deleted object with id 340e5a0f-34a1-4847-89b2-11fdedf68710
+[13:11:46.717](INFO) Deleted object with id b48f225a-dd79-4806-99c9-01b8c25985be
+[13:11:46.717](INFO) Deleted object with id 506907d4-2415-45a3-bb04-08d5171567d7
+[13:11:46.717](INFO) Deleted object with id 8775107b-0bf6-40bc-9b7d-d47564199a9c
+[13:11:46.717](INFO) Deleted object with id 392f5e48-305e-4289-8549-8bb8ce23a4ed
+[13:11:46.717](INFO) Deleted object with id b8835d46-b818-46b7-94c2-d90bd41e9b83
+[13:11:46.717](INFO) Deleted object with id 80deb48f-b2cd-46ae-90a2-1d3d8947e101
+[13:11:46.717](INFO) Deleted object with id 89eecea8-0041-4a44-8dba-c2d896cc22a8
+[13:11:46.717](INFO) Deleted object with id e2eda3cf-a447-4857-9006-cf2052f701f9
+[13:11:46.717](INFO) Deleted object with id 0d0d30b1-9a9d-4f4e-a6f5-6bd510920b96
+[13:11:46.717](INFO) Deleted object with id 41f437a1-e894-426e-8e39-9af220df8e81
+[13:11:46.717](INFO) Deleted object with id fa395660-0af1-4bd7-abfe-4d4383f5e853
+[13:11:46.717](INFO) Deleted object with id 7c06b3b3-307a-4202-a3f1-b1e8c72508ce
+[13:11:46.717](INFO) Deleted object with id 52bf8141-2481-434f-969a-15340f2f6363
+[13:11:46.717](INFO) Deleted object with id b2470766-b28f-4d23-971b-dc5e4ea4aec9
+[13:11:46.717](INFO) Deleted object with id 73e43d95-c61a-4e55-b1be-cc3b5321ce3f
+[13:11:46.717](INFO) Deleted object with id c32c65b1-6395-4780-82e5-f03086b7fdb2
+[13:11:46.717](INFO) Deleted object with id 41a6a860-6e8d-4d5c-9d81-4ba9c1da3b49
+[13:11:46.717](INFO) Deleted object with id 1db61a30-6d65-4061-b01a-fae323b49ca1
+[13:11:46.717](INFO) Deleted object with id dc42ade8-533e-43a5-9b51-8764d5fbeef9
+[13:11:46.717](INFO) Deleted object with id 6fea7862-d24c-4fb9-b153-4f6a53270111
+[13:11:46.717](INFO) Deleted object with id f25933c7-ba6a-4c60-8213-8ec3a3c91023
+[13:11:46.717](INFO) Deleted object with id 9148a5f2-3132-448a-9065-4c25ae03c1c5
+[13:11:46.717](INFO) Deleted object with id 1d10c6c6-14f8-456a-91b6-3d151ce5e373
+[13:11:46.717](INFO) Deleted object with id 5c593b70-e477-4ebf-9c72-563a640aeefd
+[13:11:46.717](INFO) Deleted object with id d227e729-5b10-418a-90ff-be5f829fa6f3
+[13:11:46.717](INFO) Deleted object with id ef92f12d-690b-4344-9910-9846691a88c1
+[13:11:46.717](INFO) Deleted object with id fb483550-d043-49a1-9c9e-03aa869db6c4
+[13:11:46.717](INFO) Deleted object with id 9d7a4e24-7c81-4e2c-a5e8-9ec3c46c7bd9
+[13:11:46.717](INFO) Deleted object with id 217014ee-f85f-445e-86c0-82911788ec7f
+[13:11:46.717](INFO) Deleted object with id c103f816-b29b-4a14-b61b-1c12e0ae3144
+[13:11:46.717](INFO) Deleted object with id 0f731dc1-71b9-4ea0-a921-415fd3aacbd8
+[13:11:46.717](INFO) Deleted object with id 0f079268-9dfd-48cb-b6f2-e3796cc6963e
+[13:11:46.717](INFO) Deleted object with id 9df4b4a2-f9dd-49a1-9b7d-8dcfe4c26ac8
+[13:11:46.717](INFO) Deleted object with id d9bd87a4-5bab-42f4-87fb-f0469df7bea5
+[13:11:46.717](INFO) Deleted object with id cdbd25eb-ee6e-4419-9843-58c6ef79640c
+[13:11:46.717](INFO) Deleted object with id 4e6b21f4-96b5-4726-8a12-e188200d31bc
+[13:11:46.717](INFO) Deleted object with id 5efc3ce5-9fca-489d-ad27-24159ac8ec4d
+[13:11:46.717](INFO) Deleted object with id 967f24ff-2b9f-4490-a948-54adc29c44f1
+[13:11:46.717](INFO) Deleted object with id f6c36bfe-d91b-446d-b503-47e8e5a4adeb
+[13:11:46.717](INFO) Deleted object with id 4dd884f9-1aec-4c7d-b040-27fc8beea868
+[13:11:46.717](INFO) Deleted object with id 36cbc248-a708-454b-b35b-e4a9da089014
+[13:11:46.717](INFO) Deleted object with id a1efd4fd-78fb-4e0c-8eb9-42ded0a2f1c5
+[13:11:46.717](INFO) Deleted object with id 0630de57-9471-45d0-abb1-c2e50f8119a8
+[13:11:46.717](INFO) Deleted object with id 4d1aca61-ed88-4fa6-b97c-86b88094f82d
+[13:11:46.717](INFO) Deleted object with id 738438e7-ab27-415b-ba58-e83ba52d6390
+[13:11:46.717](INFO) Deleted object with id 873eb674-0bbe-43eb-ae91-b99ac9647ca7
+[13:11:46.717](INFO) Deleted object with id f34863c7-8f35-41ac-8407-88515374940d
+[13:11:46.717](INFO) Deleted object with id 217c49fc-48f2-42d2-8476-168b64024257
+[13:11:46.717](INFO) Deleted object with id 183db04c-b2b6-4282-8f8f-ee098be62d24
+[13:11:46.717](INFO) Deleted object with id f71d25cc-366c-4348-8ab8-591d82f20397
+[13:11:46.717](INFO) Deleted object with id b0c08c08-9705-4fe8-8b00-8c9c98e8ac92
+[13:11:46.717](INFO) Deleted object with id f68d7336-4b41-4bd7-a9ac-33de38e3a8dc
+[13:11:46.717](INFO) Deleted object with id 0e13e70c-5f0f-402f-a622-37cb49d1872e
+[13:11:46.717](INFO) Deleted object with id 7e521aa6-283e-4039-b111-a3c98e796255
+[13:11:46.717](INFO) Deleted object with id 1cfb5858-6dca-41ed-92cb-51f52c827ad2
+[13:11:46.717](INFO) Deleted object with id 74270281-422a-42ec-a048-e7c5ebbb90fe
+[13:11:46.717](INFO) Deleted object with id f4a2e3ae-d296-454b-bd10-024881c56bdd
+[13:11:46.717](INFO) Deleted object with id 3e165b38-8c62-469d-aced-aede1c2f9b29
+[13:11:46.717](INFO) Deleted object with id 693aa81b-35f7-4b93-85eb-e6899a8a056a
+[13:11:46.717](INFO) Deleted object with id 17dd69a0-4c7f-492d-b8ac-17d5d97df0bb
+[13:11:46.717](INFO) Deleted object with id 610493e4-2a50-4b6f-a6c7-738891f636df
+[13:11:46.717](INFO) Deleted object with id 5dde668a-637f-4dc3-b59b-c3c42438e8d4
+[13:11:46.717](INFO) Deleted object with id 0cf70533-a69f-480f-9ad0-b624c800f9d9
+[13:11:46.717](INFO) Deleted object with id c243978c-3723-4431-9090-2ad9c7107771
+[13:11:46.717](INFO) Deleted object with id 6917d80f-d323-41c9-bf94-ff8f345848d1
+[13:11:46.717](INFO) Deleted object with id 5a748100-c89c-44a4-bf2a-40f879a742ea
+[13:11:46.717](INFO) Deleted object with id 15cd05e3-e441-4007-a16e-347a75d4e747
+[13:11:46.717](INFO) Deleted object with id 003feb69-236c-48d7-8934-b501b7d1f8b9
+[13:11:46.717](INFO) Deleted object with id 611f5b56-8e23-4183-a03b-5759d4af02b0
+[13:11:46.717](INFO) Deleted object with id 3aa80dfd-14ca-4521-9d65-2ed47f51f129
+[13:11:46.717](INFO) Deleted object with id 4973745b-618a-43d5-8047-f3cfb8c8f251
+[13:11:46.717](INFO) Deleted object with id 1078b7c8-2b35-4879-b608-3e0e730c575c
+[13:11:46.717](INFO) Deleted object with id 4a41063f-b1c7-4432-be61-3e603ebe83ba
+[13:11:46.717](INFO) Deleted object with id aaeedbd4-afa4-4619-8277-d853028d4573
+[13:11:46.717](INFO) Deleted object with id c5b796a5-c8d4-4ffa-9385-3a6555c779f9
+[13:11:46.717](INFO) Deleted object with id c1f5e4b3-82b4-4cc6-a47d-7c251356a0b7
+[13:11:46.717](INFO) Deleted object with id 18bf540d-0978-4e0a-a977-7dce236ed883
+[13:11:46.717](INFO) Deleted object with id d29fe877-0c46-4d6f-bbbc-424f9b627aa4
+[13:11:46.717](INFO) Deleted object with id b68ac3eb-30e1-4303-9665-805fda3361a2
+[13:11:46.717](INFO) Deleted object with id 306ba530-e5f8-451d-8e98-82c4a3d35de3
+[13:11:46.717](INFO) Deleted object with id 40505ac8-44fa-4fce-8e89-93ea373de668
+[13:11:46.717](INFO) Deleted object with id b9363f4d-a06a-458e-b0f5-d3843906ec17
+[13:11:46.717](INFO) Deleted object with id a2dcc9a2-359f-4845-9de7-93abc6964f52
+[13:11:46.717](INFO) Deleted object with id 961034ea-2cf0-4176-920b-b2672977fcce
+[13:11:46.717](INFO) Deleted object with id 66095231-6b13-4296-97c3-06e8f013398c
+[13:11:46.717](INFO) Deleted object with id 657c5578-f580-4097-a23c-79b2ca6247d8
+[13:11:46.717](INFO) Deleted object with id 415ff5ab-743c-437b-ba85-e1a2dc024bc9
+[13:11:46.717](INFO) Deleted object with id 009a7ba7-5cfd-4619-9228-d2b0ca7358d5
+[13:11:46.717](INFO) Deleted object with id 626e6d52-8ed9-4b89-80fb-0b503a31fd5d
+[13:11:46.717](INFO) Deleted object with id f28ba5ab-2ea3-48c0-8026-e3e4c64bb778
+[13:11:46.717](INFO) Deleted object with id 4a64544e-36a3-42c4-879b-f94d193d662d
+[13:11:46.717](INFO) Deleted object with id 04eb7c0e-f1b2-4812-9236-4bba2e4aa2cd
+[13:11:46.717](INFO) Deleted object with id 5fd30f68-b1e9-4ee4-9850-bf8cdc8a3f4b
+[13:11:46.717](INFO) Deleted object with id a71a1c10-6c89-4eb6-b202-3fee727f6cf8
+[13:11:46.717](INFO) Deleted object with id 49161b20-07dd-4e73-8fe3-12c139c63599
+[13:11:46.717](INFO) Deleted object with id ef4c2c86-f9d2-430e-ba7b-b74833873cc4
+[13:11:46.717](INFO) Deleted object with id 5d8e4146-5158-455f-961b-027502c5c700
+[13:11:46.717](INFO) Deleted object with id 0f53708b-8482-4249-ac12-be97137fe5ab
+[13:11:46.717](INFO) Deleted object with id 5aa25748-c234-43f9-ab39-03b61d8c73bc
+[13:11:46.717](INFO) Deleted object with id d4ae66b5-91f0-4a7e-ab5b-ce90a0624820
+[13:11:46.717](INFO) Deleted object with id c4f28a7b-4bdd-4be3-bed4-23224f035d2d
+[13:11:46.717](INFO) Deleted object with id cbdf90fa-7d67-42b7-9e32-c21ff3299d6d
+[13:11:46.717](INFO) Deleted object with id 09a14dae-2f07-4219-9291-8195d22a0230
+[13:11:46.717](INFO) Deleted object with id e5b24c83-05cf-48d2-8693-1ceaf2b747e1
+[13:11:46.717](INFO) Deleted object with id 368e741c-71fa-43ea-a3cd-701959093efd
+[13:11:46.717](INFO) Deleted object with id b4f5d0fa-bae4-4e03-abaf-07516a18dc0b
+[13:11:46.717](INFO) Deleted object with id 55044fb2-66a5-4e12-ac3f-ae0ca77042b5
+[13:11:46.717](INFO) Deleted object with id de643437-c586-4ecf-95ff-9e5e922babcd
+[13:11:46.717](INFO) Deleted object with id 78a6f3eb-b1d0-4f50-9d52-91c968c54617
+[13:11:46.717](INFO) Deleted object with id 4dc86e9a-776d-4df5-b169-4a8b6834ae9b
+[13:11:46.717](INFO) Deleted object with id 2df533b3-70f5-4f29-994b-f71df8339a91
+[13:11:46.717](INFO) Deleted object with id f11f5e04-6671-42ff-bcd9-4fd0263c3b06
+[13:11:46.717](INFO) Deleted object with id 0cd38712-ee98-47f2-bb49-879d572226ae
+[13:11:46.717](INFO) Deleted object with id 7972a035-e235-428e-a5cc-a7daeb6df65c
+[13:11:46.717](INFO) Deleted object with id ba6e98df-0394-4369-aa08-c4a8554afbed
+[13:11:46.717](INFO) Deleted object with id 1781e72b-3ba7-4aa9-81a3-67d9e7e70c9f
+[13:11:46.717](INFO) Deleted object with id ee6fa877-69f6-4a72-b441-cdd06c1e83c6
+[13:11:46.717](INFO) Deleted object with id 861614af-ed77-42c3-9566-0b5cb2543587
+[13:11:46.717](INFO) Deleted object with id 9722a0d6-d460-419a-a21e-f2582a5f103b
+[13:11:46.717](INFO) Deleted object with id 39e3958a-215a-484c-a797-83f5a6a887b6
+[13:11:46.717](INFO) Deleted object with id c109537d-6f07-4aaf-90b2-606e67e1b146
+[13:11:46.717](INFO) Deleted object with id 8b1baf64-a285-4cdd-b728-c6a9637acfc7
+[13:11:46.717](INFO) Deleted object with id 3abd8180-5fbc-47af-9694-b8c51b7edc6b
+[13:11:46.717](INFO) Deleted object with id cd5a1b35-b53c-46b9-ac11-d6f6c8a0bb95
+[13:11:46.717](INFO) Deleted object with id 9bd93fb7-8317-43c0-a9b0-2714eae67a15
+[13:11:46.717](INFO) Deleted object with id 57fa02ef-fecf-4dcd-8dd6-7275d135fc91
+[13:11:46.717](INFO) Deleted object with id 5323e1d4-6b40-4edb-a198-460a946d32ed
+[13:11:46.717](INFO) Deleted object with id ca5f56c0-cf4b-4b17-9b84-316845a31297
+[13:11:46.717](INFO) Deleted object with id c066e303-12ef-4f95-8ff0-540fe6634b77
+[13:11:46.717](INFO) Deleted object with id 0f6e36f3-7589-4b47-9e9e-10a04ad8d412
+[13:11:46.717](INFO) Deleted object with id 8d98ffeb-903e-4176-94e9-8c6961fa1436
+[13:11:46.717](INFO) Deleted object with id e193f93a-00de-4f20-93c7-2d81720aaacd
+[13:11:46.717](INFO) Deleted object with id 8e05c242-8288-49e8-bd5e-48191107805c
+[13:11:46.717](INFO) Deleted object with id a0debeaa-be1b-4c7c-a82f-91f689e6cb02
+[13:11:46.717](INFO) Deleted object with id 8bda7488-f45b-4dcf-97e6-598e2295f9a7
+[13:11:46.717](INFO) Deleted object with id 28a4cdd2-be52-4c58-8c08-507bda28340b
+[13:11:46.717](INFO) Deleted object with id 1d4aced6-e591-438c-b16b-f6881b6104b4
+[13:11:46.717](INFO) Deleted object with id f5de5b77-bac4-4486-8e53-b4fba763a0c6
+[13:11:46.717](INFO) Deleted object with id 37477660-8f3c-474b-946e-f9aacb2fea56
+[13:11:46.717](INFO) Deleted object with id bfd4642e-70c3-4f86-afc7-5093a1effbc9
+[13:11:46.717](INFO) Deleted object with id 465eef53-f8a7-4fa4-8680-14bff0d03fe6
+[13:11:46.718](INFO) Deleted object with id 302a8643-8ae3-46e2-8749-e62381d32be0
+[13:11:46.718](INFO) Deleted object with id aa34280b-2b89-4062-a709-7fd494094edd
+[13:11:46.718](INFO) Deleted object with id 3ca4ec2a-d0ec-4ffa-9b2f-a05613683aa2
+[13:11:46.718](INFO) Deleted object with id 378c28cf-8c0b-430d-a63c-fe4acfefef97
+[13:11:46.718](INFO) Deleted object with id b40fcd91-b57e-4477-a3ba-61ddecf1ed79
+[13:11:46.718](INFO) Deleted object with id 3e19d4c7-c501-4fc7-a5f3-ba8578f19344
+[13:11:46.718](INFO) Deleted object with id 21c9bc0f-54ca-43e5-973e-780977e00f66
+[13:11:46.718](INFO) Deleted object with id 289e8ff8-a465-48f6-9e13-a95a9c1d6403
+[13:11:46.718](INFO) Deleted object with id 920a4921-4d7e-44ec-a7e3-6316fe8b12f7
+[13:11:46.718](INFO) Deleted object with id 671140d6-87bf-46f6-9997-279e2740e0be
+[13:11:46.718](INFO) Deleted object with id a5249d2e-6e63-43f1-b8bd-0c89c1cff81d
+[13:11:46.718](INFO) Deleted object with id d1e837d2-7253-4f10-a860-34ea4a86db1a
+[13:11:46.718](INFO) Deleted object with id 63e4f10a-2c0e-4b39-be39-294db93cd3cc
+[13:11:46.718](INFO) Deleted object with id f19fe638-d732-461a-9d6c-6d3c38c75281
+[13:11:46.718](INFO) Deleted object with id e8411ea6-9963-4112-a8c2-597998250aa9
+[13:11:46.718](INFO) Deleted object with id 4c901833-bc30-4621-a723-cc9db91f34b9
+[13:11:46.718](INFO) Deleted object with id 51dd5709-5943-4080-b17a-ba3d81078481
+[13:11:46.718](INFO) Deleted object with id 7f654d67-479b-4229-b894-be24733f91ff
+[13:11:46.718](INFO) Deleted object with id 60d3c5cb-a8e7-4343-ba26-fbae44561241
+[13:11:46.718](INFO) Deleted object with id c5282776-fcc6-4c75-af1e-9623f7b62707
+[13:11:46.718](INFO) Deleted object with id ca058b14-c722-40f0-8ee8-2c44c01840c7
+[13:11:46.718](INFO) Deleted object with id 4b1e95e6-1949-4844-8870-9af8191eb9e0
+[13:11:46.718](INFO) Deleted object with id 18530903-ca5d-4014-9258-1395a6072f9d
+[13:11:46.718](INFO) Deleted object with id c6b8b0bd-ac2c-4593-8eb8-81f05ad712e5
+[13:11:46.718](INFO) Deleted object with id e288042e-208c-4beb-81e7-99e3f349c3a9
+[13:11:46.718](INFO) Deleted object with id 31398a5f-176e-4f67-89db-451ce200c0ee
+[13:11:46.718](INFO) Deleted object with id a936b2ce-b018-4580-b5ae-a3e54c250522
+[13:11:46.718](INFO) Deleted object with id ef647143-386f-484a-bbc5-fcc5c60ca29c
+[13:11:46.718](INFO) Deleted object with id 5ffb7741-91c1-4b51-8184-4ecd3c20bf5d
+[13:11:46.718](INFO) Deleted object with id 47fe292c-ccba-458e-8c84-2e9f8a73028d
+[13:11:46.718](INFO) Deleted object with id 404e1fee-1376-4aa7-bc34-169b91c95dc4
+[13:11:46.718](INFO) Deleted object with id cd528ad1-53e0-4df8-8f6b-d68fff1aaef5
+[13:11:46.718](INFO) Deleted object with id ffb0effa-898f-403f-aa3b-5147468a0315
+[13:11:46.718](INFO) Deleted object with id 0faa663f-e9d9-4a2a-8661-076c88f8a491
+[13:11:46.718](INFO) Deleted object with id 3c561828-77f5-49f9-aa3f-d5ef03f62add
+[13:11:46.718](INFO) Deleted object with id 796b8c55-0471-4587-92c8-d9b1e3856207
+[13:11:46.718](INFO) Deleted object with id a3d1b2f2-bb3a-49a4-9d26-4854003602a3
+[13:11:46.718](INFO) Deleted object with id 5fc3399e-d389-47da-ba4d-2109fb0f7857
+[13:11:46.718](INFO) Deleted object with id 82ca6c5a-870b-465a-9854-3616d0207b78
+[13:11:46.718](INFO) Deleted object with id 27fe1de9-14f7-4001-8886-537ebe24505c
+[13:11:46.718](INFO) Deleted object with id 8cfcac29-3b1e-4842-8c85-8c9be59501dc
+[13:11:46.718](INFO) Deleted object with id fd8d4433-a5d7-4367-9960-7cd6d553c4b3
+[13:11:46.718](INFO) Deleted object with id 3d6f9173-f29c-4ecc-91a8-30ba794890ca
+[13:11:46.718](INFO) Deleted object with id 547d0bd1-097a-4a68-aafe-407f890076ca
+[13:11:46.718](INFO) Deleted object with id 66ab754d-8d9f-4b7f-88b2-82e8c2533ae4
+[13:11:46.718](INFO) Deleted object with id b8a559c8-b4fe-4510-b5f2-4b1b2a507554
+[13:11:46.718](INFO) Deleted object with id 233df63f-898a-4480-946d-128df7868ab0
+[13:11:46.718](INFO) Deleted object with id b5f06145-d631-45e0-908d-453d24e12b67
+[13:11:46.718](INFO) Deleted object with id 322e4c7e-1521-4434-b977-48f0a71add23
+[13:11:46.718](INFO) Deleted object with id a4e9fee3-d38b-4b1b-a77b-a45be167bdef
+[13:11:46.718](INFO) Deleted object with id 19527430-84e5-4985-be39-065041675051
+[13:11:46.718](INFO) Deleted object with id df66fef4-4742-42e7-97d1-093b7dc60802
+[13:11:46.718](INFO) Deleted object with id d075222d-837d-40a7-ae77-e7b13bea38cb
+[13:11:46.718](INFO) Deleted object with id b0afece2-592a-47d6-9749-7cf766517130
+[13:11:46.718](INFO) Deleted object with id 799a1f9e-9e7f-452e-89c6-ce1c4d3fdc0b
+[13:11:46.718](INFO) Deleted object with id bda0816b-ab12-432d-9fbc-03ff042abc55
+[13:11:46.718](INFO) Deleted object with id 8fbd64bb-e921-4efa-ba93-861c226f7949
+[13:11:46.718](INFO) Deleted object with id 46d52fbb-2abb-462b-a9b7-05f3bd35d12b
+[13:11:46.718](INFO) Deleted object with id 1abc0371-a981-435f-b13e-f3a230062350
+[13:11:46.718](INFO) Deleted object with id f4f374d2-4a71-4e81-9a99-f146b1c70cfe
+[13:11:46.718](INFO) Deleted object with id e157bffe-6062-4446-b385-4f933681985f
+[13:11:46.718](INFO) Deleted object with id 3b7241df-f66b-43d6-b81c-c721595b63a6
+[13:11:46.718](INFO) Deleted object with id aef61839-9aea-4eba-94f3-7dd49ecd347b
+[13:11:46.718](INFO) Deleted object with id e7040b5b-ae2f-42f2-82ed-fb1784071187
+[13:11:46.718](INFO) Deleted object with id 3524091d-58c2-49ea-81d5-c2066d30af7c
+[13:11:46.718](INFO) Deleted object with id a0897732-4123-4196-8751-c8309c630437
+[13:11:46.718](INFO) Deleted object with id 1379f0a8-9364-4457-9bab-aae87680de8f
+[13:11:46.718](INFO) Deleted object with id 50f351f6-1e75-400b-98a3-5c7362725842
+[13:11:46.718](INFO) Deleted object with id 7118d7f2-410a-4632-9d40-c89bf26044da
+[13:11:46.718](INFO) Deleted object with id 09fc01e5-b560-4804-8c95-f9c67a039015
+[13:11:46.718](INFO) Deleted object with id 360cf5ac-0bb6-4ded-9faf-8b3af35b7af2
+[13:11:46.718](INFO) Deleted object with id 4e4caf79-c26c-4659-a143-b8aa46f70596
+[13:11:46.718](INFO) Deleted object with id 9539e36e-0c4e-41ba-9c95-548068752fca
+[13:11:46.718](INFO) Deleted object with id fd1d306d-f421-4c1b-bd0a-a23bec76c073
+[13:11:46.718](INFO) Deleted object with id d7f981f6-2bee-4781-9460-11fa663cb17b
+[13:11:46.718](INFO) Deleted object with id 9ef4882a-33dc-4089-868a-e08df7dbe832
+[13:11:46.718](INFO) Deleted object with id b5022785-2403-4e89-8946-da2eafb33319
+[13:11:46.718](INFO) Deleted object with id 7d915e3a-b3e9-446a-9fd5-94229da8767f
+[13:11:46.718](INFO) Deleted object with id 0e48ce44-4a20-4396-aeed-f5d9710112eb
+[13:11:46.718](INFO) Deleted object with id 8503cad5-9428-41ec-947e-e8d845a3579c
+[13:11:46.718](INFO) Deleted object with id c6e26791-be1a-410e-bfad-f65fd891f58a
+[13:11:46.718](INFO) Deleted object with id 3d02ebea-6f6f-4726-8a8a-617e0fda27a7
+[13:11:46.718](INFO) Deleted object with id be1278cc-cbfc-4022-8a48-3e62a3f8bc7c
+[13:11:46.718](INFO) Deleted object with id cdaa1e0c-59f7-4e65-9e0b-481bd3e1a079
+[13:11:46.718](INFO) Deleted object with id f20d0dde-5d77-432b-9720-256462f459eb
+[13:11:46.718](INFO) Deleted object with id 44740e42-d6a5-4d83-b0eb-04681f1dd546
+[13:11:46.718](INFO) Deleted object with id e06b3590-fd1b-4367-9d4b-d391698a0c67
+[13:11:46.718](INFO) Deleted object with id 578f00ea-e6d7-40c2-9da5-4a597adf9246
+[13:11:46.718](INFO) Deleted object with id ae6605d2-73f7-417a-bf1a-2c82502bf920
+[13:11:46.718](INFO) Deleted object with id d353ef39-303d-4227-a43e-f2eba013c325
+[13:11:46.718](INFO) Deleted object with id c77ac0e0-bed6-4972-8143-a4185b9329d1
+[13:11:46.718](INFO) Deleted object with id 82383694-0fcb-48c1-8b17-f48dbda006c8
+[13:11:46.718](INFO) Deleted object with id 411f49b3-3c60-486d-b27e-7924d20e3a77
+[13:11:46.718](INFO) Deleted object with id a1065a3c-8f8d-49bd-ba42-bea2b85104b5
+[13:11:46.718](INFO) Deleted object with id 6c722e98-f06f-45f8-b17e-bcc89eb0369a
+[13:11:46.718](INFO) Deleted object with id b0605f6d-9a14-4153-8c9f-1808c15244f5
+[13:11:46.718](INFO) Deleted object with id 2bb77f3d-aaee-44c8-8018-d875d733f3f0
+[13:11:46.718](INFO) Deleted object with id 6e9c2aba-c7dc-411d-b7e4-3b833c1412e0
+[13:11:46.718](INFO) Deleted object with id 37d2c365-afea-4f33-9422-9cf52229cfe1
+[13:11:46.718](INFO) Deleted object with id c2e1e34d-4e30-42b3-879c-27d82d753057
+[13:11:46.718](INFO) Deleted object with id 5006b925-97a7-403b-8c01-75de930d8057
+[13:11:46.718](INFO) Deleted object with id 38a6bec7-a861-4bce-933d-d74655226d56
+[13:11:46.718](INFO) Deleted object with id cde47b58-111d-48b4-a075-3b9f9f8f8974
+[13:11:46.718](INFO) Deleted object with id 88e6c861-b50b-46dc-9311-dfcafc67b6da
+[13:11:46.718](INFO) Deleted object with id c50c27ab-cd2a-4695-ae53-bf361673cb04
+[13:11:46.718](INFO) Deleted object with id c7707035-0388-4a46-b947-4182875cd0ca
+[13:11:46.718](INFO) Deleted object with id ad9ac655-a0eb-4472-9499-8e900f91abc0
+[13:11:46.718](INFO) Deleted object with id 570569b6-987c-4ebc-b3f1-89cbbdd9fd11
+[13:11:46.718](INFO) Deleted object with id 8bef6094-8ec5-48f0-9a15-1ec8f3488def
+[13:11:46.718](INFO) Deleted object with id 2df3e8ad-ebd7-4582-8291-281e275a5c9f
+[13:11:46.718](INFO) Deleted object with id aa30b05a-d306-4b26-bc01-581853befddf
+[13:11:46.718](INFO) Deleted object with id 48b31aa7-c0b6-4099-bafb-a76e3d296fee
+[13:11:46.718](INFO) Deleted object with id 8cf72626-1e17-4eaa-aa5a-8a57f4971c35
+[13:11:46.718](INFO) Deleted object with id 6d1aa591-9e52-49c8-a339-e25ecc9d9256
+[13:11:46.718](INFO) Deleted object with id 3b8af4a0-dbed-4dd2-802a-a6d53d4fb927
+[13:11:46.718](INFO) Deleted object with id b7caaa4e-33e3-4e13-bb92-b6fa5ef2513d
+[13:11:46.718](INFO) Deleted object with id c3a9ea6e-c513-4f87-a4bd-81c6532730e9
+[13:11:46.718](INFO) Deleted object with id 33124bd8-a560-4472-96dc-3ad737f43214
+[13:11:46.718](INFO) Deleted object with id 1b7f064a-f721-42ef-8ea6-ecd2ed38a1c1
+[13:11:46.718](INFO) Deleted object with id e5adeca2-90f0-48b6-ab9a-fe1fa4055077
+[13:11:46.718](INFO) Deleted object with id a28539d7-828b-4f05-9517-c5cf7b897311
+[13:11:46.718](INFO) Deleted object with id 043eac59-2c7c-4828-a274-833f51e32916
+[13:11:46.718](INFO) Deleted object with id 031fa11a-84d0-406f-9bfe-027ff1f62078
+[13:11:46.718](INFO) Deleted object with id ec7b2efc-f6e0-495b-9c52-4dbaf5568228
+[13:11:46.718](INFO) Deleted object with id 643417d1-9ea4-4596-ad1e-5b111741ce98
+[13:11:46.718](INFO) Deleted object with id 809f66cb-04da-4a59-a6e4-fa2b0e59020f
+[13:11:46.718](INFO) Deleted object with id 7b11ff1f-695f-4acd-a712-04dee0e148ac
+[13:11:46.718](INFO) Deleted object with id 7a6646f6-bdbf-42ce-a41a-28923303dd3c
+[13:11:46.718](INFO) Deleted object with id 4c7495e4-cd9a-41ee-b760-fb50c89f9e0d
+[13:11:46.718](INFO) Deleted object with id d5d79a56-1c7d-4194-9282-bc5cf14d630e
+[13:11:46.718](INFO) Deleted object with id 41a9049f-8423-49ab-85ec-34f074c5047f
+[13:11:46.718](INFO) Deleted object with id 70a2b41e-0530-41f7-9a3e-1727010889b5
+[13:11:46.718](INFO) Deleted object with id 6e204a0b-c563-4590-a96b-f0b91a9745ba
+[13:11:46.718](INFO) Deleted object with id dde98c43-503c-4dae-9f9b-b315601399f5
+[13:11:46.718](INFO) Deleted object with id 12dba757-659d-4c02-a62b-202ccfefc31f
+[13:11:46.718](INFO) Deleted object with id 3d1d1966-deb7-4466-a682-d567ee03a189
+[13:11:46.718](INFO) Deleted object with id 8a9bfc09-99be-4cd3-a896-aa350ee4e753
+[13:11:46.718](INFO) Deleted object with id 2227d7f2-4a03-4635-a378-a1e2280000b7
+[13:11:46.718](INFO) Deleted object with id 9853ca23-7413-4381-ba90-0210a14a67c4
+[13:11:46.718](INFO) Deleted object with id bcdfbede-12bd-497b-953e-b40f0a312743
+[13:11:46.718](INFO) Deleted object with id 4d443006-49f9-4428-a7ab-934bf0246c5a
+[13:11:46.718](INFO) Deleted object with id 4e69f9ce-7236-48d2-9ccb-1bcd3c5f21b8
+[13:11:46.718](INFO) Deleted object with id c9981296-96c6-4b54-829f-372c4d53b49a
+[13:11:46.718](INFO) Deleted object with id dfa377bf-afca-4583-8868-c1c23a300e14
+[13:11:46.718](INFO) Deleted object with id ecd73fed-85b9-4d9e-b3db-0e41add7d3cd
+[13:11:46.718](INFO) Deleted object with id 75308d21-2ccb-4bcc-9fae-1f4238773033
+[13:11:46.718](INFO) Deleted object with id 2b4f8fcd-c497-4c7a-a55e-1733e3bb997f
+[13:11:46.718](INFO) Deleted object with id 47d745b7-1c0b-4e91-b8ac-895bd48b2e38
+[13:11:46.718](INFO) Deleted object with id 2fb67f00-24b8-4d70-aca4-beee3a32e922
+[13:11:46.718](INFO) Deleted object with id 0c8c9e3f-bf6d-4ac1-ab6d-d1b1c714690b
+[13:11:46.718](INFO) Deleted object with id 531c39de-ff3a-4775-86e4-65b5909a38be
+[13:11:46.718](INFO) Deleted object with id c610c4c9-9b27-439b-a387-c66a99e39af1
+[13:11:46.718](INFO) Deleted object with id edb98778-9cac-47e6-ae93-2c8dca1dff80
+[13:11:46.718](INFO) Deleted object with id 4047c15e-29a3-41b6-8925-861d044fdc21
+[13:11:46.718](INFO) Deleted object with id 4406ab18-21f3-4887-844e-fe6807f85536
+[13:11:46.718](INFO) Deleted object with id a8869793-8f1b-4d77-a7cc-d8bfb0f8219b
+[13:11:46.718](INFO) Deleted object with id ee51f7d6-9f1b-4f90-9ce7-da6f8b57a58a
+[13:11:46.718](INFO) Deleted object with id b10d5e0a-57ff-43cc-8b03-8579ccd65cdb
+[13:11:46.718](INFO) Deleted object with id a9f97c1c-20d1-41ca-84c1-9d2b23b06369
+[13:11:46.718](INFO) Deleted object with id c3735ac7-2262-45cf-999a-cc53bc44da98
+[13:11:46.718](INFO) Deleted object with id 70cdca9b-93a7-4f64-82a4-a167f71fe34d
+[13:11:46.718](INFO) Deleted object with id e10f3b7d-69b2-4c2c-a091-2e4be13fa0d7
+[13:11:46.718](INFO) Deleted object with id a8f6f2b1-2bde-4f53-af2e-1f2cd32788bf
+[13:11:46.718](INFO) Deleted object with id 59761927-fa66-4704-ad18-7cb0493bac1a
+[13:11:46.718](INFO) Deleted object with id 0cf5d11e-c1dd-4e24-8c0b-36a764e145e9
+[13:11:46.718](INFO) Deleted object with id f22b488e-320a-472c-b28b-99374e29b5b7
+[13:11:46.718](INFO) Deleted object with id 5ad4ae18-9ad2-411f-b721-b10adc754b4a
+[13:11:46.718](INFO) Deleted object with id 507279d1-70b5-494e-8569-25b757f90614
+[13:11:46.718](INFO) Deleted object with id 0b172ee4-b163-42b0-adb8-e9ff91e36019
+[13:11:46.718](INFO) Deleted object with id a50afd2e-43e3-4249-99da-47a4c932daec
+[13:11:46.718](INFO) Deleted object with id 34b5def2-c528-4048-986c-f1112baf5242
+[13:11:46.718](INFO) Deleted object with id 7c750220-9576-42e8-b290-697fefa4e77f
+[13:11:46.718](INFO) Deleted object with id 8c21785d-cff6-4830-868d-1b581b6baca2
+[13:11:46.718](INFO) Deleted object with id 58e17aca-596f-453e-bf4b-b9957ea86cae
+[13:11:46.718](INFO) Deleted object with id fe67e037-6293-4ad9-bca9-310cb9aeff20
+[13:11:46.718](INFO) Deleted object with id 3bf59462-3c0f-4946-a2fe-fdd506ab3dc6
+[13:11:46.718](INFO) Deleted object with id 20f45494-9f84-4c3e-a4c0-1aa894d64441
+[13:11:46.718](INFO) Deleted object with id 70107547-d5ad-447d-8ca3-10f5b610ae8f
+[13:11:46.718](INFO) Deleted object with id accf5adf-755a-4fdd-8e2e-9a05ad025b51
+[13:11:46.718](INFO) Deleted object with id 705a163e-c4bb-4c3f-a88a-f7584472a937
+[13:11:46.718](INFO) Deleted object with id 227979a9-9300-47e1-ab3d-30542d52895f
+[13:11:46.718](INFO) Deleted object with id de704b69-cdc9-4279-962d-eb8af2316462
+[13:11:46.718](INFO) Deleted object with id 330120d6-4329-4561-83a5-7c3869aefd0c
+[13:11:46.718](INFO) Deleted object with id d237b9d4-aa10-4357-9949-05049360ef33
+[13:11:46.718](INFO) Deleted object with id c4884847-7cba-4194-8f11-441aa6030e77
+[13:11:46.718](INFO) Deleted object with id 273abcc5-d6a6-43dc-bbdd-4d9fcdc2c5d3
+[13:11:46.718](INFO) Deleted object with id 05ce9096-2c99-4ce5-953c-cbcc0592d6dd
+[13:11:46.718](INFO) Deleted object with id a21e46af-244e-4866-85b8-a5b9f067befb
+[13:11:46.719](INFO) Deleted object with id b17b61f1-1de6-4e26-ab0c-87607db03d22
+[13:11:46.719](INFO) Deleted object with id b8a326c1-cda6-46f7-a582-b53d93669393
+[13:11:46.719](INFO) deleted texture 37
+[13:11:46.719](INFO) Deleted shader
+[13:11:46.719](INFO) Deleted shader
+[13:11:46.719](INFO) deleted texture 35
+[13:11:46.719](INFO) deleted texture 32
+[13:11:46.719](INFO) deleted texture 29
+[13:11:46.719](INFO) deleted texture 26
+[13:11:46.719](INFO) deleted texture 20
+[13:11:46.719](INFO) deleted texture 17
+[13:11:46.723](INFO) deleted texture 23
+[13:11:46.723](INFO) deleted texture 14
+[13:11:46.723](INFO) deleted texture 8
+[13:11:46.724](INFO) deleted texture 5
+[13:11:46.724](INFO) deleted texture 11
+[13:11:46.724](INFO) deleted texture 2
+[13:11:46.724](INFO) deleted texture 2
+[13:11:46.725](INFO) deleted texture 5
+[13:11:46.727](INFO) deleted texture 5
+[13:11:46.728](INFO) deleted texture 8
+[13:11:46.728](INFO) deleted texture 11
+[13:11:46.728](INFO) deleted texture 14
+[13:11:46.728](INFO) deleted texture 14
+[13:11:46.728](INFO) deleted texture 17
+[13:11:46.729](INFO) deleted texture 20
+[13:11:46.729](INFO) deleted texture 23
+[13:11:46.729](INFO) deleted texture 23
+[13:11:46.729](INFO) deleted texture 26
+[13:11:46.729](INFO) deleted texture 29
+[13:11:46.732](INFO) deleted texture 32
+[13:11:46.732](INFO) deleted texture 32
+[13:11:46.732](INFO) deleted texture 35
